@@ -69,6 +69,9 @@ namespace game_framework {
 		CMovingBitmap logo;								// csie的logo
 		CMovingBitmap start_button;
 		CMovingBitmap background;
+		CMovingBitmap instructions;
+		CMovingBitmap gold;
+		CMovingBitmap light;
 		void load_Background();
 	};
 

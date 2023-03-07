@@ -74,6 +74,7 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
+
 }
 
 void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
@@ -106,7 +107,7 @@ void CGameStateRun::show_image_by_phase() {
 			goal.ToggleAnimation();
 		}
 	}
-	if (phase == 1 && sub_phase == 2) 
+	if (phase == 1 && sub_phase == 2 && action_state == 1) 
 	{
 		goal.UnshowBitmap();
 		background.ShowBitmap();
@@ -115,6 +116,7 @@ void CGameStateRun::show_image_by_phase() {
 	if (phase == 1 && sub_phase == 2 && action_state == 2)
 	{
 		miner.UnshowBitmap();
+		background.ShowBitmap();
 		miner_t.ShowBitmap();
 		
 		if (miner_t.GetFrameIndexOfBitmap() == 0 && miner_t.IsAnimation() == false)

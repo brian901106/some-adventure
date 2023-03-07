@@ -20,7 +20,7 @@ for file in filelist:
         img = Image.open(filepath)
 
         (w, h) = img.size
-        img = img.resize((int(w*0.99), int(h*0.99)))
+        img = img.resize((int(w*2), int(h*2)))
 
 
 

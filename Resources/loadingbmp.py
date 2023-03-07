@@ -1,7 +1,7 @@
-dir = "resources/start_page/light/"
+dir = "resources/miner/strength/"
 ext = ".bmp"
 start = 1
-end = 60
+end = 17
 result = ""
 
 #front_include = "{"

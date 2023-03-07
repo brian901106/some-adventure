@@ -46,11 +46,37 @@ void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	GotoGameState(GAME_STATE_RUN);			// 切換至GAME_STATE_RUN
+	if (point.x >= start_button.GetLeft() && 
+		point.x <= start_button.GetLeft() + start_button.GetWidth() && 
+		point.y >= start_button.GetTop() && 
+		point.y <= start_button.GetTop() + start_button.GetHeight()) 
+	{
+		GotoGameState(GAME_STATE_RUN);			// 切換至GAME_STATE_RUN
+	}
+
+	/*
+	指令介面跳出
+	----------------------------------------------------
+	if (point.x >= instructions.GetLeft() &&
+		point.x <= instructions.GetLeft() + instructions.GetWidth() &&
+		point.y >= instructions.GetTop() &&
+		point.y <= instructions.GetTop() + instructions.GetHeight())
+	{
+
+	}
+	
+	若按錯方位，跳出[按下START]的介面
+
+	else if
+	{
+		
+	}
+	*/
 }
 
 void CGameStateInit::OnShow()
 {
+	
 	background.ShowBitmap();
 
 	light.ShowBitmap();

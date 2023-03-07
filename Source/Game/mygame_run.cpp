@@ -31,13 +31,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	{
 		sub_phase += 1;
 	}
-	if (miner_t.IsAnimationDone() && miner_t.IsAnimation() == false)
-	{
-		action_state = 1;
-		miner_t.UnshowBitmap();
-		miner.ShowBitmap();
-		
-	}
+
 }
 
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
@@ -55,7 +49,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	miner.SetTopLeft(529, 33);
 	miner.SetAnimation(200, true);
 	miner_t.LoadBitmapByString({ "resources/miner/throw/1.bmp","resources/miner/throw/2.bmp","resources/miner/throw/3.bmp","resources/miner/throw/4.bmp","resources/miner/throw/5.bmp","resources/miner/throw/6.bmp","resources/miner/throw/7.bmp","resources/miner/throw/8.bmp","resources/miner/throw/9.bmp","resources/miner/throw/10.bmp","resources/miner/throw/11.bmp","resources/miner/throw/12.bmp","resources/miner/throw/13.bmp","resources/miner/throw/14.bmp","resources/miner/throw/15.bmp","resources/miner/throw/16.bmp","resources/miner/throw/17.bmp","resources/miner/throw/18.bmp","resources/miner/throw/19.bmp","resources/miner/throw/20.bmp","resources/miner/throw/21.bmp","resources/miner/throw/22.bmp","resources/miner/throw/23.bmp","resources/miner/throw/24.bmp","resources/miner/throw/25.bmp","resources/miner/throw/26.bmp","resources/miner/throw/27.bmp","resources/miner/throw/28.bmp","resources/miner/throw/29.bmp","resources/miner/throw/30.bmp","resources/miner/throw/31.bmp","resources/miner/throw/32.bmp","resources/miner/throw/33.bmp","resources/miner/throw/34.bmp","resources/miner/throw/35.bmp","resources/miner/throw/36.bmp","resources/miner/throw/37.bmp"}, RGB(0, 0, 0));
-	miner_t.SetTopLeft(529, 33);
+	miner_t.SetTopLeft(529, 23);
 	miner_t.SetAnimation(20, true);
 	miner_s.LoadBitmapByString({ "resources/miner/strength/1.bmp","resources/miner/strength/2.bmp","resources/miner/strength/3.bmp","resources/miner/strength/4.bmp","resources/miner/strength/5.bmp","resources/miner/strength/6.bmp","resources/miner/strength/7.bmp","resources/miner/strength/8.bmp","resources/miner/strength/9.bmp","resources/miner/strength/10.bmp","resources/miner/strength/11.bmp","resources/miner/strength/12.bmp","resources/miner/strength/13.bmp","resources/miner/strength/14.bmp","resources/miner/strength/15.bmp","resources/miner/strength/16.bmp" }, RGB(0, 0, 0));
 	miner_s.SetTopLeft(529, 33);
@@ -126,6 +120,13 @@ void CGameStateRun::show_image_by_phase() {
 		if (miner_t.GetFrameIndexOfBitmap() == 0 && miner_t.IsAnimation() == false)
 		{
 			miner_t.ToggleAnimation();
+		}
+		if (miner_t.IsAnimation() == false && goal.GetFrameIndexOfBitmap() != 0)
+		{
+			miner_t.UnshowBitmap();
+			miner.ShowBitmap();
+			action_state = 1;
+			miner_t.SetFrameIndexOfBitmap(0);
 		}
 	}
 }

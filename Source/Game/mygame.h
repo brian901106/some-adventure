@@ -72,6 +72,7 @@ namespace game_framework {
 		CMovingBitmap instructions;
 		CMovingBitmap gold;
 		CMovingBitmap light;
+		CMovingBitmap oldman;
 		void load_Background();
 	};
 
@@ -99,9 +100,14 @@ namespace game_framework {
 	private:
 		int phase = 1;
 		int sub_phase = 1;
+		int action_state = 1;
+		CMovingBitmap goal;
 		CMovingBitmap background;
-		CMovingBitmap start_button;
-		CMovingBitmap character;
+		CMovingBitmap miner;
+		CMovingBitmap miner_t;
+		CMovingBitmap miner_s;
+		//CAudio goal_audio;
+		void show_image_by_phase();
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

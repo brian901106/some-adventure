@@ -15,12 +15,12 @@ for file in filelist:
 
     name, ext = os.path.splitext(file)
 
-    if ext == ".bmp":
+    if ext == ".png":
         
         img = Image.open(filepath)
 
         (w, h) = img.size
-        img = img.resize((int(w*1/2), int(h*1/2)))
+        img = img.resize((int(w*2), int(h*2)))
 
 
 

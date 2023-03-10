@@ -103,14 +103,17 @@ namespace game_framework {
 		int sub_phase = 1;
 		int action_state = 1;
 		int position_correct = 1;
+		bool gameover;
 		CMovingBitmap goal;
 		CMovingBitmap background;
 		CMovingBitmap miner;
 		CMovingBitmap miner_t;
 		CMovingBitmap miner_s;
 		CMovingBitmap exit;
+		CMovingBitmap fail;
 		//CAudio goal_audio;
 		void show_image_by_phase();
+		void gameover_and_restart();
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

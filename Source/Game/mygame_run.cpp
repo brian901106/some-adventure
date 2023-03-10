@@ -57,6 +57,9 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	exit.LoadBitmapByString({ "resources/exit/1.bmp", "resources/exit/2.bmp" }, RGB(0, 0, 0));
 	exit.SetTopLeft(800, 12);
 
+	fail.LoadBitmapByString({ "resources/start_page/140.bmp", "resources/start_page/141.bmp" , "resources/start_page/142.bmp" , "resources/start_page/143.bmp" , "resources/start_page/144.bmp" , "resources/start_page/145.bmp" , "resources/start_page/146.bmp" , "resources/start_page/147.bmp" , "resources/start_page/148.bmp" , "resources/start_page/149.bmp" , "resources/start_page/150.bmp" , "resources/start_page/151.bmp" , "resources/start_page/151.bmp" , "resources/start_page/152.bmp" , "resources/start_page/153.bmp" , "resources/start_page/154.bmp" , "resources/start_page/155.bmp" , "resources/start_page/156.bmp" , "resources/start_page/157.bmp" , "resources/start_page/158.bmp" , "resources/start_page/159.bmp" , "resources/start_page/160.bmp" , "resources/start_page/161.bmp" , "resources/start_page/162.bmp" , "resources/start_page/163.bmp" , "resources/start_page/164.bmp" , "resources/start_page/165.bmp" , "resources/start_page/166.bmp" , "resources/start_page/167.bmp" , "resources/start_page/168.bmp" });
+	fail.SetTopLeft(0, 0);
+	fail.SetAnimation(50, true);
 }
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -77,7 +80,9 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
-
+	if (exit.GetFrameIndexOfBitmap() == 1 && sub_phase == 2 ) {
+		gameover = true;
+	}
 }
 
 void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
@@ -102,6 +107,9 @@ void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動
 
 void CGameStateRun::OnRButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
+	if (exit.GetFrameIndexOfBitmap() == 1) {
+
+	}
 }
 
 void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
@@ -114,8 +122,10 @@ void CGameStateRun::OnShow()
 }
 
 void CGameStateRun::show_image_by_phase() {
+
 	if (phase == 1 && sub_phase == 1) 
 	{
+		gameover = false;
 		goal.ShowBitmap();
 		if (goal.GetFrameIndexOfBitmap() == 0 && goal.IsAnimation() == false)
 		{
@@ -128,13 +138,21 @@ void CGameStateRun::show_image_by_phase() {
 		background.ShowBitmap();
 		miner.ShowBitmap();
 		exit.ShowBitmap();
+		
+		if (gameover == true) {
+			gameover_and_restart();
+		}
+		
 	}
 	if (phase == 1 && sub_phase == 2 && action_state == 2)
 	{
 		miner.UnshowBitmap();
 		background.ShowBitmap();
 		miner_t.ShowBitmap();
-		//exit.ShowBitmap();
+		exit.ShowBitmap();
+		if (gameover == true) {
+			gameover_and_restart();
+		}
 		
 		if (miner_t.GetFrameIndexOfBitmap() == 0 && miner_t.IsAnimation() == false)
 		{
@@ -147,5 +165,16 @@ void CGameStateRun::show_image_by_phase() {
 			action_state = 1;
 			miner_t.SetFrameIndexOfBitmap(0);
 		}
+	}
+
+
+}
+
+void CGameStateRun::gameover_and_restart()
+{
+	fail.ShowBitmap();
+
+	if (fail.GetFrameIndexOfBitmap() == 0 && fail.IsAnimation() == false) {
+		fail.ToggleAnimation();
 	}
 }

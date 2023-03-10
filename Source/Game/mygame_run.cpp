@@ -107,9 +107,7 @@ void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動
 
 void CGameStateRun::OnRButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
-	if (exit.GetFrameIndexOfBitmap() == 1) {
 
-	}
 }
 
 void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
@@ -176,5 +174,11 @@ void CGameStateRun::gameover_and_restart()
 
 	if (fail.GetFrameIndexOfBitmap() == 0 && fail.IsAnimation() == false) {
 		fail.ToggleAnimation();
+	}
+	if (fail.IsAnimation() == false && fail.GetFrameIndexOfBitmap() != 0) {
+		GotoGameState(GAME_STATE_INIT);
+		fail.SetFrameIndexOfBitmap(0);
+		goal.SetFrameIndexOfBitmap(0);
+		sub_phase = 1;
 	}
 }

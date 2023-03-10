@@ -1,7 +1,7 @@
-dir = "resources/miner/strength/"
+dir = "resources/fail_page/"
 ext = ".bmp"
-start = 1
-end = 17
+start = 140
+end = 169
 result = ""
 
 #front_include = "{"

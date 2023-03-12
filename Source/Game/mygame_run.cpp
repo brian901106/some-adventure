@@ -45,6 +45,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//goal_audio.Play(0, false);
 	background.LoadBitmapByString({ "resources/stage/1_1.bmp" });
 	background.SetTopLeft(0, 0);
+
 	miner.LoadBitmapByString({ "resources/miner/normal/1.bmp","resources/miner/normal/2.bmp","resources/miner/normal/3.bmp","resources/miner/normal/4.bmp","resources/miner/normal/5.bmp" }, RGB(0, 0, 0));
 	miner.SetTopLeft(529, 33);
 	miner.SetAnimation(200, true);
@@ -54,9 +55,11 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	miner_s.LoadBitmapByString({ "resources/miner/strength/1.bmp","resources/miner/strength/2.bmp","resources/miner/strength/3.bmp","resources/miner/strength/4.bmp","resources/miner/strength/5.bmp","resources/miner/strength/6.bmp","resources/miner/strength/7.bmp","resources/miner/strength/8.bmp","resources/miner/strength/9.bmp","resources/miner/strength/10.bmp","resources/miner/strength/11.bmp","resources/miner/strength/12.bmp","resources/miner/strength/13.bmp","resources/miner/strength/14.bmp","resources/miner/strength/15.bmp","resources/miner/strength/16.bmp" }, RGB(0, 0, 0));
 	miner_s.SetTopLeft(529, 33);
 	miner_s.SetAnimation(200, true);
+
 	claw.LoadBitmapByString({ "resources/claw/0/rotate/1.bmp","resources/claw/0/rotate/2.bmp","resources/claw/0/rotate/3.bmp","resources/claw/0/rotate/4.bmp","resources/claw/0/rotate/5.bmp","resources/claw/0/rotate/6.bmp","resources/claw/0/rotate/7.bmp","resources/claw/0/rotate/8.bmp","resources/claw/0/rotate/9.bmp","resources/claw/0/rotate/10.bmp","resources/claw/0/rotate/11.bmp","resources/claw/0/rotate/12.bmp","resources/claw/0/rotate/13.bmp","resources/claw/0/rotate/14.bmp","resources/claw/0/rotate/15.bmp","resources/claw/0/rotate/16.bmp","resources/claw/0/rotate/17.bmp","resources/claw/0/rotate/18.bmp","resources/claw/0/rotate/19.bmp","resources/claw/0/rotate/20.bmp","resources/claw/0/rotate/21.bmp","resources/claw/0/rotate/22.bmp","resources/claw/0/rotate/23.bmp","resources/claw/0/rotate/24.bmp","resources/claw/0/rotate/25.bmp","resources/claw/0/rotate/26.bmp","resources/claw/0/rotate/27.bmp","resources/claw/0/rotate/28.bmp","resources/claw/0/rotate/29.bmp","resources/claw/0/rotate/30.bmp","resources/claw/0/rotate/31.bmp","resources/claw/0/rotate/32.bmp","resources/claw/0/rotate/33.bmp","resources/claw/0/rotate/34.bmp","resources/claw/0/rotate/35.bmp","resources/claw/0/rotate/36.bmp","resources/claw/0/rotate/37.bmp","resources/claw/0/rotate/38.bmp","resources/claw/0/rotate/39.bmp","resources/claw/0/rotate/40.bmp","resources/claw/0/rotate/41.bmp","resources/claw/0/rotate/42.bmp","resources/claw/0/rotate/43.bmp","resources/claw/0/rotate/44.bmp","resources/claw/0/rotate/45.bmp","resources/claw/0/rotate/46.bmp","resources/claw/0/rotate/47.bmp","resources/claw/0/rotate/48.bmp","resources/claw/0/rotate/49.bmp","resources/claw/0/rotate/50.bmp","resources/claw/0/rotate/51.bmp","resources/claw/0/rotate/52.bmp","resources/claw/0/rotate/53.bmp","resources/claw/0/rotate/54.bmp" }, RGB(0, 0, 0));
-	claw.SetTopLeft(0, 0);
+	claw.SetTopLeft(0, 20);
 	claw.SetAnimation(50, false);
+
 	exit.LoadBitmapByString({ "resources/exit/1.bmp", "resources/exit/2.bmp" }, RGB(0, 0, 0));
 	exit.SetTopLeft(800, 12);
 

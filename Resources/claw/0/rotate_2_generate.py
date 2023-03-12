@@ -12,14 +12,31 @@ def rotate_img(img,angle):
     M = np.float32([[1, 0, 476], [0, 1, 0]])
 
     #img = cv2.resize(img)
-    img2 = cv2.warpAffine(img, M, (1100, 800))
+    full_img = cv2.warpAffine(img, M, (1100, 800))
 
     
     center = (550,85)
-    M2 = cv2.getRotationMatrix2D(center, angle, 1.0)
-    rotate_img = cv2.warpAffine(img2, M2, (1100, 800))
+
     
-    return rotate_img
+    M2 = cv2.getRotationMatrix2D(center, angle, 1.0)
+    rotate_img = cv2.warpAffine(full_img, M2, (1100, 800))
+    
+    scale = 1.5
+    center = (550*scale,85*scale)
+    resize_img = cv2.resize(rotate_img,(0,0),fx=scale,fy=scale,interpolation=cv2.INTER_AREA)
+
+    # 裁切區域的 x 與 y 座標（左上角）
+    x = int(550*(scale-1))
+    y = int(85*(scale-1))
+
+    # 裁切區域的長度與寬度
+    w = 1100
+    h = 800
+
+    # 裁切圖片
+    crop_img = resize_img[y:y+h, x:x+w]
+
+    return crop_img
 
 
 if __name__ == "__main__":

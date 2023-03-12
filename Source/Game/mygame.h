@@ -109,6 +109,7 @@ namespace game_framework {
 		CMovingBitmap miner;
 		CMovingBitmap miner_t;
 		CMovingBitmap miner_s;
+		CMovingBitmap claw;
 		CMovingBitmap exit;
 		CMovingBitmap fail;
 		//CAudio goal_audio;

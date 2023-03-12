@@ -1,7 +1,7 @@
-dir = "resources/fail_page/"
+dir = "resources/claw/0/rotate/"
 ext = ".bmp"
-start = 140
-end = 169
+start = 1
+end = 55
 result = ""
 
 #front_include = "{"

@@ -1,7 +1,7 @@
-dir = "resources/claw/0/rotate/"
+dir = "resources/claw/1/rotate/-5/"
 ext = ".bmp"
-start = 1
-end = 55
+start = 3
+end = 43
 result = ""
 
 #front_include = "{"

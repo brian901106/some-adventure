@@ -111,6 +111,9 @@ namespace game_framework {
 		string GetImageFileName();
 		COLORREF GetFilterColor();
 
+		/* Claw爪子 */
+		int   GetAngleOfClaw();             // 取得對應爪子角度
+
 		/* Is function */
 		bool  IsAnimation();
 		bool  IsAnimationDone();

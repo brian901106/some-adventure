@@ -88,7 +88,9 @@ namespace game_framework {
 		~CGameStateRun();
 		void OnBeginState();							// 設定每次重玩所需的變數
 		void OnInit();  								// 遊戲的初值及圖形設定
+		void LoadClaws();
 		void OnKeyDown(UINT, UINT, UINT);
+		void ToggleClaws();
 		void OnKeyUp(UINT, UINT, UINT);
 		void OnLButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
 		void OnLButtonUp(UINT nFlags, CPoint point);	// 處理滑鼠的動作
@@ -102,6 +104,7 @@ namespace game_framework {
 		int phase = 1;
 		int sub_phase = 1;
 		int action_state = 1;
+		int key_down_angle = -100;      //紀錄按下(down key)時的角度(Index)，預設為-100度
 		int position_correct = 1;
 		bool gameover;
 		CMovingBitmap goal;
@@ -110,10 +113,13 @@ namespace game_framework {
 		CMovingBitmap miner_t;
 		CMovingBitmap miner_s;
 		CMovingBitmap claw;
+		CMovingBitmap claw1_2;
+		CMovingBitmap claw1_n5;
 		CMovingBitmap exit;
 		CMovingBitmap fail;
 		//CAudio goal_audio;
 		void show_image_by_phase();
+		void show_claw_by_angle();
 		void gameover_and_restart();
 	};
 

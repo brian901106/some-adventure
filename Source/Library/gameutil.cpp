@@ -248,6 +248,15 @@ namespace game_framework {
 		return frameIndex;
 	}
 
+	int CMovingBitmap::GetAngleOfClaw(){
+		if (frameIndex < 14 || (frameIndex > 41 && frameIndex < 45)) {
+			return 1;
+		}
+		else {
+			return 0;
+		}
+	}
+
 	//! 取得當前圖片左上角 y 軸的座標值。
 	/*!
 		\return 圖片左上角 y 軸的座標值。

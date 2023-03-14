@@ -60,6 +60,8 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	claw.SetTopLeft(0, 20);
 	claw.SetAnimation(50, false);
 
+	LoadClaws();
+
 	exit.LoadBitmapByString({ "resources/exit/1.bmp", "resources/exit/2.bmp" }, RGB(0, 0, 0));
 	exit.SetTopLeft(800, 12);
 
@@ -68,13 +70,39 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	fail.SetAnimation(50, true);
 }
 
+void CGameStateRun::LoadClaws()
+{
+	claw1_2.LoadBitmapByString({ "resources/claw/1/rotate/2/3.bmp","resources/claw/1/rotate/2/4.bmp","resources/claw/1/rotate/2/5.bmp","resources/claw/1/rotate/2/6.bmp","resources/claw/1/rotate/2/7.bmp","resources/claw/1/rotate/2/8.bmp","resources/claw/1/rotate/2/9.bmp","resources/claw/1/rotate/2/10.bmp","resources/claw/1/rotate/2/11.bmp","resources/claw/1/rotate/2/12.bmp","resources/claw/1/rotate/2/13.bmp","resources/claw/1/rotate/2/14.bmp","resources/claw/1/rotate/2/15.bmp","resources/claw/1/rotate/2/16.bmp","resources/claw/1/rotate/2/17.bmp","resources/claw/1/rotate/2/18.bmp","resources/claw/1/rotate/2/19.bmp","resources/claw/1/rotate/2/20.bmp","resources/claw/1/rotate/2/21.bmp","resources/claw/1/rotate/2/22.bmp","resources/claw/1/rotate/2/23.bmp","resources/claw/1/rotate/2/24.bmp","resources/claw/1/rotate/2/25.bmp","resources/claw/1/rotate/2/26.bmp","resources/claw/1/rotate/2/27.bmp","resources/claw/1/rotate/2/28.bmp","resources/claw/1/rotate/2/29.bmp","resources/claw/1/rotate/2/30.bmp","resources/claw/1/rotate/2/31.bmp","resources/claw/1/rotate/2/32.bmp","resources/claw/1/rotate/2/33.bmp","resources/claw/1/rotate/2/34.bmp","resources/claw/1/rotate/2/35.bmp","resources/claw/1/rotate/2/36.bmp","resources/claw/1/rotate/2/37.bmp","resources/claw/1/rotate/2/38.bmp","resources/claw/1/rotate/2/39.bmp","resources/claw/1/rotate/2/40.bmp","resources/claw/1/rotate/2/41.bmp","resources/claw/1/rotate/2/42.bmp" }, RGB(0, 0, 0));
+	claw1_2.SetTopLeft(0, 20);
+	claw1_2.SetAnimation(50, true);
+
+	claw1_n5.LoadBitmapByString({ "resources/claw/1/rotate/-5/3.bmp","resources/claw/1/rotate/-5/4.bmp","resources/claw/1/rotate/-5/5.bmp","resources/claw/1/rotate/-5/6.bmp","resources/claw/1/rotate/-5/7.bmp","resources/claw/1/rotate/-5/8.bmp","resources/claw/1/rotate/-5/9.bmp","resources/claw/1/rotate/-5/10.bmp","resources/claw/1/rotate/-5/11.bmp","resources/claw/1/rotate/-5/12.bmp","resources/claw/1/rotate/-5/13.bmp","resources/claw/1/rotate/-5/14.bmp","resources/claw/1/rotate/-5/15.bmp","resources/claw/1/rotate/-5/16.bmp","resources/claw/1/rotate/-5/17.bmp","resources/claw/1/rotate/-5/18.bmp","resources/claw/1/rotate/-5/19.bmp","resources/claw/1/rotate/-5/20.bmp","resources/claw/1/rotate/-5/21.bmp","resources/claw/1/rotate/-5/22.bmp","resources/claw/1/rotate/-5/23.bmp","resources/claw/1/rotate/-5/24.bmp","resources/claw/1/rotate/-5/25.bmp","resources/claw/1/rotate/-5/26.bmp","resources/claw/1/rotate/-5/27.bmp","resources/claw/1/rotate/-5/28.bmp","resources/claw/1/rotate/-5/29.bmp","resources/claw/1/rotate/-5/30.bmp","resources/claw/1/rotate/-5/31.bmp","resources/claw/1/rotate/-5/32.bmp","resources/claw/1/rotate/-5/33.bmp","resources/claw/1/rotate/-5/34.bmp","resources/claw/1/rotate/-5/35.bmp","resources/claw/1/rotate/-5/36.bmp","resources/claw/1/rotate/-5/37.bmp","resources/claw/1/rotate/-5/38.bmp","resources/claw/1/rotate/-5/39.bmp","resources/claw/1/rotate/-5/40.bmp","resources/claw/1/rotate/-5/41.bmp","resources/claw/1/rotate/-5/42.bmp" }, RGB(0, 0, 0));
+	claw1_n5.SetTopLeft(0, 20);
+	claw1_n5.SetAnimation(50, true);
+}
+
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	if (nChar == VK_DOWN) {
 		miner.ToggleAnimation();
+		key_down_angle = claw.GetAngleOfClaw();
+		ToggleClaws();
 	}
 	if (nChar == VK_UP) {
 		action_state = 2;
+	}
+	
+}
+
+void CGameStateRun::ToggleClaws()
+{
+	if (key_down_angle == 1) 
+	{
+		claw1_2.ToggleAnimation();
+	}
+	if (key_down_angle == 0)
+	{
+		claw1_n5.ToggleAnimation();
 	}
 	
 }
@@ -123,6 +151,7 @@ void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動
 void CGameStateRun::OnShow()
 {
 	show_image_by_phase();
+	show_claw_by_angle();
 }
 
 void CGameStateRun::show_image_by_phase() {
@@ -187,5 +216,16 @@ void CGameStateRun::gameover_and_restart()
 		fail.SetFrameIndexOfBitmap(0);
 		goal.SetFrameIndexOfBitmap(0);
 		sub_phase = 1;
+	}
+}
+
+void CGameStateRun::show_claw_by_angle()
+{
+	
+	if ((miner.IsAnimation() && key_down_angle == 1) || claw1_2.IsAnimation()) {
+		claw1_2.ShowBitmap();
+	}
+	if ((miner.IsAnimation() && key_down_angle == 0) || claw1_n5.IsAnimation()) {
+		claw1_n5.ShowBitmap();
 	}
 }

@@ -6,6 +6,7 @@
 #include "../Library/gameutil.h"
 #include "../Library/gamecore.h"
 #include "mygame.h"
+#include <string>
 
 using namespace game_framework;
 
@@ -37,6 +38,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 {
 
+	
 
 	goal.LoadBitmapByString({ "resources/goal_page/600/15.bmp","resources/goal_page/600/16.bmp","resources/goal_page/600/17.bmp","resources/goal_page/600/18.bmp","resources/goal_page/600/19.bmp","resources/goal_page/600/20.bmp","resources/goal_page/600/21.bmp","resources/goal_page/600/22.bmp","resources/goal_page/600/23.bmp","resources/goal_page/600/24.bmp","resources/goal_page/600/25.bmp","resources/goal_page/600/26.bmp","resources/goal_page/600/27.bmp","resources/goal_page/600/28.bmp","resources/goal_page/600/29.bmp","resources/goal_page/600/30.bmp","resources/goal_page/600/31.bmp","resources/goal_page/600/32.bmp","resources/goal_page/600/33.bmp","resources/goal_page/600/34.bmp","resources/goal_page/600/35.bmp","resources/goal_page/600/36.bmp","resources/goal_page/600/37.bmp","resources/goal_page/600/38.bmp","resources/goal_page/600/39.bmp","resources/goal_page/600/40.bmp","resources/goal_page/600/41.bmp","resources/goal_page/600/42.bmp","resources/goal_page/600/43.bmp","resources/goal_page/600/44.bmp","resources/goal_page/600/45.bmp","resources/goal_page/600/46.bmp","resources/goal_page/600/47.bmp","resources/goal_page/600/48.bmp","resources/goal_page/600/49.bmp","resources/goal_page/600/50.bmp","resources/goal_page/600/51.bmp" });
 	goal.SetAnimation(50, true);
@@ -234,15 +236,22 @@ void CGameStateRun::show_claw_by_angle()
 }
 
 void CGameStateRun::show_text_by_phase() {
+	
 	CDC *pDC = CDDraw::GetBackCDC();
-	//CFont* fp;
 
-	CTextDraw::ChangeFontLog(pDC, 21, "新細明體", RGB(0, 0, 0), 800);
-
+	CTextDraw::ChangeFontLog(pDC, 35, "新細明體", RGB(255, 97, 0), 15000);
+	
 	if (phase == 1 && sub_phase == 2) {
-		CTextDraw::Print(pDC, 237, 128, "修改你的主角！");
-		CTextDraw::Print(pDC, 55, 163, "將灰色方格換成 resources 內的 giraffe.bmp 圖樣！");
-		CTextDraw::Print(pDC, 373, 537, "按下 Enter 鍵來驗證");
+		CTextDraw::Print(pDC, 1000, 16, std::to_string(timer));
+
+		if (clock() - last_time > 1000)
+		{
+
+			timer -= 1;
+			last_time = clock();
+
+		}
 	}
 	CDDraw::ReleaseBackCDC();
+	
 }

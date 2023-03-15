@@ -105,6 +105,8 @@ namespace game_framework {
 		int sub_phase = 1;
 		int action_state = 1;
 		int key_down_angle = -100;      //紀錄按下(down key)時的角度(Index)，預設為-100度
+		int last_time;
+		int timer  = 61;
 		int position_correct = 1;
 		bool gameover;
 		CMovingBitmap goal;
@@ -122,6 +124,8 @@ namespace game_framework {
 		void show_claw_by_angle();
 		void gameover_and_restart();
 		void show_text_by_phase();
+		
+		
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

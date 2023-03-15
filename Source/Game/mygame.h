@@ -121,6 +121,7 @@ namespace game_framework {
 		void show_image_by_phase();
 		void show_claw_by_angle();
 		void gameover_and_restart();
+		void show_text_by_phase();
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

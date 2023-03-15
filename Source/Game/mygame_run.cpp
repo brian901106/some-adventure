@@ -152,6 +152,7 @@ void CGameStateRun::OnShow()
 {
 	show_image_by_phase();
 	show_claw_by_angle();
+	show_text_by_phase();
 }
 
 void CGameStateRun::show_image_by_phase() {
@@ -228,4 +229,18 @@ void CGameStateRun::show_claw_by_angle()
 	if ((miner.IsAnimation() && key_down_angle == 0) || claw1_n5.IsAnimation()) {
 		claw1_n5.ShowBitmap();
 	}
+}
+
+void CGameStateRun::show_text_by_phase() {
+	CDC *pDC = CDDraw::GetBackCDC();
+	//CFont* fp;
+
+	CTextDraw::ChangeFontLog(pDC, 21, "FiraCode", RGB(0, 0, 0), 800);
+
+	if (phase == 1 && sub_phase == 2) {
+		CTextDraw::Print(pDC, 237, 128, "修改你的主角！");
+		CTextDraw::Print(pDC, 55, 163, "將灰色方格換成 resources 內的 giraffe.bmp 圖樣！");
+		CTextDraw::Print(pDC, 373, 537, "按下 Enter 鍵來驗證");
+	}
+	CDDraw::ReleaseBackCDC();
 }

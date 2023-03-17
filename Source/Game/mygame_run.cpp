@@ -241,7 +241,7 @@ void CGameStateRun::show_text_by_phase() {
 
 	CTextDraw::ChangeFontLog(pDC, 35, "新細明體", RGB(255, 97, 0), 15000);
 	
-	if (phase == 1 && sub_phase == 2) {
+	if (phase == 1 && sub_phase == 2 && timer > 0) {
 		CTextDraw::Print(pDC, 1000, 16, std::to_string(timer));
 
 		if (clock() - last_time > 1000)

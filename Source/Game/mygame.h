@@ -107,10 +107,11 @@ namespace game_framework {
 		int key_down_angle = -100;      //紀錄按下(down key)時的角度(Index)，預設為-100度
 		bool claw_is_ready = true;		//當claw_is_ready = true時才可以出爪子
 		int last_time;					//用來記錄clock()上次的取樣時間
-		int timer  = 1;				//每關的預設時間為timer-1
+		int timer  = 61;				//每關的預設時間為timer-1
 		int position_correct = 1;		//這啥 許君豪看到請解釋
 		int money = 0;
-		int goal_money = 1;
+		int goal_money;
+		int goal_money_of_level[10] = { 600,1000 };
 		bool gameover = false;			// = true 時播放結束動畫並返回主頁面
 		CMovingBitmap goal;
 		CMovingBitmap background;
@@ -139,6 +140,7 @@ namespace game_framework {
 		void show_claw_by_angle();
 		void gameover_and_restart();
 		void show_text_by_phase();
+		void set_goal_money();
 		
 		
 	};

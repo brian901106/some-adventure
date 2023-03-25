@@ -28,11 +28,16 @@ void CGameStateRun::OnBeginState()
 
 void CGameStateRun::OnMove()							// 移動遊戲元素
 {
+	set_goal_money();
 	if (goal.IsAnimationDone() && sub_phase == 1)
 	{
 		sub_phase = 2;
 	}
-	if (timer==0 && money > goal_money)
+	if (timer == 0 && money < goal_money)
+	{
+		gameover = true;
+	}
+	if (timer == 0 && money >= goal_money)
 	{
 		sub_phase = 3;
 	}
@@ -125,6 +130,10 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	}
 	if (nChar == VK_RIGHT) {
 		sub_phase = 3;
+	}
+	if (nChar == VK_LEFT) {
+		money = money + 100;
+		timer = timer - 5;
 	}
 }
 
@@ -256,6 +265,16 @@ void CGameStateRun::show_image_by_phase() {
 
 }
 
+void CGameStateRun::set_goal_money()
+{
+	for (int i = 1 ; i < 10 ; i++) 
+	{
+		if (phase == i) {
+			goal_money = goal_money_of_level[i-1];
+		}
+	}
+}
+
 void CGameStateRun::gameover_and_restart()
 {
 	fail.ShowBitmap();
@@ -267,7 +286,9 @@ void CGameStateRun::gameover_and_restart()
 		GotoGameState(GAME_STATE_INIT);
 		fail.SetFrameIndexOfBitmap(0);
 		goal.SetFrameIndexOfBitmap(0);
+		money = 0;
 		sub_phase = 1;
+		timer = 61;
 	}
 }
 
@@ -311,10 +332,10 @@ void CGameStateRun::show_text_by_phase() {
 	
 	CDC *pDC = CDDraw::GetBackCDC();
 
-	CTextDraw::ChangeFontLog(pDC, 35, "新細明體", RGB(255, 97, 0), 15000);
+	CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(255, 102, 0), 15000);
 	
 	if (phase == 1 && sub_phase == 2 && timer > 0) {
-		CTextDraw::Print(pDC, 1030, 16, std::to_string(timer));
+		CTextDraw::Print(pDC, 1033, 10, std::to_string(timer));
 
 		if (clock() - last_time > 1000)
 		{
@@ -324,6 +345,19 @@ void CGameStateRun::show_text_by_phase() {
 
 		}
 	}
+
+	CTextDraw::Print(pDC, 1033, 58, std::to_string(phase));
+
+	CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(0, 0, 0), 15000);
+	CTextDraw::Print(pDC, 140, 12, std::to_string(money));
+	CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(0, 153, 0), 15000);
+	CTextDraw::Print(pDC, 140, 10, std::to_string(money));
+
+	CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(0, 0, 0), 15000);
+	CTextDraw::Print(pDC, 138, 62, std::to_string(goal_money));
+	CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(255, 153, 0), 15000);
+	CTextDraw::Print(pDC, 138, 60, std::to_string(goal_money));
+	
 	CDDraw::ReleaseBackCDC();
 	
 }

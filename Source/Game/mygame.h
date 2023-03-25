@@ -101,14 +101,17 @@ namespace game_framework {
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
-		int phase = 1;
-		int sub_phase = 1;
-		int action_state = 1;
+		int phase = 1;					//phase = 1 為第一關， = 2 為第二關，以此類推
+		int sub_phase = 1;				//sub_phase = 1 為goal_page， = 2 為掏金關卡， = 3 為shop_page
+		int action_state = 1;			//action_state = 1 為正常動作??????
 		int key_down_angle = -100;      //紀錄按下(down key)時的角度(Index)，預設為-100度
-		int last_time;
-		int timer  = 61;
-		int position_correct = 1;
-		bool gameover;
+		bool claw_is_ready = true;		//當claw_is_ready = true時才可以出爪子
+		int last_time;					//用來記錄clock()上次的取樣時間
+		int timer  = 1;				//每關的預設時間為timer-1
+		int position_correct = 1;		//這啥 許君豪看到請解釋
+		int money = 0;
+		int goal_money = 1;
+		bool gameover = false;			// = true 時播放結束動畫並返回主頁面
 		CMovingBitmap goal;
 		CMovingBitmap background;
 		CMovingBitmap miner;
@@ -119,6 +122,18 @@ namespace game_framework {
 		CMovingBitmap claw1_n5;
 		CMovingBitmap exit;
 		CMovingBitmap fail;
+		CMovingBitmap success;
+		CMovingBitmap shop_table;
+		CMovingBitmap shop_bg;
+		CMovingBitmap next_level_button;
+		CMovingBitmap owner_talk;
+		CMovingBitmap owner_buy;
+		CMovingBitmap owner_angry;
+		CMovingBitmap item_1;			//商店商品:炸藥
+		CMovingBitmap item_2;			//商店商品:力量增強藥
+		CMovingBitmap item_3;			//商店商品:幸運草
+		CMovingBitmap item_4;			//商店商品:石頭書
+		CMovingBitmap item_5;			//商店商品:咖啡
 		//CAudio goal_audio;
 		void show_image_by_phase();
 		void show_claw_by_angle();

@@ -30,7 +30,11 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 {
 	if (goal.IsAnimationDone() && sub_phase == 1)
 	{
-		sub_phase += 1;
+		sub_phase = 2;
+	}
+	if (timer==0 && money > goal_money)
+	{
+		sub_phase = 3;
 	}
 
 }
@@ -70,6 +74,39 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	fail.LoadBitmapByString({ "resources/fail_page/140.bmp","resources/fail_page/141.bmp","resources/fail_page/142.bmp","resources/fail_page/143.bmp","resources/fail_page/144.bmp","resources/fail_page/145.bmp","resources/fail_page/146.bmp","resources/fail_page/147.bmp","resources/fail_page/148.bmp","resources/fail_page/149.bmp","resources/fail_page/150.bmp","resources/fail_page/151.bmp","resources/fail_page/152.bmp","resources/fail_page/153.bmp","resources/fail_page/154.bmp","resources/fail_page/155.bmp","resources/fail_page/156.bmp","resources/fail_page/157.bmp","resources/fail_page/158.bmp","resources/fail_page/159.bmp","resources/fail_page/160.bmp","resources/fail_page/161.bmp","resources/fail_page/162.bmp","resources/fail_page/163.bmp","resources/fail_page/164.bmp","resources/fail_page/165.bmp","resources/fail_page/166.bmp","resources/fail_page/167.bmp","resources/fail_page/168.bmp" });
 	fail.SetTopLeft(0, 0);
 	fail.SetAnimation(50, true);
+
+	success.LoadBitmapByString({ "resources/success_page/94.bmp","resources/success_page/95.bmp","resources/success_page/96.bmp","resources/success_page/97.bmp","resources/success_page/98.bmp","resources/success_page/99.bmp","resources/success_page/100.bmp","resources/success_page/101.bmp","resources/success_page/102.bmp","resources/success_page/103.bmp","resources/success_page/104.bmp","resources/success_page/105.bmp","resources/success_page/106.bmp","resources/success_page/107.bmp","resources/success_page/108.bmp","resources/success_page/109.bmp","resources/success_page/110.bmp","resources/success_page/111.bmp","resources/success_page/112.bmp","resources/success_page/113.bmp","resources/success_page/114.bmp","resources/success_page/115.bmp","resources/success_page/116.bmp","resources/success_page/117.bmp","resources/success_page/118.bmp","resources/success_page/119.bmp","resources/success_page/120.bmp","resources/success_page/121.bmp","resources/success_page/122.bmp","resources/success_page/123.bmp","resources/success_page/124.bmp","resources/success_page/125.bmp","resources/success_page/126.bmp","resources/success_page/127.bmp","resources/success_page/128.bmp","resources/success_page/129.bmp" });
+	success.SetTopLeft(0, 0);
+	success.SetAnimation(50, true);
+
+
+	shop_bg.LoadBitmapByString({ "resources/shop_page/shop_bg.bmp" });
+	shop_bg.SetTopLeft(0, 0);
+
+	//shop_table.LoadBitmapByString({ "resources/shop_page/shop_table.bmp" }, RGB(0, 0, 0));
+	//shop_table.SetTopLeft(2, 108);
+
+	//next_level_button.LoadBitmapByString({ "resources/shop_page/next_level_button.bmp" }, RGB(0, 0, 0));
+	//next_level_button.SetTopLeft(0, 0);
+
+	owner_talk.LoadBitmapByString({"resources/shop_page/owner/talk/1.bmp","resources/shop_page/owner/talk/2.bmp","resources/shop_page/owner/talk/3.bmp","resources/shop_page/owner/talk/4.bmp","resources/shop_page/owner/talk/5.bmp","resources/shop_page/owner/talk/6.bmp","resources/shop_page/owner/talk/7.bmp","resources/shop_page/owner/talk/8.bmp","resources/shop_page/owner/talk/9.bmp","resources/shop_page/owner/talk/10.bmp","resources/shop_page/owner/talk/11.bmp","resources/shop_page/owner/talk/12.bmp","resources/shop_page/owner/talk/13.bmp","resources/shop_page/owner/talk/14.bmp","resources/shop_page/owner/talk/15.bmp","resources/shop_page/owner/talk/16.bmp","resources/shop_page/owner/talk/17.bmp","resources/shop_page/owner/talk/18.bmp"}, RGB(0, 0, 0));
+	owner_talk.SetTopLeft(-4, 186);
+	owner_talk.SetAnimation(50, true);
+
+	item_1.LoadBitmapByString({"resources/shop_page/1.bmp"}, RGB(0, 0, 0));
+	item_1.SetTopLeft(50, 440);
+
+	item_2.LoadBitmapByString({ "resources/shop_page/2.bmp" }, RGB(0, 0, 0));
+	item_2.SetTopLeft(190, 410);
+
+	item_3.LoadBitmapByString({ "resources/shop_page/3.bmp" }, RGB(0, 0, 0));
+	item_3.SetTopLeft(330, 420);
+
+	item_4.LoadBitmapByString({ "resources/shop_page/4.bmp" }, RGB(0, 0, 0));
+	item_4.SetTopLeft(470, 440);
+
+	item_5.LoadBitmapByString({ "resources/shop_page/5.bmp" }, RGB(0, 0, 0));
+	item_5.SetTopLeft(610, 455);
 }
 
 
@@ -77,14 +114,18 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	if (nChar == VK_DOWN) {
-		miner.ToggleAnimation();
-		key_down_angle = claw.GetAngleOfClaw();
-		ToggleClaws();
+		if (claw_is_ready == true) {
+			miner.ToggleAnimation();
+			key_down_angle = claw.GetAngleOfClaw();
+			ToggleClaws();
+		}
 	}
 	if (nChar == VK_UP) {
 		action_state = 2;
 	}
-	
+	if (nChar == VK_RIGHT) {
+		sub_phase = 3;
+	}
 }
 
 
@@ -133,7 +174,12 @@ void CGameStateRun::OnShow()
 {
 	show_image_by_phase();
 	show_claw_by_angle();
-	show_text_by_phase();
+	if (sub_phase == 2){
+		show_text_by_phase();
+	}
+	if (gameover == true) {
+		gameover_and_restart();
+	}
 }
 
 void CGameStateRun::show_image_by_phase() {
@@ -154,9 +200,6 @@ void CGameStateRun::show_image_by_phase() {
 		miner.ShowBitmap();
 		exit.ShowBitmap();
 		claw.ShowBitmap();
-		if (gameover == true) {
-			gameover_and_restart();
-		}
 		
 	}
 	if (phase == 1 && sub_phase == 2 && action_state == 2)
@@ -166,9 +209,6 @@ void CGameStateRun::show_image_by_phase() {
 		miner_t.ShowBitmap();
 		exit.ShowBitmap();
 		claw.ShowBitmap();
-		if (gameover == true) {
-			gameover_and_restart();
-		}
 		
 		if (miner_t.GetFrameIndexOfBitmap() == 0 && miner_t.IsAnimation() == false)
 		{
@@ -181,6 +221,36 @@ void CGameStateRun::show_image_by_phase() {
 			action_state = 1;
 			miner_t.SetFrameIndexOfBitmap(0);
 		}
+	}
+	if (phase == 1 && sub_phase == 3)
+	{
+		if (success.GetFrameIndexOfBitmap() == 0 && success.IsAnimation() == false)
+		{
+			success.ToggleAnimation();
+		}
+		if (success.IsAnimation() == true)
+		{
+			success.ShowBitmap();
+		}
+		if (success.IsAnimation() == false && success.GetFrameIndexOfBitmap() != 0)
+		{
+			shop_bg.ShowBitmap();
+			//shop_table.ShowBitmap();
+			//next_level_button.ShowBitmap();
+
+			owner_talk.ShowBitmap();
+			if (owner_talk.GetFrameIndexOfBitmap() == 0 && owner_talk.IsAnimation() == false) 
+			{
+				owner_talk.ToggleAnimation();
+			}
+
+			item_1.ShowBitmap();
+			item_2.ShowBitmap();
+			item_3.ShowBitmap();
+			item_4.ShowBitmap();
+			item_5.ShowBitmap();
+		}
+		
 	}
 
 
@@ -226,12 +296,14 @@ void CGameStateRun::ToggleClaws()
 }
 void CGameStateRun::show_claw_by_angle()
 {
-	
+	claw_is_ready = true;
 	if ((miner.IsAnimation() && key_down_angle == 1) || claw1_2.IsAnimation()) {
 		claw1_2.ShowBitmap();
+		claw_is_ready = false;
 	}
 	if ((miner.IsAnimation() && key_down_angle == 0) || claw1_n5.IsAnimation()) {
 		claw1_n5.ShowBitmap();
+		claw_is_ready = false;
 	}
 }
 

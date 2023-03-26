@@ -134,7 +134,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	}
 	if (nChar == VK_LEFT) {
 		money = money + 100;
-		timer = timer - 5;
+		timer = timer - 8;
 	}
 	if (nChar == VK_SPACE) {
 
@@ -191,7 +191,6 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的
 	{
 		item_is_bought_5 = true;
 	}
-	
 }
 
 void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
@@ -262,11 +261,6 @@ void CGameStateRun::show_image_by_phase() {
 		exit.ShowBitmap();
 		claw.ShowBitmap();
 
-		item_is_bought_1 = false;
-		item_is_bought_2 = false;
-		item_is_bought_3 = false;
-		item_is_bought_4 = false;
-		item_is_bought_5 = false;
 	}
 	if (sub_phase == 2 && action_state == 2)
 	{
@@ -294,6 +288,12 @@ void CGameStateRun::show_image_by_phase() {
 		if (success.GetFrameIndexOfBitmap() == 0 && success.IsAnimation() == false)
 		{
 			success.ToggleAnimation();
+
+			item_is_bought_1 = false;
+			item_is_bought_2 = false;
+			item_is_bought_3 = false;
+			item_is_bought_4 = false;
+			item_is_bought_5 = false;
 		}
 		if (success.IsAnimation() == true)
 		{
@@ -366,6 +366,7 @@ void CGameStateRun::goto_next_stage()
 {
 	timer = 61;
 	goal.SetFrameIndexOfBitmap(0);
+	success.SetFrameIndexOfBitmap(0);
 	sub_phase = 1;
 	phase = phase + 1;
 	background.SetFrameIndexOfBitmap(phase-1);

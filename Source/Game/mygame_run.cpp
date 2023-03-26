@@ -267,17 +267,21 @@ void CGameStateRun::show_image_by_phase() {
 				owner_talk.ToggleAnimation();
 			}
 
-			item_1.ShowBitmap();
-			item_2.ShowBitmap();
-			item_3.ShowBitmap();
-			item_4.ShowBitmap();
-			item_5.ShowBitmap();
-		}
-		
+			show_items();
+			
+		}	
 	}
-
-
 }
+
+void CGameStateRun::show_items() 
+{
+	item_1.ShowBitmap();
+	item_2.ShowBitmap();
+	item_3.ShowBitmap();
+	item_4.ShowBitmap();
+	item_5.ShowBitmap();
+}
+
 
 void CGameStateRun::set_goal_money()
 {

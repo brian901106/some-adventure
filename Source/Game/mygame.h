@@ -141,6 +141,7 @@ namespace game_framework {
 		void show_text_by_phase();
 		void set_goal_money();
 		void goto_next_stage();
+		void show_items();
 		
 		
 	};

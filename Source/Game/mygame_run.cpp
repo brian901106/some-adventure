@@ -29,7 +29,7 @@ void CGameStateRun::OnBeginState()
 void CGameStateRun::OnMove()							// 移動遊戲元素
 {
 	set_goal_money();
-	if (goal.IsAnimationDone() && sub_phase == 1)
+	if (goal.IsAnimation() == false && goal.GetFrameIndexOfBitmap() != 0 && sub_phase == 1)
 	{
 		sub_phase = 2;
 	}
@@ -155,6 +155,43 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的
 	if (next_level_button.GetFrameIndexOfBitmap() == 1 && sub_phase == 3) {
 		goto_next_stage();
 	}
+	/*確認滑鼠位置與商店裡面1~5座標是否相同，相同的話跳到show_items()*/
+	if (point.x >= item_1.GetLeft() &&
+		point.x <= item_1.GetLeft() + item_1.GetWidth() &&
+		point.y >= item_1.GetTop() &&
+		point.y <= item_1.GetTop() + item_1.GetHeight())
+	{
+		item_is_bought_1 = true;
+	}
+	if (point.x >= item_2.GetLeft() &&
+		point.x <= item_2.GetLeft() + item_2.GetWidth() &&
+		point.y >= item_2.GetTop() &&
+		point.y <= item_2.GetTop() + item_2.GetHeight())
+	{
+		item_is_bought_2 = true;
+	}
+	if (point.x >= item_3.GetLeft() &&
+		point.x <= item_3.GetLeft() + item_3.GetWidth() &&
+		point.y >= item_3.GetTop() &&
+		point.y <= item_3.GetTop() + item_3.GetHeight())
+	{
+		item_is_bought_3 = true;
+	}
+	if (point.x >= item_4.GetLeft() &&
+		point.x <= item_4.GetLeft() + item_4.GetWidth() &&
+		point.y >= item_4.GetTop() &&
+		point.y <= item_4.GetTop() + item_4.GetHeight())
+	{
+		item_is_bought_4 = true;
+	}
+	if (point.x >= item_5.GetLeft() &&
+		point.x <= item_5.GetLeft() + item_5.GetWidth() &&
+		point.y >= item_5.GetTop() &&
+		point.y <= item_5.GetTop() + item_5.GetHeight())
+	{
+		item_is_bought_5 = true;
+	}
+	
 }
 
 void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
@@ -163,7 +200,7 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動
 
 void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
-	if (point.x >= exit.GetLeft() && point.x <= exit.GetLeft() + exit.GetWidth() && point.y >= exit.GetTop() && point.y <= exit.GetTop() + exit.GetHeight() && position_correct == 1)
+	if (point.x >= exit.GetLeft() && point.x <= exit.GetLeft() + exit.GetWidth() && point.y >= exit.GetTop() && point.y <= exit.GetTop() + exit.GetHeight())
 	{
 		exit.SetFrameIndexOfBitmap(1);
 	}
@@ -172,7 +209,7 @@ void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動
 		exit.SetFrameIndexOfBitmap(0);
 	}
 	
-	if (point.x >= next_level_button.GetLeft() && point.x <= next_level_button.GetLeft() + next_level_button.GetWidth() && point.y >= next_level_button.GetTop() && point.y <= next_level_button.GetTop() + next_level_button.GetHeight() && position_correct == 1)
+	if (point.x >= next_level_button.GetLeft() && point.x <= next_level_button.GetLeft() + next_level_button.GetWidth() && point.y >= next_level_button.GetTop() && point.y <= next_level_button.GetTop() + next_level_button.GetHeight())
 	{
 		next_level_button.SetFrameIndexOfBitmap(1);
 	}
@@ -224,7 +261,12 @@ void CGameStateRun::show_image_by_phase() {
 		miner.ShowBitmap();
 		exit.ShowBitmap();
 		claw.ShowBitmap();
-		
+
+		item_is_bought_1 = false;
+		item_is_bought_2 = false;
+		item_is_bought_3 = false;
+		item_is_bought_4 = false;
+		item_is_bought_5 = false;
 	}
 	if (sub_phase == 2 && action_state == 2)
 	{
@@ -245,6 +287,7 @@ void CGameStateRun::show_image_by_phase() {
 			action_state = 1;
 			miner_t.SetFrameIndexOfBitmap(0);
 		}
+
 	}
 	if (sub_phase == 3)
 	{
@@ -266,20 +309,29 @@ void CGameStateRun::show_image_by_phase() {
 			{
 				owner_talk.ToggleAnimation();
 			}
-
 			show_items();
-			
 		}	
 	}
 }
 
 void CGameStateRun::show_items() 
-{
-	item_1.ShowBitmap();
-	item_2.ShowBitmap();
-	item_3.ShowBitmap();
-	item_4.ShowBitmap();
-	item_5.ShowBitmap();
+{	
+	if (item_is_bought_1 == false) {
+		item_1.ShowBitmap();
+	}
+	if (item_is_bought_2 == false) {
+		item_2.ShowBitmap();
+	}
+	if (item_is_bought_3 == false) {
+		item_3.ShowBitmap();
+	}
+	if (item_is_bought_4 == false) {
+		item_4.ShowBitmap();
+	}
+	if (item_is_bought_5 == false) {
+		item_5.ShowBitmap();
+	}
+
 }
 
 
@@ -313,7 +365,8 @@ void CGameStateRun::gameover_and_restart()
 void CGameStateRun::goto_next_stage()
 {
 	timer = 61;
-	sub_phase = 2;
+	goal.SetFrameIndexOfBitmap(0);
+	sub_phase = 1;
 	phase = phase + 1;
 	background.SetFrameIndexOfBitmap(phase-1);
 }

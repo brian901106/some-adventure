@@ -108,7 +108,12 @@ namespace game_framework {
 		bool claw_is_ready = true;		//當claw_is_ready = true時才可以出爪子
 		int last_time;					//用來記錄clock()上次的取樣時間
 		int timer  = 61;				//每關的預設時間為timer-1
-		int position_correct = 1;		//這啥 許君豪看到請解釋
+		int item_is_bought_1 = 0;		//這啥 許君豪看到請解釋，沈志謙這是確認做愛位置是否正確，然後鈞打錯了，我有點忘記當初打什麼鬼，但好像可以刪掉??，我試過沒有什麼差
+		int item_is_bought_2 = 0;
+		int item_is_bought_3 = 0;
+		int item_is_bought_4 = 0;
+		int item_is_bought_5 = 0;
+
 		int money = 0;
 		int goal_money;
 		int goal_money_of_level[10] = { 600,1000 };

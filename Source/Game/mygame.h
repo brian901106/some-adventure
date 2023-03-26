@@ -124,7 +124,6 @@ namespace game_framework {
 		CMovingBitmap exit;
 		CMovingBitmap fail;
 		CMovingBitmap success;
-		CMovingBitmap shop_table;
 		CMovingBitmap shop_bg;
 		CMovingBitmap next_level_button;
 		CMovingBitmap owner_talk;
@@ -141,6 +140,7 @@ namespace game_framework {
 		void gameover_and_restart();
 		void show_text_by_phase();
 		void set_goal_money();
+		void goto_next_stage();
 		
 		
 	};

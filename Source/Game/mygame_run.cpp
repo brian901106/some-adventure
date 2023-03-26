@@ -41,6 +41,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	{
 		sub_phase = 3;
 	}
+	
 
 }
 
@@ -48,13 +49,15 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 {
 
 	
-
+	/*Goal頁面*/
 	goal.LoadBitmapByString({ "resources/goal_page/600/15.bmp","resources/goal_page/600/16.bmp","resources/goal_page/600/17.bmp","resources/goal_page/600/18.bmp","resources/goal_page/600/19.bmp","resources/goal_page/600/20.bmp","resources/goal_page/600/21.bmp","resources/goal_page/600/22.bmp","resources/goal_page/600/23.bmp","resources/goal_page/600/24.bmp","resources/goal_page/600/25.bmp","resources/goal_page/600/26.bmp","resources/goal_page/600/27.bmp","resources/goal_page/600/28.bmp","resources/goal_page/600/29.bmp","resources/goal_page/600/30.bmp","resources/goal_page/600/31.bmp","resources/goal_page/600/32.bmp","resources/goal_page/600/33.bmp","resources/goal_page/600/34.bmp","resources/goal_page/600/35.bmp","resources/goal_page/600/36.bmp","resources/goal_page/600/37.bmp","resources/goal_page/600/38.bmp","resources/goal_page/600/39.bmp","resources/goal_page/600/40.bmp","resources/goal_page/600/41.bmp","resources/goal_page/600/42.bmp","resources/goal_page/600/43.bmp","resources/goal_page/600/44.bmp","resources/goal_page/600/45.bmp","resources/goal_page/600/46.bmp","resources/goal_page/600/47.bmp","resources/goal_page/600/48.bmp","resources/goal_page/600/49.bmp","resources/goal_page/600/50.bmp","resources/goal_page/600/51.bmp" });
 	goal.SetAnimation(50, true);
 	goal.SetTopLeft(0, 0);
 	//goal_audio.Load(0, "sound/goal.midi");
 	//goal_audio.Play(0, false);
-	background.LoadBitmapByString({ "resources/stage/1_1.bmp" });
+
+	/*第一關*/
+	background.LoadBitmapByString({ "resources/stage/1_1.bmp", "resources/stage/2_1.bmp" });
 	background.SetTopLeft(0, 0);
 
 	miner.LoadBitmapByString({ "resources/miner/normal/1.bmp","resources/miner/normal/2.bmp","resources/miner/normal/3.bmp","resources/miner/normal/4.bmp","resources/miner/normal/5.bmp" }, RGB(0, 0, 0));
@@ -76,6 +79,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	exit.LoadBitmapByString({ "resources/exit/1.bmp", "resources/exit/2.bmp" }, RGB(0, 0, 0));
 	exit.SetTopLeft(800, 12);
 
+	/*輸,贏*/
 	fail.LoadBitmapByString({ "resources/fail_page/140.bmp","resources/fail_page/141.bmp","resources/fail_page/142.bmp","resources/fail_page/143.bmp","resources/fail_page/144.bmp","resources/fail_page/145.bmp","resources/fail_page/146.bmp","resources/fail_page/147.bmp","resources/fail_page/148.bmp","resources/fail_page/149.bmp","resources/fail_page/150.bmp","resources/fail_page/151.bmp","resources/fail_page/152.bmp","resources/fail_page/153.bmp","resources/fail_page/154.bmp","resources/fail_page/155.bmp","resources/fail_page/156.bmp","resources/fail_page/157.bmp","resources/fail_page/158.bmp","resources/fail_page/159.bmp","resources/fail_page/160.bmp","resources/fail_page/161.bmp","resources/fail_page/162.bmp","resources/fail_page/163.bmp","resources/fail_page/164.bmp","resources/fail_page/165.bmp","resources/fail_page/166.bmp","resources/fail_page/167.bmp","resources/fail_page/168.bmp" });
 	fail.SetTopLeft(0, 0);
 	fail.SetAnimation(50, true);
@@ -84,15 +88,12 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	success.SetTopLeft(0, 0);
 	success.SetAnimation(50, true);
 
-
+	/*商店*/
 	shop_bg.LoadBitmapByString({ "resources/shop_page/shop_bg.bmp" });
 	shop_bg.SetTopLeft(0, 0);
 
-	//shop_table.LoadBitmapByString({ "resources/shop_page/shop_table.bmp" }, RGB(0, 0, 0));
-	//shop_table.SetTopLeft(2, 108);
-
-	//next_level_button.LoadBitmapByString({ "resources/shop_page/next_level_button.bmp" }, RGB(0, 0, 0));
-	//next_level_button.SetTopLeft(0, 0);
+	next_level_button.LoadBitmapByString({ "resources/shop_page/next_level_button/1.bmp" ,"resources/shop_page/next_level_button/2.bmp" }, RGB(0, 0, 0));
+	next_level_button.SetTopLeft(0, 0);
 
 	owner_talk.LoadBitmapByString({"resources/shop_page/owner/talk/1.bmp","resources/shop_page/owner/talk/2.bmp","resources/shop_page/owner/talk/3.bmp","resources/shop_page/owner/talk/4.bmp","resources/shop_page/owner/talk/5.bmp","resources/shop_page/owner/talk/6.bmp","resources/shop_page/owner/talk/7.bmp","resources/shop_page/owner/talk/8.bmp","resources/shop_page/owner/talk/9.bmp","resources/shop_page/owner/talk/10.bmp","resources/shop_page/owner/talk/11.bmp","resources/shop_page/owner/talk/12.bmp","resources/shop_page/owner/talk/13.bmp","resources/shop_page/owner/talk/14.bmp","resources/shop_page/owner/talk/15.bmp","resources/shop_page/owner/talk/16.bmp","resources/shop_page/owner/talk/17.bmp","resources/shop_page/owner/talk/18.bmp"}, RGB(0, 0, 0));
 	owner_talk.SetTopLeft(-4, 186);
@@ -135,6 +136,9 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		money = money + 100;
 		timer = timer - 5;
 	}
+	if (nChar == VK_SPACE) {
+
+	}
 }
 
 
@@ -148,6 +152,9 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的
 	if (exit.GetFrameIndexOfBitmap() == 1 && sub_phase == 2 ) {
 		gameover = true;
 	}
+	if (next_level_button.GetFrameIndexOfBitmap() == 1 && sub_phase == 3) {
+		goto_next_stage();
+	}
 }
 
 void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
@@ -160,10 +167,18 @@ void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動
 	{
 		exit.SetFrameIndexOfBitmap(1);
 	}
-	
 	else 
 	{
 		exit.SetFrameIndexOfBitmap(0);
+	}
+	
+	if (point.x >= next_level_button.GetLeft() && point.x <= next_level_button.GetLeft() + next_level_button.GetWidth() && point.y >= next_level_button.GetTop() && point.y <= next_level_button.GetTop() + next_level_button.GetHeight() && position_correct == 1)
+	{
+		next_level_button.SetFrameIndexOfBitmap(1);
+	}
+	else
+	{
+		next_level_button.SetFrameIndexOfBitmap(0);
 	}
 		
 
@@ -193,7 +208,7 @@ void CGameStateRun::OnShow()
 
 void CGameStateRun::show_image_by_phase() {
 
-	if (phase == 1 && sub_phase == 1) 
+	if (sub_phase == 1) 
 	{
 		gameover = false;
 		goal.ShowBitmap();
@@ -202,7 +217,7 @@ void CGameStateRun::show_image_by_phase() {
 			goal.ToggleAnimation();
 		}
 	}
-	if (phase == 1 && sub_phase == 2 && action_state == 1) 
+	if (sub_phase == 2 && action_state == 1) 
 	{
 		goal.UnshowBitmap();
 		background.ShowBitmap();
@@ -211,7 +226,7 @@ void CGameStateRun::show_image_by_phase() {
 		claw.ShowBitmap();
 		
 	}
-	if (phase == 1 && sub_phase == 2 && action_state == 2)
+	if (sub_phase == 2 && action_state == 2)
 	{
 		miner.UnshowBitmap();
 		background.ShowBitmap();
@@ -231,7 +246,7 @@ void CGameStateRun::show_image_by_phase() {
 			miner_t.SetFrameIndexOfBitmap(0);
 		}
 	}
-	if (phase == 1 && sub_phase == 3)
+	if (sub_phase == 3)
 	{
 		if (success.GetFrameIndexOfBitmap() == 0 && success.IsAnimation() == false)
 		{
@@ -244,8 +259,7 @@ void CGameStateRun::show_image_by_phase() {
 		if (success.IsAnimation() == false && success.GetFrameIndexOfBitmap() != 0)
 		{
 			shop_bg.ShowBitmap();
-			//shop_table.ShowBitmap();
-			//next_level_button.ShowBitmap();
+			next_level_button.ShowBitmap();
 
 			owner_talk.ShowBitmap();
 			if (owner_talk.GetFrameIndexOfBitmap() == 0 && owner_talk.IsAnimation() == false) 
@@ -289,7 +303,15 @@ void CGameStateRun::gameover_and_restart()
 		money = 0;
 		sub_phase = 1;
 		timer = 61;
+		phase = 1;
 	}
+}
+void CGameStateRun::goto_next_stage()
+{
+	timer = 61;
+	sub_phase = 2;
+	phase = phase + 1;
+	background.SetFrameIndexOfBitmap(phase-1);
 }
 
 void CGameStateRun::LoadClaws()
@@ -334,7 +356,7 @@ void CGameStateRun::show_text_by_phase() {
 
 	CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(255, 102, 0), 15000);
 	
-	if (phase == 1 && sub_phase == 2 && timer > 0) {
+	if (sub_phase == 2 && timer > 0) {
 		CTextDraw::Print(pDC, 1033, 10, std::to_string(timer));
 
 		if (clock() - last_time > 1000)

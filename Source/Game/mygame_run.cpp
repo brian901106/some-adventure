@@ -29,6 +29,7 @@ void CGameStateRun::OnBeginState()
 void CGameStateRun::OnMove()							// 移動遊戲元素
 {
 	set_goal_money();
+	set_stock();
 	if (goal.IsAnimation() == false && goal.GetFrameIndexOfBitmap() != 0 && sub_phase == 1)
 	{
 		sub_phase = 2;
@@ -360,8 +361,8 @@ void CGameStateRun::show_image_by_phase() {
 
 	}
 }
-
 /*
+
 void CGameStateRun::set_stock()
 {
 	int stock_sheet[5][10] = { {1,1,1,1,1},{0,0,0,0,0} };

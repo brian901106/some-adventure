@@ -240,7 +240,7 @@ void CGameStateRun::OnShow()
 {
 	show_image_by_phase();
 	show_claw_by_angle();
-	if ((clock() % 1000) > 700 && timer <= 10) {
+	if ((clock() % 1000) > 700 && timer <= 10 && timer > 0) {
 		timer_bling.ShowBitmap();
 	}
 

@@ -104,6 +104,11 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 
 	owner_buy.LoadBitmapByString({"resources/shop_page/owner/buy/19.bmp", "resources/shop_page/owner/buy/20.bmp", "resources/shop_page/owner/buy/21.bmp", "resources/shop_page/owner/buy/22.bmp", "resources/shop_page/owner/buy/23.bmp", "resources/shop_page/owner/buy/24.bmp", "resources/shop_page/owner/buy/25.bmp"}, RGB(0, 0, 0));
 	owner_buy.SetTopLeft(-4, 186);
+	owner_buy.SetAnimation(50, true);
+
+	owner_angry.LoadBitmapByString({ "resources/shop_page/owner/angry/26.bmp", "resources/shop_page/owner/angry/27.bmp", "resources/shop_page/owner/angry/28.bmp", "resources/shop_page/owner/angry/29.bmp", "resources/shop_page/owner/angry/30.bmp", "resources/shop_page/owner/angry/31.bmp", "resources/shop_page/owner/angry/32.bmp", "resources/shop_page/owner/angry/33.bmp", "resources/shop_page/owner/angry/34.bmp", "resources/shop_page/owner/angry/35.bmp", "resources/shop_page/owner/angry/36.bmp", "resources/shop_page/owner/angry/37.bmp", "resources/shop_page/owner/angry/38.bmp" }, RGB(0, 0, 0));
+	owner_angry.SetTopLeft(-4, 186);
+	owner_angry.SetAnimation(50, true);
 
 	item_1.LoadBitmapByString({"resources/shop_page/1.bmp"}, RGB(0, 0, 0));
 	item_1.SetTopLeft(50, 440);
@@ -159,7 +164,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的
 		gameover = true;
 	}
 	if (next_level_button.GetFrameIndexOfBitmap() == 1 && sub_phase == 3) {
-		goto_next_stage();
+		next_level_button_clicked = true;
 	}
 	/*確認滑鼠位置與商店裡面1~5座標是否相同，相同的話跳到show_items()*/
 	if (point.x >= item_1.GetLeft() &&
@@ -320,10 +325,51 @@ void CGameStateRun::show_image_by_phase() {
 				owner_talk.ToggleAnimation();
 			}
 			show_items();
-		}	
+		}
+		if (next_level_button_clicked == true && (item_is_bought_1 == true || item_is_bought_2 == true || item_is_bought_3 == true || item_is_bought_4 == true || item_is_bought_5 == true))
+		{
+
+			owner_buy.ShowBitmap();
+			//owner_talk.UnshowBitmap();
+			if (owner_buy.GetFrameIndexOfBitmap() == 0 && owner_buy.IsAnimation() == false)
+			{
+				owner_buy.ToggleAnimation();
+				
+				item_is_bought_1 = true;
+				item_is_bought_2 = true;
+				item_is_bought_3 = true;
+				item_is_bought_4 = true;
+				item_is_bought_5 = true;
+				
+			}
+
+		}
+		/*沒買商品*/
+		if (next_level_button_clicked == true && (item_is_bought_1 == false || item_is_bought_2 == false || item_is_bought_3 == false || item_is_bought_4 == false || item_is_bought_5 == false))
+		{
+			owner_angry.ShowBitmap();
+			if (owner_angry.GetFrameIndexOfBitmap() == 0 && owner_angry.IsAnimation() == false)
+			{
+				owner_angry.ToggleAnimation();
+			}
+			if ((owner_buy.IsAnimation() == false && owner_buy.GetFrameIndexOfBitmap() != 0) || (owner_angry.IsAnimation() == false && owner_angry.GetFrameIndexOfBitmap() != 0))
+			{
+				//goto_next_stage();
+			}
+		}
+
 	}
 }
 
+/*
+void CGameStateRun::set_stock()
+{
+	int stock_sheet[5][10] = { {1,1,1,1,1},{0,0,0,0,0} };
+	for (int level = 1; level < 10; level++) {
+		item_in_stock_in_level[] = { 1,1,1,1,1 };
+	}
+}
+*/
 void CGameStateRun::show_items() 
 {	
 	if (item_is_bought_1 == false) {

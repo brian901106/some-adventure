@@ -79,6 +79,9 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	exit.LoadBitmapByString({ "resources/exit/1.bmp", "resources/exit/2.bmp" }, RGB(0, 0, 0));
 	exit.SetTopLeft(800, 12);
 
+	timer_bling.LoadBitmapByString({"resources/stage/timer_bling.bmp"}, RGB(0, 0, 0));
+	timer_bling.SetTopLeft(1020, 12);
+
 	/*輸,贏*/
 	fail.LoadBitmapByString({ "resources/fail_page/140.bmp","resources/fail_page/141.bmp","resources/fail_page/142.bmp","resources/fail_page/143.bmp","resources/fail_page/144.bmp","resources/fail_page/145.bmp","resources/fail_page/146.bmp","resources/fail_page/147.bmp","resources/fail_page/148.bmp","resources/fail_page/149.bmp","resources/fail_page/150.bmp","resources/fail_page/151.bmp","resources/fail_page/152.bmp","resources/fail_page/153.bmp","resources/fail_page/154.bmp","resources/fail_page/155.bmp","resources/fail_page/156.bmp","resources/fail_page/157.bmp","resources/fail_page/158.bmp","resources/fail_page/159.bmp","resources/fail_page/160.bmp","resources/fail_page/161.bmp","resources/fail_page/162.bmp","resources/fail_page/163.bmp","resources/fail_page/164.bmp","resources/fail_page/165.bmp","resources/fail_page/166.bmp","resources/fail_page/167.bmp","resources/fail_page/168.bmp" });
 	fail.SetTopLeft(0, 0);
@@ -98,6 +101,9 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	owner_talk.LoadBitmapByString({"resources/shop_page/owner/talk/1.bmp","resources/shop_page/owner/talk/2.bmp","resources/shop_page/owner/talk/3.bmp","resources/shop_page/owner/talk/4.bmp","resources/shop_page/owner/talk/5.bmp","resources/shop_page/owner/talk/6.bmp","resources/shop_page/owner/talk/7.bmp","resources/shop_page/owner/talk/8.bmp","resources/shop_page/owner/talk/9.bmp","resources/shop_page/owner/talk/10.bmp","resources/shop_page/owner/talk/11.bmp","resources/shop_page/owner/talk/12.bmp","resources/shop_page/owner/talk/13.bmp","resources/shop_page/owner/talk/14.bmp","resources/shop_page/owner/talk/15.bmp","resources/shop_page/owner/talk/16.bmp","resources/shop_page/owner/talk/17.bmp","resources/shop_page/owner/talk/18.bmp"}, RGB(0, 0, 0));
 	owner_talk.SetTopLeft(-4, 186);
 	owner_talk.SetAnimation(50, true);
+
+	owner_buy.LoadBitmapByString({"resources/shop_page/owner/buy/19.bmp", "resources/shop_page/owner/buy/20.bmp", "resources/shop_page/owner/buy/21.bmp", "resources/shop_page/owner/buy/22.bmp", "resources/shop_page/owner/buy/23.bmp", "resources/shop_page/owner/buy/24.bmp", "resources/shop_page/owner/buy/25.bmp"}, RGB(0, 0, 0));
+	owner_buy.SetTopLeft(-4, 186);
 
 	item_1.LoadBitmapByString({"resources/shop_page/1.bmp"}, RGB(0, 0, 0));
 	item_1.SetTopLeft(50, 440);
@@ -234,6 +240,10 @@ void CGameStateRun::OnShow()
 {
 	show_image_by_phase();
 	show_claw_by_angle();
+	if ((clock() % 1000) > 700 && timer <= 10) {
+		timer_bling.ShowBitmap();
+	}
+
 	if (sub_phase == 2){
 		show_text_by_phase();
 	}
@@ -415,14 +425,15 @@ void CGameStateRun::show_text_by_phase() {
 	CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(255, 102, 0), 15000);
 	
 	if (sub_phase == 2 && timer > 0) {
+		
 		CTextDraw::Print(pDC, 1033, 10, std::to_string(timer));
 
+		
 		if (clock() - last_time > 1000)
-		{
-
+		{	
+	
 			timer -= 1;
 			last_time = clock();
-
 		}
 	}
 

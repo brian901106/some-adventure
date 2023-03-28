@@ -123,6 +123,7 @@ namespace game_framework {
 		CMovingBitmap miner;
 		CMovingBitmap miner_t;
 		CMovingBitmap miner_s;
+		CMovingBitmap timer_bling;
 		CMovingBitmap claw;
 		CMovingBitmap claw1_2;
 		CMovingBitmap claw1_n5;
@@ -134,6 +135,7 @@ namespace game_framework {
 		CMovingBitmap owner_talk;
 		CMovingBitmap owner_buy;
 		CMovingBitmap owner_angry;
+	
 		CMovingBitmap item_1;			//商店商品:炸藥
 		CMovingBitmap item_2;			//商店商品:力量增強藥
 		CMovingBitmap item_3;			//商店商品:幸運草

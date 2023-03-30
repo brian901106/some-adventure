@@ -151,7 +151,7 @@ namespace game_framework {
 		void set_goal_money();
 		void goto_next_stage();
 		void show_items();
-		void set_stock();
+		//void set_stock();
 		
 		
 	};

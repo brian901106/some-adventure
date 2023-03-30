@@ -29,7 +29,7 @@ void CGameStateRun::OnBeginState()
 void CGameStateRun::OnMove()							// 移動遊戲元素
 {
 	set_goal_money();
-	set_stock();
+	//set_stock();
 	if (goal.IsAnimation() == false && goal.GetFrameIndexOfBitmap() != 0 && sub_phase == 1)
 	{
 		sub_phase = 2;
@@ -311,27 +311,31 @@ void CGameStateRun::show_image_by_phase() {
 			item_is_bought_4 = false;
 			item_is_bought_5 = false;
 		}
-		if (success.IsAnimation() == true)
+		//跳出來next level 畫面
+		if (success.IsAnimation() == true)  
 		{
 			success.ShowBitmap();
 		}
+		//顯示商店
 		if (success.IsAnimation() == false && success.GetFrameIndexOfBitmap() != 0)
 		{
 			shop_bg.ShowBitmap();
 			next_level_button.ShowBitmap();
 
-			owner_talk.ShowBitmap();
+			if (next_level_button_clicked == false) //避免老闆生氣時或老闆開心時的圖片跳出，原本圖片仍存在
+			{
+				owner_talk.ShowBitmap();
+			}
 			if (owner_talk.GetFrameIndexOfBitmap() == 0 && owner_talk.IsAnimation() == false) 
 			{
 				owner_talk.ToggleAnimation();
 			}
 			show_items();
 		}
+		/*老闆開心*/
 		if (next_level_button_clicked == true && (item_is_bought_1 == true || item_is_bought_2 == true || item_is_bought_3 == true || item_is_bought_4 == true || item_is_bought_5 == true))
 		{
-
 			owner_buy.ShowBitmap();
-			//owner_talk.UnshowBitmap();
 			if (owner_buy.GetFrameIndexOfBitmap() == 0 && owner_buy.IsAnimation() == false)
 			{
 				owner_buy.ToggleAnimation();
@@ -343,7 +347,6 @@ void CGameStateRun::show_image_by_phase() {
 				item_is_bought_5 = true;
 				
 			}
-
 		}
 		/*沒買商品*/
 		if (next_level_button_clicked == true && (item_is_bought_1 == false || item_is_bought_2 == false || item_is_bought_3 == false || item_is_bought_4 == false || item_is_bought_5 == false))
@@ -353,12 +356,11 @@ void CGameStateRun::show_image_by_phase() {
 			{
 				owner_angry.ToggleAnimation();
 			}
-			if ((owner_buy.IsAnimation() == false && owner_buy.GetFrameIndexOfBitmap() != 0) || (owner_angry.IsAnimation() == false && owner_angry.GetFrameIndexOfBitmap() != 0))
-			{
-				//goto_next_stage();
-			}
 		}
-
+		if ((owner_buy.IsAnimation() == false && owner_buy.GetFrameIndexOfBitmap() != 0) || (owner_angry.IsAnimation() == false && owner_angry.GetFrameIndexOfBitmap() != 0))
+		{
+			goto_next_stage();
+		}
 	}
 }
 /*

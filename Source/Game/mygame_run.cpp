@@ -275,8 +275,11 @@ void CGameStateRun::show_image_by_phase() {
 		background.ShowBitmap();
 		miner.ShowBitmap();
 		exit.ShowBitmap();
-		claw.ShowBitmap();
-
+		if (claw_is_ready == true) 
+		{
+			claw.ShowBitmap();
+		}
+		
 	}
 	if (sub_phase == 2 && action_state == 2)
 	{
@@ -284,7 +287,10 @@ void CGameStateRun::show_image_by_phase() {
 		background.ShowBitmap();
 		miner_t.ShowBitmap();
 		exit.ShowBitmap();
-		claw.ShowBitmap();
+		if (claw_is_ready == true) 
+		{
+			claw.ShowBitmap();
+		}
 		
 		if (miner_t.GetFrameIndexOfBitmap() == 0 && miner_t.IsAnimation() == false)
 		{
@@ -330,6 +336,7 @@ void CGameStateRun::show_image_by_phase() {
 			{
 				owner_talk.ToggleAnimation();
 			}
+			set_stock();
 			show_items();
 		}
 		/*老闆開心*/
@@ -349,7 +356,7 @@ void CGameStateRun::show_image_by_phase() {
 			}
 		}
 		/*沒買商品*/
-		if (next_level_button_clicked == true && (item_is_bought_1 == false || item_is_bought_2 == false || item_is_bought_3 == false || item_is_bought_4 == false || item_is_bought_5 == false))
+		if (next_level_button_clicked == true && (item_is_bought_1 == false && item_is_bought_2 == false && item_is_bought_3 == false && item_is_bought_4 == false && item_is_bought_5 == false))
 		{
 			owner_angry.ShowBitmap();
 			if (owner_angry.GetFrameIndexOfBitmap() == 0 && owner_angry.IsAnimation() == false)
@@ -363,31 +370,37 @@ void CGameStateRun::show_image_by_phase() {
 		}
 	}
 }
-/*
+
 
 void CGameStateRun::set_stock()
 {
-	int stock_sheet[5][10] = { {1,1,1,1,1},{0,0,0,0,0} };
-	for (int level = 1; level < 10; level++) {
-		item_in_stock_in_level[] = { 1,1,1,1,1 };
+	int stock_sheet[10][5] = {  {1,1,1,0,0},
+								{0,0,0,0,1},
+								{1,1,1,1,1},
+								{1,1,1,1,1},
+								{1,1,1,1,1},
+								{1,1,1,1,1}};
+
+	for (int item_num = 0; item_num < 5; item_num++) {
+		item_in_stock_in_level[item_num] = stock_sheet[phase-1][item_num];
 	}
 }
-*/
+
 void CGameStateRun::show_items() 
 {	
-	if (item_is_bought_1 == false) {
+	if (item_is_bought_1 == false && item_in_stock_in_level[0] == 1) {
 		item_1.ShowBitmap();
 	}
-	if (item_is_bought_2 == false) {
+	if (item_is_bought_2 == false && item_in_stock_in_level[1] == 1) {
 		item_2.ShowBitmap();
 	}
-	if (item_is_bought_3 == false) {
+	if (item_is_bought_3 == false && item_in_stock_in_level[2] == 1) {
 		item_3.ShowBitmap();
 	}
-	if (item_is_bought_4 == false) {
+	if (item_is_bought_4 == false && item_in_stock_in_level[3] == 1) {
 		item_4.ShowBitmap();
 	}
-	if (item_is_bought_5 == false) {
+	if (item_is_bought_5 == false && item_in_stock_in_level[4] == 1) {
 		item_5.ShowBitmap();
 	}
 
@@ -429,6 +442,9 @@ void CGameStateRun::goto_next_stage()
 	sub_phase = 1;
 	phase = phase + 1;
 	background.SetFrameIndexOfBitmap(phase-1);
+	owner_buy.SetFrameIndexOfBitmap(0);
+	owner_angry.SetFrameIndexOfBitmap(0);
+	next_level_button_clicked = false;
 }
 
 void CGameStateRun::LoadClaws()
@@ -456,14 +472,16 @@ void CGameStateRun::ToggleClaws()
 }
 void CGameStateRun::show_claw_by_angle()
 {
-	claw_is_ready = true;
-	if ((miner.IsAnimation() && key_down_angle == 1) || claw1_2.IsAnimation()) {
-		claw1_2.ShowBitmap();
-		claw_is_ready = false;
-	}
-	if ((miner.IsAnimation() && key_down_angle == 0) || claw1_n5.IsAnimation()) {
-		claw1_n5.ShowBitmap();
-		claw_is_ready = false;
+	if (sub_phase == 2) {
+		claw_is_ready = true;
+		if ((miner.IsAnimation() && key_down_angle == 1) || claw1_2.IsAnimation()) {
+			claw1_2.ShowBitmap();
+			claw_is_ready = false;
+		}
+		if ((miner.IsAnimation() && key_down_angle == 0) || claw1_n5.IsAnimation()) {
+			claw1_n5.ShowBitmap();
+			claw_is_ready = false;
+		}
 	}
 }
 

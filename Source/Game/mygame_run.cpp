@@ -168,40 +168,42 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的
 		next_level_button_clicked = true;
 	}
 	/*確認滑鼠位置與商店裡面1~5座標是否相同，相同的話跳到show_items()*/
-	if (point.x >= item_1.GetLeft() &&
-		point.x <= item_1.GetLeft() + item_1.GetWidth() &&
-		point.y >= item_1.GetTop() &&
-		point.y <= item_1.GetTop() + item_1.GetHeight())
-	{
-		item_is_bought_1 = true;
-	}
-	if (point.x >= item_2.GetLeft() &&
-		point.x <= item_2.GetLeft() + item_2.GetWidth() &&
-		point.y >= item_2.GetTop() &&
-		point.y <= item_2.GetTop() + item_2.GetHeight())
-	{
-		item_is_bought_2 = true;
-	}
-	if (point.x >= item_3.GetLeft() &&
-		point.x <= item_3.GetLeft() + item_3.GetWidth() &&
-		point.y >= item_3.GetTop() &&
-		point.y <= item_3.GetTop() + item_3.GetHeight())
-	{
-		item_is_bought_3 = true;
-	}
-	if (point.x >= item_4.GetLeft() &&
-		point.x <= item_4.GetLeft() + item_4.GetWidth() &&
-		point.y >= item_4.GetTop() &&
-		point.y <= item_4.GetTop() + item_4.GetHeight())
-	{
-		item_is_bought_4 = true;
-	}
-	if (point.x >= item_5.GetLeft() &&
-		point.x <= item_5.GetLeft() + item_5.GetWidth() &&
-		point.y >= item_5.GetTop() &&
-		point.y <= item_5.GetTop() + item_5.GetHeight())
-	{
-		item_is_bought_5 = true;
+	if (sub_phase == 3) {
+		if (point.x >= item_1.GetLeft() &&
+			point.x <= item_1.GetLeft() + item_1.GetWidth() &&
+			point.y >= item_1.GetTop() &&
+			point.y <= item_1.GetTop() + item_1.GetHeight())
+		{
+			item_is_bought_1 = true;
+		}
+		if (point.x >= item_2.GetLeft() &&
+			point.x <= item_2.GetLeft() + item_2.GetWidth() &&
+			point.y >= item_2.GetTop() &&
+			point.y <= item_2.GetTop() + item_2.GetHeight())
+		{
+			item_is_bought_2 = true;
+		}
+		if (point.x >= item_3.GetLeft() &&
+			point.x <= item_3.GetLeft() + item_3.GetWidth() &&
+			point.y >= item_3.GetTop() &&
+			point.y <= item_3.GetTop() + item_3.GetHeight())
+		{
+			item_is_bought_3 = true;
+		}
+		if (point.x >= item_4.GetLeft() &&
+			point.x <= item_4.GetLeft() + item_4.GetWidth() &&
+			point.y >= item_4.GetTop() &&
+			point.y <= item_4.GetTop() + item_4.GetHeight())
+		{
+			item_is_bought_4 = true;
+		}
+		if (point.x >= item_5.GetLeft() &&
+			point.x <= item_5.GetLeft() + item_5.GetWidth() &&
+			point.y >= item_5.GetTop() &&
+			point.y <= item_5.GetTop() + item_5.GetHeight())
+		{
+			item_is_bought_5 = true;
+		}
 	}
 }
 

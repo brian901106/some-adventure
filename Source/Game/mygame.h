@@ -117,8 +117,8 @@ namespace game_framework {
 		int item_in_stock_in_level[5] = { 0, 0, 0 ,0, 0 };
 
 		int money = 0;
-		int goal_money;
-		int goal_money_of_level[10] = { 600,1000 };
+		int goal_money = 650;
+		//int goal_money_of_level[10] = { 600,1000 };
 		bool gameover = false;			// = true 時播放結束動畫並返回主頁面
 		CMovingBitmap goal;
 		CMovingBitmap background;

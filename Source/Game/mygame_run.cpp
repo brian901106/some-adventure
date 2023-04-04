@@ -28,7 +28,7 @@ void CGameStateRun::OnBeginState()
 
 void CGameStateRun::OnMove()							// 移動遊戲元素
 {
-	set_goal_money();
+	//set_goal_money();
 	//set_stock();
 	if (goal.IsAnimation() == false && goal.GetFrameIndexOfBitmap() != 0 && sub_phase == 1)
 	{
@@ -411,12 +411,16 @@ void CGameStateRun::show_items()
 
 void CGameStateRun::set_goal_money()
 {
+	goal_money = goal_money + 5 + 270 * phase;
+
+	/*
 	for (int i = 1 ; i < 10 ; i++) 
 	{
 		if (phase == i) {
 			goal_money = goal_money_of_level[i-1];
 		}
 	}
+	*/
 }
 
 void CGameStateRun::gameover_and_restart()
@@ -434,6 +438,7 @@ void CGameStateRun::gameover_and_restart()
 		sub_phase = 1;
 		timer = 61;
 		phase = 1;
+		goal_money = 650;
 	}
 }
 void CGameStateRun::goto_next_stage()
@@ -447,6 +452,7 @@ void CGameStateRun::goto_next_stage()
 	owner_buy.SetFrameIndexOfBitmap(0);
 	owner_angry.SetFrameIndexOfBitmap(0);
 	next_level_button_clicked = false;
+	set_goal_money();
 }
 
 void CGameStateRun::LoadClaws()

@@ -125,6 +125,28 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 
 	item_5.LoadBitmapByString({ "resources/shop_page/5.bmp" }, RGB(0, 0, 0));
 	item_5.SetTopLeft(610, 455);
+
+	/*goal*/
+	goal_650.LoadBitmapByString({"Resources/goal_page/650/15.bmp","Resources/goal_page/650/16.bmp","Resources/goal_page/650/17.bmp","Resources/goal_page/650/18.bmp","Resources/goal_page/650/19.bmp","Resources/goal_page/650/20.bmp","Resources/goal_page/650/21.bmp","Resources/goal_page/650/22.bmp","Resources/goal_page/650/23.bmp","Resources/goal_page/650/24.bmp","Resources/goal_page/650/25.bmp","Resources/goal_page/650/26.bmp","Resources/goal_page/650/27.bmp","Resources/goal_page/650/28.bmp","Resources/goal_page/650/29.bmp","Resources/goal_page/650/30.bmp","Resources/goal_page/650/31.bmp","Resources/goal_page/650/32.bmp","Resources/goal_page/650/33.bmp","Resources/goal_page/650/34.bmp","Resources/goal_page/650/35.bmp","Resources/goal_page/650/36.bmp","Resources/goal_page/650/37.bmp","Resources/goal_page/650/38.bmp","Resources/goal_page/650/39.bmp","Resources/goal_page/650/40.bmp","Resources/goal_page/650/41.bmp","Resources/goal_page/650/42.bmp","Resources/goal_page/650/43.bmp","Resources/goal_page/650/44.bmp","Resources/goal_page/650/45.bmp","Resources/goal_page/650/46.bmp","Resources/goal_page/650/47.bmp","Resources/goal_page/650/48.bmp","Resources/goal_page/650/49.bmp","Resources/goal_page/650/50.bmp","Resources/goal_page/650/51.bmp"}, RGB(0, 0, 0));
+	goal_650.SetAnimation(50, true);
+	goal_650.SetTopLeft(0, 0);
+
+	goal_1195.LoadBitmapByString({ "resources/goal_page/1195/52.bmp","resources/goal_page/1195/53.bmp","resources/goal_page/1195/54.bmp","resources/goal_page/1195/55.bmp","resources/goal_page/1195/56.bmp","resources/goal_page/1195/57.bmp","resources/goal_page/1195/58.bmp","resources/goal_page/1195/59.bmp","resources/goal_page/1195/60.bmp","resources/goal_page/1195/61.bmp","resources/goal_page/1195/62.bmp","resources/goal_page/1195/63.bmp","resources/goal_page/1195/64.bmp","resources/goal_page/1195/65.bmp","resources/goal_page/1195/66.bmp","resources/goal_page/1195/67.bmp","resources/goal_page/1195/68.bmp","resources/goal_page/1195/69.bmp","resources/goal_page/1195/70.bmp","resources/goal_page/1195/71.bmp","resources/goal_page/1195/72.bmp","resources/goal_page/1195/73.bmp","resources/goal_page/1195/74.bmp","resources/goal_page/1195/75.bmp","resources/goal_page/1195/76.bmp","resources/goal_page/1195/77.bmp","resources/goal_page/1195/78.bmp","resources/goal_page/1195/79.bmp","resources/goal_page/1195/80.bmp","resources/goal_page/1195/81.bmp","resources/goal_page/1195/82.bmp","resources/goal_page/1195/83.bmp","resources/goal_page/1195/84.bmp","resources/goal_page/1195/85.bmp","resources/goal_page/1195/86.bmp","resources/goal_page/1195/87.bmp","resources/goal_page/1195/88.bmp","resources/goal_page/1195/89.bmp","resources/goal_page/1195/90.bmp","resources/goal_page/1195/91.bmp","resources/goal_page/1195/92.bmp","resources/goal_page/1195/93.bmp"}, RGB(0, 0, 0));
+	goal_1195.SetAnimation(50, true);
+	goal_1195.SetTopLeft(0, 0);
+
+	goal_2010.LoadBitmapByString({"resources/goal_page/2010/52.bmp","resources/goal_page/2010/53.bmp","resources/goal_page/2010/54.bmp","resources/goal_page/2010/55.bmp","resources/goal_page/2010/56.bmp","resources/goal_page/2010/57.bmp","resources/goal_page/2010/58.bmp","resources/goal_page/2010/59.bmp","resources/goal_page/2010/60.bmp","resources/goal_page/2010/61.bmp","resources/goal_page/2010/62.bmp","resources/goal_page/2010/63.bmp","resources/goal_page/2010/64.bmp","resources/goal_page/2010/65.bmp","resources/goal_page/2010/66.bmp","resources/goal_page/2010/67.bmp","resources/goal_page/2010/68.bmp","resources/goal_page/2010/69.bmp","resources/goal_page/2010/70.bmp","resources/goal_page/2010/71.bmp","resources/goal_page/2010/72.bmp","resources/goal_page/2010/73.bmp","resources/goal_page/2010/74.bmp","resources/goal_page/2010/75.bmp","resources/goal_page/2010/76.bmp","resources/goal_page/2010/77.bmp","resources/goal_page/2010/78.bmp","resources/goal_page/2010/79.bmp","resources/goal_page/2010/80.bmp","resources/goal_page/2010/81.bmp","resources/goal_page/2010/82.bmp","resources/goal_page/2010/83.bmp","resources/goal_page/2010/84.bmp","resources/goal_page/2010/85.bmp","resources/goal_page/2010/86.bmp","resources/goal_page/2010/87.bmp","resources/goal_page/2010/88.bmp","resources/goal_page/2010/89.bmp","resources/goal_page/2010/90.bmp","resources/goal_page/2010/91.bmp","resources/goal_page/2010/92.bmp","resources/goal_page/2010/93.bmp"}, RGB(0, 0, 0));
+	goal_2010.SetAnimation(50, true);
+	goal_2010.SetTopLeft(0, 0);
+	
+	goal_3095.LoadBitmapByString({ "resources/goal_page/3095/52.bmp","resources/goal_page/3095/53.bmp","resources/goal_page/3095/54.bmp","resources/goal_page/3095/55.bmp","resources/goal_page/3095/56.bmp","resources/goal_page/3095/57.bmp","resources/goal_page/3095/58.bmp","resources/goal_page/3095/59.bmp","resources/goal_page/3095/60.bmp","resources/goal_page/3095/61.bmp","resources/goal_page/3095/62.bmp","resources/goal_page/3095/63.bmp","resources/goal_page/3095/64.bmp","resources/goal_page/3095/65.bmp","resources/goal_page/3095/66.bmp","resources/goal_page/3095/67.bmp","resources/goal_page/3095/68.bmp","resources/goal_page/3095/69.bmp","resources/goal_page/3095/70.bmp","resources/goal_page/3095/71.bmp","resources/goal_page/3095/72.bmp","resources/goal_page/3095/73.bmp","resources/goal_page/3095/74.bmp","resources/goal_page/3095/75.bmp","resources/goal_page/3095/76.bmp","resources/goal_page/3095/77.bmp","resources/goal_page/3095/78.bmp","resources/goal_page/3095/79.bmp","resources/goal_page/3095/80.bmp","resources/goal_page/3095/81.bmp","resources/goal_page/3095/82.bmp","resources/goal_page/3095/83.bmp","resources/goal_page/3095/84.bmp","resources/goal_page/3095/85.bmp","resources/goal_page/3095/86.bmp","resources/goal_page/3095/87.bmp","resources/goal_page/3095/88.bmp","resources/goal_page/3095/89.bmp","resources/goal_page/3095/90.bmp","resources/goal_page/3095/91.bmp","resources/goal_page/3095/92.bmp","resources/goal_page/3095/93.bmp"}, RGB(0, 0, 0));
+	goal_3095.SetAnimation(50, true);
+	goal_3095.SetTopLeft(0, 0);
+	/*
+	goal_4450.LoadBitmapByString({"resources/goal_page/4450/52.bmp","resources/goal_page/4450/53.bmp","resources/goal_page/4450/54.bmp","resources/goal_page/4450/55.bmp","resources/goal_page/4450/56.bmp","resources/goal_page/4450/57.bmp","resources/goal_page/4450/58.bmp","resources/goal_page/4450/59.bmp","resources/goal_page/4450/60.bmp","resources/goal_page/4450/61.bmp","resources/goal_page/4450/62.bmp","resources/goal_page/4450/63.bmp","resources/goal_page/4450/64.bmp","resources/goal_page/4450/65.bmp","resources/goal_page/4450/66.bmp","resources/goal_page/4450/67.bmp","resources/goal_page/4450/68.bmp","resources/goal_page/4450/69.bmp","resources/goal_page/4450/70.bmp","resources/goal_page/4450/71.bmp","resources/goal_page/4450/72.bmp","resources/goal_page/4450/73.bmp","resources/goal_page/4450/74.bmp","resources/goal_page/4450/75.bmp","resources/goal_page/4450/76.bmp","resources/goal_page/4450/77.bmp","resources/goal_page/4450/78.bmp","resources/goal_page/4450/79.bmp","resources/goal_page/4450/80.bmp","resources/goal_page/4450/81.bmp","resources/goal_page/4450/82.bmp","resources/goal_page/4450/83.bmp","resources/goal_page/4450/84.bmp","resources/goal_page/4450/85.bmp","resources/goal_page/4450/86.bmp","resources/goal_page/4450/87.bmp","resources/goal_page/4450/88.bmp","resources/goal_page/4450/89.bmp","resources/goal_page/4450/90.bmp","resources/goal_page/4450/91.bmp","resources/goal_page/4450/92.bmp","resources/goal_page/4450/93.bmp"});
+	goal_4450.SetAnimation(50, true);
+	goal_4450.SetTopLeft(0, 0);
+	*/
 }
 
 
@@ -312,7 +334,7 @@ void CGameStateRun::show_image_by_phase() {
 		if (success.GetFrameIndexOfBitmap() == 0 && success.IsAnimation() == false)
 		{
 			success.ToggleAnimation();
-
+			/*初始化物品是否有被點擊*/
 			item_is_bought_1 = false;
 			item_is_bought_2 = false;
 			item_is_bought_3 = false;
@@ -349,6 +371,7 @@ void CGameStateRun::show_image_by_phase() {
 			{
 				owner_buy.ToggleAnimation();
 				
+				/*讓物品消失*/
 				item_is_bought_1 = true;
 				item_is_bought_2 = true;
 				item_is_bought_3 = true;

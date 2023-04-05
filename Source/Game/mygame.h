@@ -143,6 +143,12 @@ namespace game_framework {
 		CMovingBitmap item_3;			//商店商品:幸運草
 		CMovingBitmap item_4;			//商店商品:石頭書
 		CMovingBitmap item_5;			//商店商品:咖啡
+
+		CMovingBitmap goal_650;
+		CMovingBitmap goal_1195;
+		CMovingBitmap goal_2010;
+		CMovingBitmap goal_3095;
+		CMovingBitmap goal_4450;
 		//CAudio goal_audio;
 		void show_image_by_phase();
 		void show_claw_by_angle();

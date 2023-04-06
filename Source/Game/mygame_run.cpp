@@ -97,7 +97,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	shop_bg.SetTopLeft(0, 0);
 
 	next_level_button.LoadBitmapByString({ "resources/shop_page/next_level_button/1.bmp" ,"resources/shop_page/next_level_button/2.bmp" }, RGB(0, 0, 0));
-	next_level_button.SetTopLeft(0, 0);
+	next_level_button.SetTopLeft(847, 122);
 
 	owner_talk.LoadBitmapByString({"resources/shop_page/owner/talk/1.bmp","resources/shop_page/owner/talk/2.bmp","resources/shop_page/owner/talk/3.bmp","resources/shop_page/owner/talk/4.bmp","resources/shop_page/owner/talk/5.bmp","resources/shop_page/owner/talk/6.bmp","resources/shop_page/owner/talk/7.bmp","resources/shop_page/owner/talk/8.bmp","resources/shop_page/owner/talk/9.bmp","resources/shop_page/owner/talk/10.bmp","resources/shop_page/owner/talk/11.bmp","resources/shop_page/owner/talk/12.bmp","resources/shop_page/owner/talk/13.bmp","resources/shop_page/owner/talk/14.bmp","resources/shop_page/owner/talk/15.bmp","resources/shop_page/owner/talk/16.bmp","resources/shop_page/owner/talk/17.bmp","resources/shop_page/owner/talk/18.bmp"}, RGB(0, 0, 0));
 	owner_talk.SetTopLeft(-4, 186);
@@ -599,17 +599,17 @@ void CGameStateRun::show_text_of_goals() {
 
 
 	if (phase == 1) {
-		CTextDraw::ChangeFontLog(pDC, 30, "新細明體", RGB(color_now[0], color_now[1], color_now[2]), 15000);
-		CTextDraw::Print(pDC, 400, 300, "Your First Goal is");
+		CTextDraw::ChangeFontLog(pDC, 50, "新細明體", RGB(color_now[0], color_now[1], color_now[2]), 45000);
+		CTextDraw::Print(pDC, 350, 250, "Your First Goal is");
 	}
 	else {
-		CTextDraw::ChangeFontLog(pDC, 30, "新細明體", RGB(color_now[0], color_now[1], color_now[2]), 15000);
-		CTextDraw::Print(pDC, 400, 300, "Your Next Goal is");
+		CTextDraw::ChangeFontLog(pDC, 50, "新細明體", RGB(color_now[0], color_now[1], color_now[2]), 45000);
+		CTextDraw::Print(pDC, 350, 250, "Your Next Goal is");
 	}
 	
 	
-	CTextDraw::ChangeFontLog(pDC, 60, "新細明體", RGB(color_now2[0], color_now2[1], color_now2[2]), 15000);
-	CTextDraw::Print(pDC, 500, 400, std::to_string(goal_money));
+	CTextDraw::ChangeFontLog(pDC, 60, "新細明體", RGB(color_now2[0], color_now2[1], color_now2[2]), 45000);
+	CTextDraw::Print(pDC, 490, 340, std::to_string(goal_money));
 
 	CDDraw::ReleaseBackCDC();
 }

@@ -107,6 +107,10 @@ namespace game_framework {
 		int key_down_angle = -100;      //紀錄按下(down key)時的角度(Index)，預設為-100度
 		bool claw_is_ready = true;		//當claw_is_ready = true時才可以出爪子
 		int last_time;					//用來記錄clock()上次的取樣時間
+		int last_time_fade;
+		int fade_rate = 1;
+		int color_now[3];
+		int color_now2[3];
 		int timer  = 61;				//每關的預設時間為timer-1
 		bool item_is_bought_1 = false;		//這啥 許君豪看到請解釋，沈志謙這是確認做愛位置是否正確，然後鈞打錯了，我有點忘記當初打什麼鬼，但好像可以刪掉??，我試過沒有什麼差
 		bool item_is_bought_2 = false;
@@ -144,20 +148,25 @@ namespace game_framework {
 		CMovingBitmap item_4;			//商店商品:石頭書
 		CMovingBitmap item_5;			//商店商品:咖啡
 
+		/*
 		CMovingBitmap goal_650;
 		CMovingBitmap goal_1195;
 		CMovingBitmap goal_2010;
 		CMovingBitmap goal_3095;
 		CMovingBitmap goal_4450;
+		*/
+
 		//CAudio goal_audio;
 		void show_image_by_phase();
 		void show_claw_by_angle();
 		void gameover_and_restart();
 		void show_text_by_phase();
+		void show_text_of_goals();
 		void set_goal_money();
 		void goto_next_stage();
 		void show_items();
 		void set_stock();
+
 		
 		
 	};

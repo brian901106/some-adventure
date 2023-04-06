@@ -1,4 +1,4 @@
-dir = "resources/goal_page/3095/"
+dir = "resources/goal_page/goal_bg/"
 ext = ".bmp"
 start = 52
 end = 94

@@ -51,7 +51,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 
 	
 	/*Goal頁面*/
-	goal.LoadBitmapByString({ "resources/goal_page/600/15.bmp","resources/goal_page/600/16.bmp","resources/goal_page/600/17.bmp","resources/goal_page/600/18.bmp","resources/goal_page/600/19.bmp","resources/goal_page/600/20.bmp","resources/goal_page/600/21.bmp","resources/goal_page/600/22.bmp","resources/goal_page/600/23.bmp","resources/goal_page/600/24.bmp","resources/goal_page/600/25.bmp","resources/goal_page/600/26.bmp","resources/goal_page/600/27.bmp","resources/goal_page/600/28.bmp","resources/goal_page/600/29.bmp","resources/goal_page/600/30.bmp","resources/goal_page/600/31.bmp","resources/goal_page/600/32.bmp","resources/goal_page/600/33.bmp","resources/goal_page/600/34.bmp","resources/goal_page/600/35.bmp","resources/goal_page/600/36.bmp","resources/goal_page/600/37.bmp","resources/goal_page/600/38.bmp","resources/goal_page/600/39.bmp","resources/goal_page/600/40.bmp","resources/goal_page/600/41.bmp","resources/goal_page/600/42.bmp","resources/goal_page/600/43.bmp","resources/goal_page/600/44.bmp","resources/goal_page/600/45.bmp","resources/goal_page/600/46.bmp","resources/goal_page/600/47.bmp","resources/goal_page/600/48.bmp","resources/goal_page/600/49.bmp","resources/goal_page/600/50.bmp","resources/goal_page/600/51.bmp" });
+	goal.LoadBitmapByString({ "resources/goal_page/goal_bg/52.bmp","resources/goal_page/goal_bg/53.bmp","resources/goal_page/goal_bg/54.bmp","resources/goal_page/goal_bg/55.bmp","resources/goal_page/goal_bg/56.bmp","resources/goal_page/goal_bg/57.bmp","resources/goal_page/goal_bg/58.bmp","resources/goal_page/goal_bg/59.bmp","resources/goal_page/goal_bg/60.bmp","resources/goal_page/goal_bg/61.bmp","resources/goal_page/goal_bg/62.bmp","resources/goal_page/goal_bg/63.bmp","resources/goal_page/goal_bg/64.bmp","resources/goal_page/goal_bg/65.bmp","resources/goal_page/goal_bg/66.bmp","resources/goal_page/goal_bg/67.bmp","resources/goal_page/goal_bg/68.bmp","resources/goal_page/goal_bg/69.bmp","resources/goal_page/goal_bg/70.bmp","resources/goal_page/goal_bg/71.bmp","resources/goal_page/goal_bg/72.bmp","resources/goal_page/goal_bg/73.bmp","resources/goal_page/goal_bg/74.bmp","resources/goal_page/goal_bg/75.bmp","resources/goal_page/goal_bg/76.bmp","resources/goal_page/goal_bg/77.bmp","resources/goal_page/goal_bg/78.bmp","resources/goal_page/goal_bg/79.bmp","resources/goal_page/goal_bg/80.bmp","resources/goal_page/goal_bg/81.bmp","resources/goal_page/goal_bg/82.bmp","resources/goal_page/goal_bg/83.bmp","resources/goal_page/goal_bg/84.bmp","resources/goal_page/goal_bg/85.bmp","resources/goal_page/goal_bg/86.bmp","resources/goal_page/goal_bg/87.bmp","resources/goal_page/goal_bg/88.bmp","resources/goal_page/goal_bg/89.bmp","resources/goal_page/goal_bg/90.bmp","resources/goal_page/goal_bg/91.bmp","resources/goal_page/goal_bg/92.bmp","resources/goal_page/goal_bg/93.bmp" });
 	goal.SetAnimation(50, true);
 	goal.SetTopLeft(0, 0);
 	//goal_audio.Load(0, "sound/goal.midi");
@@ -126,7 +126,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	item_5.LoadBitmapByString({ "resources/shop_page/5.bmp" }, RGB(0, 0, 0));
 	item_5.SetTopLeft(610, 455);
 
-	/*goal*/
+	/*
 	goal_650.LoadBitmapByString({"Resources/goal_page/650/15.bmp","Resources/goal_page/650/16.bmp","Resources/goal_page/650/17.bmp","Resources/goal_page/650/18.bmp","Resources/goal_page/650/19.bmp","Resources/goal_page/650/20.bmp","Resources/goal_page/650/21.bmp","Resources/goal_page/650/22.bmp","Resources/goal_page/650/23.bmp","Resources/goal_page/650/24.bmp","Resources/goal_page/650/25.bmp","Resources/goal_page/650/26.bmp","Resources/goal_page/650/27.bmp","Resources/goal_page/650/28.bmp","Resources/goal_page/650/29.bmp","Resources/goal_page/650/30.bmp","Resources/goal_page/650/31.bmp","Resources/goal_page/650/32.bmp","Resources/goal_page/650/33.bmp","Resources/goal_page/650/34.bmp","Resources/goal_page/650/35.bmp","Resources/goal_page/650/36.bmp","Resources/goal_page/650/37.bmp","Resources/goal_page/650/38.bmp","Resources/goal_page/650/39.bmp","Resources/goal_page/650/40.bmp","Resources/goal_page/650/41.bmp","Resources/goal_page/650/42.bmp","Resources/goal_page/650/43.bmp","Resources/goal_page/650/44.bmp","Resources/goal_page/650/45.bmp","Resources/goal_page/650/46.bmp","Resources/goal_page/650/47.bmp","Resources/goal_page/650/48.bmp","Resources/goal_page/650/49.bmp","Resources/goal_page/650/50.bmp","Resources/goal_page/650/51.bmp"}, RGB(0, 0, 0));
 	goal_650.SetAnimation(50, true);
 	goal_650.SetTopLeft(0, 0);
@@ -142,11 +142,12 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	goal_3095.LoadBitmapByString({ "resources/goal_page/3095/52.bmp","resources/goal_page/3095/53.bmp","resources/goal_page/3095/54.bmp","resources/goal_page/3095/55.bmp","resources/goal_page/3095/56.bmp","resources/goal_page/3095/57.bmp","resources/goal_page/3095/58.bmp","resources/goal_page/3095/59.bmp","resources/goal_page/3095/60.bmp","resources/goal_page/3095/61.bmp","resources/goal_page/3095/62.bmp","resources/goal_page/3095/63.bmp","resources/goal_page/3095/64.bmp","resources/goal_page/3095/65.bmp","resources/goal_page/3095/66.bmp","resources/goal_page/3095/67.bmp","resources/goal_page/3095/68.bmp","resources/goal_page/3095/69.bmp","resources/goal_page/3095/70.bmp","resources/goal_page/3095/71.bmp","resources/goal_page/3095/72.bmp","resources/goal_page/3095/73.bmp","resources/goal_page/3095/74.bmp","resources/goal_page/3095/75.bmp","resources/goal_page/3095/76.bmp","resources/goal_page/3095/77.bmp","resources/goal_page/3095/78.bmp","resources/goal_page/3095/79.bmp","resources/goal_page/3095/80.bmp","resources/goal_page/3095/81.bmp","resources/goal_page/3095/82.bmp","resources/goal_page/3095/83.bmp","resources/goal_page/3095/84.bmp","resources/goal_page/3095/85.bmp","resources/goal_page/3095/86.bmp","resources/goal_page/3095/87.bmp","resources/goal_page/3095/88.bmp","resources/goal_page/3095/89.bmp","resources/goal_page/3095/90.bmp","resources/goal_page/3095/91.bmp","resources/goal_page/3095/92.bmp","resources/goal_page/3095/93.bmp"}, RGB(0, 0, 0));
 	goal_3095.SetAnimation(50, true);
 	goal_3095.SetTopLeft(0, 0);
-	/*
+	
 	goal_4450.LoadBitmapByString({"resources/goal_page/4450/52.bmp","resources/goal_page/4450/53.bmp","resources/goal_page/4450/54.bmp","resources/goal_page/4450/55.bmp","resources/goal_page/4450/56.bmp","resources/goal_page/4450/57.bmp","resources/goal_page/4450/58.bmp","resources/goal_page/4450/59.bmp","resources/goal_page/4450/60.bmp","resources/goal_page/4450/61.bmp","resources/goal_page/4450/62.bmp","resources/goal_page/4450/63.bmp","resources/goal_page/4450/64.bmp","resources/goal_page/4450/65.bmp","resources/goal_page/4450/66.bmp","resources/goal_page/4450/67.bmp","resources/goal_page/4450/68.bmp","resources/goal_page/4450/69.bmp","resources/goal_page/4450/70.bmp","resources/goal_page/4450/71.bmp","resources/goal_page/4450/72.bmp","resources/goal_page/4450/73.bmp","resources/goal_page/4450/74.bmp","resources/goal_page/4450/75.bmp","resources/goal_page/4450/76.bmp","resources/goal_page/4450/77.bmp","resources/goal_page/4450/78.bmp","resources/goal_page/4450/79.bmp","resources/goal_page/4450/80.bmp","resources/goal_page/4450/81.bmp","resources/goal_page/4450/82.bmp","resources/goal_page/4450/83.bmp","resources/goal_page/4450/84.bmp","resources/goal_page/4450/85.bmp","resources/goal_page/4450/86.bmp","resources/goal_page/4450/87.bmp","resources/goal_page/4450/88.bmp","resources/goal_page/4450/89.bmp","resources/goal_page/4450/90.bmp","resources/goal_page/4450/91.bmp","resources/goal_page/4450/92.bmp","resources/goal_page/4450/93.bmp"});
 	goal_4450.SetAnimation(50, true);
 	goal_4450.SetTopLeft(0, 0);
 	*/
+	
 }
 
 
@@ -277,8 +278,13 @@ void CGameStateRun::OnShow()
 	if (sub_phase == 2){
 		show_text_by_phase();
 	}
+
 	if (gameover == true) {
 		gameover_and_restart();
+	}
+
+	if (sub_phase == 3) {
+		// show_next
 	}
 }
 
@@ -288,9 +294,11 @@ void CGameStateRun::show_image_by_phase() {
 	{
 		gameover = false;
 		goal.ShowBitmap();
+		show_text_of_goals();
 		if (goal.GetFrameIndexOfBitmap() == 0 && goal.IsAnimation() == false)
 		{
 			goal.ToggleAnimation();
+			fade_rate = 1;
 		}
 	}
 	if (sub_phase == 2 && action_state == 1) 
@@ -467,6 +475,7 @@ void CGameStateRun::gameover_and_restart()
 void CGameStateRun::goto_next_stage()
 {
 	timer = 61;
+	fade_rate = 1;
 	goal.SetFrameIndexOfBitmap(0);
 	success.SetFrameIndexOfBitmap(0);
 	sub_phase = 1;
@@ -527,7 +536,7 @@ void CGameStateRun::show_text_by_phase() {
 		CTextDraw::Print(pDC, 1033, 10, std::to_string(timer));
 
 		
-		if (clock() - last_time > 1000)
+		if (clock() - last_time >= 1000)
 		{	
 	
 			timer -= 1;
@@ -549,4 +558,58 @@ void CGameStateRun::show_text_by_phase() {
 	
 	CDDraw::ReleaseBackCDC();
 	
+}
+
+void CGameStateRun::show_text_of_goals() {
+	CDC *pDC = CDDraw::GetBackCDC();
+	
+	COLORREF fade_from RGB(155, 78, 0);
+	COLORREF fade_to RGB(255, 255, 0);
+
+	COLORREF fade_from2 RGB(155, 78, 0);
+	COLORREF fade_to2 RGB(0, 204, 0);
+
+	int fade_time = 800;
+	int fade_interval = 20;
+
+
+	if (clock() - last_time_fade >= fade_interval && fade_interval * fade_rate / fade_time < 1)
+	{
+		color_now[0] = GetRValue(fade_from) + (GetRValue(fade_to) - GetRValue(fade_from))*fade_interval * fade_rate / fade_time;
+		color_now[1] = GetGValue(fade_from) + (GetGValue(fade_to) - GetGValue(fade_from))*fade_interval * fade_rate / fade_time;
+		color_now[2] = GetBValue(fade_from) + (GetBValue(fade_to) - GetBValue(fade_from))*fade_interval * fade_rate / fade_time;
+
+		color_now2[0] = GetRValue(fade_from2) + (GetRValue(fade_to2) - GetRValue(fade_from2))*fade_interval * fade_rate / fade_time;
+		color_now2[1] = GetGValue(fade_from2) + (GetGValue(fade_to2) - GetGValue(fade_from2))*fade_interval * fade_rate / fade_time;
+		color_now2[2] = GetBValue(fade_from2) + (GetBValue(fade_to2) - GetBValue(fade_from2))*fade_interval * fade_rate / fade_time;
+
+
+		fade_rate = fade_rate + 1;
+		last_time_fade = clock();
+	}
+	if (fade_interval * fade_rate / fade_time >= 1) {
+		color_now[0] = GetRValue(fade_to);
+		color_now[1] = GetGValue(fade_to);
+		color_now[2] = GetBValue(fade_to);
+
+		color_now2[0] = GetRValue(fade_to2);
+		color_now2[1] = GetGValue(fade_to2);
+		color_now2[2] = GetBValue(fade_to2);
+	}
+
+
+	if (phase == 1) {
+		CTextDraw::ChangeFontLog(pDC, 30, "新細明體", RGB(color_now[0], color_now[1], color_now[2]), 15000);
+		CTextDraw::Print(pDC, 400, 300, "Your First Goal is");
+	}
+	else {
+		CTextDraw::ChangeFontLog(pDC, 30, "新細明體", RGB(color_now[0], color_now[1], color_now[2]), 15000);
+		CTextDraw::Print(pDC, 400, 300, "Your Next Goal is");
+	}
+	
+	
+	CTextDraw::ChangeFontLog(pDC, 60, "新細明體", RGB(color_now2[0], color_now2[1], color_now2[2]), 15000);
+	CTextDraw::Print(pDC, 500, 400, std::to_string(goal_money));
+
+	CDDraw::ReleaseBackCDC();
 }

@@ -121,7 +121,9 @@ namespace game_framework {
 		bool item_is_bought_4 = false;
 		bool item_is_bought_5 = false;
 		bool next_level_button_clicked = false;
+		bool return_game = false;
 		int item_in_stock_in_level[5] = { 0, 0, 0 ,0, 0 };
+		
 
 		int money = 0;
 		int goal_money = 650;
@@ -137,6 +139,8 @@ namespace game_framework {
 		CMovingBitmap claw1_2;
 		CMovingBitmap claw1_n5;
 		CMovingBitmap exit;
+		CMovingBitmap exit_background;
+		CMovingBitmap playagain_button;
 		CMovingBitmap fail;
 		CMovingBitmap success;
 		CMovingBitmap shop_bg;

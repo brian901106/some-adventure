@@ -80,6 +80,12 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	exit.LoadBitmapByString({ "resources/exit/1.bmp", "resources/exit/2.bmp" }, RGB(0, 0, 0));
 	exit.SetTopLeft(800, 12);
 
+	exit_background.LoadBitmapByString({ "resources/exit_background/170.bmp" });
+	exit_background.SetTopLeft(0, 0);
+
+	playagain_button.LoadBitmapByString({ "resources/exit_background/1.bmp", "resources/exit_background/2.bmp"}, RGB(0, 0, 0));
+	playagain_button.SetTopLeft(125, 664);
+
 	timer_bling.LoadBitmapByString({"resources/stage/timer_bling.bmp"}, RGB(0, 0, 0));
 	timer_bling.SetTopLeft(1020, 12);
 
@@ -125,6 +131,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 
 	item_5.LoadBitmapByString({ "resources/shop_page/5.bmp" }, RGB(0, 0, 0));
 	item_5.SetTopLeft(610, 455);
+
 
 	/*
 	goal_650.LoadBitmapByString({"Resources/goal_page/650/15.bmp","Resources/goal_page/650/16.bmp","Resources/goal_page/650/17.bmp","Resources/goal_page/650/18.bmp","Resources/goal_page/650/19.bmp","Resources/goal_page/650/20.bmp","Resources/goal_page/650/21.bmp","Resources/goal_page/650/22.bmp","Resources/goal_page/650/23.bmp","Resources/goal_page/650/24.bmp","Resources/goal_page/650/25.bmp","Resources/goal_page/650/26.bmp","Resources/goal_page/650/27.bmp","Resources/goal_page/650/28.bmp","Resources/goal_page/650/29.bmp","Resources/goal_page/650/30.bmp","Resources/goal_page/650/31.bmp","Resources/goal_page/650/32.bmp","Resources/goal_page/650/33.bmp","Resources/goal_page/650/34.bmp","Resources/goal_page/650/35.bmp","Resources/goal_page/650/36.bmp","Resources/goal_page/650/37.bmp","Resources/goal_page/650/38.bmp","Resources/goal_page/650/39.bmp","Resources/goal_page/650/40.bmp","Resources/goal_page/650/41.bmp","Resources/goal_page/650/42.bmp","Resources/goal_page/650/43.bmp","Resources/goal_page/650/44.bmp","Resources/goal_page/650/45.bmp","Resources/goal_page/650/46.bmp","Resources/goal_page/650/47.bmp","Resources/goal_page/650/48.bmp","Resources/goal_page/650/49.bmp","Resources/goal_page/650/50.bmp","Resources/goal_page/650/51.bmp"}, RGB(0, 0, 0));
@@ -190,6 +197,12 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的
 	if (next_level_button.GetFrameIndexOfBitmap() == 1 && sub_phase == 3) {
 		next_level_button_clicked = true;
 	}
+
+	//按下play again
+	if (playagain_button.GetFrameIndexOfBitmap() == 1) {
+		return_game = true;
+	}
+
 	/*確認滑鼠位置與商店裡面1~5座標是否相同，相同的話跳到show_items()*/
 	if (sub_phase == 3) {
 		if (point.x >= item_1.GetLeft() &&
@@ -235,7 +248,8 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動
 }
 
 void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
-{
+{	
+	//判別exit的位置
 	if (point.x >= exit.GetLeft() && point.x <= exit.GetLeft() + exit.GetWidth() && point.y >= exit.GetTop() && point.y <= exit.GetTop() + exit.GetHeight())
 	{
 		exit.SetFrameIndexOfBitmap(1);
@@ -244,7 +258,7 @@ void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動
 	{
 		exit.SetFrameIndexOfBitmap(0);
 	}
-	
+	//判別next level的位置
 	if (point.x >= next_level_button.GetLeft() && point.x <= next_level_button.GetLeft() + next_level_button.GetWidth() && point.y >= next_level_button.GetTop() && point.y <= next_level_button.GetTop() + next_level_button.GetHeight())
 	{
 		next_level_button.SetFrameIndexOfBitmap(1);
@@ -252,6 +266,17 @@ void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動
 	else
 	{
 		next_level_button.SetFrameIndexOfBitmap(0);
+	}
+
+	//判別play again
+	if (point.x >= playagain_button.GetLeft() && point.x <= playagain_button.GetLeft() + playagain_button.GetWidth() &&
+		point.y >= playagain_button.GetTop() && point.y <= playagain_button.GetTop() + playagain_button.GetHeight())
+	{
+		playagain_button.SetFrameIndexOfBitmap(1);
+	}
+	else
+	{
+		playagain_button.SetFrameIndexOfBitmap(0);
 	}
 		
 
@@ -453,21 +478,39 @@ void CGameStateRun::set_goal_money()
 
 void CGameStateRun::gameover_and_restart()
 {
+
 	fail.ShowBitmap();
 
 	if (fail.GetFrameIndexOfBitmap() == 0 && fail.IsAnimation() == false) {
 		fail.ToggleAnimation();
 	}
+
+	
+	
 	if (fail.IsAnimation() == false && fail.GetFrameIndexOfBitmap() != 0) {
-		GotoGameState(GAME_STATE_INIT);
-		fail.SetFrameIndexOfBitmap(0);
-		goal.SetFrameIndexOfBitmap(0);
-		money = 0;
-		sub_phase = 1;
-		timer = 61;
-		phase = 1;
-		goal_money = 650;
+		exit_background.ShowBitmap();
+		playagain_button.ShowBitmap();
+
+		CDC *pDC = CDDraw::GetBackCDC();
+		CTextDraw::ChangeFontLog(pDC, 25, "calibri", RGB(0, 0, 0), 45000);
+		CTextDraw::Print(pDC, 180, 673, "play again");
+		CDDraw::ReleaseBackCDC();
+
+		if (return_game == true) 
+		{
+			GotoGameState(GAME_STATE_INIT);
+			fail.SetFrameIndexOfBitmap(0);
+			goal.SetFrameIndexOfBitmap(0);
+			money = 0;
+			sub_phase = 1;
+			timer = 61;
+			phase = 1;
+			goal_money = 650;
+			return_game = false;
+		}
+
 	}
+	
 }
 void CGameStateRun::goto_next_stage()
 {

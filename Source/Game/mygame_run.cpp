@@ -283,9 +283,6 @@ void CGameStateRun::OnShow()
 		gameover_and_restart();
 	}
 
-	if (sub_phase == 3) {
-		// show_next
-	}
 }
 
 void CGameStateRun::show_image_by_phase() {
@@ -575,9 +572,9 @@ void CGameStateRun::show_text_of_goals() {
 
 	if (clock() - last_time_fade >= fade_interval && fade_interval * fade_rate / fade_time < 1)
 	{
-		color_now[0] = GetRValue(fade_from) + (GetRValue(fade_to) - GetRValue(fade_from))*fade_interval * fade_rate / fade_time;
-		color_now[1] = GetGValue(fade_from) + (GetGValue(fade_to) - GetGValue(fade_from))*fade_interval * fade_rate / fade_time;
-		color_now[2] = GetBValue(fade_from) + (GetBValue(fade_to) - GetBValue(fade_from))*fade_interval * fade_rate / fade_time;
+		color_now1[0] = GetRValue(fade_from) + (GetRValue(fade_to) - GetRValue(fade_from))*fade_interval * fade_rate / fade_time;
+		color_now1[1] = GetGValue(fade_from) + (GetGValue(fade_to) - GetGValue(fade_from))*fade_interval * fade_rate / fade_time;
+		color_now1[2] = GetBValue(fade_from) + (GetBValue(fade_to) - GetBValue(fade_from))*fade_interval * fade_rate / fade_time;
 
 		color_now2[0] = GetRValue(fade_from2) + (GetRValue(fade_to2) - GetRValue(fade_from2))*fade_interval * fade_rate / fade_time;
 		color_now2[1] = GetGValue(fade_from2) + (GetGValue(fade_to2) - GetGValue(fade_from2))*fade_interval * fade_rate / fade_time;
@@ -588,9 +585,9 @@ void CGameStateRun::show_text_of_goals() {
 		last_time_fade = clock();
 	}
 	if (fade_interval * fade_rate / fade_time >= 1) {
-		color_now[0] = GetRValue(fade_to);
-		color_now[1] = GetGValue(fade_to);
-		color_now[2] = GetBValue(fade_to);
+		color_now1[0] = GetRValue(fade_to);
+		color_now1[1] = GetGValue(fade_to);
+		color_now1[2] = GetBValue(fade_to);
 
 		color_now2[0] = GetRValue(fade_to2);
 		color_now2[1] = GetGValue(fade_to2);
@@ -599,11 +596,11 @@ void CGameStateRun::show_text_of_goals() {
 
 
 	if (phase == 1) {
-		CTextDraw::ChangeFontLog(pDC, 50, "新細明體", RGB(color_now[0], color_now[1], color_now[2]), 45000);
+		CTextDraw::ChangeFontLog(pDC, 50, "新細明體", RGB(color_now1[0], color_now1[1], color_now1[2]), 45000);
 		CTextDraw::Print(pDC, 350, 250, "Your First Goal is");
 	}
 	else {
-		CTextDraw::ChangeFontLog(pDC, 50, "新細明體", RGB(color_now[0], color_now[1], color_now[2]), 45000);
+		CTextDraw::ChangeFontLog(pDC, 50, "新細明體", RGB(color_now1[0], color_now1[1], color_now1[2]), 45000);
 		CTextDraw::Print(pDC, 350, 250, "Your Next Goal is");
 	}
 	

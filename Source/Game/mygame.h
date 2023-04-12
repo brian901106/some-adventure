@@ -107,10 +107,13 @@ namespace game_framework {
 		int key_down_angle = -100;      //紀錄按下(down key)時的角度(Index)，預設為-100度
 		bool claw_is_ready = true;		//當claw_is_ready = true時才可以出爪子
 		int last_time;					//用來記錄clock()上次的取樣時間
-		int last_time_fade;
-		int fade_rate = 1;
-		int color_now[3];
-		int color_now2[3];
+
+		/*這四個參數是用來控制goal page的淡出效果*/
+		int last_time_fade;				//用來記錄clock()上次的取樣時間of fade
+		int fade_rate = 1;				//淡出速率
+		int color_now1[3];				//記錄RGB(黃色)
+		int color_now2[3];				//記錄RGB(綠色)
+
 		int timer  = 61;				//每關的預設時間為timer-1
 		bool item_is_bought_1 = false;		//這啥 許君豪看到請解釋，沈志謙這是確認做愛位置是否正確，然後鈞打錯了，我有點忘記當初打什麼鬼，但好像可以刪掉??，我試過沒有什麼差
 		bool item_is_bought_2 = false;

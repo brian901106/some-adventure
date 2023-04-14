@@ -74,6 +74,9 @@ namespace game_framework {
 		CMovingBitmap gold;
 		CMovingBitmap light;
 		CMovingBitmap oldman;
+		CMovingBitmap instructions_text;
+		CMovingBitmap close;
+		bool instructions_clicked = false;
 		void load_Background();
 	};
 
@@ -131,6 +134,7 @@ namespace game_framework {
 		bool gameover = false;			// = true 時播放結束動畫並返回主頁面
 		CMovingBitmap goal;
 		CMovingBitmap background;
+	
 		CMovingBitmap miner;
 		CMovingBitmap miner_t;
 		CMovingBitmap miner_s;

@@ -242,14 +242,6 @@ namespace game_framework {
 		this->frameIndex = frameIndex;
 	}
 
-	int CMovingBitmap::GetAngleOfClaw() {
-		if (frameIndex < 14 || (frameIndex > 41 && frameIndex < 45)) {
-			return 1;
-		}
-		else {
-			return 0;
-		}
-	}
 
 	//! 取得當前圖片顯示幀的索引值。
 	/*!

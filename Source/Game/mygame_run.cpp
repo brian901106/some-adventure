@@ -7,6 +7,9 @@
 #include "../Library/gamecore.h"
 #include "mygame.h"
 #include <string>
+#include "math.h"
+
+#define rad 0.01745329252
 
 using namespace game_framework;
 
@@ -71,11 +74,15 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	miner_s.SetTopLeft(529, 33);
 	miner_s.SetAnimation(200, true);
 
-	claw.LoadBitmapByString({ "resources/claw/0/rotate/1.bmp","resources/claw/0/rotate/2.bmp","resources/claw/0/rotate/3.bmp","resources/claw/0/rotate/4.bmp","resources/claw/0/rotate/5.bmp","resources/claw/0/rotate/6.bmp","resources/claw/0/rotate/7.bmp","resources/claw/0/rotate/8.bmp","resources/claw/0/rotate/9.bmp","resources/claw/0/rotate/10.bmp","resources/claw/0/rotate/11.bmp","resources/claw/0/rotate/12.bmp","resources/claw/0/rotate/13.bmp","resources/claw/0/rotate/14.bmp","resources/claw/0/rotate/15.bmp","resources/claw/0/rotate/16.bmp","resources/claw/0/rotate/17.bmp","resources/claw/0/rotate/18.bmp","resources/claw/0/rotate/19.bmp","resources/claw/0/rotate/20.bmp","resources/claw/0/rotate/21.bmp","resources/claw/0/rotate/22.bmp","resources/claw/0/rotate/23.bmp","resources/claw/0/rotate/24.bmp","resources/claw/0/rotate/25.bmp","resources/claw/0/rotate/26.bmp","resources/claw/0/rotate/27.bmp","resources/claw/0/rotate/28.bmp","resources/claw/0/rotate/29.bmp","resources/claw/0/rotate/30.bmp","resources/claw/0/rotate/31.bmp","resources/claw/0/rotate/32.bmp","resources/claw/0/rotate/33.bmp","resources/claw/0/rotate/34.bmp","resources/claw/0/rotate/35.bmp","resources/claw/0/rotate/36.bmp","resources/claw/0/rotate/37.bmp","resources/claw/0/rotate/38.bmp","resources/claw/0/rotate/39.bmp","resources/claw/0/rotate/40.bmp","resources/claw/0/rotate/41.bmp","resources/claw/0/rotate/42.bmp","resources/claw/0/rotate/43.bmp","resources/claw/0/rotate/44.bmp","resources/claw/0/rotate/45.bmp","resources/claw/0/rotate/46.bmp","resources/claw/0/rotate/47.bmp","resources/claw/0/rotate/48.bmp","resources/claw/0/rotate/49.bmp","resources/claw/0/rotate/50.bmp","resources/claw/0/rotate/51.bmp","resources/claw/0/rotate/52.bmp","resources/claw/0/rotate/53.bmp","resources/claw/0/rotate/54.bmp" }, RGB(0, 0, 0));
-	claw.SetTopLeft(0, 20);
+	claw.LoadBitmapByString({ "resources/claw/0/rotate_new/1.bmp","resources/claw/0/rotate_new/2.bmp","resources/claw/0/rotate_new/3.bmp","resources/claw/0/rotate_new/4.bmp","resources/claw/0/rotate_new/5.bmp","resources/claw/0/rotate_new/6.bmp","resources/claw/0/rotate_new/7.bmp","resources/claw/0/rotate_new/8.bmp","resources/claw/0/rotate_new/9.bmp","resources/claw/0/rotate_new/10.bmp","resources/claw/0/rotate_new/11.bmp","resources/claw/0/rotate_new/12.bmp","resources/claw/0/rotate_new/13.bmp","resources/claw/0/rotate_new/14.bmp","resources/claw/0/rotate_new/15.bmp","resources/claw/0/rotate_new/16.bmp","resources/claw/0/rotate_new/17.bmp","resources/claw/0/rotate_new/18.bmp","resources/claw/0/rotate_new/19.bmp","resources/claw/0/rotate_new/20.bmp","resources/claw/0/rotate_new/21.bmp","resources/claw/0/rotate_new/22.bmp","resources/claw/0/rotate_new/23.bmp","resources/claw/0/rotate_new/24.bmp","resources/claw/0/rotate_new/25.bmp","resources/claw/0/rotate_new/26.bmp","resources/claw/0/rotate_new/27.bmp","resources/claw/0/rotate_new/28.bmp","resources/claw/0/rotate_new/29.bmp","resources/claw/0/rotate_new/30.bmp","resources/claw/0/rotate_new/31.bmp","resources/claw/0/rotate_new/32.bmp","resources/claw/0/rotate_new/33.bmp","resources/claw/0/rotate_new/34.bmp","resources/claw/0/rotate_new/35.bmp","resources/claw/0/rotate_new/36.bmp","resources/claw/0/rotate_new/37.bmp","resources/claw/0/rotate_new/38.bmp","resources/claw/0/rotate_new/39.bmp","resources/claw/0/rotate_new/40.bmp","resources/claw/0/rotate_new/41.bmp","resources/claw/0/rotate_new/42.bmp","resources/claw/0/rotate_new/43.bmp","resources/claw/0/rotate_new/44.bmp","resources/claw/0/rotate_new/45.bmp","resources/claw/0/rotate_new/46.bmp","resources/claw/0/rotate_new/47.bmp","resources/claw/0/rotate_new/48.bmp","resources/claw/0/rotate_new/49.bmp","resources/claw/0/rotate_new/50.bmp","resources/claw/0/rotate_new/51.bmp","resources/claw/0/rotate_new/52.bmp","resources/claw/0/rotate_new/53.bmp","resources/claw/0/rotate_new/54.bmp","resources/claw/0/rotate_new/55.bmp" }, RGB(0, 0, 0));
+	claw.SetTopLeft(514, 90);
 	claw.SetAnimation(50, false);
 
-	LoadClaws();
+	clawhead.LoadBitmapByString({ "resources/claw/0/rotate_new/1.bmp","resources/claw/0/rotate_new/2.bmp","resources/claw/0/rotate_new/3.bmp","resources/claw/0/rotate_new/4.bmp","resources/claw/0/rotate_new/5.bmp","resources/claw/0/rotate_new/6.bmp","resources/claw/0/rotate_new/7.bmp","resources/claw/0/rotate_new/8.bmp","resources/claw/0/rotate_new/9.bmp","resources/claw/0/rotate_new/10.bmp","resources/claw/0/rotate_new/11.bmp","resources/claw/0/rotate_new/12.bmp","resources/claw/0/rotate_new/13.bmp","resources/claw/0/rotate_new/14.bmp","resources/claw/0/rotate_new/15.bmp","resources/claw/0/rotate_new/16.bmp","resources/claw/0/rotate_new/17.bmp","resources/claw/0/rotate_new/18.bmp","resources/claw/0/rotate_new/19.bmp","resources/claw/0/rotate_new/20.bmp","resources/claw/0/rotate_new/21.bmp","resources/claw/0/rotate_new/22.bmp","resources/claw/0/rotate_new/23.bmp","resources/claw/0/rotate_new/24.bmp","resources/claw/0/rotate_new/25.bmp","resources/claw/0/rotate_new/26.bmp","resources/claw/0/rotate_new/27.bmp","resources/claw/0/rotate_new/28.bmp","resources/claw/0/rotate_new/29.bmp","resources/claw/0/rotate_new/30.bmp","resources/claw/0/rotate_new/31.bmp","resources/claw/0/rotate_new/32.bmp","resources/claw/0/rotate_new/33.bmp","resources/claw/0/rotate_new/34.bmp","resources/claw/0/rotate_new/35.bmp","resources/claw/0/rotate_new/36.bmp","resources/claw/0/rotate_new/37.bmp","resources/claw/0/rotate_new/38.bmp","resources/claw/0/rotate_new/39.bmp","resources/claw/0/rotate_new/40.bmp","resources/claw/0/rotate_new/41.bmp","resources/claw/0/rotate_new/42.bmp","resources/claw/0/rotate_new/43.bmp","resources/claw/0/rotate_new/44.bmp","resources/claw/0/rotate_new/45.bmp","resources/claw/0/rotate_new/46.bmp","resources/claw/0/rotate_new/47.bmp","resources/claw/0/rotate_new/48.bmp","resources/claw/0/rotate_new/49.bmp","resources/claw/0/rotate_new/50.bmp","resources/claw/0/rotate_new/51.bmp","resources/claw/0/rotate_new/52.bmp","resources/claw/0/rotate_new/53.bmp","resources/claw/0/rotate_new/54.bmp","resources/claw/0/rotate_new/55.bmp" }, RGB(0, 0, 0));
+	clawhead.SetTopLeft(514, 90);
+
+	hitbox.LoadBitmapByString({ "resources/claw/hitbox.bmp" }, RGB(0, 0, 0));
+	hitbox.SetTopLeft(538, 90);
 
 	exit.LoadBitmapByString({ "resources/exit/1.bmp", "resources/exit/2.bmp" }, RGB(0, 0, 0));
 	exit.SetTopLeft(800, 12);
@@ -164,8 +171,9 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	if (nChar == VK_DOWN) {
 		if (claw_is_ready == true) {
 			miner.ToggleAnimation();
-			key_down_angle = claw.GetAngleOfClaw();
-			ToggleClaws();
+			key_down_index = claw.GetFrameIndexOfBitmap();
+			clawhead.SetFrameIndexOfBitmap(key_down_index);
+			claw_is_ready = false;
 		}
 	}
 	if (nChar == VK_UP) {
@@ -295,13 +303,17 @@ void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動
 void CGameStateRun::OnShow()
 {
 	show_image_by_phase();
-	show_claw_by_angle();
 	if ((clock() % 1000) > 700 && timer <= 10 && timer > 0) {
 		timer_bling.ShowBitmap();
 	}
 
 	if (sub_phase == 2){
 		show_text_by_phase();
+		if (claw_is_ready == false) {
+			clawhead.ShowBitmap();
+			hitbox.ShowBitmap();
+			shoot_claw_by_angle();
+		}
 	}
 
 	if (gameover == true) {
@@ -426,6 +438,31 @@ void CGameStateRun::show_image_by_phase() {
 	}
 }
 
+void CGameStateRun::shoot_claw_by_angle()
+{
+	int angles[55] = {70, 69, 67, 64, 60, 56, 50, 44, 36, 28, 20, 15, 8, 2, -5, -14, -23, -30, -36, -42, -48, -53, -57, -61, -65, -67, -68, -68, -68, -67, -66, -63, -59, -54, -48, -42, -35, -28, -20, -12, -5, 2, 10, 17, 25, 33, 39, 46, 52, 57, 61, 64, 67, 69, 70};
+
+	if (clock() - last_time_claw >= 50 && claw_length<90)
+	{
+		claw_x = claw_x + (int)(sin(angles[key_down_index] * rad) * 8);
+		claw_y = claw_y + (int)(cos(angles[key_down_index] * rad) * 8);
+		clawhead.SetTopLeft(claw_x, claw_y);
+		hitbox.SetTopLeft(claw_x+18+(int)(11*(sin(angles[key_down_index] * rad))), claw_y+5+(int)(11*(cos(angles[key_down_index] * rad))));
+		
+		claw_length += 1;
+		last_time_claw = clock();
+	}
+	else {
+		claw_length = 0;
+		claw_x = 514;
+		claw_y = 90;
+		clawhead.SetTopLeft(claw_x, claw_y);
+		hitbox.SetTopLeft(claw_x, claw_y);
+		claw_is_ready = true;
+	}
+	
+}
+
 
 void CGameStateRun::set_stock()
 {
@@ -525,45 +562,16 @@ void CGameStateRun::goto_next_stage()
 	owner_angry.SetFrameIndexOfBitmap(0);
 	next_level_button_clicked = false;
 	set_goal_money();
+
+	claw_length = 0;
+	claw_x = 514;
+	claw_y = 90;
+	clawhead.SetTopLeft(claw_x, claw_y);
+	hitbox.SetTopLeft(claw_x, claw_y);
+	claw_is_ready = true;
 }
 
-void CGameStateRun::LoadClaws()
-{
-	claw1_2.LoadBitmapByString({ "resources/claw/1/rotate/2/3.bmp","resources/claw/1/rotate/2/4.bmp","resources/claw/1/rotate/2/5.bmp","resources/claw/1/rotate/2/6.bmp","resources/claw/1/rotate/2/7.bmp","resources/claw/1/rotate/2/8.bmp","resources/claw/1/rotate/2/9.bmp","resources/claw/1/rotate/2/10.bmp","resources/claw/1/rotate/2/11.bmp","resources/claw/1/rotate/2/12.bmp","resources/claw/1/rotate/2/13.bmp","resources/claw/1/rotate/2/14.bmp","resources/claw/1/rotate/2/15.bmp","resources/claw/1/rotate/2/16.bmp","resources/claw/1/rotate/2/17.bmp","resources/claw/1/rotate/2/18.bmp","resources/claw/1/rotate/2/19.bmp","resources/claw/1/rotate/2/20.bmp","resources/claw/1/rotate/2/21.bmp","resources/claw/1/rotate/2/22.bmp","resources/claw/1/rotate/2/23.bmp","resources/claw/1/rotate/2/24.bmp","resources/claw/1/rotate/2/25.bmp","resources/claw/1/rotate/2/26.bmp","resources/claw/1/rotate/2/27.bmp","resources/claw/1/rotate/2/28.bmp","resources/claw/1/rotate/2/29.bmp","resources/claw/1/rotate/2/30.bmp","resources/claw/1/rotate/2/31.bmp","resources/claw/1/rotate/2/32.bmp","resources/claw/1/rotate/2/33.bmp","resources/claw/1/rotate/2/34.bmp","resources/claw/1/rotate/2/35.bmp","resources/claw/1/rotate/2/36.bmp","resources/claw/1/rotate/2/37.bmp","resources/claw/1/rotate/2/38.bmp","resources/claw/1/rotate/2/39.bmp","resources/claw/1/rotate/2/40.bmp","resources/claw/1/rotate/2/41.bmp","resources/claw/1/rotate/2/42.bmp" }, RGB(0, 0, 0));
-	claw1_2.SetTopLeft(0, 20);
-	claw1_2.SetAnimation(50, true);
 
-	claw1_n5.LoadBitmapByString({ "resources/claw/1/rotate/-5/3.bmp","resources/claw/1/rotate/-5/4.bmp","resources/claw/1/rotate/-5/5.bmp","resources/claw/1/rotate/-5/6.bmp","resources/claw/1/rotate/-5/7.bmp","resources/claw/1/rotate/-5/8.bmp","resources/claw/1/rotate/-5/9.bmp","resources/claw/1/rotate/-5/10.bmp","resources/claw/1/rotate/-5/11.bmp","resources/claw/1/rotate/-5/12.bmp","resources/claw/1/rotate/-5/13.bmp","resources/claw/1/rotate/-5/14.bmp","resources/claw/1/rotate/-5/15.bmp","resources/claw/1/rotate/-5/16.bmp","resources/claw/1/rotate/-5/17.bmp","resources/claw/1/rotate/-5/18.bmp","resources/claw/1/rotate/-5/19.bmp","resources/claw/1/rotate/-5/20.bmp","resources/claw/1/rotate/-5/21.bmp","resources/claw/1/rotate/-5/22.bmp","resources/claw/1/rotate/-5/23.bmp","resources/claw/1/rotate/-5/24.bmp","resources/claw/1/rotate/-5/25.bmp","resources/claw/1/rotate/-5/26.bmp","resources/claw/1/rotate/-5/27.bmp","resources/claw/1/rotate/-5/28.bmp","resources/claw/1/rotate/-5/29.bmp","resources/claw/1/rotate/-5/30.bmp","resources/claw/1/rotate/-5/31.bmp","resources/claw/1/rotate/-5/32.bmp","resources/claw/1/rotate/-5/33.bmp","resources/claw/1/rotate/-5/34.bmp","resources/claw/1/rotate/-5/35.bmp","resources/claw/1/rotate/-5/36.bmp","resources/claw/1/rotate/-5/37.bmp","resources/claw/1/rotate/-5/38.bmp","resources/claw/1/rotate/-5/39.bmp","resources/claw/1/rotate/-5/40.bmp","resources/claw/1/rotate/-5/41.bmp","resources/claw/1/rotate/-5/42.bmp" }, RGB(0, 0, 0));
-	claw1_n5.SetTopLeft(0, 20);
-	claw1_n5.SetAnimation(50, true);
-}
-
-void CGameStateRun::ToggleClaws()
-{
-	if (key_down_angle == 1)
-	{
-		claw1_2.ToggleAnimation();
-	}
-	if (key_down_angle == 0)
-	{
-		claw1_n5.ToggleAnimation();
-	}
-
-}
-void CGameStateRun::show_claw_by_angle()
-{
-	if (sub_phase == 2) {
-		claw_is_ready = true;
-		if ((miner.IsAnimation() && key_down_angle == 1) || claw1_2.IsAnimation()) {
-			claw1_2.ShowBitmap();
-			claw_is_ready = false;
-		}
-		if ((miner.IsAnimation() && key_down_angle == 0) || claw1_n5.IsAnimation()) {
-			claw1_n5.ShowBitmap();
-			claw_is_ready = false;
-		}
-	}
-}
 
 void CGameStateRun::show_text_by_phase() {
 	

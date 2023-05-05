@@ -91,9 +91,7 @@ namespace game_framework {
 		~CGameStateRun();
 		void OnBeginState();							// 設定每次重玩所需的變數
 		void OnInit();  								// 遊戲的初值及圖形設定
-		void LoadClaws();
 		void OnKeyDown(UINT, UINT, UINT);
-		void ToggleClaws();
 		void OnKeyUp(UINT, UINT, UINT);
 		void OnLButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
 		void OnLButtonUp(UINT nFlags, CPoint point);	// 處理滑鼠的動作
@@ -107,9 +105,13 @@ namespace game_framework {
 		int phase = 1;					//phase = 1 為第一關， = 2 為第二關，以此類推
 		int sub_phase = 1;				//sub_phase = 1 為goal_page， = 2 為掏金關卡， = 3 為shop_page
 		int action_state = 1;			//action_state = 1 為正常動作??????
-		int key_down_angle = -100;      //紀錄按下(down key)時的角度(Index)，預設為-100度
+		int key_down_index = -100;      //紀錄按下(down key)時的Index，預設為-100
 		bool claw_is_ready = true;		//當claw_is_ready = true時才可以出爪子
-		int last_time;					//用來記錄clock()上次的取樣時間
+		bool last_time_claw;
+		int claw_x = 514;
+		int claw_y = 90;
+		int claw_length = 0;
+
 
 		/*這四個參數是用來控制goal page的淡出效果*/
 		int last_time_fade;				//用來記錄clock()上次的取樣時間of fade
@@ -117,6 +119,7 @@ namespace game_framework {
 		int color_now1[3];				//記錄RGB(黃色)
 		int color_now2[3];				//記錄RGB(綠色)
 
+		int last_time;					//用來記錄clock()上次的取樣時間
 		int timer  = 61;				//每關的預設時間為timer-1
 		bool item_is_bought_1 = false;		//這啥 許君豪看到請解釋，沈志謙這是確認做愛位置是否正確，然後鈞打錯了，我有點忘記當初打什麼鬼，但好像可以刪掉??，我試過沒有什麼差
 		bool item_is_bought_2 = false;
@@ -132,6 +135,7 @@ namespace game_framework {
 		int goal_money = 650;
 		//int goal_money_of_level[10] = { 600,1000 };
 		bool gameover = false;			// = true 時播放結束動畫並返回主頁面
+
 		CMovingBitmap goal;
 		CMovingBitmap background;
 	
@@ -140,8 +144,8 @@ namespace game_framework {
 		CMovingBitmap miner_s;
 		CMovingBitmap timer_bling;
 		CMovingBitmap claw;
-		CMovingBitmap claw1_2;
-		CMovingBitmap claw1_n5;
+		CMovingBitmap clawhead;
+		CMovingBitmap hitbox;
 		CMovingBitmap exit;
 		CMovingBitmap exit_background;
 		CMovingBitmap playagain_button;
@@ -169,7 +173,7 @@ namespace game_framework {
 
 		//CAudio goal_audio;
 		void show_image_by_phase();
-		void show_claw_by_angle();
+		void shoot_claw_by_angle();
 		void gameover_and_restart();
 		void show_text_by_phase();
 		void show_text_of_goals();

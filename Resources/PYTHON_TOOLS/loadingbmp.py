@@ -1,7 +1,7 @@
-dir = "resources/goal_page/3095/"
+dir = "resources/claw/0/rotate_new/"
 ext = ".bmp"
-start = 52
-end = 94
+start = 1
+end = 56
 result = ""
 
 #front_include = "{"

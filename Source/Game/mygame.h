@@ -129,6 +129,15 @@ namespace game_framework {
 		bool next_level_button_clicked = false;
 		bool return_game = false;
 		int item_in_stock_in_level[5] = { 0, 0, 0 ,0, 0 };
+
+		int mine_max_num[13] = { 4,3,0,2,0,0,2,0,0,0,2,0,2 }; //各種礦在遊戲中的最大值(用來控制loadbitmap數量)
+
+		//第一關的參數
+		int mine_num_L1_1[13] = { 4,3,0,2,0,0,2,0,0,0,2,0,2 };
+		int location2[4][2] = { {50,200},{100,300},{150,400},{200,500} };
+		int exist2[4] = { 1,1,1,1 };
+		int location3[3][2] = { {150,200},{200,300},{250,400} };
+		int exist3[4] = { 1,1,1,1 };
 		
 
 		int money = 0;
@@ -142,15 +151,32 @@ namespace game_framework {
 		CMovingBitmap miner;
 		CMovingBitmap miner_t;
 		CMovingBitmap miner_s;
-		CMovingBitmap timer_bling;
+
 		CMovingBitmap claw;
 		CMovingBitmap clawhead;
 		CMovingBitmap hitbox;
+
+		CMovingBitmap mine2[4];			//金礦(小)
+		CMovingBitmap mine3[3];			//金礦(中)
+		CMovingBitmap mine4[10];			//金礦(大)
+		CMovingBitmap mine5[2];			//金礦(巨大)
+		CMovingBitmap mine6[10];			//豬
+		CMovingBitmap mine7[10];			//骨頭
+		CMovingBitmap mine8[2];			//石頭(大)
+		CMovingBitmap mine9[10];			//爆炸桶
+		CMovingBitmap mine10[10];			//鑽石豬
+		CMovingBitmap mine11[10];			//鑽石
+		CMovingBitmap mine12[2];			//道具袋
+		CMovingBitmap mine13[10];			//骷顱頭
+		CMovingBitmap mine14[2];			//石頭(中)
+
+		CMovingBitmap timer_bling;
 		CMovingBitmap exit;
 		CMovingBitmap exit_background;
 		CMovingBitmap playagain_button;
 		CMovingBitmap fail;
 		CMovingBitmap success;
+
 		CMovingBitmap shop_bg;
 		CMovingBitmap next_level_button;
 		CMovingBitmap owner_talk;
@@ -174,15 +200,17 @@ namespace game_framework {
 		//CAudio goal_audio;
 		void show_image_by_phase();
 		void shoot_claw_by_angle();
+		void reset_claw();
 		void gameover_and_restart();
 		void show_text_by_phase();
 		void show_text_of_goals();
 		void set_goal_money();
 		void goto_next_stage();
+		void reset_mines();
 		void show_items();
 		void set_stock();
-
-		
+		void load_mines();
+		void show_mines();
 		
 	};
 

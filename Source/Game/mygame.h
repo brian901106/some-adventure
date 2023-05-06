@@ -121,6 +121,7 @@ namespace game_framework {
 		//金礦(小)/金礦(中)/金礦(大)/金礦(巨大)/豬/骨頭/石頭(大)/爆炸桶/鑽石豬/鑽石/道具袋/骷顱頭/石頭(中)
 
 		int last_time_bomb;
+		int bomb_num = 2;
 		bool bomb_is_throw = false;
 
 		/*這四個參數是用來控制goal page的淡出效果*/
@@ -133,14 +134,19 @@ namespace game_framework {
 										//這啥 許君豪看到請解釋，沈志謙這是確認做愛位置是否正確，然後鈞打錯了，我有點忘記當初打什麼鬼，但好像可以刪掉??，我試過沒有什麼差
 		
 		/*以下參數是用來控制商店商品*/
-		bool item_is_bought_1 = false;		
-		bool item_is_bought_2 = false;
-		bool item_is_bought_3 = false;
-		bool item_is_bought_4 = false;
-		bool item_is_bought_5 = false;
+		bool item_is_bought_1 = false;		//炸藥
+		bool item_is_bought_2 = false;		//力量藥水
+		bool item_is_bought_3 = false;		//幸運草
+		bool item_is_bought_4 = false;		//石頭書
+		bool item_is_bought_5 = false;		//鑽石打磨
 		bool next_level_button_clicked = false;
 		bool return_game = false;
-		int item_in_stock_in_level[5] = { 0, 0, 0 ,0, 0 };	
+		int item_in_stock_in_level[5] = { 0, 0, 0 ,0, 0 };
+
+		bool item_2_effect = false;			//力量藥水
+		bool item_3_effect = false;			//幸運草
+		bool item_4_effect = false;			//石頭書
+		bool item_5_effect = false;			//鑽石打磨
 
 		int mine_max_num[13] = { 4,3,10,2,10,10,2,10,10,10,2,10,2};	//各種礦在遊戲中的最大值(用來控制loadbitmap數量)
 
@@ -217,6 +223,7 @@ namespace game_framework {
 		void pull_claw();
 		void reset_claw();
 		void throw_bomb();
+		void reset_bomb();
 		void gameover_and_restart();
 		void show_text_by_phase();
 		void show_text_of_goals();

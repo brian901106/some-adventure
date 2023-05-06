@@ -159,8 +159,13 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		}
 	}
 	if (nChar == VK_UP) {
-		action_state = 2;
-		bomb_is_throw = true;
+		
+		if (bomb_num >= 1){
+			bomb_is_throw = true;
+			action_state = 2;
+			bomb_num = bomb_num - 1;
+		}
+		
 	}
 	if (nChar == VK_RIGHT) {
 		sub_phase = 3;
@@ -170,7 +175,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		timer = timer - 8;
 	}
 	if (nChar == VK_SPACE) {
-
+		item_2_effect = true;
 	}
 }
 
@@ -194,7 +199,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的
 		return_game = true;
 	}
 
-	/*確認滑鼠位置與商店裡面1~5座標是否相同，相同的話跳到show_items()*/
+	/*按下後確認滑鼠位置與商店裡面1~5座標是否相同，相同的話則購買*/
 	if (sub_phase == 3) {
 		if (point.x >= item_1.GetLeft() &&
 			point.x <= item_1.GetLeft() + item_1.GetWidth() &&
@@ -202,6 +207,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的
 			point.y <= item_1.GetTop() + item_1.GetHeight())
 		{
 			item_is_bought_1 = true;
+			bomb_num = bomb_num + 1;
 		}
 		if (point.x >= item_2.GetLeft() &&
 			point.x <= item_2.GetLeft() + item_2.GetWidth() &&
@@ -209,6 +215,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的
 			point.y <= item_2.GetTop() + item_2.GetHeight())
 		{
 			item_is_bought_2 = true;
+			item_2_effect = true;
 		}
 		if (point.x >= item_3.GetLeft() &&
 			point.x <= item_3.GetLeft() + item_3.GetWidth() &&
@@ -216,6 +223,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的
 			point.y <= item_3.GetTop() + item_3.GetHeight())
 		{
 			item_is_bought_3 = true;
+			item_3_effect = true;
 		}
 		if (point.x >= item_4.GetLeft() &&
 			point.x <= item_4.GetLeft() + item_4.GetWidth() &&
@@ -223,6 +231,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的
 			point.y <= item_4.GetTop() + item_4.GetHeight())
 		{
 			item_is_bought_4 = true;
+			item_4_effect = true;
 		}
 		if (point.x >= item_5.GetLeft() &&
 			point.x <= item_5.GetLeft() + item_5.GetWidth() &&
@@ -230,6 +239,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的
 			point.y <= item_5.GetTop() + item_5.GetHeight())
 		{
 			item_is_bought_5 = true;
+			item_5_effect = true;
 		}
 	}
 }
@@ -371,6 +381,11 @@ void CGameStateRun::show_image_by_phase() {
 			item_is_bought_3 = false;
 			item_is_bought_4 = false;
 			item_is_bought_5 = false;
+
+			item_2_effect = false;
+			item_3_effect = false;
+			item_4_effect = false;
+			item_5_effect = false;
 		}
 		//跳出來next level 畫面
 		if (success.IsAnimation() == true)  
@@ -434,8 +449,8 @@ void CGameStateRun::shoot_claw_by_angle()
 	if (!hit) {
 		if (clock() - last_time_claw >= 1 && claw_length < 90)
 		{
-			claw_x = claw_x + (int)(sin(angles[key_down_index] * rad) * 8);
-			claw_y = claw_y + (int)(cos(angles[key_down_index] * rad) * 8);
+			claw_x = claw_x + (int)(sin(angles[key_down_index] * rad) * 8 );
+			claw_y = claw_y + (int)(cos(angles[key_down_index] * rad) * 8 );
 			clawhead.SetTopLeft(claw_x, claw_y);
 			hitbox.SetTopLeft(claw_x + 43 - 21 + (int)(11 * (sin(angles[key_down_index] * rad))), claw_y + 5 + (int)(11 * (cos(angles[key_down_index] * rad))));
 
@@ -455,7 +470,8 @@ void CGameStateRun::pull_claw()
 {
 	int angles[72] = { 70, 70, 69, 68, 66, 64, 62, 59, 55, 51, 47, 42, 37, 32, 27, 21, 15, 9, 3, -2, -8, -15, -20, -26, -32, -37, -42, -46, -50, -54, -57, -60, -63, -65, -67, -68, -68, -68, -68, -67, -66, -65, -63, -60, -57, -53, -50, -45, -40, -35, -29, -24, -18, -12, -6, 0, 5, 11, 17, 23, 29, 34, 39, 44, 49, 53, 57, 60, 63, 65, 67, 69 };
 
-	if (clock() - last_time_claw >= (1*weight) && claw_length > 0 )
+	int s = item_2_effect ? 20 : 1;
+	if (clock() - last_time_claw >= (1*weight/s) && claw_length > 0 )
 	{
 		claw_length = claw_length - 1;
 		clawhead.SetTopLeft(claw_xway[claw_length], claw_yway[claw_length]);
@@ -484,13 +500,25 @@ void CGameStateRun::throw_bomb()
 	if (hit && bomb_is_throw) {
 		if (clock() - last_time_bomb >= 1)
 		{
-			bomb_x = bomb_x + (int)(sin(angles[key_down_index] * rad) * 8);
-			bomb_y = bomb_y + (int)(cos(angles[key_down_index] * rad) * 8);
+			bomb_x = bomb_x + (int)(sin(angles[key_down_index] * rad) * 16);
+			bomb_y = bomb_y + (int)(cos(angles[key_down_index] * rad) * 16);
 			bomb.SetTopLeft(bomb_x, bomb_y);
 
 			last_time_bomb = clock();
 		}
+		if (bomb.GetTop() >= clawhead.GetTop()) {
+			reset_bomb();
+			reset_claw();
+		}
 	}
+}
+
+void CGameStateRun::reset_bomb()
+{
+	bomb_is_throw = false;
+	bomb_x = 507;
+	bomb_y = 90;
+	bomb.SetTopLeft(bomb_x, bomb_y);
 }
 
 
@@ -567,6 +595,7 @@ void CGameStateRun::gameover_and_restart()
 			timer = 61;
 			phase = 1;
 			goal_money = 650;
+			bomb_num = 2;
 			return_game = false;
 		}
 
@@ -722,6 +751,9 @@ void CGameStateRun::show_text_by_phase() {
 	CTextDraw::Print(pDC, 138, 62, std::to_string(goal_money));
 	CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(255, 153, 0), 15000);
 	CTextDraw::Print(pDC, 138, 60, std::to_string(goal_money));
+
+	CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(0, 0, 0), 15000);
+	CTextDraw::Print(pDC, 700, 60, std::to_string(bomb_num));
 	
 	CDDraw::ReleaseBackCDC();
 	
@@ -925,8 +957,12 @@ void CGameStateRun::show_mines()
 					mine12[i].SetTopLeft(-100, -100);
 					hit = true;
 
-
-					money = money + 99;
+					if (clock() % 3 == 0) {
+						money = money + clock() % 800;
+					}
+					else {
+						money = money + clock() % 800;
+					}
 					weight = weight_of_mine[10];
 				}
 				mine12[i].ShowBitmap();

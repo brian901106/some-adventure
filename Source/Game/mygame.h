@@ -107,30 +107,42 @@ namespace game_framework {
 		int action_state = 1;			//action_state = 1 為正常動作??????
 		int key_down_index = -100;      //紀錄按下(down key)時的Index，預設為-100
 		bool claw_is_ready = true;		//當claw_is_ready = true時才可以出爪子
-		bool last_time_claw;
-		int claw_x = 514;
-		int claw_y = 90;
-		int claw_length = 0;
+		int last_time_claw;				//紀錄上次更新爪子位置的時間
+		int claw_x = 507;				//紀錄爪子的Left，節省運算時間
+		int claw_y = 90;				//紀錄爪子的Top，節省運算時間
+		int bomb_x = 507;
+		int bomb_y = 90;
+		int claw_xway[90];				//紀錄爪子shoot出去時，每桢所在的Left，回程收爪時可以call出來
+		int claw_yway[90];				//紀錄爪子shoot出去時，每桢所在的Top，回程收爪時可以call出來
+		int claw_length = 0;			//紀錄爪子目前長度
+		bool hit = false;				//爪子是否有抓到東西
+		int weight = 1;					//用來表示抓到礦的重量，越重爪子速度越慢 ,預設為1
+		int weight_of_mine[13] = { 100,150,200,400,50,50,400,0,80,50,50,50,300};
+		//金礦(小)/金礦(中)/金礦(大)/金礦(巨大)/豬/骨頭/石頭(大)/爆炸桶/鑽石豬/鑽石/道具袋/骷顱頭/石頭(中)
 
+		int last_time_bomb;
+		bool bomb_is_throw = false;
 
 		/*這四個參數是用來控制goal page的淡出效果*/
 		int last_time_fade;				//用來記錄clock()上次的取樣時間of fade
 		int fade_rate = 1;				//淡出速率
 		int color_now1[3];				//記錄RGB(黃色)
 		int color_now2[3];				//記錄RGB(綠色)
-
 		int last_time;					//用來記錄clock()上次的取樣時間
 		int timer  = 61;				//每關的預設時間為timer-1
-		bool item_is_bought_1 = false;		//這啥 許君豪看到請解釋，沈志謙這是確認做愛位置是否正確，然後鈞打錯了，我有點忘記當初打什麼鬼，但好像可以刪掉??，我試過沒有什麼差
+										//這啥 許君豪看到請解釋，沈志謙這是確認做愛位置是否正確，然後鈞打錯了，我有點忘記當初打什麼鬼，但好像可以刪掉??，我試過沒有什麼差
+		
+		/*以下參數是用來控制商店商品*/
+		bool item_is_bought_1 = false;		
 		bool item_is_bought_2 = false;
 		bool item_is_bought_3 = false;
 		bool item_is_bought_4 = false;
 		bool item_is_bought_5 = false;
 		bool next_level_button_clicked = false;
 		bool return_game = false;
-		int item_in_stock_in_level[5] = { 0, 0, 0 ,0, 0 };
+		int item_in_stock_in_level[5] = { 0, 0, 0 ,0, 0 };	
 
-		int mine_max_num[13] = { 4,3,10,2,10,10,2,10,10,10,2,10,2 };	//各種礦在遊戲中的最大值(用來控制loadbitmap數量)
+		int mine_max_num[13] = { 4,3,10,2,10,10,2,10,10,10,2,10,2};	//各種礦在遊戲中的最大值(用來控制loadbitmap數量)
 
 		//第一關的參數
 		int mine_num_L1_1[13] = { 4,3,0,2,0,0,2,0,0,0,2,0,2 };
@@ -148,10 +160,9 @@ namespace game_framework {
 		int exist14[2] = { 1,1 };
 		int exist4[1] = { 0 }, exist6[1] = { 0 }, exist7[1] = { 0 }, exist9[1] = { 0 }, exist10[1] = { 0 }, exist11[1] = { 0 }, exist13[1] = { 0 };
 		
-
 		int money = 0;
 		int goal_money = 650;
-		//int goal_money_of_level[10] = { 600,1000 };
+
 		bool gameover = false;			// = true 時播放結束動畫並返回主頁面
 
 		CMovingBitmap goal;
@@ -164,6 +175,7 @@ namespace game_framework {
 		CMovingBitmap claw;
 		CMovingBitmap clawhead;
 		CMovingBitmap hitbox;
+		CMovingBitmap bomb;
 
 		CMovingBitmap mine2[4];			//金礦(小)
 		CMovingBitmap mine3[3];			//金礦(中)
@@ -198,18 +210,13 @@ namespace game_framework {
 		CMovingBitmap item_4;			//商店商品:石頭書
 		CMovingBitmap item_5;			//商店商品:咖啡
 
-		/*
-		CMovingBitmap goal_650;
-		CMovingBitmap goal_1195;
-		CMovingBitmap goal_2010;
-		CMovingBitmap goal_3095;
-		CMovingBitmap goal_4450;
-		*/
 
 		//CAudio goal_audio;
 		void show_image_by_phase();
 		void shoot_claw_by_angle();
+		void pull_claw();
 		void reset_claw();
+		void throw_bomb();
 		void gameover_and_restart();
 		void show_text_by_phase();
 		void show_text_of_goals();

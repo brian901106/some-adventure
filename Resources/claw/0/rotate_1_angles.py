@@ -49,8 +49,8 @@ alpha_t = gcurve(graph=gd, color=color.red)
  2.5 sampling
 """
 def sampling(now_time,last_time):
-
-    if (now_time - last_time > 0.08):
+    #0.08 55 0.05
+    if (now_time - last_time > 0.05):
         degree = theta*(180/pi)
         # print("角度:",degree)
         store_to_list(degree+1)

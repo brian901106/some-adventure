@@ -1,7 +1,7 @@
 dir = "resources/claw/0/rotate_new/"
 ext = ".bmp"
 start = 1
-end = 56
+end = 78
 result = ""
 
 #front_include = "{"

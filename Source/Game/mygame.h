@@ -116,13 +116,25 @@ namespace game_framework {
 		int claw_yway[90];				//紀錄爪子shoot出去時，每桢所在的Top，回程收爪時可以call出來
 		int claw_length = 0;			//紀錄爪子目前長度
 		bool hit = false;				//爪子是否有抓到東西
+		bool miss = false;				//爪子是否空抓
 		int weight = 1;					//用來表示抓到礦的重量，越重爪子速度越慢 ,預設為1
 		int weight_of_mine[13] = { 100,150,200,400,50,50,400,0,80,50,50,50,300};
+		int money_gain = 0;				//用來表示現在抓到的金礦的價值
+		int money_of_mine[13] = { 50,150,300,500,2,15,20,2,802,800,-1,4,10 };
 		//金礦(小)/金礦(中)/金礦(大)/金礦(巨大)/豬/骨頭/石頭(大)/爆炸桶/鑽石豬/鑽石/道具袋/骷顱頭/石頭(中)
+		//道具袋價值為-1，因此在pull_claw()會進入其他運算，以計算價值
 
-		int last_time_bomb;
-		int bomb_num = 2;
-		bool bomb_is_throw = false;
+		/*這三個參數是用來控制獲得金錢的文字*/
+		bool money_gain_flag = false;			//當flag==true顯示money_gain_text
+		int last_time_money_gain;				//紀錄上次顯示money_gain_text的時間
+		int timer_of_money_gain_text = 50;		//顯示money_gain_text的時間長短
+		int font[3];							//x,y,size
+		int new_money = 0;
+		
+		/*這三個參數是用來控制炸藥飛出去的時間位置和炸藥數量*/
+		int last_time_bomb;						//紀錄上次bomb更新的時間
+		int bomb_num = 2;						//bomb數量
+		bool bomb_is_throw = false;				//當flag==true時丟炸藥
 
 		/*這四個參數是用來控制goal page的淡出效果*/
 		int last_time_fade;				//用來記錄clock()上次的取樣時間of fade
@@ -227,6 +239,7 @@ namespace game_framework {
 		void gameover_and_restart();
 		void show_text_by_phase();
 		void show_text_of_goals();
+		void show_text_of_money_gain();
 		void set_goal_money();
 		void goto_next_stage();
 		void reset_mines();

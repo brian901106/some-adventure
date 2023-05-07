@@ -160,7 +160,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	}
 	if (nChar == VK_UP) {
 		
-		if (bomb_num >= 1){
+		if (bomb_num >= 1 && hit){
 			bomb_is_throw = true;
 			action_state = 2;
 			bomb_num = bomb_num - 1;
@@ -171,8 +171,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		sub_phase = 3;
 	}
 	if (nChar == VK_LEFT) {
-		money = money + 100;
-		timer = timer - 8;
+
 	}
 	if (nChar == VK_SPACE) {
 		item_2_effect = true;
@@ -310,6 +309,14 @@ void CGameStateRun::OnShow()
 		if (hit == true) {
 			pull_claw();
 		}
+		if (miss == true) {
+			weight = 0;
+			money_gain = 0;
+			pull_claw();
+		}
+		if (money_gain_flag == true) {
+			show_text_of_money_gain();
+		}
 		if (bomb_is_throw == true) {
 			bomb.ShowBitmap();
 			throw_bomb();
@@ -446,7 +453,7 @@ void CGameStateRun::shoot_claw_by_angle()
 {
 	int angles[72] = { 70, 70, 69, 68, 66, 64, 62, 59, 55, 51, 47, 42, 37, 32, 27, 21, 15, 9, 3, -2, -8, -15, -20, -26, -32, -37, -42, -46, -50, -54, -57, -60, -63, -65, -67, -68, -68, -68, -68, -67, -66, -65, -63, -60, -57, -53, -50, -45, -40, -35, -29, -24, -18, -12, -6, 0, 5, 11, 17, 23, 29, 34, 39, 44, 49, 53, 57, 60, 63, 65, 67, 69};
 
-	if (!hit) {
+	if (!hit && !miss) {
 		if (clock() - last_time_claw >= 1 && claw_length < 90)
 		{
 			claw_x = claw_x + (int)(sin(angles[key_down_index] * rad) * 8 );
@@ -461,7 +468,7 @@ void CGameStateRun::shoot_claw_by_angle()
 			last_time_claw = clock();
 		}
 		else if(claw_length == 90){
-			reset_claw();
+			miss = true;
 		}
 	}
 }
@@ -470,14 +477,27 @@ void CGameStateRun::pull_claw()
 {
 	int angles[72] = { 70, 70, 69, 68, 66, 64, 62, 59, 55, 51, 47, 42, 37, 32, 27, 21, 15, 9, 3, -2, -8, -15, -20, -26, -32, -37, -42, -46, -50, -54, -57, -60, -63, -65, -67, -68, -68, -68, -68, -67, -66, -65, -63, -60, -57, -53, -50, -45, -40, -35, -29, -24, -18, -12, -6, 0, 5, 11, 17, 23, 29, 34, 39, 44, 49, 53, 57, 60, 63, 65, 67, 69 };
 
+	int miss_speedup = miss ? 1 : 0;
 	int s = item_2_effect ? 20 : 1;
 	if (clock() - last_time_claw >= (1*weight/s) && claw_length > 0 )
 	{
-		claw_length = claw_length - 1;
+		claw_length = claw_length - 1 - miss_speedup;
 		clawhead.SetTopLeft(claw_xway[claw_length], claw_yway[claw_length]);
 		last_time_claw = clock();
 	}
 	else if (claw_length == 0){
+		if (money_gain < 0) {
+			if (clock() % 3 == 0) {
+				money_gain = clock() % 800;
+			}
+			else {
+				money_gain = clock() % 800;
+			}
+		}
+		if (money_gain > 0) {
+			money_gain_flag = true;
+		}
+		money = money + money_gain;
 		reset_claw();
 	}
 }
@@ -491,26 +511,27 @@ void CGameStateRun::reset_claw()
 	hitbox.SetTopLeft(claw_x, claw_y);
 	claw_is_ready = true;
 	hit = false;
+	miss = false;
 }
 
 void CGameStateRun::throw_bomb() 
 {
 	int angles[72] = { 70, 70, 69, 68, 66, 64, 62, 59, 55, 51, 47, 42, 37, 32, 27, 21, 15, 9, 3, -2, -8, -15, -20, -26, -32, -37, -42, -46, -50, -54, -57, -60, -63, -65, -67, -68, -68, -68, -68, -67, -66, -65, -63, -60, -57, -53, -50, -45, -40, -35, -29, -24, -18, -12, -6, 0, 5, 11, 17, 23, 29, 34, 39, 44, 49, 53, 57, 60, 63, 65, 67, 69 };
 
-	if (hit && bomb_is_throw) {
-		if (clock() - last_time_bomb >= 1)
-		{
-			bomb_x = bomb_x + (int)(sin(angles[key_down_index] * rad) * 16);
-			bomb_y = bomb_y + (int)(cos(angles[key_down_index] * rad) * 16);
-			bomb.SetTopLeft(bomb_x, bomb_y);
 
-			last_time_bomb = clock();
-		}
-		if (bomb.GetTop() >= clawhead.GetTop()) {
-			reset_bomb();
-			reset_claw();
-		}
+	if (clock() - last_time_bomb >= 1)
+	{
+		bomb_x = bomb_x + (int)(sin(angles[key_down_index] * rad) * 16);
+		bomb_y = bomb_y + (int)(cos(angles[key_down_index] * rad) * 16);
+		bomb.SetTopLeft(bomb_x, bomb_y);
+
+		last_time_bomb = clock();
 	}
+	if (bomb.GetTop() >= clawhead.GetTop()) {
+		reset_bomb();
+		reset_claw();
+	}
+
 }
 
 void CGameStateRun::reset_bomb()
@@ -591,6 +612,7 @@ void CGameStateRun::gameover_and_restart()
 			fail.SetFrameIndexOfBitmap(0);
 			goal.SetFrameIndexOfBitmap(0);
 			money = 0;
+			new_money = 0;
 			sub_phase = 1;
 			timer = 61;
 			phase = 1;
@@ -615,13 +637,11 @@ void CGameStateRun::goto_next_stage()
 	next_level_button_clicked = false;
 	set_goal_money();
 
-	claw_length = 0;
-	claw_x = 507;
-	claw_y = 90;
-	clawhead.SetTopLeft(claw_x, claw_y);
-	hitbox.SetTopLeft(claw_x, claw_y);
-	claw_is_ready = true;
+	new_money = money;
+	timer_of_money_gain_text = 50;
+	money_gain_flag = false;
 
+	reset_claw();
 	reset_mines();
 
 }
@@ -743,9 +763,9 @@ void CGameStateRun::show_text_by_phase() {
 	CTextDraw::Print(pDC, 1033, 58, std::to_string(phase));
 
 	CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(0, 0, 0), 15000);
-	CTextDraw::Print(pDC, 140, 12, std::to_string(money));
+	CTextDraw::Print(pDC, 140, 12, std::to_string(new_money));
 	CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(0, 153, 0), 15000);
-	CTextDraw::Print(pDC, 140, 10, std::to_string(money));
+	CTextDraw::Print(pDC, 140, 10, std::to_string(new_money));
 
 	CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(0, 0, 0), 15000);
 	CTextDraw::Print(pDC, 138, 62, std::to_string(goal_money));
@@ -755,6 +775,7 @@ void CGameStateRun::show_text_by_phase() {
 	CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(0, 0, 0), 15000);
 	CTextDraw::Print(pDC, 700, 60, std::to_string(bomb_num));
 	
+
 	CDDraw::ReleaseBackCDC();
 	
 }
@@ -813,6 +834,45 @@ void CGameStateRun::show_text_of_goals() {
 	CDDraw::ReleaseBackCDC();
 }
 
+void CGameStateRun::show_text_of_money_gain() {
+	CDC *pDC = CDDraw::GetBackCDC();
+	
+	int p1[3] = { 507,90,1 };
+	int p2[3] = { 300,20,35 };
+	int p3[3] = { 140,10,25 };
+	
+	if (clock() - last_time_money_gain >= 0)
+	{
+		timer_of_money_gain_text = timer_of_money_gain_text - 1;
+
+		if (timer_of_money_gain_text > 40) {
+			font[0] = (int)((p1[0] * (timer_of_money_gain_text - 40) + (50 - timer_of_money_gain_text)*p2[0]) / 10);
+			font[1] = (int)((p1[1] * (timer_of_money_gain_text - 40) + (50 - timer_of_money_gain_text)*p2[1]) / 10);
+			font[2] = (int)((p1[2] * (timer_of_money_gain_text - 40) + (50 - timer_of_money_gain_text)*p2[2]) / 10);
+		}
+		if (timer_of_money_gain_text > 0 && timer_of_money_gain_text < 20) {
+			font[0] = (int)((p2[0] * (timer_of_money_gain_text - 0) + (20 - timer_of_money_gain_text)*p3[0]) / 20);
+			font[1] = (int)((p2[1] * (timer_of_money_gain_text - 0) + (20 - timer_of_money_gain_text)*p3[1]) / 20);
+			font[2] = (int)((p2[2] * (timer_of_money_gain_text - 0) + (20 - timer_of_money_gain_text)*p3[2]) / 20);
+		}
+		
+
+		if (timer_of_money_gain_text == 0) {
+			new_money = money;
+			timer_of_money_gain_text = 50;
+			money_gain_flag = false;
+		}
+		last_time_money_gain = clock();
+	}
+	
+	CTextDraw::ChangeFontLog(pDC, font[2], "新細明體", RGB(0, 0, 0), 15000);
+	CTextDraw::Print(pDC, font[0], font[1]+2, std::to_string(money_gain));
+	CTextDraw::ChangeFontLog(pDC, font[2], "新細明體", RGB(0, 153, 0), 15000);
+	CTextDraw::Print(pDC, font[0], font[1], std::to_string(money_gain));
+
+
+	CDDraw::ReleaseBackCDC();
+}
 
 void CGameStateRun::load_mines()
 {
@@ -882,11 +942,11 @@ void CGameStateRun::show_mines()
 			if (exist2[i] == 1) {
 				if (mine2[i].IsOverlap(hitbox, mine2[i])) {
 					exist2[i] = 0;
-					mine2[i].SetTopLeft(-100, -100);
+					mine2[i].SetTopLeft(-1000, -1000);
 					hit = true;
 
 
-					money = money + 50;
+					money_gain = money_of_mine[0];
 					weight = weight_of_mine[0];
 				}
 				mine2[i].ShowBitmap();
@@ -900,11 +960,11 @@ void CGameStateRun::show_mines()
 			if (exist3[i] == 1) {
 				if (mine3[i].IsOverlap(hitbox, mine3[i])) {
 					exist3[i] = 0;
-					mine3[i].SetTopLeft(-100, -100);
+					mine3[i].SetTopLeft(-1000, -1000);
 					hit = true;
 
 
-					money = money + 150;
+					money_gain = money_of_mine[1];
 					weight = weight_of_mine[1];
 				}
 				mine3[i].ShowBitmap();
@@ -918,11 +978,11 @@ void CGameStateRun::show_mines()
 			if (exist5[i] == 1) {
 				if (mine5[i].IsOverlap(hitbox, mine5[i])) {
 					exist5[i] = 0;
-					mine5[i].SetTopLeft(-100, -100);
+					mine5[i].SetTopLeft(-1000, -1000);
 					hit = true;
 
 
-					money = money + 500;
+					money_gain = money_of_mine[3];
 					weight = weight_of_mine[3];
 				}
 				mine5[i].ShowBitmap();
@@ -936,11 +996,11 @@ void CGameStateRun::show_mines()
 			if (exist8[i] == 1) {
 				if (mine8[i].IsOverlap(hitbox, mine8[i])) {
 					exist8[i] = 0;
-					mine8[i].SetTopLeft(-100, -100);
+					mine8[i].SetTopLeft(-1000, -1000);
 					hit = true;
 
 
-					money = money + 20;
+					money_gain = money_of_mine[6];
 					weight = weight_of_mine[6];
 				}
 				mine8[i].ShowBitmap();
@@ -954,15 +1014,11 @@ void CGameStateRun::show_mines()
 			if (exist12[i] == 1) {
 				if (mine12[i].IsOverlap(hitbox, mine12[i])) {
 					exist12[i] = 0;
-					mine12[i].SetTopLeft(-100, -100);
+					mine12[i].SetTopLeft(-1000, -1000);
 					hit = true;
 
-					if (clock() % 3 == 0) {
-						money = money + clock() % 800;
-					}
-					else {
-						money = money + clock() % 800;
-					}
+
+					money_gain = money_of_mine[10];
 					weight = weight_of_mine[10];
 				}
 				mine12[i].ShowBitmap();
@@ -976,11 +1032,11 @@ void CGameStateRun::show_mines()
 			if (exist14[i] == 1) {
 				if (mine14[i].IsOverlap(hitbox, mine14[i])) {
 					exist14[i] = 0;
-					mine14[i].SetTopLeft(-100, -100);
+					mine14[i].SetTopLeft(-1000, -1000);
 					hit = true;
 
 
-					money = money + 10;
+					money_gain = money_of_mine[12];
 					weight = weight_of_mine[12];
 				}
 				mine14[i].ShowBitmap();

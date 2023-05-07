@@ -1,0 +1,11 @@
+After you have grabbed onto something with your claw, press the up arrow to throw a piece of dynamite at it and blow it up.
+
+Strength drink. The Miner will reel up objects a little faster on the next level. The drink only lasts for one level.
+
+Lucky Clover. This will increase the chances of getting something good out of the grab bags on the next level. This is only good for one level.
+
+Rock Collectors book. Rocks will be worth three times as much money on the next level. This is only good for one level.
+
+Diamond Polish. Durring the next level diamonds will be worth more money. Only good for one level.
+
+253,252,1

@@ -1,7 +1,7 @@
-dir = "resources/claw/0/rotate_new/"
+dir = "resources/number_of_bombs/"
 ext = ".bmp"
 start = 1
-end = 78
+end = 10
 result = ""
 
 #front_include = "{"

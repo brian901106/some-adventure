@@ -108,8 +108,9 @@ namespace game_framework {
 		int key_down_index = -100;      //紀錄按下(down key)時的Index，預設為-100
 		bool claw_is_ready = true;		//當claw_is_ready = true時才可以出爪子
 		int last_time_claw;				//紀錄上次更新爪子位置的時間
-		int claw_x = 507;				//紀錄爪子的Left，節省運算時間
-		int claw_y = 90;				//紀錄爪子的Top，節省運算時間
+		int angles[72] = { 70, 70, 69, 68, 66, 64, 62, 59, 55, 51, 47, 42, 37, 32, 27, 21, 15, 9, 3, -2, -8, -15, -20, -26, -32, -37, -42, -46, -50, -54, -57, -60, -63, -65, -67, -68, -68, -68, -68, -67, -66, -65, -63, -60, -57, -53, -50, -45, -40, -35, -29, -24, -18, -12, -6, 0, 5, 11, 17, 23, 29, 34, 39, 44, 49, 53, 57, 60, 63, 65, 67, 69 };
+		int claw_x = 507;				//紀錄爪子的Left
+		int claw_y = 90;				//紀錄爪子的Top
 		int bomb_x = 507;
 		int bomb_y = 90;
 		int claw_xway[90];				//紀錄爪子shoot出去時，每桢所在的Left，回程收爪時可以call出來
@@ -120,23 +121,25 @@ namespace game_framework {
 		int weight = 1;					//用來表示抓到礦的重量，越重爪子速度越慢 ,預設為1
 		int weight_of_mine[13] = { 100,150,200,400,50,50,400,0,80,50,50,50,300};
 		int money_gain = 0;				//用來表示現在抓到的金礦的價值
-		int money_of_mine[13] = { 50,150,300,500,2,15,20,2,802,800,-1,4,10 };
+		int money_of_mine[13] = { 50,100,250,500,2,7,20,1,602,600,-1,20,11 };
 		//金礦(小)/金礦(中)/金礦(大)/金礦(巨大)/豬/骨頭/石頭(大)/爆炸桶/鑽石豬/鑽石/道具袋/骷顱頭/石頭(中)
 		//道具袋價值為-1，因此在pull_claw()會進入其他運算，以計算價值
 
-		/*這三個參數是用來控制獲得金錢的文字*/
+		/*這些參數是用來控制獲得金錢的文字*/
 		bool money_gain_flag = false;			//當flag==true顯示money_gain_text
 		int last_time_money_gain;				//紀錄上次顯示money_gain_text的時間
 		int timer_of_money_gain_text = 50;		//顯示money_gain_text的時間長短
 		int font[3];							//x,y,size
-		int new_money = 0;
+		int new_money = 0;						//顯示的金錢
+		int money = 0;							//實際的金錢
+		int goal_money = 650;					//過關要求
 		
 		/*這三個參數是用來控制炸藥飛出去的時間位置和炸藥數量*/
 		int last_time_bomb;						//紀錄上次bomb更新的時間
 		int bomb_num = 2;						//bomb數量
 		bool bomb_is_throw = false;				//當flag==true時丟炸藥
 
-		/*這四個參數是用來控制goal page的淡出效果*/
+		/*這幾個參數是用來控制goal page的淡出效果*/
 		int last_time_fade;				//用來記錄clock()上次的取樣時間of fade
 		int fade_rate = 1;				//淡出速率
 		int color_now1[3];				//記錄RGB(黃色)
@@ -151,35 +154,38 @@ namespace game_framework {
 		bool item_is_bought_3 = false;		//幸運草
 		bool item_is_bought_4 = false;		//石頭書
 		bool item_is_bought_5 = false;		//鑽石打磨
+		int item_price[5] = { 241, 0, 48, 45, 290 };
+		int item_mouse_on = -1;
 		bool next_level_button_clicked = false;
 		bool return_game = false;
 		int item_in_stock_in_level[5] = { 0, 0, 0 ,0, 0 };
 
 		bool item_2_effect = false;			//力量藥水
-		bool item_3_effect = false;			//幸運草
-		bool item_4_effect = false;			//石頭書
-		bool item_5_effect = false;			//鑽石打磨
+		bool item_3_effect = false;			//幸運草	道具袋掉更好
+		bool item_4_effect = false;			//石頭書	石頭3倍價值
+		bool item_5_effect = false;			//鑽石打磨 鑽石*1.5價值
 
-		int mine_max_num[13] = { 4,3,10,2,10,10,2,10,10,10,2,10,2};	//各種礦在遊戲中的最大值(用來控制loadbitmap數量)
 
-		//第一關的參數
-		int mine_num_L1_1[13] = { 4,3,0,2,0,0,2,0,0,0,2,0,2 };
-		int location2[4][2] = { {50,200},{100,300},{150,400},{200,500} };	//金礦(小)
-		int exist2[4] = { 1,1,1,1 };
-		int location3[3][2] = { {150,200},{200,300},{250,400} };	//金礦(中)
-		int exist3[3] = { 1,1,1};
-		int location5[2][2] = { {250,300},{300,400}};	//金礦(巨大)
-		int exist5[2] = { 1,1 };
-		int location8[3][2] = { {350,350},{400,450} };	//石頭(大)
-		int exist8[2] = { 1,1 };
-		int location12[3][2] = { {450,400},{500,450} }; //道具袋
-		int exist12[2] = { 1,1 };
-		int location14[3][2] = { {550,300},{600,400} };	//石頭(中)
-		int exist14[2] = { 1,1 };
-		int exist4[1] = { 0 }, exist6[1] = { 0 }, exist7[1] = { 0 }, exist9[1] = { 0 }, exist10[1] = { 0 }, exist11[1] = { 0 }, exist13[1] = { 0 };
+		int mine_max_num[13] = { 10,10,10,10,10,10,10,10,10,10,10,10,10 };	
+		//各種礦在遊戲中的最大值(用來控制loadbitmap數量)
+		//記得一開始宣告的數量也要一併更動
+
+		//每關的礦數量
+		//金礦(小)/金礦(中)/金礦(大)/金礦(巨大)/豬/骨頭/石頭(大)/爆炸桶/鑽石豬/鑽石/道具袋/骷顱頭/石頭(中)
+		int mine_num_1[10][13] = {  { 4,3,0,2,0,0,2,0,0,0,2,0,2 },		//第1關
+									{ 7,2,0,2,0,0,4,0,0,1,1,0,3 },		//第2關
+									{ 4,3,0,1,0,0,4,0,0,1,1,0,3 },		//第3關
+									{ 4,1,2,0,1,0,3,0,0,0,4,0,1 },		//第4關
+									{ 4,3,1,2,3,0,3,0,0,4,1,0,1 },		//第5關
+									{ 7,3,0,1,0,0,3,0,2,0,1,0,3 },		//第6關
+									{ 2,0,2,3,6,2,0,2,0,0,1,2,0 },		//第7關
+									{ 0,0,0,0,0,0,0,5,3,8,2,0,0 },		//第8關
+									{ 1,0,0,2,0,1,0,7,4,7,3,1,0 },		//第9關
+									{ 6,5,5,5,0,0,5,0,0,0,0,0,0 } };	//第10關
+
+		int exist2[10], exist3[10], exist4[10], exist5[10], exist6[10], exist7[10], exist8[10], exist9[10], exist10[10], exist11[10], exist12[10], exist13[10], exist14[10];
 		
-		int money = 0;
-		int goal_money = 650;
+
 
 		bool gameover = false;			// = true 時播放結束動畫並返回主頁面
 
@@ -189,25 +195,27 @@ namespace game_framework {
 		CMovingBitmap miner;
 		CMovingBitmap miner_t;
 		CMovingBitmap miner_s;
+		CMovingBitmap wood;
 
 		CMovingBitmap claw;
 		CMovingBitmap clawhead;
 		CMovingBitmap hitbox;
 		CMovingBitmap bomb;
+		CMovingBitmap number_of_bombs;
 
-		CMovingBitmap mine2[4];			//金礦(小)
-		CMovingBitmap mine3[3];			//金礦(中)
+		CMovingBitmap mine2[10];			//金礦(小)
+		CMovingBitmap mine3[10];			//金礦(中)
 		CMovingBitmap mine4[10];			//金礦(大)
-		CMovingBitmap mine5[2];			//金礦(巨大)
+		CMovingBitmap mine5[10];			//金礦(巨大)
 		CMovingBitmap mine6[10];			//豬
 		CMovingBitmap mine7[10];			//骨頭
-		CMovingBitmap mine8[2];			//石頭(大)
+		CMovingBitmap mine8[10];			//石頭(大)
 		CMovingBitmap mine9[10];			//爆炸桶
 		CMovingBitmap mine10[10];			//鑽石豬
 		CMovingBitmap mine11[10];			//鑽石
-		CMovingBitmap mine12[2];			//道具袋
+		CMovingBitmap mine12[10];			//道具袋
 		CMovingBitmap mine13[10];			//骷顱頭
-		CMovingBitmap mine14[2];			//石頭(中)
+		CMovingBitmap mine14[10];			//石頭(中)
 
 		CMovingBitmap timer_bling;
 		CMovingBitmap exit;
@@ -242,8 +250,10 @@ namespace game_framework {
 		void show_text_of_money_gain();
 		void set_goal_money();
 		void goto_next_stage();
-		void reset_mines();
+		void set_mines();
+		void set_item_price();
 		void show_items();
+		void show_description_of_item();
 		void set_stock();
 		void load_mines();
 		void show_mines();

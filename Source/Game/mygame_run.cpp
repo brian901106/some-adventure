@@ -60,7 +60,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//goal_audio.Play(0, false);
 
 	/*第一關*/
-	background.LoadBitmapByString({ "resources/stage/1_1.bmp", "resources/stage/2_1.bmp" });
+	background.LoadBitmapByString({ "resources/stage/1_1.bmp", "resources/stage/2_1.bmp" ,"resources/stage/3_1.bmp", "resources/stage/4_1.bmp","resources/stage/5_1.bmp", "resources/stage/6_1.bmp" ,"resources/stage/7_1.bmp", "resources/stage/8_1.bmp", "resources/stage/9_1.bmp", "resources/stage/10_1.bmp" });
 	background.SetTopLeft(0, 0);
 
 	miner.LoadBitmapByString({ "resources/miner/normal/1.bmp","resources/miner/normal/2.bmp","resources/miner/normal/3.bmp","resources/miner/normal/4.bmp","resources/miner/normal/5.bmp" }, RGB(0, 0, 0));
@@ -69,9 +69,11 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	miner_t.LoadBitmapByString({ "resources/miner/throw/31.bmp","resources/miner/throw/32.bmp","resources/miner/throw/33.bmp","resources/miner/throw/34.bmp","resources/miner/throw/35.bmp","resources/miner/throw/36.bmp","resources/miner/throw/37.bmp" }, RGB(0, 0, 0));
 	miner_t.SetTopLeft(529, 23);
 	miner_t.SetAnimation(20, true);
-	miner_s.LoadBitmapByString({ "resources/miner/strength/1.bmp","resources/miner/strength/2.bmp","resources/miner/strength/3.bmp","resources/miner/strength/4.bmp","resources/miner/strength/5.bmp","resources/miner/strength/6.bmp","resources/miner/strength/7.bmp","resources/miner/strength/8.bmp","resources/miner/strength/9.bmp","resources/miner/strength/10.bmp","resources/miner/strength/11.bmp","resources/miner/strength/12.bmp","resources/miner/strength/13.bmp","resources/miner/strength/14.bmp","resources/miner/strength/15.bmp","resources/miner/strength/16.bmp" }, RGB(0, 0, 0));
-	miner_s.SetTopLeft(529, 33);
-	miner_s.SetAnimation(200, true);
+	miner_s.LoadBitmapByString({ "resources/miner/strength/11.bmp","resources/miner/strength/12.bmp","resources/miner/strength/13.bmp","resources/miner/strength/14.bmp","resources/miner/strength/15.bmp","resources/miner/strength/16.bmp" }, RGB(0, 0, 0));
+	miner_s.SetTopLeft(529, 18);
+	miner_s.SetAnimation(80, true);
+	wood.LoadBitmapByString({ "resources/miner/wood.bmp" }, RGB(0, 0, 0));
+	wood.SetTopLeft(519, 112);
 
 	claw.LoadBitmapByString({ "resources/claw/0/rotate_new/4.bmp","resources/claw/0/rotate_new/5.bmp","resources/claw/0/rotate_new/6.bmp","resources/claw/0/rotate_new/7.bmp","resources/claw/0/rotate_new/8.bmp","resources/claw/0/rotate_new/9.bmp","resources/claw/0/rotate_new/10.bmp","resources/claw/0/rotate_new/11.bmp","resources/claw/0/rotate_new/12.bmp","resources/claw/0/rotate_new/13.bmp","resources/claw/0/rotate_new/14.bmp","resources/claw/0/rotate_new/15.bmp","resources/claw/0/rotate_new/16.bmp","resources/claw/0/rotate_new/17.bmp","resources/claw/0/rotate_new/18.bmp","resources/claw/0/rotate_new/19.bmp","resources/claw/0/rotate_new/20.bmp","resources/claw/0/rotate_new/21.bmp","resources/claw/0/rotate_new/22.bmp","resources/claw/0/rotate_new/23.bmp","resources/claw/0/rotate_new/24.bmp","resources/claw/0/rotate_new/25.bmp","resources/claw/0/rotate_new/26.bmp","resources/claw/0/rotate_new/27.bmp","resources/claw/0/rotate_new/28.bmp","resources/claw/0/rotate_new/29.bmp","resources/claw/0/rotate_new/30.bmp","resources/claw/0/rotate_new/31.bmp","resources/claw/0/rotate_new/32.bmp","resources/claw/0/rotate_new/33.bmp","resources/claw/0/rotate_new/34.bmp","resources/claw/0/rotate_new/35.bmp","resources/claw/0/rotate_new/36.bmp","resources/claw/0/rotate_new/37.bmp","resources/claw/0/rotate_new/38.bmp","resources/claw/0/rotate_new/39.bmp","resources/claw/0/rotate_new/40.bmp","resources/claw/0/rotate_new/41.bmp","resources/claw/0/rotate_new/42.bmp","resources/claw/0/rotate_new/43.bmp","resources/claw/0/rotate_new/44.bmp","resources/claw/0/rotate_new/45.bmp","resources/claw/0/rotate_new/46.bmp","resources/claw/0/rotate_new/47.bmp","resources/claw/0/rotate_new/48.bmp","resources/claw/0/rotate_new/49.bmp","resources/claw/0/rotate_new/50.bmp","resources/claw/0/rotate_new/51.bmp","resources/claw/0/rotate_new/52.bmp","resources/claw/0/rotate_new/53.bmp","resources/claw/0/rotate_new/54.bmp","resources/claw/0/rotate_new/55.bmp","resources/claw/0/rotate_new/56.bmp","resources/claw/0/rotate_new/57.bmp","resources/claw/0/rotate_new/58.bmp","resources/claw/0/rotate_new/59.bmp","resources/claw/0/rotate_new/60.bmp","resources/claw/0/rotate_new/61.bmp","resources/claw/0/rotate_new/62.bmp","resources/claw/0/rotate_new/63.bmp","resources/claw/0/rotate_new/64.bmp","resources/claw/0/rotate_new/65.bmp","resources/claw/0/rotate_new/66.bmp","resources/claw/0/rotate_new/67.bmp","resources/claw/0/rotate_new/68.bmp","resources/claw/0/rotate_new/69.bmp","resources/claw/0/rotate_new/70.bmp","resources/claw/0/rotate_new/71.bmp","resources/claw/0/rotate_new/72.bmp","resources/claw/0/rotate_new/73.bmp","resources/claw/0/rotate_new/74.bmp","resources/claw/0/rotate_new/75.bmp" }, RGB(0, 0, 0));
 	claw.SetTopLeft(507, 90);
@@ -87,6 +89,9 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 
 	bomb.LoadBitmapByString({ "resources/claw/bomb.bmp" }, RGB(0, 0, 0));
 	bomb.SetTopLeft(507, 90);
+
+	number_of_bombs.LoadBitmapByString({ "resources/number_of_bombs/1.bmp","resources/number_of_bombs/2.bmp","resources/number_of_bombs/3.bmp","resources/number_of_bombs/4.bmp","resources/number_of_bombs/5.bmp","resources/number_of_bombs/6.bmp","resources/number_of_bombs/7.bmp","resources/number_of_bombs/8.bmp","resources/number_of_bombs/9.bmp" }, RGB(0, 0, 0));
+	number_of_bombs.SetTopLeft(687, 70);
 
 	exit.LoadBitmapByString({ "resources/exit/1.bmp", "resources/exit/2.bmp" }, RGB(0, 0, 0));
 	exit.SetTopLeft(800, 12);
@@ -171,13 +176,16 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		sub_phase = 3;
 	}
 	if (nChar == VK_LEFT) {
-
+		money = money + 650;
+		new_money = money;
+		timer = timer - 55;
 	}
 	if (nChar == VK_SPACE) {
 		item_2_effect = true;
+		item_4_effect = true;
+		action_state = 3;
 	}
 }
-
 
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
@@ -203,42 +211,58 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的
 		if (point.x >= item_1.GetLeft() &&
 			point.x <= item_1.GetLeft() + item_1.GetWidth() &&
 			point.y >= item_1.GetTop() &&
-			point.y <= item_1.GetTop() + item_1.GetHeight())
+			point.y <= item_1.GetTop() + item_1.GetHeight() &&
+			!item_is_bought_1 && item_in_stock_in_level[0] &&
+			money >= item_price[0])
 		{
 			item_is_bought_1 = true;
 			bomb_num = bomb_num + 1;
+			money = money - item_price[0];
+
 		}
 		if (point.x >= item_2.GetLeft() &&
 			point.x <= item_2.GetLeft() + item_2.GetWidth() &&
 			point.y >= item_2.GetTop() &&
-			point.y <= item_2.GetTop() + item_2.GetHeight())
+			point.y <= item_2.GetTop() + item_2.GetHeight() &&
+			!item_is_bought_2 && item_in_stock_in_level[1] &&
+			money >= item_price[1])
 		{
 			item_is_bought_2 = true;
 			item_2_effect = true;
+			money = money - item_price[1];
 		}
 		if (point.x >= item_3.GetLeft() &&
 			point.x <= item_3.GetLeft() + item_3.GetWidth() &&
 			point.y >= item_3.GetTop() &&
-			point.y <= item_3.GetTop() + item_3.GetHeight())
+			point.y <= item_3.GetTop() + item_3.GetHeight() &&
+			!item_is_bought_3 && item_in_stock_in_level[2] &&
+			money >= item_price[2])
 		{
 			item_is_bought_3 = true;
 			item_3_effect = true;
+			money = money - item_price[2];
 		}
 		if (point.x >= item_4.GetLeft() &&
 			point.x <= item_4.GetLeft() + item_4.GetWidth() &&
 			point.y >= item_4.GetTop() &&
-			point.y <= item_4.GetTop() + item_4.GetHeight())
+			point.y <= item_4.GetTop() + item_4.GetHeight() &&
+			!item_is_bought_4 && item_in_stock_in_level[3] &&
+			money >= item_price[3])
 		{
 			item_is_bought_4 = true;
 			item_4_effect = true;
+			money = money - item_price[3];
 		}
 		if (point.x >= item_5.GetLeft() &&
 			point.x <= item_5.GetLeft() + item_5.GetWidth() &&
 			point.y >= item_5.GetTop() &&
-			point.y <= item_5.GetTop() + item_5.GetHeight())
+			point.y <= item_5.GetTop() + item_5.GetHeight() &&
+			!item_is_bought_5 && item_in_stock_in_level[4] &&
+			money >= item_price[4])
 		{
 			item_is_bought_5 = true;
 			item_5_effect = true;
+			money = money - item_price[4];
 		}
 	}
 }
@@ -279,7 +303,48 @@ void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動
 		playagain_button.SetFrameIndexOfBitmap(0);
 	}
 		
-
+	if (sub_phase == 3 && !success.IsAnimation()) {
+		if (point.x >= item_1.GetLeft() &&
+			point.x <= item_1.GetLeft() + item_1.GetWidth() &&
+			point.y >= item_1.GetTop() &&
+			point.y <= item_1.GetTop() + item_1.GetHeight() &&
+			!item_is_bought_1 && item_in_stock_in_level[0])
+		{
+			item_mouse_on = 1;
+		}
+		if (point.x >= item_2.GetLeft() &&
+			point.x <= item_2.GetLeft() + item_2.GetWidth() &&
+			point.y >= item_2.GetTop() &&
+			point.y <= item_2.GetTop() + item_2.GetHeight()	&&
+			!item_is_bought_2 && item_in_stock_in_level[1])
+		{
+			item_mouse_on = 2;
+		}
+		if (point.x >= item_3.GetLeft() &&
+			point.x <= item_3.GetLeft() + item_3.GetWidth() &&
+			point.y >= item_3.GetTop() &&
+			point.y <= item_3.GetTop() + item_3.GetHeight() &&
+			!item_is_bought_3 && item_in_stock_in_level[2])
+		{
+			item_mouse_on = 3;
+		}
+		if (point.x >= item_4.GetLeft() &&
+			point.x <= item_4.GetLeft() + item_4.GetWidth() &&
+			point.y >= item_4.GetTop() &&
+			point.y <= item_4.GetTop() + item_4.GetHeight() &&
+			!item_is_bought_4 && item_in_stock_in_level[3])
+		{
+			item_mouse_on = 4;
+		}
+		if (point.x >= item_5.GetLeft() &&
+			point.x <= item_5.GetLeft() + item_5.GetWidth() &&
+			point.y >= item_5.GetTop() &&
+			point.y <= item_5.GetTop() + item_5.GetHeight() &&
+			!item_is_bought_5 && item_in_stock_in_level[4])
+		{
+			item_mouse_on = 5;
+		}
+	}
 	
 }
 
@@ -295,12 +360,11 @@ void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動
 void CGameStateRun::OnShow()
 {
 	show_image_by_phase();
-	if ((clock() % 1000) > 700 && timer <= 10 && timer > 0) {
-		timer_bling.ShowBitmap();
-	}
 
 	if (sub_phase == 2){
-		show_text_by_phase();
+		if ((clock() % 1000) > 700 && timer <= 10 && timer > 0) {
+			timer_bling.ShowBitmap();
+		}
 		if (claw_is_ready == false) {
 			clawhead.ShowBitmap();
 			hitbox.ShowBitmap();
@@ -323,6 +387,8 @@ void CGameStateRun::OnShow()
 		}
 	}
 
+	show_text_by_phase();
+
 	if (gameover == true) {
 		gameover_and_restart();
 	}
@@ -340,6 +406,7 @@ void CGameStateRun::show_image_by_phase() {
 		{
 			goal.ToggleAnimation();
 			fade_rate = 1;
+			set_mines();
 		}
 	}
 	if (sub_phase == 2) 
@@ -348,10 +415,15 @@ void CGameStateRun::show_image_by_phase() {
 		background.ShowBitmap();
 		exit.ShowBitmap();
 		show_mines();
-		if (claw_is_ready == true)
-		{
-			claw.ShowBitmap();
+		wood.ShowBitmap();
+		if (bomb_num > 9) {
+			number_of_bombs.SetFrameIndexOfBitmap(8);
 		}
+		else {
+			number_of_bombs.SetFrameIndexOfBitmap(bomb_num);
+		}
+		number_of_bombs.ShowBitmap();
+		
 
 		if (action_state == 1) 
 		{
@@ -375,6 +447,27 @@ void CGameStateRun::show_image_by_phase() {
 				miner_t.SetFrameIndexOfBitmap(0);
 			}
 		}
+		if (action_state == 3)
+		{
+			miner.UnshowBitmap();
+			miner_s.ShowBitmap();
+
+			if (miner_s.GetFrameIndexOfBitmap() == 0 && miner_s.IsAnimation() == false)
+			{
+				miner_s.ToggleAnimation();
+			}
+			if (miner_s.IsAnimation() == false && goal.GetFrameIndexOfBitmap() != 0)
+			{
+				miner_s.UnshowBitmap();
+				miner_s.ShowBitmap();
+				action_state = 1;
+				miner_s.SetFrameIndexOfBitmap(0);
+			}
+		}
+		if (claw_is_ready == true)
+		{
+			claw.ShowBitmap();
+		}
 		
 	}
 	if (sub_phase == 3)
@@ -382,6 +475,7 @@ void CGameStateRun::show_image_by_phase() {
 		if (success.GetFrameIndexOfBitmap() == 0 && success.IsAnimation() == false)
 		{
 			success.ToggleAnimation();
+			set_item_price();
 			/*初始化物品是否有被點擊*/
 			item_is_bought_1 = false;
 			item_is_bought_2 = false;
@@ -415,9 +509,10 @@ void CGameStateRun::show_image_by_phase() {
 			}
 			set_stock();
 			show_items();
+			show_description_of_item();
 		}
 		/*老闆開心*/
-		if (next_level_button_clicked == true && (item_is_bought_1 == true || item_is_bought_2 == true || item_is_bought_3 == true || item_is_bought_4 == true || item_is_bought_5 == true))
+		if (next_level_button_clicked == true && (item_is_bought_1 == true || item_is_bought_2 == true || item_is_bought_3 == true || item_is_bought_4 == true || item_is_bought_5 == true) )
 		{
 			owner_buy.ShowBitmap();
 			if (owner_buy.GetFrameIndexOfBitmap() == 0 && owner_buy.IsAnimation() == false)
@@ -440,6 +535,7 @@ void CGameStateRun::show_image_by_phase() {
 			if (owner_angry.GetFrameIndexOfBitmap() == 0 && owner_angry.IsAnimation() == false)
 			{
 				owner_angry.ToggleAnimation();
+
 			}
 		}
 		if ((owner_buy.IsAnimation() == false && owner_buy.GetFrameIndexOfBitmap() != 0) || (owner_angry.IsAnimation() == false && owner_angry.GetFrameIndexOfBitmap() != 0))
@@ -451,7 +547,6 @@ void CGameStateRun::show_image_by_phase() {
 
 void CGameStateRun::shoot_claw_by_angle()
 {
-	int angles[72] = { 70, 70, 69, 68, 66, 64, 62, 59, 55, 51, 47, 42, 37, 32, 27, 21, 15, 9, 3, -2, -8, -15, -20, -26, -32, -37, -42, -46, -50, -54, -57, -60, -63, -65, -67, -68, -68, -68, -68, -67, -66, -65, -63, -60, -57, -53, -50, -45, -40, -35, -29, -24, -18, -12, -6, 0, 5, 11, 17, 23, 29, 34, 39, 44, 49, 53, 57, 60, 63, 65, 67, 69};
 
 	if (!hit && !miss) {
 		if (clock() - last_time_claw >= 1 && claw_length < 90)
@@ -475,7 +570,6 @@ void CGameStateRun::shoot_claw_by_angle()
 
 void CGameStateRun::pull_claw()
 {
-	int angles[72] = { 70, 70, 69, 68, 66, 64, 62, 59, 55, 51, 47, 42, 37, 32, 27, 21, 15, 9, 3, -2, -8, -15, -20, -26, -32, -37, -42, -46, -50, -54, -57, -60, -63, -65, -67, -68, -68, -68, -68, -67, -66, -65, -63, -60, -57, -53, -50, -45, -40, -35, -29, -24, -18, -12, -6, 0, 5, 11, 17, 23, 29, 34, 39, 44, 49, 53, 57, 60, 63, 65, 67, 69 };
 
 	int miss_speedup = miss ? 1 : 0;
 	int s = item_2_effect ? 20 : 1;
@@ -486,14 +580,20 @@ void CGameStateRun::pull_claw()
 		last_time_claw = clock();
 	}
 	else if (claw_length == 0){
+		//抓到道具袋(money_gain為-1)，第一關第一次一定是力量藥，後面關卡1/2機率是力量藥，1/3是炸藥，剩下是錢
 		if (money_gain < 0) {
-			if (clock() % 3 == 0) {
-				money_gain = clock() % 800;
+			if ( phase == 1 && item_2_effect == false || ( (clock() % 6 <= 2) && item_2_effect == false)){
+				item_2_effect = true;
+				action_state = 3;
+			}
+			else if (clock() % 6 <= 1) {
+				bomb_num = bomb_num + 1;
 			}
 			else {
 				money_gain = clock() % 800;
 			}
 		}
+		//抓到其他，或是道具袋骰到錢
 		if (money_gain > 0) {
 			money_gain_flag = true;
 		}
@@ -516,8 +616,6 @@ void CGameStateRun::reset_claw()
 
 void CGameStateRun::throw_bomb() 
 {
-	int angles[72] = { 70, 70, 69, 68, 66, 64, 62, 59, 55, 51, 47, 42, 37, 32, 27, 21, 15, 9, 3, -2, -8, -15, -20, -26, -32, -37, -42, -46, -50, -54, -57, -60, -63, -65, -67, -68, -68, -68, -68, -67, -66, -65, -63, -60, -57, -53, -50, -45, -40, -35, -29, -24, -18, -12, -6, 0, 5, 11, 17, 23, 29, 34, 39, 44, 49, 53, 57, 60, 63, 65, 67, 69 };
-
 
 	if (clock() - last_time_bomb >= 1)
 	{
@@ -545,15 +643,32 @@ void CGameStateRun::reset_bomb()
 
 void CGameStateRun::set_stock()
 {
-	int stock_sheet[10][5] = {  {1,1,1,0,0},
-								{0,0,0,0,1},
-								{1,1,1,1,1},
-								{1,1,1,1,1},
-								{1,1,1,1,1},
-								{1,1,1,1,1}};
+	int stock_sheet[10][5] = {  {1,1,1,1,1},
+								{1,0,0,1,0},
+								{0,1,0,1,1},
+								{1,0,1,0,0},
+								{0,1,1,0,1},
+								{1,0,1,1,0},
+								{0,1,1,1,1},
+								{1,1,0,0,0},
+								{0,1,0,0,1},
+								{1,1,0,1,0} };
 
 	for (int item_num = 0; item_num < 5; item_num++) {
 		item_in_stock_in_level[item_num] = stock_sheet[phase-1][item_num];
+	}
+}
+
+void CGameStateRun::set_item_price() 
+{
+	for (int i = 0; i < 5; i++) {
+		item_price[i] = (rand() % 350) + 1;			//最低1元起跳，最高290，
+		if (phase <= 5 && item_price[i] > 290) {	//提高前五關商品低於100元的機率
+			item_price[i] = (rand() % 100) + 1;
+		}
+		else {
+			item_price[i] = (rand() % 290) + 1;
+		}
 	}
 }
 
@@ -594,7 +709,6 @@ void CGameStateRun::gameover_and_restart()
 	}
 
 	
-	
 	if (fail.IsAnimation() == false && fail.GetFrameIndexOfBitmap() != 0) {
 		exit_background.ShowBitmap();
 		playagain_button.ShowBitmap();
@@ -606,11 +720,14 @@ void CGameStateRun::gameover_and_restart()
 
 		if (return_game == true) 
 		{
-			reset_mines();
+			//reset_mines();
 			reset_claw();
 			GotoGameState(GAME_STATE_INIT);
 			fail.SetFrameIndexOfBitmap(0);
 			goal.SetFrameIndexOfBitmap(0);
+			owner_buy.SetFrameIndexOfBitmap(0);
+			owner_angry.SetFrameIndexOfBitmap(0);
+			item_mouse_on = -1;
 			money = 0;
 			new_money = 0;
 			sub_phase = 1;
@@ -623,17 +740,20 @@ void CGameStateRun::gameover_and_restart()
 
 	}
 }
+
 void CGameStateRun::goto_next_stage()
 {
 	timer = 61;
 	fade_rate = 1;
 	goal.SetFrameIndexOfBitmap(0);
+	goal.ToggleAnimation();					//為何要加這行才會動，奇怪
 	success.SetFrameIndexOfBitmap(0);
 	sub_phase = 1;
 	phase = phase + 1;
 	background.SetFrameIndexOfBitmap(phase-1);
 	owner_buy.SetFrameIndexOfBitmap(0);
 	owner_angry.SetFrameIndexOfBitmap(0);
+	item_mouse_on = -1;
 	next_level_button_clicked = false;
 	set_goal_money();
 
@@ -642,113 +762,21 @@ void CGameStateRun::goto_next_stage()
 	money_gain_flag = false;
 
 	reset_claw();
-	reset_mines();
+	set_mines();
 
-}
-
-void CGameStateRun::reset_mines()
-{
-	for (int i = 0; i < mine_max_num[0]; i++) {
-		if (exist2[i] == 0)
-			exist2[i] = 1;
-	}
-	for (int i = 0; i < mine_max_num[1]; i++) {
-		if (exist3[i] == 0)
-			exist3[i] = 1;
-	}
-	for (int i = 0; i < mine_max_num[2]; i++) {
-		if (exist4[i] == 0)
-			exist4[i] = 1;
-	}
-	for (int i = 0; i < mine_max_num[3]; i++) {
-		if (exist5[i] == 0)
-			exist5[i] = 1;
-	}
-	for (int i = 0; i < mine_max_num[4]; i++) {
-		if (exist6[i] == 0)
-			exist6[i] = 1;
-	}
-	for (int i = 0; i < mine_max_num[5]; i++) {
-		if (exist7[i] == 0)
-			exist7[i] = 1;
-	}
-	for (int i = 0; i < mine_max_num[6]; i++) {
-		if (exist8[i] == 0)
-			exist8[i] = 1;
-	}
-	for (int i = 0; i < mine_max_num[7]; i++) {
-		if (exist9[i] == 0)
-			exist9[i] = 1;
-	}
-	for (int i = 0; i < mine_max_num[8]; i++) {
-		if (exist10[i] == 0)
-			exist10[i] = 1;
-	}
-	for (int i = 0; i < mine_max_num[9]; i++) {
-		if (exist11[i] == 0)
-			exist11[i] = 1;
-	}
-	for (int i = 0; i < mine_max_num[10]; i++) {
-		if (exist12[i] == 0)
-			exist12[i] = 1;
-	}
-	for (int i = 0; i < mine_max_num[11]; i++) {
-		if (exist13[i] == 0)
-			exist13[i] = 1;
-	}
-	for (int i = 0; i < mine_max_num[12]; i++) {
-		if (exist14[i] == 0)
-			exist14[i] = 1;
-	}
-	for (int i = 0; i < mine_max_num[0]; i++) {
-		mine2[i].SetTopLeft(0, 0);
-	}
-	for (int i = 0; i < mine_max_num[1]; i++) {
-		mine3[i].SetTopLeft(0, 0);
-	}
-	for (int i = 0; i < mine_max_num[2]; i++) {
-		mine4[i].SetTopLeft(0, 0);
-	}
-	for (int i = 0; i < mine_max_num[3]; i++) {
-		mine5[i].SetTopLeft(0, 0);
-	}
-	for (int i = 0; i < mine_max_num[4]; i++) {
-		mine6[i].SetTopLeft(0, 0);
-	}
-	for (int i = 0; i < mine_max_num[5]; i++) {
-		mine7[i].SetTopLeft(0, 0);
-	}
-	for (int i = 0; i < mine_max_num[6]; i++) {
-		mine8[i].SetTopLeft(0, 0);
-	}
-	for (int i = 0; i < mine_max_num[7]; i++) {
-		mine9[i].SetTopLeft(0, 0);
-	}
-	for (int i = 0; i < mine_max_num[8]; i++) {
-		mine10[i].SetTopLeft(0, 0);
-	}
-	for (int i = 0; i < mine_max_num[9]; i++) {
-		mine11[i].SetTopLeft(0, 0);
-	}
-	for (int i = 0; i < mine_max_num[10]; i++) {
-		mine12[i].SetTopLeft(0, 0);
-	}
-	for (int i = 0; i < mine_max_num[11]; i++) {
-		mine13[i].SetTopLeft(0, 0);
-	}
-	for (int i = 0; i < mine_max_num[12]; i++) {
-		mine14[i].SetTopLeft(0, 0);
-	}
 }
 
 void CGameStateRun::show_text_by_phase() {
 	
 	CDC *pDC = CDDraw::GetBackCDC();
 
-	CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(255, 102, 0), 15000);
+	//CTextDraw::ChangeFontLog(pDC, 20, "新細明體", RGB(255, 0, 0), 15000);
+	//CTextDraw::Print(pDC, 10, 10, std::to_string(item_is_bought_1));
+
 	
 	if (sub_phase == 2 && timer > 0) {
-		
+
+		CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(255, 102, 0), 15000);
 		CTextDraw::Print(pDC, 1033, 10, std::to_string(timer));
 
 		
@@ -758,26 +786,102 @@ void CGameStateRun::show_text_by_phase() {
 			timer -= 1;
 			last_time = clock();
 		}
+
+		CTextDraw::Print(pDC, 1033, 58, std::to_string(phase));
+
+		CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(0, 0, 0), 15000);
+		CTextDraw::Print(pDC, 140, 12, std::to_string(new_money));
+		CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(0, 153, 0), 15000);
+		CTextDraw::Print(pDC, 140, 10, std::to_string(new_money));
+
+		CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(0, 0, 0), 15000);
+		CTextDraw::Print(pDC, 138, 62, std::to_string(goal_money));
+		CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(255, 153, 0), 15000);
+		CTextDraw::Print(pDC, 138, 60, std::to_string(goal_money));
+
+		//CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(0, 0, 0), 15000);
+		//CTextDraw::Print(pDC, 700, 60, std::to_string(bomb_num));
+
+
 	}
+	if (sub_phase == 3 && !success.IsAnimation()) {
 
-	CTextDraw::Print(pDC, 1033, 58, std::to_string(phase));
+		string s = "$" ;
 
-	CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(0, 0, 0), 15000);
-	CTextDraw::Print(pDC, 140, 12, std::to_string(new_money));
-	CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(0, 153, 0), 15000);
-	CTextDraw::Print(pDC, 140, 10, std::to_string(new_money));
+		string str1; str1 += s; str1 += std::to_string(item_price[0]);
+		if (!item_is_bought_1 && item_in_stock_in_level[0]) {
+			CTextDraw::ChangeFontLog(pDC, 15, "新細明體", RGB(0, 153, 0), 15000);
+			CTextDraw::Print(pDC, 100, 580, str1);
+		}
 
-	CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(0, 0, 0), 15000);
-	CTextDraw::Print(pDC, 138, 62, std::to_string(goal_money));
-	CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(255, 153, 0), 15000);
-	CTextDraw::Print(pDC, 138, 60, std::to_string(goal_money));
+		string str2; str2 += s; str2 += std::to_string(item_price[1]);
+		if (!item_is_bought_2 && item_in_stock_in_level[1]) {
+			CTextDraw::ChangeFontLog(pDC, 15, "新細明體", RGB(0, 153, 0), 15000);
+			CTextDraw::Print(pDC, 240, 580, str2);
+		}
 
-	CTextDraw::ChangeFontLog(pDC, 25, "新細明體", RGB(0, 0, 0), 15000);
-	CTextDraw::Print(pDC, 700, 60, std::to_string(bomb_num));
-	
+		string str3; str3 += s; str3 += std::to_string(item_price[2]);
+		if (!item_is_bought_3 && item_in_stock_in_level[2]) {
+			CTextDraw::ChangeFontLog(pDC, 15, "新細明體", RGB(0, 153, 0), 15000);
+			CTextDraw::Print(pDC, 380, 580, str3);
+		}
+
+		string str4; str4 += s; str4 += std::to_string(item_price[3]);
+		if (!item_is_bought_4 && item_in_stock_in_level[3]) {
+			CTextDraw::ChangeFontLog(pDC, 15, "新細明體", RGB(0, 153, 0), 15000);
+			CTextDraw::Print(pDC, 520, 580, str4);
+		}
+
+		string str5; str5 += s; str5 += std::to_string(item_price[4]);
+		if (!item_is_bought_5 && item_in_stock_in_level[4]) {
+			CTextDraw::ChangeFontLog(pDC, 15, "新細明體", RGB(0, 153, 0), 15000);
+			CTextDraw::Print(pDC, 660, 580, str5);
+		}
+
+	}
 
 	CDDraw::ReleaseBackCDC();
 	
+}
+
+void CGameStateRun::show_description_of_item() {
+	CDC *pDC = CDDraw::GetBackCDC();
+	string description1;
+	string description2;
+	string description3;
+	switch (item_mouse_on) {
+		case 1:
+			description1 = "After you have grabbed onto something with your claw, press the";
+			description2 = "up arrow to throw a piece of dynamite at it and blow it up.";
+			description3 = " ";
+			break;
+		case 2:
+			description1 = "Strength drink.The Miner will reel up objects a little faster on";
+			description2 = "the next level.The drink only lasts for one level.";
+			description3 = " ";
+			break;
+		case 3:
+			description1 = "Lucky Clover. This will increase the chances of getting something";
+			description2 = "good out of the grab bags on the next level. This is only good for";
+			description3 = "one level.";
+			break;
+		case 4:
+			description1 = "Rock Collectors book. Rocks will be worth three times as much";
+			description2 = "money on the next level. This is only good for one level.";
+			description3 = " ";
+			break;
+		case 5:
+			description1 = "Diamond Polish. Durring the next level diamonds will be worth ";
+			description2 = "more money. Only good for one level";
+			description3 = " ";
+			break;
+	}
+	CTextDraw::ChangeFontLog(pDC, 18, "新細明體", RGB(253, 252, 1), 1500);
+	CTextDraw::Print(pDC, 95, 630, description1);
+	CTextDraw::Print(pDC, 95, 666, description2);
+	CTextDraw::Print(pDC, 95, 702, description3);
+
+	CDDraw::ReleaseBackCDC();
 }
 
 void CGameStateRun::show_text_of_goals() {
@@ -865,10 +969,12 @@ void CGameStateRun::show_text_of_money_gain() {
 		last_time_money_gain = clock();
 	}
 	
+	string s = "$"; s += std::to_string(money_gain);
+	
 	CTextDraw::ChangeFontLog(pDC, font[2], "新細明體", RGB(0, 0, 0), 15000);
-	CTextDraw::Print(pDC, font[0], font[1]+2, std::to_string(money_gain));
+	CTextDraw::Print(pDC, font[0], font[1]+2, s);
 	CTextDraw::ChangeFontLog(pDC, font[2], "新細明體", RGB(0, 153, 0), 15000);
-	CTextDraw::Print(pDC, font[0], font[1], std::to_string(money_gain));
+	CTextDraw::Print(pDC, font[0], font[1], s);
 
 
 	CDDraw::ReleaseBackCDC();
@@ -878,65 +984,81 @@ void CGameStateRun::load_mines()
 {
 	for (int i = 0; i < mine_max_num[0]; i++) {
 		mine2[i].LoadBitmapByString({ "resources/mines/2.bmp" }, RGB(0, 0, 0));
-		mine2[i].SetTopLeft(0, 0);
+		mine2[i].SetTopLeft(-1000, -1000);
 	}
 	for (int i = 0; i < mine_max_num[1]; i++) {
 		mine3[i].LoadBitmapByString({ "resources/mines/3.bmp" }, RGB(0, 0, 0));
-		mine3[i].SetTopLeft(0, 0);
+		mine3[i].SetTopLeft(-1000, -1000);
 	}
 	for (int i = 0; i < mine_max_num[2]; i++) {
 		mine4[i].LoadBitmapByString({ "resources/mines/4.bmp" }, RGB(0, 0, 0));
-		mine4[i].SetTopLeft(0, 0);
+		mine4[i].SetTopLeft(-1000, -1000);
 	}
 	for (int i = 0; i < mine_max_num[3]; i++) {
 		mine5[i].LoadBitmapByString({ "resources/mines/5.bmp" }, RGB(0, 0, 0));
-		mine5[i].SetTopLeft(0, 0);
+		mine5[i].SetTopLeft(-1000, -1000);
 	}
 	for (int i = 0; i < mine_max_num[4]; i++) {
 		mine6[i].LoadBitmapByString({ "resources/mines/6/1.bmp" }, RGB(0, 0, 0));
-		mine6[i].SetTopLeft(0, 0);
+		mine6[i].SetTopLeft(-1000, -1000);
 	}
 	for (int i = 0; i < mine_max_num[5]; i++) {
 		mine7[i].LoadBitmapByString({ "resources/mines/7.bmp" }, RGB(0, 0, 0));
-		mine7[i].SetTopLeft(0, 0);
+		mine7[i].SetTopLeft(-1000, -1000);
 	}
 	for (int i = 0; i < mine_max_num[6]; i++) {
 		mine8[i].LoadBitmapByString({ "resources/mines/8.bmp" }, RGB(0, 0, 0));
-		mine8[i].SetTopLeft(0, 0);
+		mine8[i].SetTopLeft(-1000, -1000);
 	}
 	for (int i = 0; i < mine_max_num[7]; i++) {
 		mine9[i].LoadBitmapByString({ "resources/mines/9.bmp" }, RGB(0, 0, 0));
-		mine9[i].SetTopLeft(0, 0);
+		mine9[i].SetTopLeft(-1000, -1000);
 	}
 	for (int i = 0; i < mine_max_num[8]; i++) {
 		mine10[i].LoadBitmapByString({ "resources/mines/10/1.bmp" }, RGB(0, 0, 0));
-		mine10[i].SetTopLeft(0, 0);
+		mine10[i].SetTopLeft(-1000, -1000);
 	}
 	for (int i = 0; i < mine_max_num[9]; i++) {
 		mine11[i].LoadBitmapByString({ "resources/mines/11.bmp" }, RGB(0, 0, 0));
-		mine11[i].SetTopLeft(0, 0);
+		mine11[i].SetTopLeft(-1000, -1000);
 	}
 	for (int i = 0; i < mine_max_num[10]; i++) {
 		mine12[i].LoadBitmapByString({ "resources/mines/12.bmp" }, RGB(0, 0, 0));
-		mine12[i].SetTopLeft(0, 0);
+		mine12[i].SetTopLeft(-1000, -1000);
 	}
 	for (int i = 0; i < mine_max_num[11]; i++) {
 		mine13[i].LoadBitmapByString({ "resources/mines/13.bmp" }, RGB(0, 0, 0));
-		mine13[i].SetTopLeft(0, 0);
+		mine13[i].SetTopLeft(-1000, -1000);
 	}
 	for (int i = 0; i < mine_max_num[12]; i++) {
 		mine14[i].LoadBitmapByString({ "resources/mines/14.bmp" }, RGB(0, 0, 0));
-		mine14[i].SetTopLeft(0, 0);
+		mine14[i].SetTopLeft(-1000, -1000);
 	}
 
 };
 
 void CGameStateRun::show_mines()
 {
-	if (phase == 1) {
+	if (phase == 1 || phase == 2) {
 
-		for (int i = 0; i < mine_num_L1_1[0]; i++) {
-			if (mine2[i].GetLeft() == 0 && mine2[i].GetTop() == 0) {
+		int location2[10][2] = { {50,200},{100,300},{150,400},{200,500} };	//金礦(小)
+		int location3[10][2] = { {150,200},{200,300},{250,400} };	//金礦(中)
+		int location5[10][2] = { {250,300},{300,400} };	//金礦(巨大)
+		int location8[10][2] = { {350,350},{400,450} };	//石頭(大)
+		int location12[10][2] = { {450,400},{500,450} }; //道具袋
+		int location14[10][2] = { {550,300},{600,400} };	//石頭(中)
+
+		
+		//int location4[10][2];
+		//int location6[10][2];
+		//int location7[10][2];
+		//int location9[10][2];
+		//int location10[10][2];
+		//int location11[10][2];
+		//int location13[10][2];
+
+		for (int i = 0; i < mine_num_1[0][0]; i++) {
+			if (exist2[i] == 1 && mine2[i].GetLeft() == 0 && mine2[i].GetTop() == 0) {
 				mine2[i].SetTopLeft(location2[i][0], location2[i][1]);
 			}
 			if (exist2[i] == 1) {
@@ -953,8 +1075,8 @@ void CGameStateRun::show_mines()
 			}
 		}
 
-		for (int i = 0; i < mine_num_L1_1[1]; i++) {
-			if (mine3[i].GetLeft() == 0 && mine3[i].GetTop() == 0) {
+		for (int i = 0; i < mine_num_1[0][1]; i++) {
+			if (exist3[i] == 1 && mine3[i].GetLeft() == 0 && mine3[i].GetTop() == 0 ) {
 				mine3[i].SetTopLeft(location3[i][0], location3[i][1]);
 			}
 			if (exist3[i] == 1) {
@@ -971,8 +1093,8 @@ void CGameStateRun::show_mines()
 			}
 		}
 
-		for (int i = 0; i < mine_num_L1_1[3]; i++) {
-			if (mine5[i].GetLeft() == 0 && mine5[i].GetTop() == 0) {
+		for (int i = 0; i < mine_num_1[0][3]; i++) {
+			if (exist5[i] == 1 && mine5[i].GetLeft() == 0 && mine5[i].GetTop() == 0) {
 				mine5[i].SetTopLeft(location5[i][0], location5[i][1]);
 			}
 			if (exist5[i] == 1) {
@@ -989,8 +1111,8 @@ void CGameStateRun::show_mines()
 			}
 		}
 
-		for (int i = 0; i < mine_num_L1_1[6]; i++) {
-			if (mine8[i].GetLeft() == 0 && mine8[i].GetTop() == 0) {
+		for (int i = 0; i < mine_num_1[0][6]; i++) {
+			if (exist8[i] == 1 && mine8[i].GetLeft() == 0 && mine8[i].GetTop() == 0) {
 				mine8[i].SetTopLeft(location8[i][0], location8[i][1]);
 			}
 			if (exist8[i] == 1) {
@@ -1000,15 +1122,15 @@ void CGameStateRun::show_mines()
 					hit = true;
 
 
-					money_gain = money_of_mine[6];
+					money_gain = money_of_mine[6] + (money_of_mine[6] * item_4_effect * 2);
 					weight = weight_of_mine[6];
 				}
 				mine8[i].ShowBitmap();
 			}
 		}
 
-		for (int i = 0; i < mine_num_L1_1[10]; i++) {
-			if (mine12[i].GetLeft() == 0 && mine12[i].GetTop() == 0) {
+		for (int i = 0; i < mine_num_1[0][10]; i++) {
+			if (exist12[i] == 1 && mine12[i].GetLeft() == 0 && mine12[i].GetTop() == 0) {
 				mine12[i].SetTopLeft(location12[i][0], location12[i][1]);
 			}
 			if (exist12[i] == 1) {
@@ -1025,8 +1147,8 @@ void CGameStateRun::show_mines()
 			}
 		}
 
-		for (int i = 0; i < mine_num_L1_1[12]; i++) {
-			if (mine14[i].GetLeft() == 0 && mine14[i].GetTop() == 0) {
+		for (int i = 0; i < mine_num_1[0][12]; i++) {
+			if (exist14[i] == 1 && mine14[i].GetLeft() == 0 && mine14[i].GetTop() == 0) {
 				mine14[i].SetTopLeft(location14[i][0], location14[i][1]);
 			}
 			if (exist14[i] == 1) {
@@ -1036,7 +1158,7 @@ void CGameStateRun::show_mines()
 					hit = true;
 
 
-					money_gain = money_of_mine[12];
+					money_gain = money_of_mine[12] + (money_of_mine[12] * item_4_effect * 2);
 					weight = weight_of_mine[12];
 				}
 				mine14[i].ShowBitmap();
@@ -1044,4 +1166,139 @@ void CGameStateRun::show_mines()
 		}
 	}
 
+}
+
+void CGameStateRun::set_mines()
+{
+	int p = phase - 1;
+	for (int i = 0; i < mine_max_num[0]; i++) {
+		if (i < mine_num_1[p][0]) {
+			exist2[i] = 1;
+			mine2[i].SetTopLeft(0, 0);
+		}
+		else {
+			exist2[i] = 0;
+			mine2[i].SetTopLeft(-1000, -1000);
+		}
+	}
+	for (int i = 0; i < mine_max_num[1]; i++) {
+		if (i < mine_num_1[p][1]) {
+			exist3[i] = 1;
+			mine3[i].SetTopLeft(0, 0);
+		}
+		else {
+			exist3[i] = 0;
+			mine3[i].SetTopLeft(-1000, -1000);
+		}
+	}
+	for (int i = 0; i < mine_max_num[2]; i++) {
+		if (i < mine_num_1[p][2]) {
+			exist4[i] = 1;
+			mine4[i].SetTopLeft(0, 0);
+		}
+		else {
+			exist4[i] = 0;
+			mine4[i].SetTopLeft(-1000, -1000);
+		}
+	}
+	for (int i = 0; i < mine_max_num[3]; i++) {
+		if (i < mine_num_1[p][3]) {
+			exist5[i] = 1;
+			mine5[i].SetTopLeft(0, 0);
+		}
+		else {
+			exist5[i] = 0;
+			mine5[i].SetTopLeft(-1000, -1000);
+		}
+	}
+	for (int i = 0; i < mine_max_num[4]; i++) {
+		if (i < mine_num_1[p][4]) {
+			exist6[i] = 1;
+			mine6[i].SetTopLeft(0, 0);
+		}
+		else {
+			exist6[i] = 0;
+			mine6[i].SetTopLeft(-1000, -1000);
+		}
+	}
+	for (int i = 0; i < mine_max_num[5]; i++) {
+		if (i < mine_num_1[p][5]) {
+			exist7[i] = 1;
+			mine7[i].SetTopLeft(0, 0);
+		}
+		else {
+			exist7[i] = 0;
+			mine7[i].SetTopLeft(-1000, -1000);
+		}
+	}
+	for (int i = 0; i < mine_max_num[6]; i++) {
+		if (i < mine_num_1[p][6]) {
+			exist8[i] = 1;
+			mine8[i].SetTopLeft(0, 0);
+		}
+		else {
+			exist8[i] = 0;
+			mine8[i].SetTopLeft(-1000, -1000);
+		}
+	}
+	for (int i = 0; i < mine_max_num[7]; i++) {
+		if (i < mine_num_1[p][7]) {
+			exist9[i] = 1;
+			mine9[i].SetTopLeft(0, 0);
+		}
+		else {
+			exist9[i] = 0;
+			mine9[i].SetTopLeft(-1000, -1000);
+		}
+	}
+	for (int i = 0; i < mine_max_num[8]; i++) {
+		if (i < mine_num_1[p][8]) {
+			exist10[i] = 1;
+			mine10[i].SetTopLeft(0, 0);
+		}
+		else {
+			exist10[i] = 0;
+			mine10[i].SetTopLeft(-1000, -1000);
+		}
+	}
+	for (int i = 0; i < mine_max_num[9]; i++) {
+		if (i < mine_num_1[p][9]) {
+			exist11[i] = 1;
+			mine11[i].SetTopLeft(0, 0);
+		}
+		else {
+			exist11[i] = 0;
+			mine11[i].SetTopLeft(-1000, -1000);
+		}
+	}
+	for (int i = 0; i < mine_max_num[10]; i++) {
+		if (i < mine_num_1[p][10]) {
+			exist12[i] = 1;
+			mine12[i].SetTopLeft(0, 0);
+		}
+		else {
+			exist12[i] = 0;
+			mine12[i].SetTopLeft(-1000, -1000);
+		}
+	}
+	for (int i = 0; i < mine_max_num[11]; i++) {
+		if (i < mine_num_1[p][11]) {
+			exist13[i] = 1;
+			mine13[i].SetTopLeft(0, 0);
+		}
+		else {
+			exist13[i] = 0;
+			mine13[i].SetTopLeft(-1000, -1000);
+		}
+	}
+	for (int i = 0; i < mine_max_num[12]; i++) {
+		if (i < mine_num_1[p][12]) {
+			exist14[i] = 1;
+			mine14[i].SetTopLeft(0, 0);
+		}
+		else {
+			exist14[i] = 0;
+			mine14[i].SetTopLeft(-1000, -1000);
+		}
+	}
 }

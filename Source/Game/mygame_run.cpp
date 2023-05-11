@@ -82,6 +82,10 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	clawhead.LoadBitmapByString({ "resources/claw/0/rotate_new/4.bmp","resources/claw/0/rotate_new/5.bmp","resources/claw/0/rotate_new/6.bmp","resources/claw/0/rotate_new/7.bmp","resources/claw/0/rotate_new/8.bmp","resources/claw/0/rotate_new/9.bmp","resources/claw/0/rotate_new/10.bmp","resources/claw/0/rotate_new/11.bmp","resources/claw/0/rotate_new/12.bmp","resources/claw/0/rotate_new/13.bmp","resources/claw/0/rotate_new/14.bmp","resources/claw/0/rotate_new/15.bmp","resources/claw/0/rotate_new/16.bmp","resources/claw/0/rotate_new/17.bmp","resources/claw/0/rotate_new/18.bmp","resources/claw/0/rotate_new/19.bmp","resources/claw/0/rotate_new/20.bmp","resources/claw/0/rotate_new/21.bmp","resources/claw/0/rotate_new/22.bmp","resources/claw/0/rotate_new/23.bmp","resources/claw/0/rotate_new/24.bmp","resources/claw/0/rotate_new/25.bmp","resources/claw/0/rotate_new/26.bmp","resources/claw/0/rotate_new/27.bmp","resources/claw/0/rotate_new/28.bmp","resources/claw/0/rotate_new/29.bmp","resources/claw/0/rotate_new/30.bmp","resources/claw/0/rotate_new/31.bmp","resources/claw/0/rotate_new/32.bmp","resources/claw/0/rotate_new/33.bmp","resources/claw/0/rotate_new/34.bmp","resources/claw/0/rotate_new/35.bmp","resources/claw/0/rotate_new/36.bmp","resources/claw/0/rotate_new/37.bmp","resources/claw/0/rotate_new/38.bmp","resources/claw/0/rotate_new/39.bmp","resources/claw/0/rotate_new/40.bmp","resources/claw/0/rotate_new/41.bmp","resources/claw/0/rotate_new/42.bmp","resources/claw/0/rotate_new/43.bmp","resources/claw/0/rotate_new/44.bmp","resources/claw/0/rotate_new/45.bmp","resources/claw/0/rotate_new/46.bmp","resources/claw/0/rotate_new/47.bmp","resources/claw/0/rotate_new/48.bmp","resources/claw/0/rotate_new/49.bmp","resources/claw/0/rotate_new/50.bmp","resources/claw/0/rotate_new/51.bmp","resources/claw/0/rotate_new/52.bmp","resources/claw/0/rotate_new/53.bmp","resources/claw/0/rotate_new/54.bmp","resources/claw/0/rotate_new/55.bmp","resources/claw/0/rotate_new/56.bmp","resources/claw/0/rotate_new/57.bmp","resources/claw/0/rotate_new/58.bmp","resources/claw/0/rotate_new/59.bmp","resources/claw/0/rotate_new/60.bmp","resources/claw/0/rotate_new/61.bmp","resources/claw/0/rotate_new/62.bmp","resources/claw/0/rotate_new/63.bmp","resources/claw/0/rotate_new/64.bmp","resources/claw/0/rotate_new/65.bmp","resources/claw/0/rotate_new/66.bmp","resources/claw/0/rotate_new/67.bmp","resources/claw/0/rotate_new/68.bmp","resources/claw/0/rotate_new/69.bmp","resources/claw/0/rotate_new/70.bmp","resources/claw/0/rotate_new/71.bmp","resources/claw/0/rotate_new/72.bmp","resources/claw/0/rotate_new/73.bmp","resources/claw/0/rotate_new/74.bmp","resources/claw/0/rotate_new/75.bmp" }, RGB(0, 0, 0));
 	clawhead.SetTopLeft(507, 90);
 
+	for (int i = 0; i < 90; i++) {
+		line[i].LoadBitmapByString({ "resources/claw/line.bmp" });
+	}
+
 	load_mines();
 
 	hitbox.LoadBitmapByString({ "resources/claw/hitbox.bmp" }, RGB(0, 0, 0));
@@ -370,6 +374,7 @@ void CGameStateRun::OnShow()
 			clawhead.ShowBitmap();
 			hitbox.ShowBitmap();
 			shoot_claw_by_angle();
+			show_line();
 		}
 		if (hit == true) {
 			pull_claw();
@@ -615,6 +620,15 @@ void CGameStateRun::reset_claw()
 	miss = false;
 }
 
+void CGameStateRun::show_line() {
+	for (int i = 0; i < 90; i++) {
+		if (i < claw_length) {
+			line[i].SetTopLeft(claw_xway[i]+43, claw_yway[i]+17);
+			line[i].ShowBitmap();
+		}
+	}
+}
+
 void CGameStateRun::throw_bomb() 
 {
 
@@ -640,7 +654,6 @@ void CGameStateRun::reset_bomb()
 	bomb_y = 90;
 	bomb.SetTopLeft(bomb_x, bomb_y);
 }
-
 
 void CGameStateRun::set_stock()
 {
@@ -692,7 +705,6 @@ void CGameStateRun::show_items()
 	}
 
 }
-
 
 void CGameStateRun::set_goal_money()
 {
@@ -1022,9 +1034,9 @@ void CGameStateRun::load_mines()
 	for (int i = 0; i < mine_max_num[9]; i++) {
 		mine11[i].LoadBitmapByString({ "resources/mines/11.bmp" }, RGB(0, 0, 0));
 		mine11[i].SetTopLeft(-1000, -1000);
-		exploration[i].LoadBitmapByString({ "resources/mines/9_2/1.bmp", "resources/mines/9_2/2.bmp", "resources/mines/9_2/3.bmp", "resources/mines/9_2/4.bmp", "resources/mines/9_2/5.bmp", "resources/mines/9_2/6.bmp", "resources/mines/9_2/7.bmp", "resources/mines/9_2/8.bmp", "resources/mines/9_2/9.bmp", "resources/mines/9_2/10.bmp", "resources/mines/9_2/11.bmp", "resources/mines/9_2/12.bmp" }, RGB(0, 0, 0));
-		exploration[i].SetTopLeft(-1000, -1000);
-		exploration[i].SetAnimation(100, true);
+		explosion[i].LoadBitmapByString({ "resources/mines/9_2/1.bmp", "resources/mines/9_2/2.bmp", "resources/mines/9_2/3.bmp", "resources/mines/9_2/4.bmp", "resources/mines/9_2/5.bmp", "resources/mines/9_2/6.bmp", "resources/mines/9_2/7.bmp", "resources/mines/9_2/8.bmp", "resources/mines/9_2/9.bmp", "resources/mines/9_2/10.bmp", "resources/mines/9_2/11.bmp", "resources/mines/9_2/12.bmp" }, RGB(0, 0, 0));
+		explosion[i].SetTopLeft(-1000, -1000);
+		explosion[i].SetAnimation(100, true);
 	}
 	for (int i = 0; i < mine_max_num[10]; i++) {
 		mine12[i].LoadBitmapByString({ "resources/mines/12.bmp" }, RGB(0, 0, 0));
@@ -1056,12 +1068,12 @@ void CGameStateRun::show_mines()
 		//int location4[10][2];
 		//int location6[10][2];
 		//int location7[10][2];
-		int location9[10][2] = { {500, 200} }; //bomb
+		int location9[10][2] = { {500, 300}, {600, 400}, {700, 500} }; //炸藥
 		//int location10[10][2];
 		//int location11[10][2];
 		//int location13[10][2];
 
-		for (int i = 0; i < mine_num_1[0][0]; i++) {
+		for (int i = 0; i < mine_num_now[0]; i++) {
 			if (exist2[i] == 1 && mine2[i].GetLeft() == 0 && mine2[i].GetTop() == 0) {
 				mine2[i].SetTopLeft(location2[i][0], location2[i][1]);
 			}
@@ -1079,7 +1091,7 @@ void CGameStateRun::show_mines()
 			}
 		}
 
-		for (int i = 0; i < mine_num_1[0][1]; i++) {
+		for (int i = 0; i < mine_num_now[1]; i++) {
 			if (exist3[i] == 1 && mine3[i].GetLeft() == 0 && mine3[i].GetTop() == 0 ) {
 				mine3[i].SetTopLeft(location3[i][0], location3[i][1]);
 			}
@@ -1097,7 +1109,7 @@ void CGameStateRun::show_mines()
 			}
 		}
 
-		for (int i = 0; i < mine_num_1[0][3]; i++) {
+		for (int i = 0; i < mine_num_now[3]; i++) {
 			if (exist5[i] == 1 && mine5[i].GetLeft() == 0 && mine5[i].GetTop() == 0) {
 				mine5[i].SetTopLeft(location5[i][0], location5[i][1]);
 			}
@@ -1115,7 +1127,7 @@ void CGameStateRun::show_mines()
 			}
 		}
 
-		for (int i = 0; i < mine_num_1[0][6]; i++) {
+		for (int i = 0; i < mine_num_now[6]; i++) {
 			if (exist8[i] == 1 && mine8[i].GetLeft() == 0 && mine8[i].GetTop() == 0) {
 				mine8[i].SetTopLeft(location8[i][0], location8[i][1]);
 			}
@@ -1134,7 +1146,7 @@ void CGameStateRun::show_mines()
 		}
 
 		/*炸藥桶*/
-		for (int i = 0; i < mine_num_1[0][7]; i++) {
+		for (int i = 0; i < mine_num_now[7]; i++) {
 			if (exist9[i] == 1 && mine9[i].GetLeft() == 0 && mine9[i].GetTop() == 0) {
 				mine9[i].SetTopLeft(location9[i][0], location9[i][1]);
 			}
@@ -1145,33 +1157,38 @@ void CGameStateRun::show_mines()
 					hit = true;
 
 					//爆炸
-					exploration[i].SetTopLeft(location9[i][0], location9[i][1]);
-					exploration[i].ShowBitmap();
+					explosion[i].ShowBitmap();
+					set_location_of_explosion(i, location9[i][0], location9[i][1]);
 					
-					if (exploration[i].GetFrameIndexOfBitmap() == 0 && exploration[i].IsAnimation() == false) {
-						exploration[i].ToggleAnimation();
+					if (explosion[i].GetFrameIndexOfBitmap() == 0 && explosion[i].IsAnimation() == false) {
+						explosion[i].ToggleAnimation();
 					}
 					
-					money_gain = money_of_mine[7] + (money_of_mine[7] * item_4_effect * 2);
+					money_gain = money_of_mine[7];
 					weight = weight_of_mine[7];
 				}
 				mine9[i].ShowBitmap();
 			}
-			/*
 			if (is_blew_up(9, i)) {
-				exploration[i].SetTopLeft(location9[i][0], location9[i][1]);
-				exploration[i].ShowBitmap();
+				exist9[i] = 0;
+				mine9[i].SetTopLeft(-1000, -1000);
+				hit = true;
 
-				if (exploration[i].GetFrameIndexOfBitmap() == 0 && exploration[i].IsAnimation() == false) {
-					exploration[i].ToggleAnimation();
+				//爆炸
+				explosion[i].ShowBitmap();
+				set_location_of_explosion(i, location9[i][0], location9[i][1]);
+
+				if (explosion[i].GetFrameIndexOfBitmap() == 0 && explosion[i].IsAnimation() == false) {
+					explosion[i].ToggleAnimation();
 				}
 			}
-			*/
-			if (exploration[i].IsAnimation()) {
-				exploration[i].ShowBitmap();
+			if (explosion[i].IsAnimation()) {
+				explosion[i].ShowBitmap();
+				set_location_of_explosion(i, location9[i][0], location9[i][1]);
 			}
 		}
-		for (int i = 0; i < mine_num_1[0][10]; i++) {
+
+		for (int i = 0; i < mine_num_now[10]; i++) {
 			if (exist12[i] == 1 && mine12[i].GetLeft() == 0 && mine12[i].GetTop() == 0) {
 				mine12[i].SetTopLeft(location12[i][0], location12[i][1]);
 			}
@@ -1189,7 +1206,7 @@ void CGameStateRun::show_mines()
 			}
 		}
 
-		for (int i = 0; i < mine_num_1[0][12]; i++) {
+		for (int i = 0; i < mine_num_now[12]; i++) {
 			if (exist14[i] == 1 && mine14[i].GetLeft() == 0 && mine14[i].GetTop() == 0) {
 				mine14[i].SetTopLeft(location14[i][0], location14[i][1]);
 			}
@@ -1210,134 +1227,14 @@ void CGameStateRun::show_mines()
 
 }
 
-bool CGameStateRun::is_blew_up(int mine, int index) {
-	switch (mine) {
-	case 2:
-		for (int j = 0; j < mine_num_1[0][7]; j++) {
-			if (mine2[index].IsOverlap(mine2[index], exploration[j])) {
-				exist2[index] = 0;
-				mine2[index].SetTopLeft(-1000, -1000);
-				return 1;
-			}
-		}
-		break;
-	case 3:
-		for (int j = 0; j < mine_num_1[0][7]; j++) {
-			if (mine3[index].IsOverlap(mine3[index], exploration[j])) {
-				exist3[index] = 0;
-				mine3[index].SetTopLeft(-1000, -1000);
-				return 1;
-			}
-		}
-		break;
-	case 4:
-		for (int j = 0; j < mine_num_1[0][7]; j++) {
-			if (mine4[index].IsOverlap(mine4[index], exploration[j])) {
-				exist4[index] = 0;
-				mine4[index].SetTopLeft(-1000, -1000);
-				return 1;
-			}
-		}
-		break;
-	case 5:
-		for (int j = 0; j < mine_num_1[0][7]; j++) {
-			if (mine5[index].IsOverlap(mine5[index], exploration[j])) {
-				exist5[index] = 0;
-				mine5[index].SetTopLeft(-1000, -1000);
-				return 1;
-			}
-		}
-		break;
-	case 6:
-		for (int j = 0; j < mine_num_1[0][7]; j++) {
-			if (mine6[index].IsOverlap(mine6[index], exploration[j])) {
-				exist6[index] = 0;
-				mine6[index].SetTopLeft(-1000, -1000);
-				return 1;
-			}
-		}
-		break;
-	case 7:
-		for (int j = 0; j < mine_num_1[0][7]; j++) {
-			if (mine7[index].IsOverlap(mine7[index], exploration[j])) {
-				exist7[index] = 0;
-				mine7[index].SetTopLeft(-1000, -1000);
-				return 1;
-			}
-		}
-		break;
-	case 8:
-		for (int j = 0; j < mine_num_1[0][7]; j++) {
-			if (mine8[index].IsOverlap(mine8[index], exploration[j])) {
-				exist8[index] = 0;
-				mine8[index].SetTopLeft(-1000, -1000);
-				return 1;
-			}
-		}
-		break;
-	case 9:
-		for (int j = 0; j < mine_num_1[0][7]; j++) {
-			if (mine9[index].IsOverlap(mine9[index], exploration[j])) {
-				exist9[index] = 0;
-				mine9[index].SetTopLeft(-1000, -1000);
-				return 1;
-			}
-		}
-		break;
-	case 10:
-		for (int j = 0; j < mine_num_1[0][7]; j++) {
-			if (mine10[index].IsOverlap(mine10[index], exploration[j])) {
-				exist10[index] = 0;
-				mine10[index].SetTopLeft(-1000, -1000);
-				return 1;
-			}
-		}
-		break;
-	case 11:
-		for (int j = 0; j < mine_num_1[0][7]; j++) {
-			if (mine11[index].IsOverlap(mine11[index], exploration[j])) {
-				exist11[index] = 0;
-				mine11[index].SetTopLeft(-1000, -1000);
-				return 1;
-			}
-		}
-		break;
-	case 12:
-		for (int j = 0; j < mine_num_1[0][7]; j++) {
-			if (mine12[index].IsOverlap(mine12[index], exploration[j])) {
-				exist12[index] = 0;
-				mine12[index].SetTopLeft(-1000, -1000);
-				return 1;
-			}
-		}
-		break;
-	case 13:
-		for (int j = 0; j < mine_num_1[0][7]; j++) {
-			if (mine13[index].IsOverlap(mine13[index], exploration[j])) {
-				exist13[index] = 0;
-				mine13[index].SetTopLeft(-1000, -1000);
-				return 1;
-			}
-		}
-		break;
-	case 14:
-		for (int j = 0; j < mine_num_1[0][7]; j++) {
-			if (mine14[index].IsOverlap(mine14[index], exploration[j])) {
-				exist14[index] = 0;
-				mine14[index].SetTopLeft(-1000, -1000);
-				return 1;
-			}
-		}
-		break;
-	}
-	return 0;
-}
-
 void CGameStateRun::set_mines()
 {
 	int p = phase - 1;
+	for (int i = 0; i < 13; i++) {
+		mine_num_now[i] = mine_num_1[p][i];
+	}
 	for (int i = 0; i < mine_max_num[0]; i++) {
-		if (i < mine_num_1[p][0]) {
+		if (i < mine_num_now[0]) {
 			exist2[i] = 1;
 			mine2[i].SetTopLeft(0, 0);
 		}
@@ -1347,7 +1244,7 @@ void CGameStateRun::set_mines()
 		}
 	}
 	for (int i = 0; i < mine_max_num[1]; i++) {
-		if (i < mine_num_1[p][1]) {
+		if (i < mine_num_now[1]) {
 			exist3[i] = 1;
 			mine3[i].SetTopLeft(0, 0);
 		}
@@ -1357,7 +1254,7 @@ void CGameStateRun::set_mines()
 		}
 	}
 	for (int i = 0; i < mine_max_num[2]; i++) {
-		if (i < mine_num_1[p][2]) {
+		if (i < mine_num_now[2]) {
 			exist4[i] = 1;
 			mine4[i].SetTopLeft(0, 0);
 		}
@@ -1367,7 +1264,7 @@ void CGameStateRun::set_mines()
 		}
 	}
 	for (int i = 0; i < mine_max_num[3]; i++) {
-		if (i < mine_num_1[p][3]) {
+		if (i < mine_num_now[3]) {
 			exist5[i] = 1;
 			mine5[i].SetTopLeft(0, 0);
 		}
@@ -1377,7 +1274,7 @@ void CGameStateRun::set_mines()
 		}
 	}
 	for (int i = 0; i < mine_max_num[4]; i++) {
-		if (i < mine_num_1[p][4]) {
+		if (i < mine_num_now[4]) {
 			exist6[i] = 1;
 			mine6[i].SetTopLeft(0, 0);
 		}
@@ -1387,7 +1284,7 @@ void CGameStateRun::set_mines()
 		}
 	}
 	for (int i = 0; i < mine_max_num[5]; i++) {
-		if (i < mine_num_1[p][5]) {
+		if (i < mine_num_now[5]) {
 			exist7[i] = 1;
 			mine7[i].SetTopLeft(0, 0);
 		}
@@ -1397,7 +1294,7 @@ void CGameStateRun::set_mines()
 		}
 	}
 	for (int i = 0; i < mine_max_num[6]; i++) {
-		if (i < mine_num_1[p][6]) {
+		if (i < mine_num_now[6]) {
 			exist8[i] = 1;
 			mine8[i].SetTopLeft(0, 0);
 		}
@@ -1408,10 +1305,10 @@ void CGameStateRun::set_mines()
 	}
 	//爆炸桶
 	for (int i = 0; i < mine_max_num[7]; i++) {
-		if (i < mine_num_1[p][7]) {
+		if (i < mine_num_now[7]) {
 			exist9[i] = 1;
 			mine9[i].SetTopLeft(0, 0);
-			exploration[i].SetFrameIndexOfBitmap(0);
+			explosion[i].SetFrameIndexOfBitmap(0);
 		}
 		else {
 			exist9[i] = 0;
@@ -1419,7 +1316,7 @@ void CGameStateRun::set_mines()
 		}
 	}
 	for (int i = 0; i < mine_max_num[8]; i++) {
-		if (i < mine_num_1[p][8]) {
+		if (i < mine_num_now[8]) {
 			exist10[i] = 1;
 			mine10[i].SetTopLeft(0, 0);
 		}
@@ -1429,7 +1326,7 @@ void CGameStateRun::set_mines()
 		}
 	}
 	for (int i = 0; i < mine_max_num[9]; i++) {
-		if (i < mine_num_1[p][9]) {
+		if (i < mine_num_now[9]) {
 			exist11[i] = 1;
 			mine11[i].SetTopLeft(0, 0);
 		}
@@ -1439,7 +1336,7 @@ void CGameStateRun::set_mines()
 		}
 	}
 	for (int i = 0; i < mine_max_num[10]; i++) {
-		if (i < mine_num_1[p][10]) {
+		if (i < mine_num_now[10]) {
 			exist12[i] = 1;
 			mine12[i].SetTopLeft(0, 0);
 		}
@@ -1449,7 +1346,7 @@ void CGameStateRun::set_mines()
 		}
 	}
 	for (int i = 0; i < mine_max_num[11]; i++) {
-		if (i < mine_num_1[p][11]) {
+		if (i < mine_num_now[11]) {
 			exist13[i] = 1;
 			mine13[i].SetTopLeft(0, 0);
 		}
@@ -1459,7 +1356,7 @@ void CGameStateRun::set_mines()
 		}
 	}
 	for (int i = 0; i < mine_max_num[12]; i++) {
-		if (i < mine_num_1[p][12]) {
+		if (i < mine_num_now[12]) {
 			exist14[i] = 1;
 			mine14[i].SetTopLeft(0, 0);
 		}
@@ -1470,3 +1367,185 @@ void CGameStateRun::set_mines()
 	}
 }
 
+bool CGameStateRun::is_blew_up(int mine, int index) {
+	for (int j = 0; j < mine_num_now[7]; j++) {
+		switch (mine) {
+		case 2:
+			if (mine2[index].IsOverlap(mine2[index], explosion[j])) {
+				exist2[index] = 0;
+				mine2[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+			break;
+		case 3:
+			if (mine3[index].IsOverlap(mine3[index], explosion[j])) {
+				exist3[index] = 0;
+				mine3[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+			break;
+		case 4:
+			if (mine4[index].IsOverlap(mine4[index], explosion[j])) {
+				exist4[index] = 0;
+				mine4[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+			break;
+		case 5:
+			if (mine5[index].IsOverlap(mine5[index], explosion[j])) {
+				exist5[index] = 0;
+				mine5[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+
+			break;
+		case 6:
+			if (mine6[index].IsOverlap(mine6[index], explosion[j])) {
+				exist6[index] = 0;
+				mine6[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+			break;
+		case 7:
+			if (mine7[index].IsOverlap(mine7[index], explosion[j])) {
+				exist7[index] = 0;
+				mine7[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+			break;
+		case 8:
+			if (mine8[index].IsOverlap(mine8[index], explosion[j])) {
+				exist8[index] = 0;
+				mine8[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+			break;
+		case 9:
+			if (mine9[index].IsOverlap(mine9[index], explosion[j])) {
+				exist9[index] = 0;
+				mine9[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+			break;
+		case 10:
+			if (mine10[index].IsOverlap(mine10[index], explosion[j])) {
+				exist10[index] = 0;
+				mine10[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+			break;
+		case 11:
+			if (mine11[index].IsOverlap(mine11[index], explosion[j])) {
+				exist11[index] = 0;
+				mine11[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+			break;
+		case 12:
+			if (mine12[index].IsOverlap(mine12[index], explosion[j])) {
+				exist12[index] = 0;
+				mine12[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+			break;
+		case 13:
+			if (mine13[index].IsOverlap(mine13[index], explosion[j])) {
+				exist13[index] = 0;
+				mine13[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+			break;
+		case 14:
+			if (mine14[index].IsOverlap(mine14[index], explosion[j])) {
+				exist14[index] = 0;
+				mine14[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+			break;
+		}
+	}
+	return 0;
+}
+
+void CGameStateRun::set_location_of_explosion(int index, int left, int top) {
+	int move_x;
+	int move_y;
+	/*
+	(40, 39, 91, 84)
+	1.png
+	(37, 36, 94, 87)
+	2.png
+	(34, 33, 97, 90)
+	3.png
+	(31, 21, 101, 93)
+	4.png
+	(27, 19, 104, 96)
+	5.png
+	(24, 17, 107, 98)
+	6.png
+	(21, 14, 111, 101)
+	7.png
+	(18, 11, 114, 104)
+	8.png
+	(16, 16, 117, 106)
+	9.png
+	(13, 13, 120, 109)
+	10.png
+	(35, 20, 78, 66)
+	11.png
+	(56, 18, 79, 39)
+	12.png
+	*/
+	switch (explosion[index].GetFrameIndexOfBitmap()) {
+	case 0:
+		move_x = 80;
+		move_y = 78;
+		break;
+	case 1:
+		move_x = 74;
+		move_y = 72;
+		break;
+	case 2:
+		move_x = 68;
+		move_y = 66;
+		break;
+	case 3:
+		move_x = 62;
+		move_y = 42;
+		break;
+	case 4:
+		move_x = 54;
+		move_y = 38;
+		break;
+	case 5:
+		move_x = 48;
+		move_y = 34;
+		break;
+	case 6:
+		move_x = 42;
+		move_y = 28;
+		break;
+	case 7:
+		move_x = 36;
+		move_y = 22;
+		break;
+	case 8:
+		move_x = 32;
+		move_y = 32;
+		break;
+	case 9:
+		move_x = 26;
+		move_y = 26;
+		break;
+	case 10:
+		move_x = 70;
+		move_y = 40;
+		break;
+	case 11:
+		move_x = 112;
+		move_y = 36;
+		break;
+	}
+	//explosion[index].SetTopLeft(left + move_x, top + move_y);
+	explosion[index].SetTopLeft(left + move_x + 32 - 130, top + move_y + 42 - 122);
+}

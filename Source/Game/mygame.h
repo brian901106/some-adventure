@@ -119,7 +119,7 @@ namespace game_framework {
 		bool hit = false;				//爪子是否有抓到東西
 		bool miss = false;				//爪子是否空抓
 		int weight = 1;					//用來表示抓到礦的重量，越重爪子速度越慢 ,預設為1
-		int weight_of_mine[13] = { 100,150,200,400,50,50,400,0,80,50,50,50,300};
+		int weight_of_mine[13] = { 50,100,150,300,50,50,300,0,80,50,50,50,100};
 		int money_gain = 0;				//用來表示現在抓到的金礦的價值
 		int money_of_mine[13] = { 50,100,250,500,2,7,20,1,602,600,-1,20,11 };
 		//金礦(小)/金礦(中)/金礦(大)/金礦(巨大)/豬/骨頭/石頭(大)/爆炸桶/鑽石豬/鑽石/道具袋/骷顱頭/石頭(中)
@@ -172,8 +172,8 @@ namespace game_framework {
 
 		//每關的礦數量
 		//金礦(小)/金礦(中)/金礦(大)/金礦(巨大)/豬/骨頭/石頭(大)/爆炸桶/鑽石豬/鑽石/道具袋/骷顱頭/石頭(中)
-		int mine_num_now[13] = { 4,3,0,2,0,0,2,1,0,0,2,0,2 };
-		int mine_num_1[10][13] = {  { 4,3,0,2,0,0,2,1,0,0,2,0,2 },		//第1關
+		int mine_num_now[13] = { 4,3,0,2,0,0,2,1,0,0,2,0,2 };			//目前關卡讀取哪行參數
+		int mine_num_1[10][13] = {  { 4,3,0,2,0,0,2,3,0,0,2,0,2 },		//第1關
 									{ 7,2,0,2,0,0,4,1,0,1,1,0,3 },		//第2關
 									{ 4,3,0,1,0,0,4,0,0,1,1,0,3 },		//第3關
 									{ 4,1,2,0,1,0,3,0,0,0,4,0,1 },		//第4關
@@ -200,6 +200,7 @@ namespace game_framework {
 
 		CMovingBitmap claw;
 		CMovingBitmap clawhead;
+		CMovingBitmap line[90];
 		CMovingBitmap hitbox;
 		CMovingBitmap bomb;
 		CMovingBitmap number_of_bombs;
@@ -217,7 +218,7 @@ namespace game_framework {
 		CMovingBitmap mine12[10];			//道具袋
 		CMovingBitmap mine13[10];			//骷顱頭
 		CMovingBitmap mine14[10];			//石頭(中)
-		CMovingBitmap exploration[10];
+		CMovingBitmap explosion[10];
 
 		
 
@@ -246,8 +247,10 @@ namespace game_framework {
 		void shoot_claw_by_angle();
 		void pull_claw();
 		void reset_claw();
+		void show_line();
 		void throw_bomb();
 		void reset_bomb();
+		void set_location_of_explosion(int index, int left, int top);
 		void gameover_and_restart();
 		void show_text_by_phase();
 		void show_text_of_goals();
@@ -263,9 +266,7 @@ namespace game_framework {
 		void show_mines();
 		bool is_blew_up(int mine, int index);
 
-		
-		
-		
+
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

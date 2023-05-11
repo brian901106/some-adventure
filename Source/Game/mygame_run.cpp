@@ -156,8 +156,6 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	
 }
 
-
-
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	if (nChar == VK_DOWN) {
@@ -1012,7 +1010,7 @@ void CGameStateRun::load_mines()
 		mine5[i].SetTopLeft(-1000, -1000);
 	}
 	for (int i = 0; i < mine_max_num[4]; i++) {
-		mine6[i].LoadBitmapByString({ "resources/mines/6/1.bmp" }, RGB(0, 0, 0));
+		mine6[i].LoadBitmapByString({ "resources/mines/6/1.bmp","resources/mines/6/2.bmp","resources/mines/6/3.bmp","resources/mines/6/4.bmp","resources/mines/6/5.bmp","resources/mines/6/6.bmp","resources/mines/6/7.bmp" }, RGB(0, 0, 0));
 		mine6[i].SetTopLeft(-1000, -1000);
 	}
 	for (int i = 0; i < mine_max_num[5]; i++) {
@@ -1028,7 +1026,7 @@ void CGameStateRun::load_mines()
 		mine9[i].SetTopLeft(-1000, -1000);
 	}
 	for (int i = 0; i < mine_max_num[8]; i++) {
-		mine10[i].LoadBitmapByString({ "resources/mines/10/1.bmp" }, RGB(0, 0, 0));
+		mine10[i].LoadBitmapByString({ "resources/mines/10/1.bmp","resources/mines/10/2.bmp","resources/mines/10/3.bmp","resources/mines/10/4.bmp","resources/mines/10/5.bmp","resources/mines/10/6.bmp","resources/mines/10/7.bmp" }, RGB(0, 0, 0));
 		mine10[i].SetTopLeft(-1000, -1000);
 	}
 	for (int i = 0; i < mine_max_num[9]; i++) {

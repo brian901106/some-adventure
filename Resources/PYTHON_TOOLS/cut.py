@@ -1,5 +1,6 @@
 import PIL.Image as Image
 import PIL.ImageChops as ImageChops
+import os
   
 def autoCrop(image,backgroundColor=None):
   '''Intelligent automatic image cropping.
@@ -70,6 +71,7 @@ def autoCrop(image,backgroundColor=None):
   if 'A' in image.getbands(): # If the image has a transparency layer, use it.
     # This works for all modes which have transparency layer
     bbox = image.split()[list(image.getbands()).index('A')].getbbox()
+    print(bbox) # 回傳四個邊界
   # --- For non-transparent images -------------------------------------------
   elif image.mode=='RGB':
     if not backgroundColor:
@@ -90,10 +92,36 @@ def autoCrop(image,backgroundColor=None):
   
   
 #范例：裁剪透明图片:
-im = Image.open('D:/git-repos/OOP Practice(some-adventure)/Resources/shop_page/bmp/next_level_button.png')
-cropped = autoCrop(im)
-cropped.save('D:/git-repos/OOP Practice(some-adventure)/Resources/shop_page/bmp/11.png',"png")
-cropped.show()
+dir_path = os.path.dirname(os.path.realpath(__file__))
+filelist = os.listdir(dir_path)
+# filelist.sort(key=lambda x: int(x[:-4]))
+print(filelist)
+
+
+
+for file in filelist:
+    filepath = dir_path + '/' + file
+
+
+    name, ext = os.path.splitext(file)
+
+    if ext == ".png":
+        
+        im = Image.open(filepath)
+
+        if not os.path.isdir(dir_path+"/cut/"):
+            os.mkdir(dir_path+"/cut/")
+
+        newfilepath = dir_path + "/cut/" + name + ".png"
+        cropped = autoCrop(im)
+        cropped.save(newfilepath,"png")
+
+        print(file)
+
+# im = Image.open('D:/git-repos/OOP Practice(some-adventure)/Resources/shop_page/bmp/next_level_button.png')
+# cropped = autoCrop(im)
+# cropped.save('D:/git-repos/OOP Practice(some-adventure)/Resources/shop_page/bmp/11.png',"png")
+# cropped.show()
   
 #范例：裁剪非透明图片
 # im = Image.open('myImage.png')

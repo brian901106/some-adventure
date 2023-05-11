@@ -1,7 +1,7 @@
-dir = "resources/goal_page/goal_bg/"
+dir = "resources/mines/10/"
 ext = ".bmp"
-start = 52
-end = 94
+start = 1
+end = 8
 result = ""
 
 #front_include = "{"

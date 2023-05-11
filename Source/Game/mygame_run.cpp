@@ -1045,7 +1045,6 @@ void CGameStateRun::load_mines()
 void CGameStateRun::show_mines()
 {
 	if (phase == 1 || phase == 2) {
-
 		int location2[10][2] = { {250,350},{350,500},{750,350},{850,300} };	//金礦(小)
 		int location3[10][2] = { {130,700},{600,400},{950,600} };	//金礦(中)
 		int location5[10][2] = { {130,500},{600,550} };	//金礦(巨大)
@@ -1066,7 +1065,7 @@ void CGameStateRun::show_mines()
 			if (exist2[i] == 1 && mine2[i].GetLeft() == 0 && mine2[i].GetTop() == 0) {
 				mine2[i].SetTopLeft(location2[i][0], location2[i][1]);
 			}
-			if (exist2[i] == 1) {
+			if (exist2[i] == 1 && !is_blew_up(2, i)) {
 				if (mine2[i].IsOverlap(hitbox, mine2[i])) {
 					exist2[i] = 0;
 					mine2[i].SetTopLeft(-1000, -1000);
@@ -1084,7 +1083,7 @@ void CGameStateRun::show_mines()
 			if (exist3[i] == 1 && mine3[i].GetLeft() == 0 && mine3[i].GetTop() == 0 ) {
 				mine3[i].SetTopLeft(location3[i][0], location3[i][1]);
 			}
-			if (exist3[i] == 1) {
+			if (exist3[i] == 1 && !is_blew_up(3, i)) {
 				if (mine3[i].IsOverlap(hitbox, mine3[i])) {
 					exist3[i] = 0;
 					mine3[i].SetTopLeft(-1000, -1000);
@@ -1102,7 +1101,7 @@ void CGameStateRun::show_mines()
 			if (exist5[i] == 1 && mine5[i].GetLeft() == 0 && mine5[i].GetTop() == 0) {
 				mine5[i].SetTopLeft(location5[i][0], location5[i][1]);
 			}
-			if (exist5[i] == 1) {
+			if (exist5[i] == 1 && !is_blew_up(5, i)) {
 				if (mine5[i].IsOverlap(hitbox, mine5[i])) {
 					exist5[i] = 0;
 					mine5[i].SetTopLeft(-1000, -1000);
@@ -1120,7 +1119,7 @@ void CGameStateRun::show_mines()
 			if (exist8[i] == 1 && mine8[i].GetLeft() == 0 && mine8[i].GetTop() == 0) {
 				mine8[i].SetTopLeft(location8[i][0], location8[i][1]);
 			}
-			if (exist8[i] == 1) {
+			if (exist8[i] == 1 && !is_blew_up(8, i)) {
 				if (mine8[i].IsOverlap(hitbox, mine8[i])) {
 					exist8[i] = 0;
 					mine8[i].SetTopLeft(-1000, -1000);
@@ -1134,19 +1133,19 @@ void CGameStateRun::show_mines()
 			}
 		}
 
-		/*bomb*/
+		/*炸藥桶*/
 		for (int i = 0; i < mine_num_1[0][7]; i++) {
 			if (exist9[i] == 1 && mine9[i].GetLeft() == 0 && mine9[i].GetTop() == 0) {
 				mine9[i].SetTopLeft(location9[i][0], location9[i][1]);
 			}
-			if (exist9[i] == 1) {
+			if (exist9[i] == 1 && !is_blew_up(9, i)) {
 				if (mine9[i].IsOverlap(hitbox, mine9[i])) {
 					exist9[i] = 0;
 					mine9[i].SetTopLeft(-1000, -1000);
 					hit = true;
 
-					//video of bomb
-					exploration[i].SetTopLeft(location9[i][0], location9[i][1]); //make the location of exploration equal to the location of bomb
+					//爆炸
+					exploration[i].SetTopLeft(location9[i][0], location9[i][1]);
 					exploration[i].ShowBitmap();
 					
 					if (exploration[i].GetFrameIndexOfBitmap() == 0 && exploration[i].IsAnimation() == false) {
@@ -1158,20 +1157,25 @@ void CGameStateRun::show_mines()
 				}
 				mine9[i].ShowBitmap();
 			}
-			
-			if (exploration[i].IsAnimation()) {
+			/*
+			if (is_blew_up(9, i)) {
+				exploration[i].SetTopLeft(location9[i][0], location9[i][1]);
+				exploration[i].ShowBitmap();
 
+				if (exploration[i].GetFrameIndexOfBitmap() == 0 && exploration[i].IsAnimation() == false) {
+					exploration[i].ToggleAnimation();
+				}
+			}
+			*/
+			if (exploration[i].IsAnimation()) {
 				exploration[i].ShowBitmap();
 			}
-
-			
-			
 		}
 		for (int i = 0; i < mine_num_1[0][10]; i++) {
 			if (exist12[i] == 1 && mine12[i].GetLeft() == 0 && mine12[i].GetTop() == 0) {
 				mine12[i].SetTopLeft(location12[i][0], location12[i][1]);
 			}
-			if (exist12[i] == 1) {
+			if (exist12[i] == 1 && !is_blew_up(12, i)) {
 				if (mine12[i].IsOverlap(hitbox, mine12[i])) {
 					exist12[i] = 0;
 					mine12[i].SetTopLeft(-1000, -1000);
@@ -1189,7 +1193,7 @@ void CGameStateRun::show_mines()
 			if (exist14[i] == 1 && mine14[i].GetLeft() == 0 && mine14[i].GetTop() == 0) {
 				mine14[i].SetTopLeft(location14[i][0], location14[i][1]);
 			}
-			if (exist14[i] == 1) {
+			if (exist14[i] == 1 && !is_blew_up(14, i)) {
 				if (mine14[i].IsOverlap(hitbox, mine14[i])) {
 					exist14[i] = 0;
 					mine14[i].SetTopLeft(-1000, -1000);
@@ -1204,6 +1208,129 @@ void CGameStateRun::show_mines()
 		}
 	}
 
+}
+
+bool CGameStateRun::is_blew_up(int mine, int index) {
+	switch (mine) {
+	case 2:
+		for (int j = 0; j < mine_num_1[0][7]; j++) {
+			if (mine2[index].IsOverlap(mine2[index], exploration[j])) {
+				exist2[index] = 0;
+				mine2[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+		}
+		break;
+	case 3:
+		for (int j = 0; j < mine_num_1[0][7]; j++) {
+			if (mine3[index].IsOverlap(mine3[index], exploration[j])) {
+				exist3[index] = 0;
+				mine3[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+		}
+		break;
+	case 4:
+		for (int j = 0; j < mine_num_1[0][7]; j++) {
+			if (mine4[index].IsOverlap(mine4[index], exploration[j])) {
+				exist4[index] = 0;
+				mine4[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+		}
+		break;
+	case 5:
+		for (int j = 0; j < mine_num_1[0][7]; j++) {
+			if (mine5[index].IsOverlap(mine5[index], exploration[j])) {
+				exist5[index] = 0;
+				mine5[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+		}
+		break;
+	case 6:
+		for (int j = 0; j < mine_num_1[0][7]; j++) {
+			if (mine6[index].IsOverlap(mine6[index], exploration[j])) {
+				exist6[index] = 0;
+				mine6[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+		}
+		break;
+	case 7:
+		for (int j = 0; j < mine_num_1[0][7]; j++) {
+			if (mine7[index].IsOverlap(mine7[index], exploration[j])) {
+				exist7[index] = 0;
+				mine7[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+		}
+		break;
+	case 8:
+		for (int j = 0; j < mine_num_1[0][7]; j++) {
+			if (mine8[index].IsOverlap(mine8[index], exploration[j])) {
+				exist8[index] = 0;
+				mine8[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+		}
+		break;
+	case 9:
+		for (int j = 0; j < mine_num_1[0][7]; j++) {
+			if (mine9[index].IsOverlap(mine9[index], exploration[j])) {
+				exist9[index] = 0;
+				mine9[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+		}
+		break;
+	case 10:
+		for (int j = 0; j < mine_num_1[0][7]; j++) {
+			if (mine10[index].IsOverlap(mine10[index], exploration[j])) {
+				exist10[index] = 0;
+				mine10[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+		}
+		break;
+	case 11:
+		for (int j = 0; j < mine_num_1[0][7]; j++) {
+			if (mine11[index].IsOverlap(mine11[index], exploration[j])) {
+				exist11[index] = 0;
+				mine11[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+		}
+		break;
+	case 12:
+		for (int j = 0; j < mine_num_1[0][7]; j++) {
+			if (mine12[index].IsOverlap(mine12[index], exploration[j])) {
+				exist12[index] = 0;
+				mine12[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+		}
+		break;
+	case 13:
+		for (int j = 0; j < mine_num_1[0][7]; j++) {
+			if (mine13[index].IsOverlap(mine13[index], exploration[j])) {
+				exist13[index] = 0;
+				mine13[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+		}
+		break;
+	case 14:
+		for (int j = 0; j < mine_num_1[0][7]; j++) {
+			if (mine14[index].IsOverlap(mine14[index], exploration[j])) {
+				exist14[index] = 0;
+				mine14[index].SetTopLeft(-1000, -1000);
+				return 1;
+			}
+		}
+		break;
+	}
+	return 0;
 }
 
 void CGameStateRun::set_mines()

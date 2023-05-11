@@ -172,6 +172,7 @@ namespace game_framework {
 
 		//每關的礦數量
 		//金礦(小)/金礦(中)/金礦(大)/金礦(巨大)/豬/骨頭/石頭(大)/爆炸桶/鑽石豬/鑽石/道具袋/骷顱頭/石頭(中)
+		int mine_num_now[13] = { 4,3,0,2,0,0,2,1,0,0,2,0,2 };
 		int mine_num_1[10][13] = {  { 4,3,0,2,0,0,2,1,0,0,2,0,2 },		//第1關
 									{ 7,2,0,2,0,0,4,1,0,1,1,0,3 },		//第2關
 									{ 4,3,0,1,0,0,4,0,0,1,1,0,3 },		//第3關
@@ -260,6 +261,7 @@ namespace game_framework {
 		void set_stock();
 		void load_mines();
 		void show_mines();
+		bool is_blew_up(int mine, int index);
 
 		
 		

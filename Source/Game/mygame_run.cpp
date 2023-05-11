@@ -736,6 +736,7 @@ void CGameStateRun::gameover_and_restart()
 			GotoGameState(GAME_STATE_INIT);
 			fail.SetFrameIndexOfBitmap(0);
 			goal.SetFrameIndexOfBitmap(0);
+			background.SetFrameIndexOfBitmap(0);
 			owner_buy.SetFrameIndexOfBitmap(0);
 			owner_angry.SetFrameIndexOfBitmap(0);
 			item_mouse_on = -1;
@@ -1054,22 +1055,136 @@ void CGameStateRun::load_mines()
 
 void CGameStateRun::show_mines()
 {
-	if (phase == 1 || phase == 2) {
+	if (phase == 1) {
 		int location2[10][2] = { {250,350},{350,500},{750,350},{850,300} };	//金礦(小)
 		int location3[10][2] = { {130,700},{600,400},{950,600} };	//金礦(中)
 		int location5[10][2] = { {130,500},{600,550} };	//金礦(巨大)
 		int location8[10][2] = { {530,650},{700,450} };	//石頭(大)
 		int location12[10][2] = { {100,250},{800,330} }; //道具袋
 		int location14[10][2] = { {200,230},{880,250} };	//石頭(中)
-
+		int location9[10][2] = { {500, 300}, {600, 400}, {700, 500} }; //炸藥
 		
 		//int location4[10][2];
+		/*
+		for (int i = 0; i < mine_num_now[0]; i++) {
+			if (exist4[i] == 1 && mine4[i].GetLeft() == 0 && mine4[i].GetTop() == 0) {
+				mine4[i].SetTopLeft(location2[i][0], location2[i][1]);
+			}
+			if (exist4[i] == 1 && !is_blew_up(2, i)) {
+				if (mine4[i].IsOverlap(hitbox, mine4[i])) {
+					exist4[i] = 0;
+					mine4[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[2];
+					weight = weight_of_mine[2];
+				}
+				mine4[i].ShowBitmap();
+			}
+		}
+		*/
 		//int location6[10][2];
+		/*
+		for (int i = 0; i < mine_num_now[0]; i++) {
+			if (exist6[i] == 1 && mine6[i].GetLeft() == 0 && mine6[i].GetTop() == 0) {
+				mine6[i].SetTopLeft(location2[i][0], location2[i][1]);
+			}
+			if (exist6[i] == 1 && !is_blew_up(2, i)) {
+				if (mine6[i].IsOverlap(hitbox, mine6[i])) {
+					exist6[i] = 0;
+					mine6[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[4];
+					weight = weight_of_mine[4];
+				}
+				mine6[i].ShowBitmap();
+			}
+		}
+		*/
 		//int location7[10][2];
-		int location9[10][2] = { {500, 300}, {600, 400}, {700, 500} }; //炸藥
+		/*
+		for (int i = 0; i < mine_num_now[0]; i++) {
+			if (exist7[i] == 1 && mine7[i].GetLeft() == 0 && mine7[i].GetTop() == 0) {
+				mine7[i].SetTopLeft(location2[i][0], location2[i][1]);
+			}
+			if (exist7[i] == 1 && !is_blew_up(2, i)) {
+				if (mine7[i].IsOverlap(hitbox, mine7[i])) {
+					exist7[i] = 0;
+					mine7[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[5];
+					weight = weight_of_mine[5];
+				}
+				mine7[i].ShowBitmap();
+			}
+		}
+		*/
+		
 		//int location10[10][2];
+		/*
+		for (int i = 0; i < mine_num_now[0]; i++) {
+			if (exist10[i] == 1 && mine10[i].GetLeft() == 0 && mine10[i].GetTop() == 0) {
+				mine10[i].SetTopLeft(location2[i][0], location2[i][1]);
+			}
+			if (exist10[i] == 1 && !is_blew_up(2, i)) {
+				if (mine10[i].IsOverlap(hitbox, mine10[i])) {
+					exist10[i] = 0;
+					mine10[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[8];
+					weight = weight_of_mine[8];
+				}
+				mine10[i].ShowBitmap();
+			}
+		}
+		*/
 		//int location11[10][2];
+		/*
+		for (int i = 0; i < mine_num_now[0]; i++) {
+			if (exist11[i] == 1 && mine11[i].GetLeft() == 0 && mine11[i].GetTop() == 0) {
+				mine11[i].SetTopLeft(location2[i][0], location2[i][1]);
+			}
+			if (exist11[i] == 1 && !is_blew_up(2, i)) {
+				if (mine11[i].IsOverlap(hitbox, mine11[i])) {
+					exist11[i] = 0;
+					mine11[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[9];
+					weight = weight_of_mine[9];
+				}
+				mine11[i].ShowBitmap();
+			}
+		}
+		*/
 		//int location13[10][2];
+		/*
+		for (int i = 0; i < mine_num_now[0]; i++) {
+			if (exist13[i] == 1 && mine13[i].GetLeft() == 0 && mine13[i].GetTop() == 0) {
+				mine13[i].SetTopLeft(location2[i][0], location2[i][1]);
+			}
+			if (exist13[i] == 1 && !is_blew_up(2, i)) {
+				if (mine13[i].IsOverlap(hitbox, mine13[i])) {
+					exist13[i] = 0;
+					mine13[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[11];
+					weight = weight_of_mine[11];
+				}
+				mine13[i].ShowBitmap();
+			}
+		}
+		*/
 
 		for (int i = 0; i < mine_num_now[0]; i++) {
 			if (exist2[i] == 1 && mine2[i].GetLeft() == 0 && mine2[i].GetTop() == 0) {
@@ -1221,6 +1336,11 @@ void CGameStateRun::show_mines()
 				mine14[i].ShowBitmap();
 			}
 		}
+	}
+	if (phase == 2) {
+		//這裡開始
+	}
+	if (phase == 3) {
 	}
 
 }

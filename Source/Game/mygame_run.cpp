@@ -1338,9 +1338,1297 @@ void CGameStateRun::show_mines()
 		}
 	}
 	if (phase == 2) {
-		//這裡開始
+
+		int location2[10][2] = { {200,550},{370,450},{500,350},{650,400}, {730, 580}, {830, 250}, {920, 400} }; //金礦(小)
+		int location3[10][2] = { {60,300}, {950, 630} }; //金礦(中)
+		int location5[10][2] = { {20,550},{670,630} }; //金礦(巨大)
+		int location8[10][2] = { {120,330},{260,500}, {580, 520}, {850, 670} }; //石頭(大)
+		int location11[10][2] = { {770, 550} };//鑽石
+		int location12[10][2] = { {300,630} }; //道具袋
+		int location14[10][2] = { {450,600},{780, 450} , {880, 300} }; //石頭(中)
+		//int location9[10][2] = { {500, 300}, {600, 400}, {700, 500} }; //炸藥
+
+
+		for (int i = 0; i < mine_num_now[0]; i++) {
+			if (exist2[i] == 1 && mine2[i].GetLeft() == 0 && mine2[i].GetTop() == 0) {
+				mine2[i].SetTopLeft(location2[i][0], location2[i][1]);
+			}
+			if (exist2[i] == 1 && !is_blew_up(2, i)) {
+				if (mine2[i].IsOverlap(hitbox, mine2[i])) {
+					exist2[i] = 0;
+					mine2[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[0];
+					weight = weight_of_mine[0];
+				}
+				mine2[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[1]; i++) {
+			if (exist3[i] == 1 && mine3[i].GetLeft() == 0 && mine3[i].GetTop() == 0) {
+				mine3[i].SetTopLeft(location3[i][0], location3[i][1]);
+			}
+			if (exist3[i] == 1 && !is_blew_up(3, i)) {
+				if (mine3[i].IsOverlap(hitbox, mine3[i])) {
+					exist3[i] = 0;
+					mine3[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[1];
+					weight = weight_of_mine[1];
+				}
+				mine3[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[3]; i++) {
+			if (exist5[i] == 1 && mine5[i].GetLeft() == 0 && mine5[i].GetTop() == 0) {
+				mine5[i].SetTopLeft(location5[i][0], location5[i][1]);
+			}
+			if (exist5[i] == 1 && !is_blew_up(5, i)) {
+				if (mine5[i].IsOverlap(hitbox, mine5[i])) {
+					exist5[i] = 0;
+					mine5[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[3];
+					weight = weight_of_mine[3];
+				}
+				mine5[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[6]; i++) {
+			if (exist8[i] == 1 && mine8[i].GetLeft() == 0 && mine8[i].GetTop() == 0) {
+				mine8[i].SetTopLeft(location8[i][0], location8[i][1]);
+			}
+			if (exist8[i] == 1 && !is_blew_up(8, i)) {
+				if (mine8[i].IsOverlap(hitbox, mine8[i])) {
+					exist8[i] = 0;
+					mine8[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[6] + (money_of_mine[6] * item_4_effect * 2);
+					weight = weight_of_mine[6];
+				}
+				mine8[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[9]; i++) {
+			if (exist11[i] == 1 && mine11[i].GetLeft() == 0 && mine11[i].GetTop() == 0) {
+				mine11[i].SetTopLeft(location11[i][0], location11[i][1]);
+			}
+			if (exist11[i] == 1 && !is_blew_up(11, i)) {
+				if (mine11[i].IsOverlap(hitbox, mine11[i])) {
+					exist11[i] = 0;
+					mine11[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[9];
+					weight = weight_of_mine[9];
+				}
+				mine11[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[10]; i++) {
+			if (exist12[i] == 1 && mine12[i].GetLeft() == 0 && mine12[i].GetTop() == 0) {
+				mine12[i].SetTopLeft(location12[i][0], location12[i][1]);
+			}
+			if (exist12[i] == 1 && !is_blew_up(12, i)) {
+				if (mine12[i].IsOverlap(hitbox, mine12[i])) {
+					exist12[i] = 0;
+					mine12[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[10];
+					weight = weight_of_mine[10];
+				}
+				mine12[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[12]; i++) {
+			if (exist14[i] == 1 && mine14[i].GetLeft() == 0 && mine14[i].GetTop() == 0) {
+				mine14[i].SetTopLeft(location14[i][0], location14[i][1]);
+			}
+			if (exist14[i] == 1 && !is_blew_up(14, i)) {
+				if (mine14[i].IsOverlap(hitbox, mine14[i])) {
+					exist14[i] = 0;
+					mine14[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[12] + (money_of_mine[12] * item_4_effect * 2);
+					weight = weight_of_mine[12];
+				}
+				mine14[i].ShowBitmap();
+			}
+		}
 	}
 	if (phase == 3) {
+		int location2[10][2] = { {190,300},{190,230},{250,240},{750,400} }; //金礦(小)
+		int location3[10][2] = { {120,470}, {240, 600}, {990, 385} }; //金礦(中)
+		int location5[10][2] = { {520,670} }; //金礦(巨大)
+		int location8[10][2] = { {170,520},{650,460}, {920, 560}, {920, 350} }; //石頭(大)
+		int location11[10][2] = { {840, 590} };//鑽石
+		int location12[10][2] = { {130,320} }; //道具袋
+		int location14[10][2] = { {500,360},{680, 600} , {800, 430} }; //石頭(中)
+		//int location9[10][2] = { {500, 300}, {600, 400}, {700, 500} }; //炸藥
+
+
+		for (int i = 0; i < mine_num_now[0]; i++) {
+			if (exist2[i] == 1 && mine2[i].GetLeft() == 0 && mine2[i].GetTop() == 0) {
+				mine2[i].SetTopLeft(location2[i][0], location2[i][1]);
+			}
+			if (exist2[i] == 1 && !is_blew_up(2, i)) {
+				if (mine2[i].IsOverlap(hitbox, mine2[i])) {
+					exist2[i] = 0;
+					mine2[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[0];
+					weight = weight_of_mine[0];
+				}
+				mine2[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[1]; i++) {
+			if (exist3[i] == 1 && mine3[i].GetLeft() == 0 && mine3[i].GetTop() == 0) {
+				mine3[i].SetTopLeft(location3[i][0], location3[i][1]);
+			}
+			if (exist3[i] == 1 && !is_blew_up(3, i)) {
+				if (mine3[i].IsOverlap(hitbox, mine3[i])) {
+					exist3[i] = 0;
+					mine3[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[1];
+					weight = weight_of_mine[1];
+				}
+				mine3[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[3]; i++) {
+			if (exist5[i] == 1 && mine5[i].GetLeft() == 0 && mine5[i].GetTop() == 0) {
+				mine5[i].SetTopLeft(location5[i][0], location5[i][1]);
+			}
+			if (exist5[i] == 1 && !is_blew_up(5, i)) {
+				if (mine5[i].IsOverlap(hitbox, mine5[i])) {
+					exist5[i] = 0;
+					mine5[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[3];
+					weight = weight_of_mine[3];
+				}
+				mine5[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[6]; i++) {
+			if (exist8[i] == 1 && mine8[i].GetLeft() == 0 && mine8[i].GetTop() == 0) {
+				mine8[i].SetTopLeft(location8[i][0], location8[i][1]);
+			}
+			if (exist8[i] == 1 && !is_blew_up(8, i)) {
+				if (mine8[i].IsOverlap(hitbox, mine8[i])) {
+					exist8[i] = 0;
+					mine8[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[6] + (money_of_mine[6] * item_4_effect * 2);
+					weight = weight_of_mine[6];
+				}
+				mine8[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[9]; i++) {
+			if (exist11[i] == 1 && mine11[i].GetLeft() == 0 && mine11[i].GetTop() == 0) {
+				mine11[i].SetTopLeft(location11[i][0], location11[i][1]);
+			}
+			if (exist11[i] == 1 && !is_blew_up(11, i)) {
+				if (mine11[i].IsOverlap(hitbox, mine11[i])) {
+					exist11[i] = 0;
+					mine11[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[9];
+					weight = weight_of_mine[9];
+				}
+				mine11[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[10]; i++) {
+			if (exist12[i] == 1 && mine12[i].GetLeft() == 0 && mine12[i].GetTop() == 0) {
+				mine12[i].SetTopLeft(location12[i][0], location12[i][1]);
+			}
+			if (exist12[i] == 1 && !is_blew_up(12, i)) {
+				if (mine12[i].IsOverlap(hitbox, mine12[i])) {
+					exist12[i] = 0;
+					mine12[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[10];
+					weight = weight_of_mine[10];
+				}
+				mine12[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[12]; i++) {
+			if (exist14[i] == 1 && mine14[i].GetLeft() == 0 && mine14[i].GetTop() == 0) {
+				mine14[i].SetTopLeft(location14[i][0], location14[i][1]);
+			}
+			if (exist14[i] == 1 && !is_blew_up(14, i)) {
+				if (mine14[i].IsOverlap(hitbox, mine14[i])) {
+					exist14[i] = 0;
+					mine14[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[12] + (money_of_mine[12] * item_4_effect * 2);
+					weight = weight_of_mine[12];
+				}
+				mine14[i].ShowBitmap();
+			}
+		}
+	}
+	if (phase == 4) {
+		int location2[10][2] = { {210,260},{720,320},{750,340},{770,390} }; //金礦(小)
+		int location3[10][2] = { {630, 390} }; //金礦(中)
+		int location4[10][2] = { {290,580}, {600, 610} }; //金礦(大)
+		int location6[10][2] = { {330, 550} }; //豬
+		int location8[10][2] = { {180,660},{250,300}, {890, 330} }; //石頭(大)
+		int location11[10][2] = { {840, 590} };//鑽石
+		int location12[10][2] = { {270,440} , {470,600},{740, 480},  {830, 360} }; //道具袋
+		int location14[10][2] = { {650,490} }; //石頭(中)
+		//int location9[10][2] = { {500, 300}, {600, 400}, {700, 500} }; //炸藥
+
+
+		for (int i = 0; i < mine_num_now[0]; i++) {
+			if (exist2[i] == 1 && mine2[i].GetLeft() == 0 && mine2[i].GetTop() == 0) {
+				mine2[i].SetTopLeft(location2[i][0], location2[i][1]);
+			}
+			if (exist2[i] == 1 && !is_blew_up(2, i)) {
+				if (mine2[i].IsOverlap(hitbox, mine2[i])) {
+					exist2[i] = 0;
+					mine2[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[0];
+					weight = weight_of_mine[0];
+				}
+				mine2[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[1]; i++) {
+			if (exist3[i] == 1 && mine3[i].GetLeft() == 0 && mine3[i].GetTop() == 0) {
+				mine3[i].SetTopLeft(location3[i][0], location3[i][1]);
+			}
+			if (exist3[i] == 1 && !is_blew_up(3, i)) {
+				if (mine3[i].IsOverlap(hitbox, mine3[i])) {
+					exist3[i] = 0;
+					mine3[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[1];
+					weight = weight_of_mine[1];
+				}
+				mine3[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[2]; i++) {
+			if (exist4[i] == 1 && mine4[i].GetLeft() == 0 && mine4[i].GetTop() == 0) {
+				mine4[i].SetTopLeft(location4[i][0], location4[i][1]);
+			}
+			if (exist4[i] == 1 && !is_blew_up(4, i)) {
+				if (mine4[i].IsOverlap(hitbox, mine4[i])) {
+					exist4[i] = 0;
+					mine4[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[2];
+					weight = weight_of_mine[2];
+				}
+				mine4[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[4]; i++) {
+			if (exist6[i] == 1 && mine6[i].GetLeft() == 0 && mine6[i].GetTop() == 0) {
+				mine6[i].SetTopLeft(location6[i][0], location6[i][1]);
+			}
+			if (exist6[i] == 1 && !is_blew_up(6, i)) {
+				if (mine6[i].IsOverlap(hitbox, mine6[i])) {
+					exist6[i] = 0;
+					mine6[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[4];
+					weight = weight_of_mine[4];
+				}
+				mine6[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[6]; i++) {
+			if (exist8[i] == 1 && mine8[i].GetLeft() == 0 && mine8[i].GetTop() == 0) {
+				mine8[i].SetTopLeft(location8[i][0], location8[i][1]);
+			}
+			if (exist8[i] == 1 && !is_blew_up(8, i)) {
+				if (mine8[i].IsOverlap(hitbox, mine8[i])) {
+					exist8[i] = 0;
+					mine8[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[6] + (money_of_mine[6] * item_4_effect * 2);
+					weight = weight_of_mine[6];
+				}
+				mine8[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[9]; i++) {
+			if (exist11[i] == 1 && mine11[i].GetLeft() == 0 && mine11[i].GetTop() == 0) {
+				mine11[i].SetTopLeft(location11[i][0], location11[i][1]);
+			}
+			if (exist11[i] == 1 && !is_blew_up(11, i)) {
+				if (mine11[i].IsOverlap(hitbox, mine11[i])) {
+					exist11[i] = 0;
+					mine11[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[9];
+					weight = weight_of_mine[9];
+				}
+				mine11[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[10]; i++) {
+			if (exist12[i] == 1 && mine12[i].GetLeft() == 0 && mine12[i].GetTop() == 0) {
+				mine12[i].SetTopLeft(location12[i][0], location12[i][1]);
+			}
+			if (exist12[i] == 1 && !is_blew_up(12, i)) {
+				if (mine12[i].IsOverlap(hitbox, mine12[i])) {
+					exist12[i] = 0;
+					mine12[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[10];
+					weight = weight_of_mine[10];
+				}
+				mine12[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[12]; i++) {
+			if (exist14[i] == 1 && mine14[i].GetLeft() == 0 && mine14[i].GetTop() == 0) {
+				mine14[i].SetTopLeft(location14[i][0], location14[i][1]);
+			}
+			if (exist14[i] == 1 && !is_blew_up(14, i)) {
+				if (mine14[i].IsOverlap(hitbox, mine14[i])) {
+					exist14[i] = 0;
+					mine14[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[12] + (money_of_mine[12] * item_4_effect * 2);
+					weight = weight_of_mine[12];
+				}
+				mine14[i].ShowBitmap();
+			}
+		}
+	}
+	if (phase == 5) {
+
+		int location2[10][2] = { {180,230},{220,600},{270,250},{680,500} }; //金礦(小)
+		int location3[10][2] = { {110, 450}, {390, 440}, {888, 320} }; //金礦(中)
+		int location4[10][2] = { {320,670} }; //金礦(大)
+		int location5[10][2] = { {-70, 600}, {1060, 530} };//金礦(巨大)
+		int location6[10][2] = { {120, 380}, {990, 540} }; //豬
+		int location8[10][2] = { {580,350},{810,370}, {900, 750} }; //石頭(大)
+		int location11[10][2] = { {120, 650}, {880, 700}, {960, 700}, {980, 600} };//鑽石
+		int location12[10][2] = { {750, 640} }; //道具袋
+		int location14[10][2] = { {1000,660} }; //石頭(中)
+		//int location9[10][2] = { {500, 300}, {600, 400}, {700, 500} }; //炸藥
+		for (int i = 0; i < mine_num_now[0]; i++) {
+			if (exist2[i] == 1 && mine2[i].GetLeft() == 0 && mine2[i].GetTop() == 0) {
+				mine2[i].SetTopLeft(location2[i][0], location2[i][1]);
+			}
+			if (exist2[i] == 1 && !is_blew_up(2, i)) {
+				if (mine2[i].IsOverlap(hitbox, mine2[i])) {
+					exist2[i] = 0;
+					mine2[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[0];
+					weight = weight_of_mine[0];
+				}
+				mine2[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[1]; i++) {
+			if (exist3[i] == 1 && mine3[i].GetLeft() == 0 && mine3[i].GetTop() == 0) {
+				mine3[i].SetTopLeft(location3[i][0], location3[i][1]);
+			}
+			if (exist3[i] == 1 && !is_blew_up(3, i)) {
+				if (mine3[i].IsOverlap(hitbox, mine3[i])) {
+					exist3[i] = 0;
+					mine3[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[1];
+					weight = weight_of_mine[1];
+				}
+				mine3[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[2]; i++) {
+			if (exist4[i] == 1 && mine4[i].GetLeft() == 0 && mine4[i].GetTop() == 0) {
+				mine4[i].SetTopLeft(location4[i][0], location4[i][1]);
+			}
+			if (exist4[i] == 1 && !is_blew_up(4, i)) {
+				if (mine4[i].IsOverlap(hitbox, mine4[i])) {
+					exist4[i] = 0;
+					mine4[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[2];
+					weight = weight_of_mine[2];
+				}
+				mine4[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[3]; i++) {
+			if (exist5[i] == 1 && mine5[i].GetLeft() == 0 && mine5[i].GetTop() == 0) {
+				mine5[i].SetTopLeft(location5[i][0], location5[i][1]);
+			}
+			if (exist5[i] == 1 && !is_blew_up(5, i)) {
+				if (mine5[i].IsOverlap(hitbox, mine5[i])) {
+					exist5[i] = 0;
+					mine5[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[3];
+					weight = weight_of_mine[3];
+				}
+				mine5[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[4]; i++) {
+			if (exist6[i] == 1 && mine6[i].GetLeft() == 0 && mine6[i].GetTop() == 0) {
+				mine6[i].SetTopLeft(location6[i][0], location6[i][1]);
+			}
+			if (exist6[i] == 1 && !is_blew_up(6, i)) {
+				if (mine6[i].IsOverlap(hitbox, mine6[i])) {
+					exist6[i] = 0;
+					mine6[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[4];
+					weight = weight_of_mine[4];
+				}
+				mine6[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[6]; i++) {
+			if (exist8[i] == 1 && mine8[i].GetLeft() == 0 && mine8[i].GetTop() == 0) {
+				mine8[i].SetTopLeft(location8[i][0], location8[i][1]);
+			}
+			if (exist8[i] == 1 && !is_blew_up(8, i)) {
+				if (mine8[i].IsOverlap(hitbox, mine8[i])) {
+					exist8[i] = 0;
+					mine8[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[6] + (money_of_mine[6] * item_4_effect * 2);
+					weight = weight_of_mine[6];
+				}
+				mine8[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[9]; i++) {
+			if (exist11[i] == 1 && mine11[i].GetLeft() == 0 && mine11[i].GetTop() == 0) {
+				mine11[i].SetTopLeft(location11[i][0], location11[i][1]);
+			}
+			if (exist11[i] == 1 && !is_blew_up(11, i)) {
+				if (mine11[i].IsOverlap(hitbox, mine11[i])) {
+					exist11[i] = 0;
+					mine11[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[9];
+					weight = weight_of_mine[9];
+				}
+				mine11[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[10]; i++) {
+			if (exist12[i] == 1 && mine12[i].GetLeft() == 0 && mine12[i].GetTop() == 0) {
+				mine12[i].SetTopLeft(location12[i][0], location12[i][1]);
+			}
+			if (exist12[i] == 1 && !is_blew_up(12, i)) {
+				if (mine12[i].IsOverlap(hitbox, mine12[i])) {
+					exist12[i] = 0;
+					mine12[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[10];
+					weight = weight_of_mine[10];
+				}
+				mine12[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[12]; i++) {
+			if (exist14[i] == 1 && mine14[i].GetLeft() == 0 && mine14[i].GetTop() == 0) {
+				mine14[i].SetTopLeft(location14[i][0], location14[i][1]);
+			}
+			if (exist14[i] == 1 && !is_blew_up(14, i)) {
+				if (mine14[i].IsOverlap(hitbox, mine14[i])) {
+					exist14[i] = 0;
+					mine14[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[12] + (money_of_mine[12] * item_4_effect * 2);
+					weight = weight_of_mine[12];
+				}
+				mine14[i].ShowBitmap();
+			}
+		}
+	}
+	if (phase == 6) {
+		int location2[10][2] = { {130,270},{180,444},{330,550},{700,320}, {820, 540}, {830, 240}, {940, 450} }; //金礦(小)
+		int location3[10][2] = { {20, 400}, {410, 320}, {910, 610} }; //金礦(中)
+		//int location4[10][2] = { {320,670} }; //金礦(大)
+		int location5[10][2] = { {500, 550} };//金礦(巨大)
+		//int location6[10][2] = { {120, 380}, {990, 540} }; //豬
+		int location8[10][2] = { {24,550},{420,620}, {630, 640} }; //石頭(大)
+		int location10[10][2] = { {130, 380}, {780, 740} }; //鑽石豬
+		int location11[10][2] = { {120, 650}, {880, 700} };//鑽石
+		int location12[10][2] = { {540, 460} }; //道具袋
+		int location14[10][2] = { {222,626}, {860, 660}, {1010, 600} }; //石頭(中)
+
+		for (int i = 0; i < mine_num_now[0]; i++) {
+			if (exist2[i] == 1 && mine2[i].GetLeft() == 0 && mine2[i].GetTop() == 0) {
+				mine2[i].SetTopLeft(location2[i][0], location2[i][1]);
+			}
+			if (exist2[i] == 1 && !is_blew_up(2, i)) {
+				if (mine2[i].IsOverlap(hitbox, mine2[i])) {
+					exist2[i] = 0;
+					mine2[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[0];
+					weight = weight_of_mine[0];
+				}
+				mine2[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[1]; i++) {
+			if (exist3[i] == 1 && mine3[i].GetLeft() == 0 && mine3[i].GetTop() == 0) {
+				mine3[i].SetTopLeft(location3[i][0], location3[i][1]);
+			}
+			if (exist3[i] == 1 && !is_blew_up(3, i)) {
+				if (mine3[i].IsOverlap(hitbox, mine3[i])) {
+					exist3[i] = 0;
+					mine3[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[1];
+					weight = weight_of_mine[1];
+				}
+				mine3[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[3]; i++) {
+			if (exist5[i] == 1 && mine5[i].GetLeft() == 0 && mine5[i].GetTop() == 0) {
+				mine5[i].SetTopLeft(location5[i][0], location5[i][1]);
+			}
+			if (exist5[i] == 1 && !is_blew_up(5, i)) {
+				if (mine5[i].IsOverlap(hitbox, mine5[i])) {
+					exist5[i] = 0;
+					mine5[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[3];
+					weight = weight_of_mine[3];
+				}
+				mine5[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[6]; i++) {
+			if (exist8[i] == 1 && mine8[i].GetLeft() == 0 && mine8[i].GetTop() == 0) {
+				mine8[i].SetTopLeft(location8[i][0], location8[i][1]);
+			}
+			if (exist8[i] == 1 && !is_blew_up(8, i)) {
+				if (mine8[i].IsOverlap(hitbox, mine8[i])) {
+					exist8[i] = 0;
+					mine8[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[6] + (money_of_mine[6] * item_4_effect * 2);
+					weight = weight_of_mine[6];
+				}
+				mine8[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[8]; i++) {
+			if (exist10[i] == 1 && mine10[i].GetLeft() == 0 && mine10[i].GetTop() == 0) {
+				mine10[i].SetTopLeft(location10[i][0], location10[i][1]);
+			}
+			if (exist10[i] == 1 && !is_blew_up(10, i)) {
+				if (mine10[i].IsOverlap(hitbox, mine10[i])) {
+					exist10[i] = 0;
+					mine10[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[8];
+					weight = weight_of_mine[8];
+				}
+				mine10[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[9]; i++) {
+			if (exist11[i] == 1 && mine11[i].GetLeft() == 0 && mine11[i].GetTop() == 0) {
+				mine11[i].SetTopLeft(location11[i][0], location11[i][1]);
+			}
+			if (exist11[i] == 1 && !is_blew_up(11, i)) {
+				if (mine11[i].IsOverlap(hitbox, mine11[i])) {
+					exist11[i] = 0;
+					mine11[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[9];
+					weight = weight_of_mine[9];
+				}
+				mine11[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[10]; i++) {
+			if (exist12[i] == 1 && mine12[i].GetLeft() == 0 && mine12[i].GetTop() == 0) {
+				mine12[i].SetTopLeft(location12[i][0], location12[i][1]);
+			}
+			if (exist12[i] == 1 && !is_blew_up(12, i)) {
+				if (mine12[i].IsOverlap(hitbox, mine12[i])) {
+					exist12[i] = 0;
+					mine12[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[10];
+					weight = weight_of_mine[10];
+				}
+				mine12[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[12]; i++) {
+			if (exist14[i] == 1 && mine14[i].GetLeft() == 0 && mine14[i].GetTop() == 0) {
+				mine14[i].SetTopLeft(location14[i][0], location14[i][1]);
+			}
+			if (exist14[i] == 1 && !is_blew_up(14, i)) {
+				if (mine14[i].IsOverlap(hitbox, mine14[i])) {
+					exist14[i] = 0;
+					mine14[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[12] + (money_of_mine[12] * item_4_effect * 2);
+					weight = weight_of_mine[12];
+				}
+				mine14[i].ShowBitmap();
+			}
+		}
+	}
+	if (phase == 7) {
+
+		int location2[10][2] = { {100,340},{570,335} }; //金礦(小)
+		//int location3[10][2] = { {20, 400}, {410, 320}, {910, 610} }; //金礦(中)
+		int location4[10][2] = { {320,580}, {1000, 300} }; //金礦(大)
+		int location5[10][2] = { {-25, 660}, {340, 720},{820, 600} };//金礦(巨大)
+		int location6[10][2] = { {15, 460}, {150, 640}, {520, 510}, {625, 230}, {970, 425}, {1050, 270} }; //豬
+		int location7[10][2] = { {120, 500}, {800, 360} }; // 骨頭
+		//int location8[10][2] = { {24,550},{420,620}, {630, 640} }; //石頭(大)
+		int location9[10][2] = { {235, 520}, {860, 300} }; //炸藥
+		//int location10[10][2] = { {130, 380}, {780, 740} }; //鑽石豬
+		//int location11[10][2] = { {120, 650}, {880, 700} };//鑽石
+		int location12[10][2] = { {800, 465} }; //道具袋
+		int location13[10][2] = { {310, 440}, {760, 380} }; //骷髏
+		//int location14[10][2] = { {222,626}, {860, 660}, {1010, 600} }; //石頭(中)
+
+		for (int i = 0; i < mine_num_now[0]; i++) {
+			if (exist2[i] == 1 && mine2[i].GetLeft() == 0 && mine2[i].GetTop() == 0) {
+				mine2[i].SetTopLeft(location2[i][0], location2[i][1]);
+			}
+			if (exist2[i] == 1 && !is_blew_up(2, i)) {
+				if (mine2[i].IsOverlap(hitbox, mine2[i])) {
+					exist2[i] = 0;
+					mine2[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[0];
+					weight = weight_of_mine[0];
+				}
+				mine2[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[2]; i++) {
+			if (exist4[i] == 1 && mine4[i].GetLeft() == 0 && mine4[i].GetTop() == 0) {
+				mine4[i].SetTopLeft(location4[i][0], location4[i][1]);
+			}
+			if (exist4[i] == 1 && !is_blew_up(4, i)) {
+				if (mine4[i].IsOverlap(hitbox, mine4[i])) {
+					exist4[i] = 0;
+					mine4[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[2];
+					weight = weight_of_mine[2];
+				}
+				mine4[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[3]; i++) {
+			if (exist5[i] == 1 && mine5[i].GetLeft() == 0 && mine5[i].GetTop() == 0) {
+				mine5[i].SetTopLeft(location5[i][0], location5[i][1]);
+			}
+			if (exist5[i] == 1 && !is_blew_up(5, i)) {
+				if (mine5[i].IsOverlap(hitbox, mine5[i])) {
+					exist5[i] = 0;
+					mine5[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[3];
+					weight = weight_of_mine[3];
+				}
+				mine5[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[4]; i++) {
+			if (exist6[i] == 1 && mine6[i].GetLeft() == 0 && mine6[i].GetTop() == 0) {
+				mine6[i].SetTopLeft(location6[i][0], location6[i][1]);
+			}
+			if (exist6[i] == 1 && !is_blew_up(6, i)) {
+				if (mine6[i].IsOverlap(hitbox, mine6[i])) {
+					exist6[i] = 0;
+					mine6[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[6] + (money_of_mine[6] * item_4_effect * 2);
+					weight = weight_of_mine[6];
+				}
+				mine6[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[5]; i++) {
+			if (exist7[i] == 1 && mine7[i].GetLeft() == 0 && mine7[i].GetTop() == 0) {
+				mine7[i].SetTopLeft(location7[i][0], location7[i][1]);
+			}
+			if (exist7[i] == 1 && !is_blew_up(7, i)) {
+				if (mine7[i].IsOverlap(hitbox, mine7[i])) {
+					exist7[i] = 0;
+					mine7[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[5];
+					weight = weight_of_mine[5];
+				}
+				mine7[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[7]; i++) {
+			if (exist9[i] == 1 && mine9[i].GetLeft() == 0 && mine9[i].GetTop() == 0) {
+				mine9[i].SetTopLeft(location9[i][0], location9[i][1]);
+			}
+			if (exist9[i] == 1 && !is_blew_up(9, i)) {
+				if (mine9[i].IsOverlap(hitbox, mine9[i])) {
+					exist9[i] = 0;
+					mine9[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+					//爆炸
+					explosion[i].ShowBitmap();
+					set_location_of_explosion(i, location9[i][0], location9[i][1]);
+
+					if (explosion[i].GetFrameIndexOfBitmap() == 0 && explosion[i].IsAnimation() == false) {
+						explosion[i].ToggleAnimation();
+					}
+
+					money_gain = money_of_mine[7];
+					weight = weight_of_mine[7];
+				}
+				mine9[i].ShowBitmap();
+			}
+			if (is_blew_up(9, i)) {
+				exist9[i] = 0;
+				mine9[i].SetTopLeft(-1000, -1000);
+				hit = true;
+
+				//爆炸
+				explosion[i].ShowBitmap();
+				set_location_of_explosion(i, location9[i][0], location9[i][1]);
+
+				if (explosion[i].GetFrameIndexOfBitmap() == 0 && explosion[i].IsAnimation() == false) {
+					explosion[i].ToggleAnimation();
+				}
+			}
+			if (explosion[i].IsAnimation()) {
+				explosion[i].ShowBitmap();
+				set_location_of_explosion(i, location9[i][0], location9[i][1]);
+			}
+		}
+		for (int i = 0; i < mine_num_now[10]; i++) {
+			if (exist12[i] == 1 && mine12[i].GetLeft() == 0 && mine12[i].GetTop() == 0) {
+				mine12[i].SetTopLeft(location12[i][0], location12[i][1]);
+			}
+			if (exist12[i] == 1 && !is_blew_up(12, i)) {
+				if (mine12[i].IsOverlap(hitbox, mine12[i])) {
+					exist12[i] = 0;
+					mine12[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[10];
+					weight = weight_of_mine[10];
+				}
+				mine12[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[11]; i++) {
+			if (exist13[i] == 1 && mine13[i].GetLeft() == 0 && mine13[i].GetTop() == 0) {
+				mine13[i].SetTopLeft(location13[i][0], location13[i][1]);
+			}
+			if (exist13[i] == 1 && !is_blew_up(13, i)) {
+				if (mine13[i].IsOverlap(hitbox, mine13[i])) {
+					exist13[i] = 0;
+					mine13[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[11] + (money_of_mine[11] * item_4_effect * 2);
+					weight = weight_of_mine[11];
+				}
+				mine13[i].ShowBitmap();
+			}
+		}
+	}
+	if (phase == 8) {
+		int location9[10][2] = { {90, 390}, {270, 500}, {690, 520}, {870, 300}, {930, 680} }; //炸藥
+		int location10[10][2] = { {20, 400}, {170, 500} }; //鑽石豬
+		int location11[10][2] = { {130, 560}, {200, 290}, {390, 590},{400, 340}, {640, 400},{645, 680}, {800, 480},{985, 240} };//鑽石
+		int location12[10][2] = { {65, 685} , {1010, 580} }; //道具袋
+
+		for (int i = 0; i < mine_num_now[7]; i++) {
+			if (exist9[i] == 1 && mine9[i].GetLeft() == 0 && mine9[i].GetTop() == 0) {
+				mine9[i].SetTopLeft(location9[i][0], location9[i][1]);
+			}
+			if (exist9[i] == 1 && !is_blew_up(9, i)) {
+				if (mine9[i].IsOverlap(hitbox, mine9[i])) {
+					exist9[i] = 0;
+					mine9[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+					//爆炸
+					explosion[i].ShowBitmap();
+					set_location_of_explosion(i, location9[i][0], location9[i][1]);
+
+					if (explosion[i].GetFrameIndexOfBitmap() == 0 && explosion[i].IsAnimation() == false) {
+						explosion[i].ToggleAnimation();
+					}
+
+					money_gain = money_of_mine[7];
+					weight = weight_of_mine[7];
+				}
+				mine9[i].ShowBitmap();
+			}
+			if (is_blew_up(9, i)) {
+				exist9[i] = 0;
+				mine9[i].SetTopLeft(-1000, -1000);
+				hit = true;
+
+				//爆炸
+				explosion[i].ShowBitmap();
+				set_location_of_explosion(i, location9[i][0], location9[i][1]);
+
+				if (explosion[i].GetFrameIndexOfBitmap() == 0 && explosion[i].IsAnimation() == false) {
+					explosion[i].ToggleAnimation();
+				}
+			}
+			if (explosion[i].IsAnimation()) {
+				explosion[i].ShowBitmap();
+				set_location_of_explosion(i, location9[i][0], location9[i][1]);
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[8]; i++) {
+			if (exist10[i] == 1 && mine10[i].GetLeft() == 0 && mine10[i].GetTop() == 0) {
+				mine10[i].SetTopLeft(location10[i][0], location10[i][1]);
+			}
+			if (exist10[i] == 1 && !is_blew_up(10, i)) {
+				if (mine10[i].IsOverlap(hitbox, mine10[i])) {
+					exist10[i] = 0;
+					mine10[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[8] + (money_of_mine[8] * item_4_effect * 2);
+					weight = weight_of_mine[8];
+				}
+				mine10[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[9]; i++) {
+			if (exist11[i] == 1 && mine11[i].GetLeft() == 0 && mine11[i].GetTop() == 0) {
+				mine11[i].SetTopLeft(location11[i][0], location11[i][1]);
+			}
+			if (exist11[i] == 1 && !is_blew_up(11, i)) {
+				if (mine11[i].IsOverlap(hitbox, mine11[i])) {
+					exist11[i] = 0;
+					mine11[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[9];
+					weight = weight_of_mine[9];
+				}
+				mine11[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[10]; i++) {
+			if (exist12[i] == 1 && mine12[i].GetLeft() == 0 && mine12[i].GetTop() == 0) {
+				mine12[i].SetTopLeft(location12[i][0], location12[i][1]);
+			}
+			if (exist12[i] == 1 && !is_blew_up(12, i)) {
+				if (mine12[i].IsOverlap(hitbox, mine12[i])) {
+					exist12[i] = 0;
+					mine12[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[10];
+					weight = weight_of_mine[10];
+				}
+				mine12[i].ShowBitmap();
+			}
+		}
+
+	}
+	if (phase == 9) {
+		int location2[10][2] = { {500,300} }; //金礦(小)
+		//int location4[10][2] = { {320,580}, {1000, 300} }; //金礦(大)
+		int location5[10][2] = { {170, 580}, {730, 600} };//金礦(巨大)
+		//int location6[10][2] = { {15, 460}, {150, 640}, {520, 510}, {625, 230}, {970, 425}, {1050, 270} }; //豬
+		int location7[10][2] = { {950, 650} }; // 骨頭
+		//int location8[10][2] = { {24,550},{420,620}, {630, 640} }; //石頭(大)
+		int location9[10][2] = { {-22, 280}, {40, 570}, {290, 720}, {600, 720}, {900, 700}, {1065, 470}, {1060, 210} }; //炸藥
+		int location10[10][2] = { {110, 430}, {250, 540} , {730, 480}, {940, 330} }; //鑽石豬
+		int location11[10][2] = { {120, 650}, {120, 500}, {200, 720}, {850, 520}, {980, 400}, {1040, 650}, {1070, 370} };//鑽石
+		int location12[10][2] = { {15, 370}, {380, 670}, {1000, 520} }; //道具袋
+		int location13[10][2] = { {540, 600} }; //骷髏
+
+		for (int i = 0; i < mine_num_now[0]; i++) {
+			if (exist2[i] == 1 && mine2[i].GetLeft() == 0 && mine2[i].GetTop() == 0) {
+				mine2[i].SetTopLeft(location2[i][0], location2[i][1]);
+			}
+			if (exist2[i] == 1 && !is_blew_up(2, i)) {
+				if (mine2[i].IsOverlap(hitbox, mine2[i])) {
+					exist2[i] = 0;
+					mine2[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[0];
+					weight = weight_of_mine[0];
+				}
+				mine2[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[3]; i++) {
+			if (exist5[i] == 1 && mine5[i].GetLeft() == 0 && mine5[i].GetTop() == 0) {
+				mine5[i].SetTopLeft(location5[i][0], location5[i][1]);
+			}
+			if (exist5[i] == 1 && !is_blew_up(5, i)) {
+				if (mine5[i].IsOverlap(hitbox, mine5[i])) {
+					exist5[i] = 0;
+					mine5[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[3];
+					weight = weight_of_mine[3];
+				}
+				mine5[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[5]; i++) {
+			if (exist7[i] == 1 && mine7[i].GetLeft() == 0 && mine7[i].GetTop() == 0) {
+				mine7[i].SetTopLeft(location7[i][0], location7[i][1]);
+			}
+			if (exist7[i] == 1 && !is_blew_up(7, i)) {
+				if (mine7[i].IsOverlap(hitbox, mine7[i])) {
+					exist7[i] = 0;
+					mine7[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[5];
+					weight = weight_of_mine[5];
+				}
+				mine7[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[7]; i++) {
+			if (exist9[i] == 1 && mine9[i].GetLeft() == 0 && mine9[i].GetTop() == 0) {
+				mine9[i].SetTopLeft(location9[i][0], location9[i][1]);
+			}
+			if (exist9[i] == 1 && !is_blew_up(9, i)) {
+				if (mine9[i].IsOverlap(hitbox, mine9[i])) {
+					exist9[i] = 0;
+					mine9[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+					//爆炸
+					explosion[i].ShowBitmap();
+					set_location_of_explosion(i, location9[i][0], location9[i][1]);
+
+					if (explosion[i].GetFrameIndexOfBitmap() == 0 && explosion[i].IsAnimation() == false) {
+						explosion[i].ToggleAnimation();
+					}
+
+					money_gain = money_of_mine[7];
+					weight = weight_of_mine[7];
+				}
+				mine9[i].ShowBitmap();
+			}
+			if (is_blew_up(9, i)) {
+				exist9[i] = 0;
+				mine9[i].SetTopLeft(-1000, -1000);
+				hit = true;
+
+				//爆炸
+				explosion[i].ShowBitmap();
+				set_location_of_explosion(i, location9[i][0], location9[i][1]);
+
+				if (explosion[i].GetFrameIndexOfBitmap() == 0 && explosion[i].IsAnimation() == false) {
+					explosion[i].ToggleAnimation();
+				}
+			}
+			if (explosion[i].IsAnimation()) {
+				explosion[i].ShowBitmap();
+				set_location_of_explosion(i, location9[i][0], location9[i][1]);
+			}
+		}
+		for (int i = 0; i < mine_num_now[8]; i++) {
+			if (exist10[i] == 1 && mine10[i].GetLeft() == 0 && mine10[i].GetTop() == 0) {
+				mine10[i].SetTopLeft(location10[i][0], location10[i][1]);
+			}
+			if (exist10[i] == 1 && !is_blew_up(10, i)) {
+				if (mine10[i].IsOverlap(hitbox, mine10[i])) {
+					exist10[i] = 0;
+					mine10[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[8] + (money_of_mine[8] * item_4_effect * 2);
+					weight = weight_of_mine[8];
+				}
+				mine10[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[9]; i++) {
+			if (exist11[i] == 1 && mine11[i].GetLeft() == 0 && mine11[i].GetTop() == 0) {
+				mine11[i].SetTopLeft(location11[i][0], location11[i][1]);
+			}
+			if (exist11[i] == 1 && !is_blew_up(11, i)) {
+				if (mine11[i].IsOverlap(hitbox, mine11[i])) {
+					exist11[i] = 0;
+					mine11[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[9];
+					weight = weight_of_mine[9];
+				}
+				mine11[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[10]; i++) {
+			if (exist12[i] == 1 && mine12[i].GetLeft() == 0 && mine12[i].GetTop() == 0) {
+				mine12[i].SetTopLeft(location12[i][0], location12[i][1]);
+			}
+			if (exist12[i] == 1 && !is_blew_up(12, i)) {
+				if (mine12[i].IsOverlap(hitbox, mine12[i])) {
+					exist12[i] = 0;
+					mine12[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[10];
+					weight = weight_of_mine[10];
+				}
+				mine12[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[11]; i++) {
+			if (exist13[i] == 1 && mine13[i].GetLeft() == 0 && mine13[i].GetTop() == 0) {
+				mine13[i].SetTopLeft(location13[i][0], location13[i][1]);
+			}
+			if (exist13[i] == 1 && !is_blew_up(13, i)) {
+				if (mine13[i].IsOverlap(hitbox, mine13[i])) {
+					exist13[i] = 0;
+					mine13[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[11] + (money_of_mine[11] * item_4_effect * 2);
+					weight = weight_of_mine[11];
+				}
+				mine13[i].ShowBitmap();
+			}
+		}
+	}
+	if (phase == 10) {
+		int location2[10][2] = { {80,360},{220,440},{240,545},{630,450}, {750, 440}, {860, 320} }; //金礦(小)
+		int location3[10][2] = { {160, 515}, {310, 660}, {430, 560}, {700, 660}, {1000, 600} }; //金礦(中)
+		int location4[10][2] = { {25,444}, {230, 720}, {560, 500}, {800, 700}, {888, 360} }; //金礦(大)
+		int location5[10][2] = { {60,580},{430,660}, {760, 510}, {980, 700}, {1020, 480} }; //金礦(巨大)
+		int location8[10][2] = { {210,590},{215,290}, {500, 380}, {600,600}, {750, 280} }; //石頭(大)
+
+		for (int i = 0; i < mine_num_now[0]; i++) {
+			if (exist2[i] == 1 && mine2[i].GetLeft() == 0 && mine2[i].GetTop() == 0) {
+				mine2[i].SetTopLeft(location2[i][0], location2[i][1]);
+			}
+			if (exist2[i] == 1 && !is_blew_up(2, i)) {
+				if (mine2[i].IsOverlap(hitbox, mine2[i])) {
+					exist2[i] = 0;
+					mine2[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[0];
+					weight = weight_of_mine[0];
+				}
+				mine2[i].ShowBitmap();
+			}
+		}
+
+		for (int i = 0; i < mine_num_now[1]; i++) {
+			if (exist3[i] == 1 && mine3[i].GetLeft() == 0 && mine3[i].GetTop() == 0) {
+				mine3[i].SetTopLeft(location3[i][0], location3[i][1]);
+			}
+			if (exist3[i] == 1 && !is_blew_up(3, i)) {
+				if (mine3[i].IsOverlap(hitbox, mine3[i])) {
+					exist3[i] = 0;
+					mine3[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[1];
+					weight = weight_of_mine[1];
+				}
+				mine3[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[2]; i++) {
+			if (exist4[i] == 1 && mine4[i].GetLeft() == 0 && mine4[i].GetTop() == 0) {
+				mine4[i].SetTopLeft(location4[i][0], location4[i][1]);
+			}
+			if (exist4[i] == 1 && !is_blew_up(4, i)) {
+				if (mine4[i].IsOverlap(hitbox, mine4[i])) {
+					exist4[i] = 0;
+					mine4[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[2];
+					weight = weight_of_mine[2];
+				}
+				mine4[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[3]; i++) {
+			if (exist5[i] == 1 && mine5[i].GetLeft() == 0 && mine5[i].GetTop() == 0) {
+				mine5[i].SetTopLeft(location5[i][0], location5[i][1]);
+			}
+			if (exist5[i] == 1 && !is_blew_up(5, i)) {
+				if (mine5[i].IsOverlap(hitbox, mine5[i])) {
+					exist5[i] = 0;
+					mine5[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[3];
+					weight = weight_of_mine[3];
+				}
+				mine5[i].ShowBitmap();
+			}
+		}
+		for (int i = 0; i < mine_num_now[6]; i++) {
+			if (exist8[i] == 1 && mine8[i].GetLeft() == 0 && mine8[i].GetTop() == 0) {
+				mine8[i].SetTopLeft(location8[i][0], location8[i][1]);
+			}
+			if (exist8[i] == 1 && !is_blew_up(8, i)) {
+				if (mine8[i].IsOverlap(hitbox, mine8[i])) {
+					exist8[i] = 0;
+					mine8[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[6] + (money_of_mine[6] * item_4_effect * 2);
+					weight = weight_of_mine[6];
+				}
+				mine8[i].ShowBitmap();
+			}
+		}
 	}
 
 }

@@ -1295,7 +1295,7 @@ void CGameStateRun::show_mines()
 					explosion[i].ToggleAnimation();
 				}
 			}
-			if (explosion[i].IsAnimation()) {
+			if (explosion[i].IsAnimation() && exist9[i] == 0) {
 				explosion[i].ShowBitmap();
 				set_location_of_explosion(i, location9[i][0], location9[i][1]);
 			}
@@ -2714,12 +2714,12 @@ void CGameStateRun::set_mines()
 		if (i < mine_num_now[7]) {
 			exist9[i] = 1;
 			mine9[i].SetTopLeft(0, 0);
-			explosion[i].SetFrameIndexOfBitmap(0);
 		}
 		else {
 			exist9[i] = 0;
 			mine9[i].SetTopLeft(-1000, -1000);
 		}
+		explosion[i].SetFrameIndexOfBitmap(0);
 	}
 	for (int i = 0; i < mine_max_num[8]; i++) {
 		if (i < mine_num_now[8]) {

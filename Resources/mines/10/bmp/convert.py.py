@@ -20,7 +20,7 @@ for file in filelist:
         img = Image.open(filepath)
 
         (w, h) = img.size
-        img = img.resize((int(w*1), int(h*1)))
+        img = img.resize((int(w*1), int(h*1))).transpose(Image.FLIP_LEFT_RIGHT)
 
 
 

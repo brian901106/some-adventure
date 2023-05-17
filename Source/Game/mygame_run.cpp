@@ -1017,8 +1017,9 @@ void CGameStateRun::load_mines()
 		mine5[i].SetTopLeft(-1000, -1000);
 	}
 	for (int i = 0; i < mine_max_num[4]; i++) {
-		mine6[i].LoadBitmapByString({ "resources/mines/6/1.bmp","resources/mines/6/2.bmp","resources/mines/6/3.bmp","resources/mines/6/4.bmp","resources/mines/6/5.bmp","resources/mines/6/6.bmp","resources/mines/6/7.bmp" }, RGB(0, 0, 0));
+		mine6[i].LoadBitmapByString({ "resources/mines/6/1.bmp","resources/mines/6/2.bmp","resources/mines/6/3.bmp","resources/mines/6/4.bmp","resources/mines/6/5.bmp","resources/mines/6/6.bmp","resources/mines/6/7.bmp","resources/mines/6/1.bmp","resources/mines/6/2.bmp","resources/mines/6/3.bmp","resources/mines/6/4.bmp","resources/mines/6/5.bmp","resources/mines/6/6.bmp","resources/mines/6/7.bmp","resources/mines/6/1.bmp","resources/mines/6/2.bmp","resources/mines/6/3.bmp","resources/mines/6/4.bmp","resources/mines/6/5.bmp","resources/mines/6/6.bmp","resources/mines/6/7.bmp","resources/mines/6/1.bmp","resources/mines/6/2.bmp","resources/mines/6/3.bmp","resources/mines/6/4.bmp","resources/mines/6/5.bmp","resources/mines/6/6.bmp","resources/mines/6/7.bmp","resources/mines/6/1.bmp","resources/mines/6/2.bmp","resources/mines/6/3.bmp","resources/mines/6/4.bmp","resources/mines/6/5.bmp","resources/mines/6/6.bmp","resources/mines/6/7.bmp","resources/mines/6/1.bmp","resources/mines/6/2.bmp","resources/mines/6/3.bmp","resources/mines/6/4.bmp","resources/mines/6/5.bmp","resources/mines/6/6.bmp","resources/mines/6/7.bmp","resources/mines/6/8.bmp","resources/mines/6/9.bmp","resources/mines/6/10.bmp","resources/mines/6/11.bmp","resources/mines/6/12.bmp","resources/mines/6/13.bmp","resources/mines/6/14.bmp","resources/mines/6/8.bmp","resources/mines/6/9.bmp","resources/mines/6/10.bmp","resources/mines/6/11.bmp","resources/mines/6/12.bmp","resources/mines/6/13.bmp","resources/mines/6/14.bmp","resources/mines/6/8.bmp","resources/mines/6/9.bmp","resources/mines/6/10.bmp","resources/mines/6/11.bmp","resources/mines/6/12.bmp","resources/mines/6/13.bmp","resources/mines/6/14.bmp","resources/mines/6/8.bmp","resources/mines/6/9.bmp","resources/mines/6/10.bmp","resources/mines/6/11.bmp","resources/mines/6/12.bmp","resources/mines/6/13.bmp","resources/mines/6/14.bmp","resources/mines/6/8.bmp","resources/mines/6/9.bmp","resources/mines/6/10.bmp","resources/mines/6/11.bmp","resources/mines/6/12.bmp","resources/mines/6/13.bmp","resources/mines/6/14.bmp","resources/mines/6/8.bmp","resources/mines/6/9.bmp","resources/mines/6/10.bmp","resources/mines/6/11.bmp","resources/mines/6/12.bmp","resources/mines/6/13.bmp","resources/mines/6/14.bmp" }, RGB(0, 0, 0));
 		mine6[i].SetTopLeft(-1000, -1000);
+		mine6[i].SetAnimation(200, false);
 	}
 	for (int i = 0; i < mine_max_num[5]; i++) {
 		mine7[i].LoadBitmapByString({ "resources/mines/7.bmp" }, RGB(0, 0, 0));
@@ -1033,8 +1034,9 @@ void CGameStateRun::load_mines()
 		mine9[i].SetTopLeft(-1000, -1000);
 	}
 	for (int i = 0; i < mine_max_num[8]; i++) {
-		mine10[i].LoadBitmapByString({ "resources/mines/10/1.bmp","resources/mines/10/2.bmp","resources/mines/10/3.bmp","resources/mines/10/4.bmp","resources/mines/10/5.bmp","resources/mines/10/6.bmp","resources/mines/10/7.bmp" }, RGB(0, 0, 0));
+		mine10[i].LoadBitmapByString({ "resources/mines/10/1.bmp","resources/mines/10/2.bmp","resources/mines/10/3.bmp","resources/mines/10/4.bmp","resources/mines/10/5.bmp","resources/mines/10/6.bmp","resources/mines/10/7.bmp","resources/mines/10/1.bmp","resources/mines/10/2.bmp","resources/mines/10/3.bmp","resources/mines/10/4.bmp","resources/mines/10/5.bmp","resources/mines/10/6.bmp","resources/mines/10/7.bmp","resources/mines/10/1.bmp","resources/mines/10/2.bmp","resources/mines/10/3.bmp","resources/mines/10/4.bmp","resources/mines/10/5.bmp","resources/mines/10/6.bmp","resources/mines/10/7.bmp","resources/mines/10/1.bmp","resources/mines/10/2.bmp","resources/mines/10/3.bmp","resources/mines/10/4.bmp","resources/mines/10/5.bmp","resources/mines/10/6.bmp","resources/mines/10/7.bmp","resources/mines/10/1.bmp","resources/mines/10/2.bmp","resources/mines/10/3.bmp","resources/mines/10/4.bmp","resources/mines/10/5.bmp","resources/mines/10/6.bmp","resources/mines/10/7.bmp","resources/mines/10/1.bmp","resources/mines/10/2.bmp","resources/mines/10/3.bmp","resources/mines/10/4.bmp","resources/mines/10/5.bmp","resources/mines/10/6.bmp","resources/mines/10/7.bmp","resources/mines/10/8.bmp","resources/mines/10/9.bmp","resources/mines/10/10.bmp","resources/mines/10/11.bmp","resources/mines/10/12.bmp","resources/mines/10/13.bmp","resources/mines/10/14.bmp","resources/mines/10/8.bmp","resources/mines/10/9.bmp","resources/mines/10/10.bmp","resources/mines/10/11.bmp","resources/mines/10/12.bmp","resources/mines/10/13.bmp","resources/mines/10/14.bmp","resources/mines/10/8.bmp","resources/mines/10/9.bmp","resources/mines/10/10.bmp","resources/mines/10/11.bmp","resources/mines/10/12.bmp","resources/mines/10/13.bmp","resources/mines/10/14.bmp","resources/mines/10/8.bmp","resources/mines/10/9.bmp","resources/mines/10/10.bmp","resources/mines/10/11.bmp","resources/mines/10/12.bmp","resources/mines/10/13.bmp","resources/mines/10/14.bmp","resources/mines/10/8.bmp","resources/mines/10/9.bmp","resources/mines/10/10.bmp","resources/mines/10/11.bmp","resources/mines/10/12.bmp","resources/mines/10/13.bmp","resources/mines/10/14.bmp","resources/mines/10/8.bmp","resources/mines/10/9.bmp","resources/mines/10/10.bmp","resources/mines/10/11.bmp","resources/mines/10/12.bmp","resources/mines/10/13.bmp","resources/mines/10/14.bmp" }, RGB(0, 0, 0));
 		mine10[i].SetTopLeft(-1000, -1000);
+		mine10[i].SetAnimation(200, false);
 	}
 	for (int i = 0; i < mine_max_num[9]; i++) {
 		mine11[i].LoadBitmapByString({ "resources/mines/11.bmp" }, RGB(0, 0, 0));
@@ -1069,6 +1071,7 @@ void CGameStateRun::show_mines()
 		int location12[10][2] = { {100,250},{800,330} }; //道具袋
 		int location14[10][2] = { {200,230},{880,250} };	//石頭(中)
 		int location6[10][2] = { {500, 300}, {600, 400}, {700, 500} }; //豬
+		int location10[10][2] = { {500, 500}, {600, 600}, {700, 700} }; //鑽石豬
 		//int location9[10][2] = { {500, 300}, {600, 400}, {700, 500} }; //炸藥
 		
 
@@ -1189,6 +1192,7 @@ void CGameStateRun::show_mines()
 		for (int i = 0; i < mine_num_now[4]; i++) {
 			if (exist6[i] == 1 && mine6[i].GetLeft() == 0 && mine6[i].GetTop() == 0) {
 				mine6[i].SetTopLeft(location6[i][0], location6[i][1]);
+				mine6[i].SetFrameIndexOfBitmap((int)rand()%84);
 			}
 			if (exist6[i] == 1 && !is_blew_up(6, i)) {
 				if (mine6[i].IsOverlap(hitbox, mine6[i])) {
@@ -1201,6 +1205,27 @@ void CGameStateRun::show_mines()
 					weight = weight_of_mine[4];
 				}
 				mine6[i].ShowBitmap();
+				set_location_of_pig(i,0);
+			}
+		}
+		/*鑽石豬*/
+		for (int i = 0; i < mine_num_now[8]; i++) {
+			if (exist10[i] == 1 && mine10[i].GetLeft() == 0 && mine10[i].GetTop() == 0) {
+				mine10[i].SetTopLeft(location10[i][0], location10[i][1]);
+				mine10[i].SetFrameIndexOfBitmap((int)rand() % 84);
+			}
+			if (exist10[i] == 1 && !is_blew_up(10, i)) {
+				if (mine10[i].IsOverlap(hitbox, mine10[i])) {
+					exist10[i] = 0;
+					mine10[i].SetTopLeft(-1000, -1000);
+					hit = true;
+
+
+					money_gain = money_of_mine[8];
+					weight = weight_of_mine[8];
+				}
+				mine10[i].ShowBitmap();
+				set_location_of_pig(i, 1);
 			}
 		}
 
@@ -2849,7 +2874,42 @@ void CGameStateRun::set_location_of_explosion(int index, int left, int top)
 	explosion[index].SetTopLeft(left + move_x + 32 - 130, top + move_y + 42 - 122);
 }
 
-void CGameStateRun::set_location_of_pig(int index, int left, int top) 
+void CGameStateRun::set_location_of_pig(int index,int kind) 
 {
+
+	int velocity = 100;
+	int interval = 20;
+	int move_x = (int)(velocity * interval * 0.001);
+
+	if (kind == 0) {
+		int left = mine6[index].GetLeft();
+		int top = mine6[index].GetTop();
+		if (clock() - last_time_pig6[index] > interval) {
+
+			if (mine6[index].GetFrameIndexOfBitmap() > 41) {
+				mine6[index].SetTopLeft(left + move_x, top);
+			}
+			else {
+				mine6[index].SetTopLeft(left - move_x, top);
+			}
+
+			last_time_pig6[index] = clock();
+		}
+	}
+	else if (kind == 1) {
+		int left = mine10[index].GetLeft();
+		int top = mine10[index].GetTop();
+		if (clock() - last_time_pig10[index] > interval) {
+
+			if (mine10[index].GetFrameIndexOfBitmap() > 41) {
+				mine10[index].SetTopLeft(left + move_x, top);
+			}
+			else {
+				mine10[index].SetTopLeft(left - move_x, top);
+			}
+
+			last_time_pig10[index] = clock();
+		}
+	}
 
 }

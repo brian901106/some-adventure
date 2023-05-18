@@ -1063,6 +1063,7 @@ void CGameStateRun::load_mines()
 
 void CGameStateRun::show_mines()
 {
+
 	if (phase == 1) {
 		int location2[10][2] = { {250,350},{350,500},{750,350},{850,300} };	//金礦(小)
 		int location3[10][2] = { {130,700},{600,400},{950,600} };	//金礦(中)
@@ -1205,7 +1206,6 @@ void CGameStateRun::show_mines()
 					weight = weight_of_mine[4];
 				}
 				mine6[i].ShowBitmap();
-				set_location_of_pig(i,0);
 			}
 		}
 		/*鑽石豬*/
@@ -1225,7 +1225,6 @@ void CGameStateRun::show_mines()
 					weight = weight_of_mine[8];
 				}
 				mine10[i].ShowBitmap();
-				set_location_of_pig(i, 1);
 			}
 		}
 
@@ -2549,7 +2548,7 @@ void CGameStateRun::show_mines()
 			}
 		}
 	}
-
+	set_location_of_pig();
 }
 
 void CGameStateRun::set_mines()
@@ -2874,42 +2873,43 @@ void CGameStateRun::set_location_of_explosion(int index, int left, int top)
 	explosion[index].SetTopLeft(left + move_x + 32 - 130, top + move_y + 42 - 122);
 }
 
-void CGameStateRun::set_location_of_pig(int index,int kind) 
+void CGameStateRun::set_location_of_pig() 
 {
-
 	int velocity = 100;
 	int interval = 20;
 	int move_x = (int)(velocity * interval * 0.001);
 
-	if (kind == 0) {
-		int left = mine6[index].GetLeft();
-		int top = mine6[index].GetTop();
-		if (clock() - last_time_pig6[index] > interval) {
+	for (int i = 0; i < mine_num_now[4]; i++) {
+		if (exist6[i] == 1 && !is_blew_up(6, i)) {
+			int left = mine6[i].GetLeft();
+			int top = mine6[i].GetTop();
+			if (clock() - last_time_pig6[i] > interval) {
 
-			if (mine6[index].GetFrameIndexOfBitmap() > 41) {
-				mine6[index].SetTopLeft(left + move_x, top);
-			}
-			else {
-				mine6[index].SetTopLeft(left - move_x, top);
-			}
+				if (mine6[i].GetFrameIndexOfBitmap() > 41) {
+					mine6[i].SetTopLeft(left + move_x, top);
+				}
+				else {
+					mine6[i].SetTopLeft(left - move_x, top);
+				}
 
-			last_time_pig6[index] = clock();
-		}
-	}
-	else if (kind == 1) {
-		int left = mine10[index].GetLeft();
-		int top = mine10[index].GetTop();
-		if (clock() - last_time_pig10[index] > interval) {
-
-			if (mine10[index].GetFrameIndexOfBitmap() > 41) {
-				mine10[index].SetTopLeft(left + move_x, top);
+				last_time_pig6[i] = clock();
 			}
-			else {
-				mine10[index].SetTopLeft(left - move_x, top);
-			}
-
-			last_time_pig10[index] = clock();
 		}
 	}
 
+	for (int i = 0; i < mine_num_now[8]; i++) {
+		int left = mine10[i].GetLeft();
+		int top = mine10[i].GetTop();
+		if (clock() - last_time_pig10[i] > interval) {
+
+			if (mine10[i].GetFrameIndexOfBitmap() > 41) {
+				mine10[i].SetTopLeft(left + move_x, top);
+			}
+			else {
+				mine10[i].SetTopLeft(left - move_x, top);
+			}
+
+			last_time_pig10[i] = clock();
+		}
+	}
 }

@@ -252,7 +252,7 @@ namespace game_framework {
 		void throw_bomb();
 		void reset_bomb();
 		void set_location_of_explosion(int index, int left, int top);
-		void set_location_of_pig(int index, int kind); //kind == 0為普通豬 == 1為鑽石豬
+		void set_location_of_pig(); //kind == 0為普通豬 == 1為鑽石豬
 		void gameover_and_restart();
 		void show_text_by_phase();
 		void show_text_of_goals();

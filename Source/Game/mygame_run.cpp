@@ -376,11 +376,13 @@ void CGameStateRun::OnShow()
 		}
 		if (hit == true) {
 			pull_claw();
+			hitbox.SetTopLeft(507, 90);
 		}
 		if (miss == true) {
 			weight = 0;
 			money_gain = 0;
 			pull_claw();
+			hitbox.SetTopLeft(507, 90);
 		}
 		if (money_gain_flag == true) {
 			show_text_of_money_gain();
@@ -580,7 +582,6 @@ void CGameStateRun::shoot_claw_by_angle()
 
 void CGameStateRun::pull_claw()
 {
-
 	int miss_speedup = miss ? 1 : 0;
 	int s = item_2_effect ? 20 : 1;
 	if (clock() - last_time_claw >= (1*weight/s) && claw_length > 0 )
@@ -789,7 +790,8 @@ void CGameStateRun::show_text_by_phase() {
 	CDC *pDC = CDDraw::GetBackCDC();
 
 	//CTextDraw::ChangeFontLog(pDC, 20, "新細明體", RGB(255, 0, 0), 15000);
-	//CTextDraw::Print(pDC, 10, 10, std::to_string(flag));
+	//CTextDraw::Print(pDC, 10, 10, std::to_string(miss));
+	//CTextDraw::Print(pDC, 30, 10, std::to_string(hit));
 
 	
 	if (sub_phase == 2 && timer > 0) {

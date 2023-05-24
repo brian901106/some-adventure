@@ -113,13 +113,13 @@ namespace game_framework {
 		int claw_y = 90;				//紀錄爪子的Top
 		int bomb_x = 507;
 		int bomb_y = 90;
-		int claw_xway[90];				//紀錄爪子shoot出去時，每桢所在的Left，回程收爪時可以call出來
-		int claw_yway[90];				//紀錄爪子shoot出去時，每桢所在的Top，回程收爪時可以call出來
+		int claw_xway[100];				//紀錄爪子shoot出去時，每桢所在的Left，回程收爪時可以call出來
+		int claw_yway[100];				//紀錄爪子shoot出去時，每桢所在的Top，回程收爪時可以call出來
 		int claw_length = 0;			//紀錄爪子目前長度
 		bool hit = false;				//爪子是否有抓到東西
 		bool miss = false;				//爪子是否空抓
 		int weight = 1;					//用來表示抓到礦的重量，越重爪子速度越慢 ,預設為1
-		int weight_of_mine[13] = { 50,100,150,300,50,50,300,0,80,50,50,50,100};
+		int weight_of_mine[13] = { 20,100,150,250,10,20,300,0,10,20,50,40,100};
 		int money_gain = 0;				//用來表示現在抓到的金礦的價值
 		int money_of_mine[13] = { 50,100,250,500,2,7,20,1,602,600,-1,20,11 };
 		//金礦(小)/金礦(中)/金礦(大)/金礦(巨大)/豬/骨頭/石頭(大)/爆炸桶/鑽石豬/鑽石/道具袋/骷顱頭/石頭(中)
@@ -201,7 +201,9 @@ namespace game_framework {
 
 		CMovingBitmap claw;
 		CMovingBitmap clawhead;
-		CMovingBitmap line[90];
+		CMovingBitmap line[100];
+		CMovingBitmap line2[100];
+		CMovingBitmap line3[100];
 		CMovingBitmap hitbox;
 		CMovingBitmap bomb;
 		CMovingBitmap number_of_bombs;
@@ -252,7 +254,7 @@ namespace game_framework {
 		void throw_bomb();
 		void reset_bomb();
 		void set_location_of_explosion(int index, int left, int top);
-		void set_location_of_pig(); //kind == 0為普通豬 == 1為鑽石豬
+		void set_location_of_pig();
 		void gameover_and_restart();
 		void show_text_by_phase();
 		void show_text_of_goals();

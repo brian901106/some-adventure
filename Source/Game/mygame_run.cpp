@@ -54,6 +54,10 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 {
 	CAudio::Instance()->Load(0, "resources/sound/goal.mp3");
 	CAudio::Instance()->Load(1, "resources/sound/next_level.mp3");
+	CAudio::Instance()->Load(2, "resources/sound/shoot_claw.mp3");
+	CAudio::Instance()->Load(3, "resources/sound/pull_done.mp3");
+	CAudio::Instance()->Load(4, "resources/sound/money_gain.mp3");
+	CAudio::Instance()->Load(5, "resources/sound/strength.mp3");
 
 	/*Goal頁面*/
 	goal.LoadBitmapByString({ "resources/goal_page/goal_bg/52.bmp","resources/goal_page/goal_bg/53.bmp","resources/goal_page/goal_bg/54.bmp","resources/goal_page/goal_bg/55.bmp","resources/goal_page/goal_bg/56.bmp","resources/goal_page/goal_bg/57.bmp","resources/goal_page/goal_bg/58.bmp","resources/goal_page/goal_bg/59.bmp","resources/goal_page/goal_bg/60.bmp","resources/goal_page/goal_bg/61.bmp","resources/goal_page/goal_bg/62.bmp","resources/goal_page/goal_bg/63.bmp","resources/goal_page/goal_bg/64.bmp","resources/goal_page/goal_bg/65.bmp","resources/goal_page/goal_bg/66.bmp","resources/goal_page/goal_bg/67.bmp","resources/goal_page/goal_bg/68.bmp","resources/goal_page/goal_bg/69.bmp","resources/goal_page/goal_bg/70.bmp","resources/goal_page/goal_bg/71.bmp","resources/goal_page/goal_bg/72.bmp","resources/goal_page/goal_bg/73.bmp","resources/goal_page/goal_bg/74.bmp","resources/goal_page/goal_bg/75.bmp","resources/goal_page/goal_bg/76.bmp","resources/goal_page/goal_bg/77.bmp","resources/goal_page/goal_bg/78.bmp","resources/goal_page/goal_bg/79.bmp","resources/goal_page/goal_bg/80.bmp","resources/goal_page/goal_bg/81.bmp","resources/goal_page/goal_bg/82.bmp","resources/goal_page/goal_bg/83.bmp","resources/goal_page/goal_bg/84.bmp","resources/goal_page/goal_bg/85.bmp","resources/goal_page/goal_bg/86.bmp","resources/goal_page/goal_bg/87.bmp","resources/goal_page/goal_bg/88.bmp","resources/goal_page/goal_bg/89.bmp","resources/goal_page/goal_bg/90.bmp","resources/goal_page/goal_bg/91.bmp","resources/goal_page/goal_bg/92.bmp","resources/goal_page/goal_bg/93.bmp" });
@@ -167,6 +171,9 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	if (nChar == VK_DOWN) {
 		if (claw_is_ready == true) {
+			if (miner.GetFrameIndexOfBitmap() == 0) {
+				CAudio::Instance()->Play(2);
+			}
 			miner.ToggleAnimation();
 			key_down_index = claw.GetFrameIndexOfBitmap();
 			clawhead.SetFrameIndexOfBitmap(key_down_index);
@@ -471,6 +478,7 @@ void CGameStateRun::show_image_by_phase() {
 
 			if (miner_s.GetFrameIndexOfBitmap() == 0 && miner_s.IsAnimation() == false)
 			{
+				CAudio::Instance()->Play(5);
 				miner_s.ToggleAnimation();
 			}
 			if (miner_s.IsAnimation() == false && goal.GetFrameIndexOfBitmap() != 0)
@@ -571,7 +579,6 @@ void CGameStateRun::show_image_by_phase() {
 
 void CGameStateRun::shoot_claw_by_angle()
 {
-
 	if (!hit && !miss) {
 		if (clock() - last_time_claw >= 1 && claw_length < 100)
 		{
@@ -619,6 +626,7 @@ void CGameStateRun::pull_claw()
 		//抓到其他，或是道具袋骰到錢
 		if (money_gain > 0) {
 			money_gain_flag = true;
+			CAudio::Instance()->Play(3);
 		}
 		money = money + money_gain;
 		reset_claw();
@@ -635,6 +643,7 @@ void CGameStateRun::reset_claw()
 	claw_is_ready = true;
 	hit = false;
 	miss = false;
+	miner.SetFrameIndexOfBitmap(0);
 }
 
 void CGameStateRun::show_line() {
@@ -1044,6 +1053,7 @@ void CGameStateRun::show_text_of_money_gain() {
 			new_money = money;
 			timer_of_money_gain_text = 50;
 			money_gain_flag = false;
+			CAudio::Instance()->Play(4);
 		}
 		last_time_money_gain = clock();
 	}

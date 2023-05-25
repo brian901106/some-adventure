@@ -56,8 +56,13 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	CAudio::Instance()->Load(1, "resources/sound/next_level.mp3");
 	CAudio::Instance()->Load(2, "resources/sound/shoot_claw.mp3");
 	CAudio::Instance()->Load(3, "resources/sound/pull_done.mp3");
-	CAudio::Instance()->Load(4, "resources/sound/money_gain.mp3");
-	CAudio::Instance()->Load(5, "resources/sound/strength.mp3");
+	CAudio::Instance()->Load(4, "resources/sound/money.mp3");		//買東西跟獲得錢的音效
+	CAudio::Instance()->Load(5, "resources/sound/mine_big.mp3");	//strength跟大金礦是用這個音效
+	CAudio::Instance()->Load(6, "resources/sound/mine_small.mp3");
+	CAudio::Instance()->Load(7, "resources/sound/mine_rock.mp3");
+	CAudio::Instance()->Load(8, "resources/sound/bomb.mp3");
+	CAudio::Instance()->Load(9, "resources/sound/pull.mp3");		//拉爪子的音效
+	CAudio::Instance()->Load(10, "resources/sound/shop.mp3");		//商店老闆講話的音效
 
 	/*Goal頁面*/
 	goal.LoadBitmapByString({ "resources/goal_page/goal_bg/52.bmp","resources/goal_page/goal_bg/53.bmp","resources/goal_page/goal_bg/54.bmp","resources/goal_page/goal_bg/55.bmp","resources/goal_page/goal_bg/56.bmp","resources/goal_page/goal_bg/57.bmp","resources/goal_page/goal_bg/58.bmp","resources/goal_page/goal_bg/59.bmp","resources/goal_page/goal_bg/60.bmp","resources/goal_page/goal_bg/61.bmp","resources/goal_page/goal_bg/62.bmp","resources/goal_page/goal_bg/63.bmp","resources/goal_page/goal_bg/64.bmp","resources/goal_page/goal_bg/65.bmp","resources/goal_page/goal_bg/66.bmp","resources/goal_page/goal_bg/67.bmp","resources/goal_page/goal_bg/68.bmp","resources/goal_page/goal_bg/69.bmp","resources/goal_page/goal_bg/70.bmp","resources/goal_page/goal_bg/71.bmp","resources/goal_page/goal_bg/72.bmp","resources/goal_page/goal_bg/73.bmp","resources/goal_page/goal_bg/74.bmp","resources/goal_page/goal_bg/75.bmp","resources/goal_page/goal_bg/76.bmp","resources/goal_page/goal_bg/77.bmp","resources/goal_page/goal_bg/78.bmp","resources/goal_page/goal_bg/79.bmp","resources/goal_page/goal_bg/80.bmp","resources/goal_page/goal_bg/81.bmp","resources/goal_page/goal_bg/82.bmp","resources/goal_page/goal_bg/83.bmp","resources/goal_page/goal_bg/84.bmp","resources/goal_page/goal_bg/85.bmp","resources/goal_page/goal_bg/86.bmp","resources/goal_page/goal_bg/87.bmp","resources/goal_page/goal_bg/88.bmp","resources/goal_page/goal_bg/89.bmp","resources/goal_page/goal_bg/90.bmp","resources/goal_page/goal_bg/91.bmp","resources/goal_page/goal_bg/92.bmp","resources/goal_page/goal_bg/93.bmp" });
@@ -1336,6 +1341,7 @@ void CGameStateRun::show_mines()
 				}
 			}
 		}
+		//L1_2
 		if (mine_random_num == 2) {
 
 			int location2[10][2] = { {250,350},{350,500},{750,350},{850,300} };	//金礦(小)
@@ -1537,6 +1543,7 @@ void CGameStateRun::show_mines()
 				}
 			}
 		}
+		//L1_3
 		if (mine_random_num == 3) {
 
 			int location2[10][2] = { {250,350},{350,500},{750,350},{850,300} };	//金礦(小)

@@ -184,7 +184,7 @@ namespace game_framework {
 									{ 1,0,0,2,0,1,0,7,4,7,3,1,0 },		//第9關
 									{ 6,5,5,5,0,0,5,0,0,0,0,0,0 } };	//第10關
 
-		int mine_num_2[10][13] = {  { 4,3,0,2,3,0,2,0,3,0,2,0,2 },		//第1關 mine_random_num = 2
+		int mine_num_2[10][13] = {  { 4,3,0,2,0,0,2,3,0,0,2,0,2 },		//第1關 mine_random_num = 2
 									{ 7,2,0,2,0,0,4,0,0,1,1,0,3 },		//第2關
 									{ 4,3,0,1,0,0,4,0,0,1,1,0,3 },		//第3關
 									{ 4,1,2,0,1,0,3,0,0,0,4,0,1 },		//第4關
@@ -195,7 +195,7 @@ namespace game_framework {
 									{ 1,0,0,2,0,1,0,7,4,7,3,1,0 },		//第9關
 									{ 6,5,5,5,0,0,5,0,0,0,0,0,0 } };	//第10關
 
-		int mine_num_3[10][13] = {  { 4,3,0,2,3,0,2,0,3,0,2,0,2 },		//第1關 mine_random_num = 3
+		int mine_num_3[10][13] = {  { 4,3,0,2,0,0,2,0,0,0,2,0,2 },		//第1關 mine_random_num = 3
 									{ 7,2,0,2,0,0,4,0,0,1,1,0,3 },		//第2關
 									{ 4,3,0,1,0,0,4,0,0,1,1,0,3 },		//第3關
 									{ 4,1,2,0,1,0,3,0,0,0,4,0,1 },		//第4關
@@ -290,6 +290,21 @@ namespace game_framework {
 		void set_stock();
 		void load_mines();
 		void show_mines();
+
+		void show_mine_2(int location[][2]);
+		void show_mine_3(int location[][2]);
+		void show_mine_4(int location[][2]);
+		void show_mine_5(int location[][2]);
+		void show_mine_6(int location[][2]);
+		void show_mine_7(int location[][2]);
+		void show_mine_8(int location[][2]);
+		void show_mine_9(int location[][2]);
+		void show_mine_10(int location[][2]);
+		void show_mine_11(int location[][2]);
+		void show_mine_12(int location[][2]);
+		void show_mine_13(int location[][2]);
+		void show_mine_14(int location[][2]);
+		
 		bool is_blew_up(int mine, int index);
 
 	};

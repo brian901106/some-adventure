@@ -41,7 +41,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		{
 			gameover = true;
 		}
-		if (timer == 0 && money >= goal_money)
+		if (timer == 0 && money >= goal_money )
 		{
 			sub_phase = 3;
 		}
@@ -216,8 +216,11 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
-	if (exit.GetFrameIndexOfBitmap() == 1 && sub_phase == 2 ) {
+	if (exit.GetFrameIndexOfBitmap() == 1 && sub_phase == 2 && money < goal_money) {
 		gameover = true;
+	}
+	if (exit.GetFrameIndexOfBitmap() == 1 && sub_phase == 2 && money >= goal_money) {
+		sub_phase = 3;
 	}
 	if (next_level_button.GetFrameIndexOfBitmap() == 1 && sub_phase == 3) {
 		next_level_button_clicked = true;

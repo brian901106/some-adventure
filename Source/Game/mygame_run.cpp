@@ -2302,7 +2302,7 @@ void CGameStateRun::show_mine_6(int location[][2])
 		}
 	}
 }
-//骨頭 
+
 void CGameStateRun::show_mine_7(int location[][2]) 
 {
 	for (int i = 0; i < mine_num_now[5]; i++) {
@@ -2452,7 +2452,7 @@ void CGameStateRun::show_mine_12(int location[][2])
 		}
 	}
 }
-//骷髏 
+
 void CGameStateRun::show_mine_13(int location[][2])
 {
 	for (int i = 0; i < mine_num_now[11]; i++) {

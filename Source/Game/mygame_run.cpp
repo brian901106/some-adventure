@@ -878,8 +878,8 @@ void CGameStateRun::show_text_by_phase() {
 	
 	CDC *pDC = CDDraw::GetBackCDC();
 
-	//CTextDraw::ChangeFontLog(pDC, 20, "新細明體", RGB(255, 0, 0), 15000);
-	//CTextDraw::Print(pDC, 10, 10, std::to_string(mine_random_num));
+	CTextDraw::ChangeFontLog(pDC, 20, "新細明體", RGB(255, 0, 0), 15000);
+	CTextDraw::Print(pDC, 10, 10, std::to_string(mine_random_num));
 	//CTextDraw::Print(pDC, 30, 10, std::to_string(hit));
 
 	
@@ -1185,7 +1185,6 @@ void CGameStateRun::show_mines()
 			
 			show_mine_14(location14);
 		}
-		//L1_2
 		if (mine_random_num == 2) {
 
 			int location2[10][2] = { {200,230},{340,350},{840,410},{835,350}, {888, 280} }; //金礦(小)
@@ -1211,7 +1210,6 @@ void CGameStateRun::show_mines()
 
 			show_mine_14(location14);
 		}
-		//L1_3
 		if (mine_random_num == 3)
  {
 
@@ -1268,7 +1266,6 @@ void CGameStateRun::show_mines()
 			int location3[10][2] = { {660,560}, {770, 495},{950 ,500 }}; //金礦(中)
 			int location5[10][2] = { {30,640},{920,660} }; //金礦(巨大)
 			int location8[10][2] = { {5,385},{25,520}, {75, 230}, {290, 480} }; //石頭(大)
-			//int location11[10][2] = { {770, 550} };//鑽石
 			int location12[10][2] = { {90,300} }; //道具袋
 			int location14[10][2] = { {175,740},{205, 570},{330, 350}}; //石頭(中)
 
@@ -1322,7 +1319,6 @@ void CGameStateRun::show_mines()
 			int location11[10][2] = { {840, 590} };//鑽石
 			int location12[10][2] = { {130,320} }; //道具袋
 			int location14[10][2] = { {500,360},{680, 600} , {800, 430} }; //石頭(中)
-			//int location9[10][2] = { {500, 300}, {600, 400}, {700, 500} }; //炸藥
 
 
 			show_mine_2(location2);
@@ -1345,7 +1341,6 @@ void CGameStateRun::show_mines()
 			int location11[10][2] = { {840, 520} };//鑽石
 			int location12[10][2] = { {100,240} }; //道具袋
 			int location14[10][2] = { {530,360},{800, 430} , {800, 570} }; //石頭(中)
-			//int location9[10][2] = { {500, 300}, {600, 400}, {700, 500} }; //炸藥
 
 
 			show_mine_2(location2);
@@ -1368,7 +1363,6 @@ void CGameStateRun::show_mines()
 			int location11[10][2] = { {860, 600} };//鑽石
 			int location12[10][2] = { {630,470} }; //道具袋
 			int location14[10][2] = { {530,360},{560, 440} , {800, 570} }; //石頭(中)
-			//int location9[10][2] = { {500, 300}, {600, 400}, {700, 500} }; //炸藥
 
 
 			show_mine_2(location2);
@@ -1394,17 +1388,12 @@ void CGameStateRun::show_mines()
 			int location11[10][2] = { {840, 590} };//鑽石
 			int location12[10][2] = { {270,440} , {470,600},{740, 480},  {830, 360} }; //道具袋
 			int location14[10][2] = { {650,490} }; //石頭(中)
-			//int location9[10][2] = { {500, 300}, {600, 400}, {700, 500} }; //炸藥
 
 
 			show_mine_2(location2);
-
 			show_mine_3(location3);
-
 			show_mine_4(location4);
-
 			show_mine_6(location6);
-
 			show_mine_8(location8);
 			show_mine_11(location11);
 			show_mine_12(location12);
@@ -1416,21 +1405,15 @@ void CGameStateRun::show_mines()
 			int location4[10][2] = { {185,610}, {600, 580} }; //金礦(大)
 			int location6[10][2] = { {105, 400}, {500, 530}, {740, 260} }; //豬
 			int location8[10][2] = { {245,300},{300,700}, {890, 340} }; //石頭(大)
-			//int location11[10][2] = { {840, 590} };//鑽石
 			int location12[10][2] = { {400,445} , {800,300} }; //道具袋
 			int location14[10][2] = { {530,360} }; //石頭(中)
-			//int location9[10][2] = { {500, 300}, {600, 400}, {700, 500} }; //炸藥
 
 
 			show_mine_2(location2);
-
 			show_mine_3(location3);
-
 			show_mine_4(location4);
 			show_mine_6(location6);
-
 			show_mine_8(location8);
-			//show_mine_11(location11);
 			show_mine_12(location12);
 			show_mine_14(location14);
 		}
@@ -1440,21 +1423,16 @@ void CGameStateRun::show_mines()
 			int location4[10][2] = { {185,610}, {600, 580} }; //金礦(大)
 			int location6[10][2] = { {180, 355}, {270, 240}, {850, 290} }; //豬
 			int location8[10][2] = { {115,540},{310,690}, {920, 520} }; //石頭(大)
-			//int location11[10][2] = { {840, 590} };//鑽石
 			int location12[10][2] = { {444,584} , {830,510} }; //道具袋
 			int location14[10][2] = { {530,560} }; //石頭(中)
-			//int location9[10][2] = { {500, 300}, {600, 400}, {700, 500} }; //炸藥
+
 
 
 			show_mine_2(location2);
-
 			show_mine_3(location3);
-
 			show_mine_4(location4);
 			show_mine_6(location6);
-
 			show_mine_8(location8);
-			//show_mine_11(location11);
 			show_mine_12(location12);
 			show_mine_14(location14);
 		}
@@ -1472,15 +1450,12 @@ void CGameStateRun::show_mines()
 			int location11[10][2] = { {120, 650}, {880, 700}, {960, 700}, {980, 600} };//鑽石
 			int location12[10][2] = { {750, 640} }; //道具袋
 			int location14[10][2] = { {1000,660} }; //石頭(中)
-			//int location9[10][2] = { {500, 300}, {600, 400}, {700, 500} }; //炸藥
+
 			show_mine_2(location2);
-
 			show_mine_3(location3);
-
 			show_mine_4(location4);
 			show_mine_5(location5);
 			show_mine_6(location6);
-
 			show_mine_8(location8);
 			show_mine_11(location11);
 			show_mine_12(location12);
@@ -1497,15 +1472,12 @@ void CGameStateRun::show_mines()
 			int location11[10][2] = { {120, 650}, {880, 690}, {980, 600} };//鑽石
 			int location12[10][2] = { {750, 640} }; //道具袋
 			int location14[10][2] = { {590,490} }; //石頭(中)
-			//int location9[10][2] = { {500, 300}, {600, 400}, {700, 500} }; //炸藥
+
 			show_mine_2(location2);
-
 			show_mine_3(location3);
-
 			show_mine_4(location4);
 			show_mine_5(location5);
 			show_mine_6(location6);
-
 			show_mine_8(location8);
 			show_mine_11(location11);
 			show_mine_12(location12);
@@ -1522,15 +1494,12 @@ void CGameStateRun::show_mines()
 			int location11[10][2] = { {30, 540}, {500, 590}, {1000, 490} };//鑽石
 			int location12[10][2] = { {730, 320} }; //道具袋
 			int location14[10][2] = { {590,490} }; //石頭(中)
-			//int location9[10][2] = { {500, 300}, {600, 400}, {700, 500} }; //炸藥
+
 			show_mine_2(location2);
-
 			show_mine_3(location3);
-
 			show_mine_4(location4);
 			show_mine_5(location5);
 			show_mine_6(location6);
-
 			show_mine_8(location8);
 			show_mine_11(location11);
 			show_mine_12(location12);
@@ -1543,9 +1512,7 @@ void CGameStateRun::show_mines()
 
 			int location2[10][2] = { {130,270},{180,444},{330,550},{700,320}, {820, 540}, {830, 240}, {940, 450} }; //金礦(小)
 			int location3[10][2] = { {20, 400}, {410, 320}, {910, 610} }; //金礦(中)
-			//int location4[10][2] = { {320,670} }; //金礦(大)
 			int location5[10][2] = { {500, 550} };//金礦(巨大)
-			//int location6[10][2] = { {120, 380}, {990, 540} }; //豬
 			int location8[10][2] = { {24,550},{420,620}, {630, 640} }; //石頭(大)
 			int location10[10][2] = { {130, 380}, {780, 740} }; //鑽石豬
 			int location11[10][2] = { {120, 650}, {880, 700} };//鑽石
@@ -1572,9 +1539,7 @@ void CGameStateRun::show_mines()
 
 			int location2[10][2] = { {180,440},{320,560},{375,685},{820,540}, {830, 490}, {860, 520}, {910, 530} }; //金礦(小)
 			int location3[10][2] = { {140, 700}, {720, 740}, {750, 490} }; //金礦(中)
-			//int location4[10][2] = { {320,670} }; //金礦(大)
 			int location5[10][2] = { {1035, 630} };//金礦(巨大)
-			//int location6[10][2] = { {120, 380}, {990, 540} }; //豬
 			int location8[10][2] = { {170,270},{410,480}, {600, 710} }; //石頭(大)
 			int location10[10][2] = { {70, 350}, {275, 580}, {800, 630}, {860, 390} }; //鑽石豬
 			int location11[10][2] = { {120, 650}, {880, 700} };//鑽石
@@ -1582,28 +1547,19 @@ void CGameStateRun::show_mines()
 			int location14[10][2] = { {200,520}, {690, 310}, {855, 235} }; //石頭(中)
 
 			show_mine_2(location2);
-
 			show_mine_3(location3);
-
 			show_mine_5(location5);
-
 			show_mine_8(location8);
-
 			show_mine_10(location10);
-
 			show_mine_11(location11);
-
 			show_mine_12(location12);
-
 			show_mine_14(location14);
 		}
 		if (mine_random_num == 3) {
 
 			int location2[10][2] = { {235,565},{375,680},{670,550},{840,580}, {860, 690}, {880, 560}, {970, 620} }; //金礦(小)
 			int location3[10][2] = { {20, 620}, {130, 700}, {720, 730} }; //金礦(中)
-			//int location4[10][2] = { {320,670} }; //金礦(大)
 			int location5[10][2] = { {420, 680} };//金礦(巨大)
-			//int location6[10][2] = { {120, 380}, {990, 540} }; //豬
 			int location8[10][2] = { {65,300},{570,505}, {1010, 510} }; //石頭(大)
 			int location10[10][2] = { {50, 390}, {390, 450},{800, 610}, {1035, 385} }; //鑽石豬
 			int location11[10][2] = { {120, 650}, {880, 700} };//鑽石
@@ -1631,92 +1587,61 @@ void CGameStateRun::show_mines()
 		if (mine_random_num == 1) {
 
 			int location2[10][2] = { {100,340},{570,335} }; //金礦(小)
-			//int location3[10][2] = { {20, 400}, {410, 320}, {910, 610} }; //金礦(中)
 			int location4[10][2] = { {320,580}, {1000, 300} }; //金礦(大)
 			int location5[10][2] = { {-25, 660}, {340, 720},{820, 600} };//金礦(巨大)
 			int location6[10][2] = { {15, 460}, {150, 640}, {520, 510}, {625, 230}, {970, 425}, {1050, 270} }; //豬
 			int location7[10][2] = { {120, 500}, {800, 360} }; // 骨頭
-			//int location8[10][2] = { {24,550},{420,620}, {630, 640} }; //石頭(大)
 			int location9[10][2] = { {235, 520}, {860, 300} }; //炸藥
-			//int location10[10][2] = { {130, 380}, {780, 740} }; //鑽石豬
-			//int location11[10][2] = { {120, 650}, {880, 700} };//鑽石
 			int location12[10][2] = { {800, 465} }; //道具袋
 			int location13[10][2] = { {310, 440}, {760, 380} }; //骷髏
-			//int location14[10][2] = { {222,626}, {860, 660}, {1010, 600} }; //石頭(中)
 
 			show_mine_2(location2);
-
 			show_mine_4(location4);
-
 			show_mine_5(location5);
-
 			show_mine_6(location6);
-
 			show_mine_7(location7);
-
 			show_mine_9(location9);
-
 			show_mine_12(location12);
-
 			show_mine_13(location13);
 			show_mine_13(location13);
 		}
 		if (mine_random_num == 2) {
 
 			int location2[10][2] = { {10,460},{580,530} }; //金礦(小)
-			//int location3[10][2] = { {20, 400}, {410, 320}, {910, 610} }; //金礦(中)
 			int location4[10][2] = { {310,560}, {950, 340} }; //金礦(大)
 			int location5[10][2] = { {-25, 660}, {440, 710},{600, 560} };//金礦(巨大)
 			int location6[10][2] = { {10, 275}, {100, 530}, {220, 666}, {710, 305}, {920, 520}, {1030, 260} }; //豬
 			int location7[10][2] = { {105, 340}, {400, 460} }; // 骨頭
-			//int location8[10][2] = { {24,550},{420,620}, {630, 640} }; //石頭(大)
 			int location9[10][2] = { {290, 410}, {700, 400} }; //炸藥
-			//int location10[10][2] = { {130, 380}, {780, 740} }; //鑽石豬
-			//int location11[10][2] = { {120, 650}, {880, 700} };//鑽石
 			int location12[10][2] = { {210, 370} }; //道具袋
 			int location13[10][2] = { {110, 615}, {820, 350} }; //骷髏
-			//int location14[10][2] = { {222,626}, {860, 660}, {1010, 600} }; //石頭(中)
+
 
 			show_mine_2(location2);
-
 			show_mine_4(location4);
-
 			show_mine_5(location5);
-
 			show_mine_6(location6);
 			show_mine_7(location7);
 			show_mine_9(location9);
-
 			show_mine_12(location12);
 			show_mine_13(location13);
 		}
 		if (mine_random_num == 3) {
 
 			int location2[10][2] = { {135,360},{580,330} }; //金礦(小)
-			//int location3[10][2] = { {20, 400}, {410, 320}, {910, 610} }; //金礦(中)
 			int location4[10][2] = { {60,245}, {990, 300} }; //金礦(大)
 			int location5[10][2] = { {260, 610}, {520, 675},{760, 625} };//金礦(巨大)
 			int location6[10][2] = { {15, 535}, {210, 400}, {320, 270}, {930, 440}, {1120, 260}, {1240, 550} }; //豬
 			int location7[10][2] = { {790, 360}, {840, 540} }; // 骨頭
-			//int location8[10][2] = { {24,550},{420,620}, {630, 640} }; //石頭(大)
 			int location9[10][2] = { {430, 570}, {666, 570} }; //炸藥
-			//int location10[10][2] = { {130, 380}, {780, 740} }; //鑽石豬
-			//int location11[10][2] = { {120, 650}, {880, 700} };//鑽石
 			int location12[10][2] = { {845, 365} }; //道具袋
 			int location13[10][2] = { {240, 460}, {760, 390} }; //骷髏
-			//int location14[10][2] = { {222,626}, {860, 660}, {1010, 600} }; //石頭(中)
 
 			show_mine_2(location2);
-
 			show_mine_4(location4);
-
 			show_mine_5(location5);
-
 			show_mine_6(location6);
 			show_mine_9(location9);
-			show_mine_12(location12);
-			show_mine_13(location13);
-
 			show_mine_12(location12);
 			show_mine_13(location13);
 		}
@@ -1731,10 +1656,8 @@ void CGameStateRun::show_mines()
 			int location12[10][2] = { {65, 685} , {1010, 580} }; //道具袋
 
 			show_mine_9(location9);
-
 			show_mine_10(location10);
 			show_mine_11(location11);
-
 			show_mine_12(location12);
 		}
 		if (mine_random_num == 2) {
@@ -1756,9 +1679,7 @@ void CGameStateRun::show_mines()
 			int location5[10][2] = { {0, 565}, {210, 690},{470, 610}, {745, 570}, {980, 690} };//金礦(巨大)
 			int location8[10][2] = { {170,490},{190,280}, {245, 420}, {400, 400}, {620, 545}, {760, 450}, {800, 280}, {980, 230}, {1045, 440} }; //石頭(大)
 			int location9[10][2] = { {85, 370}, {940, 360}}; //炸藥
-			//int location10[10][2] = { {20, 400}, {170, 500} }; //鑽石豬
 			int location11[10][2] = { {90, 730}, {140, 690}, {390, 590},{1050, 580}};//鑽石
-			//int location12[10][2] = { {65, 685} , {1010, 580} }; //道具袋
 			int location14[10][2] = { {35,460}, {45, 250}, {250, 380} , {440, 530}, {590, 300}, {830, 380}, {920, 480} }; //石頭(中)
 
 
@@ -1775,11 +1696,8 @@ void CGameStateRun::show_mines()
 		{
 
 			int location2[10][2] = { {500,300} }; //金礦(小)
-			//int location4[10][2] = { {320,580}, {1000, 300} }; //金礦(大)
 			int location5[10][2] = { {170, 580}, {730, 600} };//金礦(巨大)
-			//int location6[10][2] = { {15, 460}, {150, 640}, {520, 510}, {625, 230}, {970, 425}, {1050, 270} }; //豬
 			int location7[10][2] = { {950, 650} }; // 骨頭
-			//int location8[10][2] = { {24,550},{420,620}, {630, 640} }; //石頭(大)
 			int location9[10][2] = { {-22, 280}, {40, 570}, {290, 720}, {600, 720}, {900, 700}, {1065, 470}, {1060, 210} }; //炸藥
 			int location10[10][2] = { {110, 430}, {250, 540} , {730, 480}, {940, 330} }; //鑽石豬
 			int location11[10][2] = { {120, 650}, {120, 500}, {200, 720}, {850, 520}, {980, 400}, {1040, 650}, {1070, 370} };//鑽石
@@ -1814,7 +1732,6 @@ void CGameStateRun::show_mines()
 			show_mine_9(location9);
 			show_mine_10(location10);
 			show_mine_11(location11);
-
 			show_mine_12(location12);
 			show_mine_13(location13);
 		}
@@ -1844,7 +1761,6 @@ void CGameStateRun::show_mines()
 			int location8[10][2] = { {210,590},{215,290}, {500, 380}, {600,600}, {750, 280} }; //石頭(大)
 
 			show_mine_2(location2);
-
 			show_mine_3(location3);
 			show_mine_4(location4);
 			show_mine_5(location5);

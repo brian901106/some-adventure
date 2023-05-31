@@ -1,7 +1,7 @@
-dir = "resources/mines/6/"
+dir = "resources/miner/bonus/"
 ext = ".bmp"
-start = 1
-end = 15
+start = 61
+end = 77
 result = ""
 
 #front_include = "{"

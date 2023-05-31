@@ -82,6 +82,18 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	miner_s.LoadBitmapByString({ "resources/miner/strength/11.bmp","resources/miner/strength/12.bmp","resources/miner/strength/13.bmp","resources/miner/strength/14.bmp","resources/miner/strength/15.bmp","resources/miner/strength/16.bmp" }, RGB(0, 0, 0));
 	miner_s.SetTopLeft(529, 18);
 	miner_s.SetAnimation(80, true);
+	miner_p.LoadBitmapByString({ "resources/miner/pull/1.bmp","resources/miner/pull/2.bmp","resources/miner/pull/3.bmp","resources/miner/pull/4.bmp","resources/miner/pull/5.bmp","resources/miner/pull/6.bmp","resources/miner/pull/7.bmp","resources/miner/pull/8.bmp","resources/miner/pull/9.bmp","resources/miner/pull/10.bmp","resources/miner/pull/11.bmp","resources/miner/pull/12.bmp","resources/miner/pull/13.bmp","resources/miner/pull/14.bmp","resources/miner/pull/15.bmp","resources/miner/pull/16.bmp","resources/miner/pull/17.bmp","resources/miner/pull/18.bmp","resources/miner/pull/19.bmp","resources/miner/pull/20.bmp","resources/miner/pull/21.bmp","resources/miner/pull/22.bmp" }, RGB(0, 0, 0));
+	miner_p.SetTopLeft(529, 23);
+	miner_p.SetAnimation(50, false);
+
+	bonus_strength.LoadBitmapByString({ "resources/miner/bonus/35.bmp","resources/miner/bonus/36.bmp","resources/miner/bonus/37.bmp","resources/miner/bonus/38.bmp","resources/miner/bonus/39.bmp","resources/miner/bonus/40.bmp","resources/miner/bonus/41.bmp","resources/miner/bonus/42.bmp","resources/miner/bonus/43.bmp","resources/miner/bonus/44.bmp","resources/miner/bonus/45.bmp","resources/miner/bonus/46.bmp","resources/miner/bonus/47.bmp","resources/miner/bonus/48.bmp","resources/miner/bonus/49.bmp","resources/miner/bonus/50.bmp","resources/miner/bonus/51.bmp","resources/miner/bonus/52.bmp","resources/miner/bonus/53.bmp","resources/miner/bonus/54.bmp","resources/miner/bonus/55.bmp","resources/miner/bonus/56.bmp" }, RGB(0, 0, 0));
+	bonus_strength.SetTopLeft(210, 0);
+	bonus_strength.SetAnimation(50, true);
+
+	bonus_bomb.LoadBitmapByString({ "resources/miner/bonus/60.bmp","resources/miner/bonus/61.bmp","resources/miner/bonus/62.bmp","resources/miner/bonus/63.bmp","resources/miner/bonus/64.bmp","resources/miner/bonus/65.bmp","resources/miner/bonus/66.bmp","resources/miner/bonus/67.bmp","resources/miner/bonus/68.bmp","resources/miner/bonus/69.bmp","resources/miner/bonus/70.bmp","resources/miner/bonus/71.bmp","resources/miner/bonus/72.bmp","resources/miner/bonus/73.bmp","resources/miner/bonus/74.bmp","resources/miner/bonus/75.bmp","resources/miner/bonus/76.bmp","resources/miner/bonus/77.bmp","resources/miner/bonus/78.bmp" }, RGB(0, 0, 0));
+	bonus_bomb.SetTopLeft(430, 30);
+	bonus_bomb.SetAnimation(50, true);
+
 	wood.LoadBitmapByString({ "resources/miner/wood.bmp" }, RGB(0, 0, 0));
 	wood.SetTopLeft(519, 112);
 
@@ -198,9 +210,8 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		sub_phase = 3;
 	}
 	if (nChar == VK_LEFT) {
-		money = money + 650;
-		new_money = money;
-		timer = timer - 55;
+		bomb_num = bomb_num + 1;
+		bonus_bomb.ToggleAnimation();
 	}
 	if (nChar == VK_SPACE) {
 		item_2_effect = true;
@@ -449,6 +460,7 @@ void CGameStateRun::show_image_by_phase() {
 			fade_rate = 1;
 			mine_random_num = rand() % 3 + 1;
 			set_mines();
+			set_bombs_image();
 		}
 	}
 	if (sub_phase == 2) 
@@ -458,11 +470,8 @@ void CGameStateRun::show_image_by_phase() {
 		exit.ShowBitmap();
 		show_mines();
 		wood.ShowBitmap();
-		if (bomb_num > 9) {
-			number_of_bombs.SetFrameIndexOfBitmap(8);
-		}
-		else {
-			number_of_bombs.SetFrameIndexOfBitmap(bomb_num);
+		if (bonus_bomb.IsAnimation() == false && bonus_bomb.GetFrameIndexOfBitmap() != 0) {
+			set_bombs_image();
 		}
 		number_of_bombs.ShowBitmap();
 		
@@ -498,6 +507,7 @@ void CGameStateRun::show_image_by_phase() {
 			{
 				CAudio::Instance()->Play(5);
 				miner_s.ToggleAnimation();
+				bonus_strength.ToggleAnimation();
 			}
 			if (miner_s.IsAnimation() == false && goal.GetFrameIndexOfBitmap() != 0)
 			{
@@ -507,11 +517,20 @@ void CGameStateRun::show_image_by_phase() {
 				miner_s.SetFrameIndexOfBitmap(0);
 			}
 		}
+		if (action_state == 4) 
+		{
+			miner.UnshowBitmap();
+			miner_p.ShowBitmap();
+			if (claw_is_ready == true) {
+				action_state = 1;
+			}
+		}
 		if (claw_is_ready == true)
 		{
 			claw.ShowBitmap();
 		}
-		
+		bonus_strength.ShowBitmap();
+		bonus_bomb.ShowBitmap();
 	}
 	if (sub_phase == 3)
 	{
@@ -595,6 +614,16 @@ void CGameStateRun::show_image_by_phase() {
 	}
 }
 
+void CGameStateRun::set_bombs_image()
+{
+	if (bomb_num > 9) {
+		number_of_bombs.SetFrameIndexOfBitmap(8);
+	}
+	else {
+		number_of_bombs.SetFrameIndexOfBitmap(bomb_num);
+	}
+}
+
 void CGameStateRun::shoot_claw_by_angle()
 {
 	if (!hit && !miss) {
@@ -621,6 +650,7 @@ void CGameStateRun::pull_claw()
 {
 	int miss_speedup = miss ? 1 : 0;
 	int s = item_2_effect ? 5 : 1;
+	if(!miss) action_state = 4;
 	if (clock() - last_time_claw >= (1*weight/s) && claw_length > 0 )
 	{
 		claw_length = claw_length - 1 - miss_speedup;
@@ -639,6 +669,7 @@ void CGameStateRun::pull_claw()
 				bomb_num = bomb_num + 1;
 				CAudio::Instance()->Play(5);
 				money_gain = 0;
+				bonus_bomb.ShowBitmap();
 			}
 			else {
 				money_gain = clock() % 800;
@@ -840,7 +871,7 @@ void CGameStateRun::gameover_and_restart()
 			timer = 61;
 			phase = 1;
 			goal_money = 650;
-			bomb_num = 2;
+			bomb_num = 0;
 			return_game = false;
 		}
 

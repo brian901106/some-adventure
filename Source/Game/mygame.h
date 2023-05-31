@@ -104,7 +104,7 @@ namespace game_framework {
 	private:
 		int phase = 1;					//phase = 1 為第一關， = 2 為第二關，以此類推
 		int sub_phase = 1;				//sub_phase = 1 為goal_page， = 2 為掏金關卡， = 3 為shop_page
-		int action_state = 1;			//action_state = 1 為正常動作 = 2 為丟炸藥
+		int action_state = 1;			//action_state = 1 為正常動作 = 2 為丟炸藥 = 3 為抓到強壯藥水 = 4 為拉礦物回來時
 		int key_down_index = -100;      //紀錄按下(down key)時的Index，預設為-100
 		bool claw_is_ready = true;		//當claw_is_ready = true時才可以出爪子
 		int last_time_claw;				//紀錄上次更新爪子位置的時間
@@ -136,7 +136,7 @@ namespace game_framework {
 		
 		/*這三個參數是用來控制炸藥飛出去的時間位置和炸藥數量*/
 		int last_time_bomb;						//紀錄上次bomb更新的時間
-		int bomb_num = 2;						//bomb數量
+		int bomb_num = 1;						//bomb數量
 		bool bomb_is_throw = false;				//當flag==true時丟炸藥
 
 		/*這幾個參數是用來控制goal page的淡出效果*/
@@ -219,7 +219,11 @@ namespace game_framework {
 		CMovingBitmap miner;
 		CMovingBitmap miner_t;
 		CMovingBitmap miner_s;
+		CMovingBitmap miner_p;
 		CMovingBitmap wood;
+
+		CMovingBitmap bonus_strength;
+		CMovingBitmap bonus_bomb;
 
 		CMovingBitmap claw;
 		CMovingBitmap clawhead;
@@ -282,6 +286,7 @@ namespace game_framework {
 		void show_text_of_goals();
 		void show_text_of_money_gain();
 		void set_goal_money();
+		void set_bombs_image();
 		void goto_next_stage();
 		void set_mines();
 		void set_item_price();

@@ -122,7 +122,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	bomb.LoadBitmapByString({ "resources/claw/bomb.bmp" }, RGB(0, 0, 0));
 	bomb.SetTopLeft(507, 90);
 
-	bomb_explosion.LoadBitmapByString({ "resources/claw/bomb_explosion/0.bmp","resources/claw/bomb_explosion/1.bmp","resources/claw/bomb_explosion/2.bmp","resources/claw/bomb_explosion/3.bmp","resources/claw/bomb_explosion/4.bmp","resources/claw/bomb_explosion/5.bmp","resources/claw/bomb_explosion/6.bmp","resources/claw/bomb_explosion/7.bmp","resources/claw/bomb_explosion/8.bmp","resources/claw/bomb_explosion/9.bmp","resources/claw/bomb_explosion/10.bmp","resources/claw/bomb_explosion/11.bmp","resources/claw/bomb_explosion/12.bmp","resources/claw/bomb_explosion/13.bmp" }, RGB(0, 0, 0));
+	bomb_explosion.LoadBitmapByString({ "resources/claw/bomb_explosion/1.bmp","resources/claw/bomb_explosion/2.bmp","resources/claw/bomb_explosion/3.bmp","resources/claw/bomb_explosion/4.bmp","resources/claw/bomb_explosion/5.bmp","resources/claw/bomb_explosion/6.bmp","resources/claw/bomb_explosion/7.bmp","resources/claw/bomb_explosion/8.bmp","resources/claw/bomb_explosion/9.bmp","resources/claw/bomb_explosion/10.bmp","resources/claw/bomb_explosion/11.bmp","resources/claw/bomb_explosion/12.bmp" }, RGB(0, 0, 0));
 	bomb_explosion.SetAnimation(30, true);
 	
 
@@ -439,7 +439,10 @@ void CGameStateRun::OnShow()
 			bomb.ShowBitmap();
 			throw_bomb();
 		}
-		bomb_explosion.ShowBitmap();
+		if (bomb_explosion.IsAnimation())
+		{
+			bomb_explosion.ShowBitmap();
+		}
 	}
 
 	show_text_by_phase();
@@ -771,10 +774,10 @@ void CGameStateRun::throw_bomb()
 		last_time_bomb = clock();
 	}
 	
-	//我把bomb_explosion位置寫在pull_claw裡
+	//炸藥炸到礦物
 	if (bomb.GetTop() >= clawhead.GetTop()) {
 		bomb_explosion.ToggleAnimation();
-		bomb_explosion.SetTopLeft(claw_xway[claw_length]+ (int)sin(angles[key_down_index] * rad) -22, claw_yway[claw_length]+ (int)cos(angles[key_down_index] * rad));//bomb_explosion位置
+		bomb_explosion.SetTopLeft(claw_xway[claw_length]+ (int)sin(angles[key_down_index] * rad) -22, claw_yway[claw_length]+ (int)cos(angles[key_down_index] * rad));
 		reset_bomb();
 		reset_claw();
 	}

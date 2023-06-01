@@ -122,6 +122,11 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	bomb.LoadBitmapByString({ "resources/claw/bomb.bmp" }, RGB(0, 0, 0));
 	bomb.SetTopLeft(507, 90);
 
+	bomb_explosion.LoadBitmapByString({"resources/claw/bomb_explosion.bmp" }, RGB(0, 0, 0));
+	
+	
+
+
 
 	number_of_bombs.LoadBitmapByString({ "resources/number_of_bombs/1.bmp","resources/number_of_bombs/2.bmp","resources/number_of_bombs/3.bmp","resources/number_of_bombs/4.bmp","resources/number_of_bombs/5.bmp","resources/number_of_bombs/6.bmp","resources/number_of_bombs/7.bmp","resources/number_of_bombs/8.bmp","resources/number_of_bombs/9.bmp" }, RGB(0, 0, 0));
 	number_of_bombs.SetTopLeft(687, 70);
@@ -655,6 +660,7 @@ void CGameStateRun::pull_claw()
 	{
 		claw_length = claw_length - 1 - miss_speedup;
 		clawhead.SetTopLeft(claw_xway[claw_length], claw_yway[claw_length]);
+		bomb_explosion.SetTopLeft(claw_xway[claw_length], claw_yway[claw_length]);//bomb_explosion位置
 		last_time_claw = clock();
 	}
 	else if (claw_length <= 0){
@@ -755,6 +761,7 @@ void CGameStateRun::show_line() {
 void CGameStateRun::throw_bomb() 
 {
 
+
 	if (clock() - last_time_bomb >= 1)
 	{
 		bomb_x = bomb_x + (int)(sin(angles[key_down_index] * rad) * 16);
@@ -763,7 +770,10 @@ void CGameStateRun::throw_bomb()
 
 		last_time_bomb = clock();
 	}
+	
+	//我把bomb_explosion位置寫在pull_claw裡
 	if (bomb.GetTop() >= clawhead.GetTop()) {
+		bomb_explosion.ShowBitmap();
 		reset_bomb();
 		reset_claw();
 	}

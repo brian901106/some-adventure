@@ -138,6 +138,8 @@ namespace game_framework {
 		int last_time_bomb;						//紀錄上次bomb更新的時間
 		int bomb_num = 1;						//bomb數量
 		bool bomb_is_throw = false;				//當flag==true時丟炸藥
+		int last_time_bomb_explosion = 0;
+
 
 		/*這幾個參數是用來控制goal page的淡出效果*/
 		int last_time_fade;				//用來記錄clock()上次的取樣時間of fade
@@ -232,6 +234,7 @@ namespace game_framework {
 		CMovingBitmap line3[100];
 		CMovingBitmap hitbox;
 		CMovingBitmap bomb;
+		CMovingBitmap bomb_explosion;
 		CMovingBitmap number_of_bombs;
 
 		CMovingBitmap mine2[10];			//金礦(小)

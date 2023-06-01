@@ -138,7 +138,7 @@ namespace game_framework {
 		int last_time_bomb;						//紀錄上次bomb更新的時間
 		int bomb_num = 1;						//bomb數量
 		bool bomb_is_throw = false;				//當flag==true時丟炸藥
-		int last_time_bomb_explosion = 0;
+		int last_time_bomb_explosion;
 
 
 		/*這幾個參數是用來控制goal page的淡出效果*/

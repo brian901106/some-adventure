@@ -122,8 +122,8 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	bomb.LoadBitmapByString({ "resources/claw/bomb.bmp" }, RGB(0, 0, 0));
 	bomb.SetTopLeft(507, 90);
 
-	bomb_explosion.LoadBitmapByString({"resources/claw/bomb_explosion.bmp" }, RGB(0, 0, 0));
-	
+	bomb_explosion.LoadBitmapByString({ "resources/claw/bomb_explosion/0.bmp","resources/claw/bomb_explosion/1.bmp","resources/claw/bomb_explosion/2.bmp","resources/claw/bomb_explosion/3.bmp","resources/claw/bomb_explosion/4.bmp","resources/claw/bomb_explosion/5.bmp","resources/claw/bomb_explosion/6.bmp","resources/claw/bomb_explosion/7.bmp","resources/claw/bomb_explosion/8.bmp","resources/claw/bomb_explosion/9.bmp","resources/claw/bomb_explosion/10.bmp","resources/claw/bomb_explosion/11.bmp","resources/claw/bomb_explosion/12.bmp","resources/claw/bomb_explosion/13.bmp" }, RGB(0, 0, 0));
+	bomb_explosion.SetAnimation(30, true);
 	
 
 
@@ -439,6 +439,7 @@ void CGameStateRun::OnShow()
 			bomb.ShowBitmap();
 			throw_bomb();
 		}
+		bomb_explosion.ShowBitmap();
 	}
 
 	show_text_by_phase();
@@ -660,7 +661,6 @@ void CGameStateRun::pull_claw()
 	{
 		claw_length = claw_length - 1 - miss_speedup;
 		clawhead.SetTopLeft(claw_xway[claw_length], claw_yway[claw_length]);
-		bomb_explosion.SetTopLeft(claw_xway[claw_length], claw_yway[claw_length]);//bomb_explosion位置
 		last_time_claw = clock();
 	}
 	else if (claw_length <= 0){
@@ -773,11 +773,12 @@ void CGameStateRun::throw_bomb()
 	
 	//我把bomb_explosion位置寫在pull_claw裡
 	if (bomb.GetTop() >= clawhead.GetTop()) {
-		bomb_explosion.ShowBitmap();
+		bomb_explosion.ToggleAnimation();
+		bomb_explosion.SetTopLeft(claw_xway[claw_length]+ (int)sin(angles[key_down_index] * rad) -22, claw_yway[claw_length]+ (int)cos(angles[key_down_index] * rad));//bomb_explosion位置
 		reset_bomb();
 		reset_claw();
 	}
-
+	set_bombs_image();
 }
 
 void CGameStateRun::reset_bomb()

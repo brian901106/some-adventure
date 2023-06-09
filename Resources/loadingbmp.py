@@ -1,7 +1,7 @@
-dir = "resources/claw/bomb_explosion/"
+dir = "resources/claw/mine_caught/"
 ext = ".bmp"
-start = 1
-end = 13
+start = 0
+end = 15
 result = ""
 
 #front_include = "{"

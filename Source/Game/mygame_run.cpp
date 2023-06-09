@@ -104,6 +104,10 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	clawhead.LoadBitmapByString({ "resources/claw/0/rotate_new/4.bmp","resources/claw/0/rotate_new/5.bmp","resources/claw/0/rotate_new/6.bmp","resources/claw/0/rotate_new/7.bmp","resources/claw/0/rotate_new/8.bmp","resources/claw/0/rotate_new/9.bmp","resources/claw/0/rotate_new/10.bmp","resources/claw/0/rotate_new/11.bmp","resources/claw/0/rotate_new/12.bmp","resources/claw/0/rotate_new/13.bmp","resources/claw/0/rotate_new/14.bmp","resources/claw/0/rotate_new/15.bmp","resources/claw/0/rotate_new/16.bmp","resources/claw/0/rotate_new/17.bmp","resources/claw/0/rotate_new/18.bmp","resources/claw/0/rotate_new/19.bmp","resources/claw/0/rotate_new/20.bmp","resources/claw/0/rotate_new/21.bmp","resources/claw/0/rotate_new/22.bmp","resources/claw/0/rotate_new/23.bmp","resources/claw/0/rotate_new/24.bmp","resources/claw/0/rotate_new/25.bmp","resources/claw/0/rotate_new/26.bmp","resources/claw/0/rotate_new/27.bmp","resources/claw/0/rotate_new/28.bmp","resources/claw/0/rotate_new/29.bmp","resources/claw/0/rotate_new/30.bmp","resources/claw/0/rotate_new/31.bmp","resources/claw/0/rotate_new/32.bmp","resources/claw/0/rotate_new/33.bmp","resources/claw/0/rotate_new/34.bmp","resources/claw/0/rotate_new/35.bmp","resources/claw/0/rotate_new/36.bmp","resources/claw/0/rotate_new/37.bmp","resources/claw/0/rotate_new/38.bmp","resources/claw/0/rotate_new/39.bmp","resources/claw/0/rotate_new/40.bmp","resources/claw/0/rotate_new/41.bmp","resources/claw/0/rotate_new/42.bmp","resources/claw/0/rotate_new/43.bmp","resources/claw/0/rotate_new/44.bmp","resources/claw/0/rotate_new/45.bmp","resources/claw/0/rotate_new/46.bmp","resources/claw/0/rotate_new/47.bmp","resources/claw/0/rotate_new/48.bmp","resources/claw/0/rotate_new/49.bmp","resources/claw/0/rotate_new/50.bmp","resources/claw/0/rotate_new/51.bmp","resources/claw/0/rotate_new/52.bmp","resources/claw/0/rotate_new/53.bmp","resources/claw/0/rotate_new/54.bmp","resources/claw/0/rotate_new/55.bmp","resources/claw/0/rotate_new/56.bmp","resources/claw/0/rotate_new/57.bmp","resources/claw/0/rotate_new/58.bmp","resources/claw/0/rotate_new/59.bmp","resources/claw/0/rotate_new/60.bmp","resources/claw/0/rotate_new/61.bmp","resources/claw/0/rotate_new/62.bmp","resources/claw/0/rotate_new/63.bmp","resources/claw/0/rotate_new/64.bmp","resources/claw/0/rotate_new/65.bmp","resources/claw/0/rotate_new/66.bmp","resources/claw/0/rotate_new/67.bmp","resources/claw/0/rotate_new/68.bmp","resources/claw/0/rotate_new/69.bmp","resources/claw/0/rotate_new/70.bmp","resources/claw/0/rotate_new/71.bmp","resources/claw/0/rotate_new/72.bmp","resources/claw/0/rotate_new/73.bmp","resources/claw/0/rotate_new/74.bmp","resources/claw/0/rotate_new/75.bmp","resources/claw/0/rotate_close/4.bmp","resources/claw/0/rotate_close/5.bmp","resources/claw/0/rotate_close/6.bmp","resources/claw/0/rotate_close/7.bmp","resources/claw/0/rotate_close/8.bmp","resources/claw/0/rotate_close/9.bmp","resources/claw/0/rotate_close/10.bmp","resources/claw/0/rotate_close/11.bmp","resources/claw/0/rotate_close/12.bmp","resources/claw/0/rotate_close/13.bmp","resources/claw/0/rotate_close/14.bmp","resources/claw/0/rotate_close/15.bmp","resources/claw/0/rotate_close/16.bmp","resources/claw/0/rotate_close/17.bmp","resources/claw/0/rotate_close/18.bmp","resources/claw/0/rotate_close/19.bmp","resources/claw/0/rotate_close/20.bmp","resources/claw/0/rotate_close/21.bmp","resources/claw/0/rotate_close/22.bmp","resources/claw/0/rotate_close/23.bmp","resources/claw/0/rotate_close/24.bmp","resources/claw/0/rotate_close/25.bmp","resources/claw/0/rotate_close/26.bmp","resources/claw/0/rotate_close/27.bmp","resources/claw/0/rotate_close/28.bmp","resources/claw/0/rotate_close/29.bmp","resources/claw/0/rotate_close/30.bmp","resources/claw/0/rotate_close/31.bmp","resources/claw/0/rotate_close/32.bmp","resources/claw/0/rotate_close/33.bmp","resources/claw/0/rotate_close/34.bmp","resources/claw/0/rotate_close/35.bmp","resources/claw/0/rotate_close/36.bmp","resources/claw/0/rotate_close/37.bmp","resources/claw/0/rotate_close/38.bmp","resources/claw/0/rotate_close/39.bmp","resources/claw/0/rotate_close/40.bmp","resources/claw/0/rotate_close/41.bmp","resources/claw/0/rotate_close/42.bmp","resources/claw/0/rotate_close/43.bmp","resources/claw/0/rotate_close/44.bmp","resources/claw/0/rotate_close/45.bmp","resources/claw/0/rotate_close/46.bmp","resources/claw/0/rotate_close/47.bmp","resources/claw/0/rotate_close/48.bmp","resources/claw/0/rotate_close/49.bmp","resources/claw/0/rotate_close/50.bmp","resources/claw/0/rotate_close/51.bmp","resources/claw/0/rotate_close/52.bmp","resources/claw/0/rotate_close/53.bmp","resources/claw/0/rotate_close/54.bmp","resources/claw/0/rotate_close/55.bmp","resources/claw/0/rotate_close/56.bmp","resources/claw/0/rotate_close/57.bmp","resources/claw/0/rotate_close/58.bmp","resources/claw/0/rotate_close/59.bmp","resources/claw/0/rotate_close/60.bmp","resources/claw/0/rotate_close/61.bmp","resources/claw/0/rotate_close/62.bmp","resources/claw/0/rotate_close/63.bmp","resources/claw/0/rotate_close/64.bmp","resources/claw/0/rotate_close/65.bmp","resources/claw/0/rotate_close/66.bmp","resources/claw/0/rotate_close/67.bmp","resources/claw/0/rotate_close/68.bmp","resources/claw/0/rotate_close/69.bmp","resources/claw/0/rotate_close/70.bmp","resources/claw/0/rotate_close/71.bmp","resources/claw/0/rotate_close/72.bmp","resources/claw/0/rotate_close/73.bmp","resources/claw/0/rotate_close/74.bmp","resources/claw/0/rotate_close/75.bmp" }, RGB(0, 0, 0));
 	clawhead.SetTopLeft(507, 90);
 
+	mine_caught.LoadBitmapByString({ "resources/claw/mine_caught/0.bmp","resources/claw/mine_caught/0.bmp","resources/claw/mine_caught/2.bmp","resources/claw/mine_caught/3.bmp","resources/claw/mine_caught/4.bmp","resources/claw/mine_caught/5.bmp","resources/claw/mine_caught/6.bmp","resources/claw/mine_caught/7.bmp","resources/claw/mine_caught/8.bmp","resources/claw/mine_caught/9.bmp","resources/claw/mine_caught/10.bmp","resources/claw/mine_caught/11.bmp","resources/claw/mine_caught/12.bmp","resources/claw/mine_caught/13.bmp","resources/claw/mine_caught/14.bmp" }, RGB(0, 0, 0));
+	mine_caught.SetTopLeft(0, 0);
+
+
 	//clawhead_close.LoadBitmapByString({ "resources/claw/0/rotate_close/4.bmp","resources/claw/0/rotate_close/5.bmp","resources/claw/0/rotate_close/6.bmp","resources/claw/0/rotate_close/7.bmp","resources/claw/0/rotate_close/8.bmp","resources/claw/0/rotate_close/9.bmp","resources/claw/0/rotate_close/10.bmp","resources/claw/0/rotate_close/11.bmp","resources/claw/0/rotate_close/12.bmp","resources/claw/0/rotate_close/13.bmp","resources/claw/0/rotate_close/14.bmp","resources/claw/0/rotate_close/15.bmp","resources/claw/0/rotate_close/16.bmp","resources/claw/0/rotate_close/17.bmp","resources/claw/0/rotate_close/18.bmp","resources/claw/0/rotate_close/19.bmp","resources/claw/0/rotate_close/20.bmp","resources/claw/0/rotate_close/21.bmp","resources/claw/0/rotate_close/22.bmp","resources/claw/0/rotate_close/23.bmp","resources/claw/0/rotate_close/24.bmp","resources/claw/0/rotate_close/25.bmp","resources/claw/0/rotate_close/26.bmp","resources/claw/0/rotate_close/27.bmp","resources/claw/0/rotate_close/28.bmp","resources/claw/0/rotate_close/29.bmp","resources/claw/0/rotate_close/30.bmp","resources/claw/0/rotate_close/31.bmp","resources/claw/0/rotate_close/32.bmp","resources/claw/0/rotate_close/33.bmp","resources/claw/0/rotate_close/34.bmp","resources/claw/0/rotate_close/35.bmp","resources/claw/0/rotate_close/36.bmp","resources/claw/0/rotate_close/37.bmp","resources/claw/0/rotate_close/38.bmp","resources/claw/0/rotate_close/39.bmp","resources/claw/0/rotate_close/40.bmp","resources/claw/0/rotate_close/41.bmp","resources/claw/0/rotate_close/42.bmp","resources/claw/0/rotate_close/43.bmp","resources/claw/0/rotate_close/44.bmp","resources/claw/0/rotate_close/45.bmp","resources/claw/0/rotate_close/46.bmp","resources/claw/0/rotate_close/47.bmp","resources/claw/0/rotate_close/48.bmp","resources/claw/0/rotate_close/49.bmp","resources/claw/0/rotate_close/50.bmp","resources/claw/0/rotate_close/51.bmp","resources/claw/0/rotate_close/52.bmp","resources/claw/0/rotate_close/53.bmp","resources/claw/0/rotate_close/54.bmp","resources/claw/0/rotate_close/55.bmp","resources/claw/0/rotate_close/56.bmp","resources/claw/0/rotate_close/57.bmp","resources/claw/0/rotate_close/58.bmp","resources/claw/0/rotate_close/59.bmp","resources/claw/0/rotate_close/60.bmp","resources/claw/0/rotate_close/61.bmp","resources/claw/0/rotate_close/62.bmp","resources/claw/0/rotate_close/63.bmp","resources/claw/0/rotate_close/64.bmp","resources/claw/0/rotate_close/65.bmp","resources/claw/0/rotate_close/66.bmp","resources/claw/0/rotate_close/67.bmp","resources/claw/0/rotate_close/68.bmp","resources/claw/0/rotate_close/69.bmp","resources/claw/0/rotate_close/70.bmp","resources/claw/0/rotate_close/71.bmp","resources/claw/0/rotate_close/72.bmp","resources/claw/0/rotate_close/73.bmp","resources/claw/0/rotate_close/74.bmp","resources/claw/0/rotate_close/75.bmp" }, RGB(0, 0, 0));
 	//clawhead_close.SetTopLeft(507, 90);
 
@@ -223,7 +227,6 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	}
 	if (nChar == VK_SPACE) {
 		item_2_effect = true;
-		item_4_effect = true;
 		action_state = 3;
 	}
 }
@@ -419,6 +422,7 @@ void CGameStateRun::OnShow()
 		if ((clock() % 1000) > 700 && timer <= 10 && timer > 0) {
 			timer_bling.ShowBitmap();
 		}
+		show_mine_caught();
 		if (claw_is_ready == false) {
 			clawhead.ShowBitmap();
 			hitbox.ShowBitmap();
@@ -446,6 +450,7 @@ void CGameStateRun::OnShow()
 		{
 			bomb_explosion.ShowBitmap();
 		}
+		
 	}
 
 	show_text_by_phase();
@@ -588,6 +593,7 @@ void CGameStateRun::show_image_by_phase() {
 			{
 				owner_talk.ToggleAnimation();
 			}
+			set_last_time_audio();
 			set_stock();
 			show_items();
 			show_description_of_item();
@@ -695,6 +701,17 @@ void CGameStateRun::pull_claw()
 		money = money + money_gain;
 		reset_claw();
 	}
+	set_last_time_audio();
+}
+
+void CGameStateRun::show_mine_caught()
+{
+	mine_caught.ShowBitmap();
+	if (claw_is_ready == false) {
+		int x = clawhead.GetLeft() + 43 - mine_caught.GetWidth() / 2 + (int)(sin(angles[key_down_index] * rad) * mine_caught.GetWidth() * 0.5);
+		int y = clawhead.GetTop() + 36 - mine_caught.GetHeight() / 2 + (int)(cos(angles[key_down_index] * rad) * mine_caught.GetHeight() * 0.5) - 5;
+		mine_caught.SetTopLeft(x, y);
+	}
 }
 
 void CGameStateRun::reset_claw() 
@@ -703,6 +720,8 @@ void CGameStateRun::reset_claw()
 	claw_x = 507;
 	claw_y = 90;
 	clawhead.SetTopLeft(claw_x, claw_y);
+	mine_caught.SetFrameIndexOfBitmap(0);
+	mine_caught.SetTopLeft(0, 0);
 	hitbox.SetTopLeft(claw_x, claw_y);
 	claw_is_ready = true;
 	hit = false;
@@ -860,7 +879,7 @@ void CGameStateRun::gameover_and_restart()
 	if (fail.GetFrameIndexOfBitmap() == 0 && fail.IsAnimation() == false) {
 		fail.ToggleAnimation();
 	}
-
+	CAudio::Instance()->Pause();
 	
 	if (fail.IsAnimation() == false && fail.GetFrameIndexOfBitmap() != 0) {
 		exit_background.ShowBitmap();
@@ -905,6 +924,7 @@ void CGameStateRun::goto_next_stage()
 	sub_phase = 1;
 	phase = phase + 1;
 	background.SetFrameIndexOfBitmap(phase-1);
+	owner_talk.SetFrameIndexOfBitmap(0);
 	owner_buy.SetFrameIndexOfBitmap(0);
 	owner_angry.SetFrameIndexOfBitmap(0);
 	item_mouse_on = -1;
@@ -926,8 +946,8 @@ void CGameStateRun::show_text_by_phase() {
 	
 	CDC *pDC = CDDraw::GetBackCDC();
 
-	CTextDraw::ChangeFontLog(pDC, 20, "新細明體", RGB(255, 0, 0), 15000);
-	CTextDraw::Print(pDC, 10, 10, std::to_string(mine_random_num));
+	//CTextDraw::ChangeFontLog(pDC, 20, "新細明體", RGB(255, 0, 0), 15000);
+	//CTextDraw::Print(pDC, 10, 10, std::to_string((int)(sin(angles[key_down_index] * rad )* mine_caught.GetWidth())));
 	//CTextDraw::Print(pDC, 30, 10, std::to_string(hit));
 
 	
@@ -2253,7 +2273,11 @@ void CGameStateRun::show_mine_2(int location[][2])
 		}
 		if (exist2[i] == 1 && !is_blew_up(2, i)) {
 			if (mine2[i].IsOverlap(hitbox, mine2[i])) {
-				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				if (clawhead.GetFrameIndexOfBitmap() < 72)
+				{
+					clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				}
+				mine_caught.SetFrameIndexOfBitmap(2);
 				exist2[i] = 0;
 				mine2[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2267,7 +2291,7 @@ void CGameStateRun::show_mine_2(int location[][2])
 	}
 }
 
-void CGameStateRun::show_mine_3(int location[][2]) 
+void CGameStateRun::show_mine_3(int location[][2])
 {
 	for (int i = 0; i < mine_num_now[1]; i++) {
 		if (exist3[i] == 1 && mine3[i].GetLeft() == 0 && mine3[i].GetTop() == 0) {
@@ -2275,7 +2299,11 @@ void CGameStateRun::show_mine_3(int location[][2])
 		}
 		if (exist3[i] == 1 && !is_blew_up(3, i)) {
 			if (mine3[i].IsOverlap(hitbox, mine3[i])) {
-				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				if (clawhead.GetFrameIndexOfBitmap() < 72)
+				{
+					clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				}
+				mine_caught.SetFrameIndexOfBitmap(3);
 				exist3[i] = 0;
 				mine3[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2297,7 +2325,11 @@ void CGameStateRun::show_mine_4(int location[][2])
 		}
 		if (exist4[i] == 1 && !is_blew_up(4, i)) {
 			if (mine4[i].IsOverlap(hitbox, mine4[i])) {
-				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				if (clawhead.GetFrameIndexOfBitmap() < 72)
+				{
+					clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				}
+				mine_caught.SetFrameIndexOfBitmap(4);
 				exist4[i] = 0;
 				mine4[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2311,7 +2343,7 @@ void CGameStateRun::show_mine_4(int location[][2])
 	}
 }
 
-void CGameStateRun::show_mine_5(int location[][2]) 
+void CGameStateRun::show_mine_5(int location[][2])
 {
 	for (int i = 0; i < mine_num_now[3]; i++) {
 		if (exist5[i] == 1 && mine5[i].GetLeft() == 0 && mine5[i].GetTop() == 0) {
@@ -2319,7 +2351,11 @@ void CGameStateRun::show_mine_5(int location[][2])
 		}
 		if (exist5[i] == 1 && !is_blew_up(5, i)) {
 			if (mine5[i].IsOverlap(hitbox, mine5[i])) {
-				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				if (clawhead.GetFrameIndexOfBitmap() < 72)
+				{
+					clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				}
+				mine_caught.SetFrameIndexOfBitmap(5);
 				exist5[i] = 0;
 				mine5[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2333,7 +2369,7 @@ void CGameStateRun::show_mine_5(int location[][2])
 	}
 }
 
-void CGameStateRun::show_mine_6(int location[][2]) 
+void CGameStateRun::show_mine_6(int location[][2])
 {
 	for (int i = 0; i < mine_num_now[4]; i++) {
 		if (exist6[i] == 1 && mine6[i].GetLeft() == 0 && mine6[i].GetTop() == 0) {
@@ -2342,7 +2378,11 @@ void CGameStateRun::show_mine_6(int location[][2])
 		}
 		if (exist6[i] == 1 && !is_blew_up(6, i)) {
 			if (mine6[i].IsOverlap(hitbox, mine6[i])) {
-				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				if (clawhead.GetFrameIndexOfBitmap() < 72)
+				{
+					clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				}
+				mine_caught.SetFrameIndexOfBitmap(6);
 				exist6[i] = 0;
 				mine6[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2356,7 +2396,7 @@ void CGameStateRun::show_mine_6(int location[][2])
 	}
 }
 
-void CGameStateRun::show_mine_7(int location[][2]) 
+void CGameStateRun::show_mine_7(int location[][2])
 {
 	for (int i = 0; i < mine_num_now[5]; i++) {
 		if (exist7[i] == 1 && mine7[i].GetLeft() == 0 && mine7[i].GetTop() == 0) {
@@ -2364,7 +2404,11 @@ void CGameStateRun::show_mine_7(int location[][2])
 		}
 		if (exist7[i] == 1 && !is_blew_up(7, i)) {
 			if (mine7[i].IsOverlap(hitbox, mine7[i])) {
-				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				if (clawhead.GetFrameIndexOfBitmap() < 72)
+				{
+					clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				}
+				mine_caught.SetFrameIndexOfBitmap(7);
 				exist7[i] = 0;
 				mine7[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2378,7 +2422,7 @@ void CGameStateRun::show_mine_7(int location[][2])
 	}
 }
 
-void CGameStateRun::show_mine_8(int location[][2]) 
+void CGameStateRun::show_mine_8(int location[][2])
 {
 	for (int i = 0; i < mine_num_now[6]; i++) {
 		if (exist8[i] == 1 && mine8[i].GetLeft() == 0 && mine8[i].GetTop() == 0) {
@@ -2386,7 +2430,11 @@ void CGameStateRun::show_mine_8(int location[][2])
 		}
 		if (exist8[i] == 1 && !is_blew_up(8, i)) {
 			if (mine8[i].IsOverlap(hitbox, mine8[i])) {
-				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				if (clawhead.GetFrameIndexOfBitmap() < 72)
+				{
+					clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				}
+				mine_caught.SetFrameIndexOfBitmap(8);
 				exist8[i] = 0;
 				mine8[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2400,7 +2448,7 @@ void CGameStateRun::show_mine_8(int location[][2])
 	}
 }
 
-void CGameStateRun::show_mine_9(int location[][2]) 
+void CGameStateRun::show_mine_9(int location[][2])
 {
 	for (int i = 0; i < mine_num_now[7]; i++) {
 		if (exist9[i] == 1 && mine9[i].GetLeft() == 0 && mine9[i].GetTop() == 0) {
@@ -2408,7 +2456,11 @@ void CGameStateRun::show_mine_9(int location[][2])
 		}
 		if (exist9[i] == 1 && !is_blew_up(9, i)) {
 			if (mine9[i].IsOverlap(hitbox, mine9[i])) {
-				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				if (clawhead.GetFrameIndexOfBitmap() < 72)
+				{
+					clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				}
+				mine_caught.SetFrameIndexOfBitmap(9);
 				exist9[i] = 0;
 				mine9[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2454,7 +2506,11 @@ void CGameStateRun::show_mine_10(int location[][2])
 		}
 		if (exist10[i] == 1 && !is_blew_up(10, i)) {
 			if (mine10[i].IsOverlap(hitbox, mine10[i])) {
-				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				if (clawhead.GetFrameIndexOfBitmap() < 72)
+				{
+					clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				}
+				mine_caught.SetFrameIndexOfBitmap(10);
 				exist10[i] = 0;
 				mine10[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2468,7 +2524,7 @@ void CGameStateRun::show_mine_10(int location[][2])
 	}
 }
 
-void CGameStateRun::show_mine_11(int location[][2]) 
+void CGameStateRun::show_mine_11(int location[][2])
 {
 	for (int i = 0; i < mine_num_now[9]; i++) {
 		if (exist11[i] == 1 && mine11[i].GetLeft() == 0 && mine11[i].GetTop() == 0) {
@@ -2476,7 +2532,11 @@ void CGameStateRun::show_mine_11(int location[][2])
 		}
 		if (exist11[i] == 1 && !is_blew_up(11, i)) {
 			if (mine11[i].IsOverlap(hitbox, mine11[i])) {
-				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				if (clawhead.GetFrameIndexOfBitmap() < 72)
+				{
+					clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				}
+				mine_caught.SetFrameIndexOfBitmap(11);
 				exist11[i] = 0;
 				mine11[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2490,7 +2550,7 @@ void CGameStateRun::show_mine_11(int location[][2])
 	}
 }
 
-void CGameStateRun::show_mine_12(int location[][2]) 
+void CGameStateRun::show_mine_12(int location[][2])
 {
 	for (int i = 0; i < mine_num_now[10]; i++) {
 		if (exist12[i] == 1 && mine12[i].GetLeft() == 0 && mine12[i].GetTop() == 0) {
@@ -2498,7 +2558,11 @@ void CGameStateRun::show_mine_12(int location[][2])
 		}
 		if (exist12[i] == 1 && !is_blew_up(12, i)) {
 			if (mine12[i].IsOverlap(hitbox, mine12[i])) {
-				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				if (clawhead.GetFrameIndexOfBitmap() < 72)
+				{
+					clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				}
+				mine_caught.SetFrameIndexOfBitmap(12);
 				exist12[i] = 0;
 				mine12[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2520,7 +2584,11 @@ void CGameStateRun::show_mine_13(int location[][2])
 		}
 		if (exist13[i] == 1 && !is_blew_up(13, i)) {
 			if (mine13[i].IsOverlap(hitbox, mine13[i])) {
-				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				if (clawhead.GetFrameIndexOfBitmap() < 72)
+				{
+					clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				}
+				mine_caught.SetFrameIndexOfBitmap(13);
 				exist13[i] = 0;
 				mine13[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2534,7 +2602,7 @@ void CGameStateRun::show_mine_13(int location[][2])
 	}
 }
 
-void CGameStateRun::show_mine_14(int location[][2]) 
+void CGameStateRun::show_mine_14(int location[][2])
 {
 	for (int i = 0; i < mine_num_now[12]; i++) {
 		if (exist14[i] == 1 && mine14[i].GetLeft() == 0 && mine14[i].GetTop() == 0) {
@@ -2542,7 +2610,11 @@ void CGameStateRun::show_mine_14(int location[][2])
 		}
 		if (exist14[i] == 1 && !is_blew_up(14, i)) {
 			if (mine14[i].IsOverlap(hitbox, mine14[i])) {
-				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				if (clawhead.GetFrameIndexOfBitmap() < 72)
+				{
+					clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
+				}
+				mine_caught.SetFrameIndexOfBitmap(14);
 				exist14[i] = 0;
 				mine14[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2554,4 +2626,32 @@ void CGameStateRun::show_mine_14(int location[][2])
 			mine14[i].ShowBitmap();
 		}
 	}
+}
+
+
+void CGameStateRun::set_last_time_audio() 
+{
+	if (sub_phase == 3 && owner_talk.IsAnimation()) 
+	{
+		if (clock() - last_time_audio_1 > 100) 
+		{
+			CAudio::Instance()->Play(10);
+			last_time_audio_1 = clock();
+		}
+	}
+
+	if (sub_phase == 2) 
+	{
+		if (clock() - last_time_audio_1 > 1000)
+		{
+			CAudio::Instance()->Play(9);
+			last_time_audio_1 = clock();
+			last_time_audio_2 = clock();
+		}
+		if (clock() - last_time_audio_2 > 250 && clock() - last_time_audio_1 < 350)
+		{
+			CAudio::Instance()->Play(9);
+		}
+	}
+
 }

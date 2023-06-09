@@ -136,7 +136,7 @@ namespace game_framework {
 		
 		/*這三個參數是用來控制炸藥飛出去的時間位置和炸藥數量*/
 		int last_time_bomb;						//紀錄上次bomb更新的時間
-		int bomb_num = 1;						//bomb數量
+		int bomb_num = 0;						//bomb數量
 		bool bomb_is_throw = false;				//當flag==true時丟炸藥
 		int last_time_bomb_explosion;
 
@@ -215,6 +215,9 @@ namespace game_framework {
 
 		bool gameover = false;			// = true 時播放結束動畫並返回主頁面
 
+		int last_time_audio_1;			//這兩個用來記錄上次撥放老闆講話和拉爪子的聲音的時間
+		int last_time_audio_2;
+
 		CMovingBitmap goal;
 		CMovingBitmap background;
 	
@@ -230,6 +233,7 @@ namespace game_framework {
 		CMovingBitmap claw;
 		CMovingBitmap clawhead;
 		//CMovingBitmap clawhead_close;
+		CMovingBitmap mine_caught;
 		CMovingBitmap line[100];
 		CMovingBitmap line2[100];
 		CMovingBitmap line3[100];
@@ -279,6 +283,7 @@ namespace game_framework {
 		void show_image_by_phase();
 		void shoot_claw_by_angle();
 		void pull_claw();
+		void show_mine_caught();
 		void reset_claw();
 		void show_line();
 		void throw_bomb();
@@ -315,6 +320,8 @@ namespace game_framework {
 		void show_mine_14(int location[][2]);
 		
 		bool is_blew_up(int mine, int index);
+
+		void set_last_time_audio();
 
 	};
 

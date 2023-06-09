@@ -229,6 +229,7 @@ namespace game_framework {
 
 		CMovingBitmap claw;
 		CMovingBitmap clawhead;
+		//CMovingBitmap clawhead_close;
 		CMovingBitmap line[100];
 		CMovingBitmap line2[100];
 		CMovingBitmap line3[100];

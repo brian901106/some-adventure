@@ -101,8 +101,11 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	claw.SetTopLeft(507, 90);
 	claw.SetAnimation(70, false);
 
-	clawhead.LoadBitmapByString({ "resources/claw/0/rotate_new/4.bmp","resources/claw/0/rotate_new/5.bmp","resources/claw/0/rotate_new/6.bmp","resources/claw/0/rotate_new/7.bmp","resources/claw/0/rotate_new/8.bmp","resources/claw/0/rotate_new/9.bmp","resources/claw/0/rotate_new/10.bmp","resources/claw/0/rotate_new/11.bmp","resources/claw/0/rotate_new/12.bmp","resources/claw/0/rotate_new/13.bmp","resources/claw/0/rotate_new/14.bmp","resources/claw/0/rotate_new/15.bmp","resources/claw/0/rotate_new/16.bmp","resources/claw/0/rotate_new/17.bmp","resources/claw/0/rotate_new/18.bmp","resources/claw/0/rotate_new/19.bmp","resources/claw/0/rotate_new/20.bmp","resources/claw/0/rotate_new/21.bmp","resources/claw/0/rotate_new/22.bmp","resources/claw/0/rotate_new/23.bmp","resources/claw/0/rotate_new/24.bmp","resources/claw/0/rotate_new/25.bmp","resources/claw/0/rotate_new/26.bmp","resources/claw/0/rotate_new/27.bmp","resources/claw/0/rotate_new/28.bmp","resources/claw/0/rotate_new/29.bmp","resources/claw/0/rotate_new/30.bmp","resources/claw/0/rotate_new/31.bmp","resources/claw/0/rotate_new/32.bmp","resources/claw/0/rotate_new/33.bmp","resources/claw/0/rotate_new/34.bmp","resources/claw/0/rotate_new/35.bmp","resources/claw/0/rotate_new/36.bmp","resources/claw/0/rotate_new/37.bmp","resources/claw/0/rotate_new/38.bmp","resources/claw/0/rotate_new/39.bmp","resources/claw/0/rotate_new/40.bmp","resources/claw/0/rotate_new/41.bmp","resources/claw/0/rotate_new/42.bmp","resources/claw/0/rotate_new/43.bmp","resources/claw/0/rotate_new/44.bmp","resources/claw/0/rotate_new/45.bmp","resources/claw/0/rotate_new/46.bmp","resources/claw/0/rotate_new/47.bmp","resources/claw/0/rotate_new/48.bmp","resources/claw/0/rotate_new/49.bmp","resources/claw/0/rotate_new/50.bmp","resources/claw/0/rotate_new/51.bmp","resources/claw/0/rotate_new/52.bmp","resources/claw/0/rotate_new/53.bmp","resources/claw/0/rotate_new/54.bmp","resources/claw/0/rotate_new/55.bmp","resources/claw/0/rotate_new/56.bmp","resources/claw/0/rotate_new/57.bmp","resources/claw/0/rotate_new/58.bmp","resources/claw/0/rotate_new/59.bmp","resources/claw/0/rotate_new/60.bmp","resources/claw/0/rotate_new/61.bmp","resources/claw/0/rotate_new/62.bmp","resources/claw/0/rotate_new/63.bmp","resources/claw/0/rotate_new/64.bmp","resources/claw/0/rotate_new/65.bmp","resources/claw/0/rotate_new/66.bmp","resources/claw/0/rotate_new/67.bmp","resources/claw/0/rotate_new/68.bmp","resources/claw/0/rotate_new/69.bmp","resources/claw/0/rotate_new/70.bmp","resources/claw/0/rotate_new/71.bmp","resources/claw/0/rotate_new/72.bmp","resources/claw/0/rotate_new/73.bmp","resources/claw/0/rotate_new/74.bmp","resources/claw/0/rotate_new/75.bmp" }, RGB(0, 0, 0));
+	clawhead.LoadBitmapByString({ "resources/claw/0/rotate_new/4.bmp","resources/claw/0/rotate_new/5.bmp","resources/claw/0/rotate_new/6.bmp","resources/claw/0/rotate_new/7.bmp","resources/claw/0/rotate_new/8.bmp","resources/claw/0/rotate_new/9.bmp","resources/claw/0/rotate_new/10.bmp","resources/claw/0/rotate_new/11.bmp","resources/claw/0/rotate_new/12.bmp","resources/claw/0/rotate_new/13.bmp","resources/claw/0/rotate_new/14.bmp","resources/claw/0/rotate_new/15.bmp","resources/claw/0/rotate_new/16.bmp","resources/claw/0/rotate_new/17.bmp","resources/claw/0/rotate_new/18.bmp","resources/claw/0/rotate_new/19.bmp","resources/claw/0/rotate_new/20.bmp","resources/claw/0/rotate_new/21.bmp","resources/claw/0/rotate_new/22.bmp","resources/claw/0/rotate_new/23.bmp","resources/claw/0/rotate_new/24.bmp","resources/claw/0/rotate_new/25.bmp","resources/claw/0/rotate_new/26.bmp","resources/claw/0/rotate_new/27.bmp","resources/claw/0/rotate_new/28.bmp","resources/claw/0/rotate_new/29.bmp","resources/claw/0/rotate_new/30.bmp","resources/claw/0/rotate_new/31.bmp","resources/claw/0/rotate_new/32.bmp","resources/claw/0/rotate_new/33.bmp","resources/claw/0/rotate_new/34.bmp","resources/claw/0/rotate_new/35.bmp","resources/claw/0/rotate_new/36.bmp","resources/claw/0/rotate_new/37.bmp","resources/claw/0/rotate_new/38.bmp","resources/claw/0/rotate_new/39.bmp","resources/claw/0/rotate_new/40.bmp","resources/claw/0/rotate_new/41.bmp","resources/claw/0/rotate_new/42.bmp","resources/claw/0/rotate_new/43.bmp","resources/claw/0/rotate_new/44.bmp","resources/claw/0/rotate_new/45.bmp","resources/claw/0/rotate_new/46.bmp","resources/claw/0/rotate_new/47.bmp","resources/claw/0/rotate_new/48.bmp","resources/claw/0/rotate_new/49.bmp","resources/claw/0/rotate_new/50.bmp","resources/claw/0/rotate_new/51.bmp","resources/claw/0/rotate_new/52.bmp","resources/claw/0/rotate_new/53.bmp","resources/claw/0/rotate_new/54.bmp","resources/claw/0/rotate_new/55.bmp","resources/claw/0/rotate_new/56.bmp","resources/claw/0/rotate_new/57.bmp","resources/claw/0/rotate_new/58.bmp","resources/claw/0/rotate_new/59.bmp","resources/claw/0/rotate_new/60.bmp","resources/claw/0/rotate_new/61.bmp","resources/claw/0/rotate_new/62.bmp","resources/claw/0/rotate_new/63.bmp","resources/claw/0/rotate_new/64.bmp","resources/claw/0/rotate_new/65.bmp","resources/claw/0/rotate_new/66.bmp","resources/claw/0/rotate_new/67.bmp","resources/claw/0/rotate_new/68.bmp","resources/claw/0/rotate_new/69.bmp","resources/claw/0/rotate_new/70.bmp","resources/claw/0/rotate_new/71.bmp","resources/claw/0/rotate_new/72.bmp","resources/claw/0/rotate_new/73.bmp","resources/claw/0/rotate_new/74.bmp","resources/claw/0/rotate_new/75.bmp","resources/claw/0/rotate_close/4.bmp","resources/claw/0/rotate_close/5.bmp","resources/claw/0/rotate_close/6.bmp","resources/claw/0/rotate_close/7.bmp","resources/claw/0/rotate_close/8.bmp","resources/claw/0/rotate_close/9.bmp","resources/claw/0/rotate_close/10.bmp","resources/claw/0/rotate_close/11.bmp","resources/claw/0/rotate_close/12.bmp","resources/claw/0/rotate_close/13.bmp","resources/claw/0/rotate_close/14.bmp","resources/claw/0/rotate_close/15.bmp","resources/claw/0/rotate_close/16.bmp","resources/claw/0/rotate_close/17.bmp","resources/claw/0/rotate_close/18.bmp","resources/claw/0/rotate_close/19.bmp","resources/claw/0/rotate_close/20.bmp","resources/claw/0/rotate_close/21.bmp","resources/claw/0/rotate_close/22.bmp","resources/claw/0/rotate_close/23.bmp","resources/claw/0/rotate_close/24.bmp","resources/claw/0/rotate_close/25.bmp","resources/claw/0/rotate_close/26.bmp","resources/claw/0/rotate_close/27.bmp","resources/claw/0/rotate_close/28.bmp","resources/claw/0/rotate_close/29.bmp","resources/claw/0/rotate_close/30.bmp","resources/claw/0/rotate_close/31.bmp","resources/claw/0/rotate_close/32.bmp","resources/claw/0/rotate_close/33.bmp","resources/claw/0/rotate_close/34.bmp","resources/claw/0/rotate_close/35.bmp","resources/claw/0/rotate_close/36.bmp","resources/claw/0/rotate_close/37.bmp","resources/claw/0/rotate_close/38.bmp","resources/claw/0/rotate_close/39.bmp","resources/claw/0/rotate_close/40.bmp","resources/claw/0/rotate_close/41.bmp","resources/claw/0/rotate_close/42.bmp","resources/claw/0/rotate_close/43.bmp","resources/claw/0/rotate_close/44.bmp","resources/claw/0/rotate_close/45.bmp","resources/claw/0/rotate_close/46.bmp","resources/claw/0/rotate_close/47.bmp","resources/claw/0/rotate_close/48.bmp","resources/claw/0/rotate_close/49.bmp","resources/claw/0/rotate_close/50.bmp","resources/claw/0/rotate_close/51.bmp","resources/claw/0/rotate_close/52.bmp","resources/claw/0/rotate_close/53.bmp","resources/claw/0/rotate_close/54.bmp","resources/claw/0/rotate_close/55.bmp","resources/claw/0/rotate_close/56.bmp","resources/claw/0/rotate_close/57.bmp","resources/claw/0/rotate_close/58.bmp","resources/claw/0/rotate_close/59.bmp","resources/claw/0/rotate_close/60.bmp","resources/claw/0/rotate_close/61.bmp","resources/claw/0/rotate_close/62.bmp","resources/claw/0/rotate_close/63.bmp","resources/claw/0/rotate_close/64.bmp","resources/claw/0/rotate_close/65.bmp","resources/claw/0/rotate_close/66.bmp","resources/claw/0/rotate_close/67.bmp","resources/claw/0/rotate_close/68.bmp","resources/claw/0/rotate_close/69.bmp","resources/claw/0/rotate_close/70.bmp","resources/claw/0/rotate_close/71.bmp","resources/claw/0/rotate_close/72.bmp","resources/claw/0/rotate_close/73.bmp","resources/claw/0/rotate_close/74.bmp","resources/claw/0/rotate_close/75.bmp" }, RGB(0, 0, 0));
 	clawhead.SetTopLeft(507, 90);
+
+	//clawhead_close.LoadBitmapByString({ "resources/claw/0/rotate_close/4.bmp","resources/claw/0/rotate_close/5.bmp","resources/claw/0/rotate_close/6.bmp","resources/claw/0/rotate_close/7.bmp","resources/claw/0/rotate_close/8.bmp","resources/claw/0/rotate_close/9.bmp","resources/claw/0/rotate_close/10.bmp","resources/claw/0/rotate_close/11.bmp","resources/claw/0/rotate_close/12.bmp","resources/claw/0/rotate_close/13.bmp","resources/claw/0/rotate_close/14.bmp","resources/claw/0/rotate_close/15.bmp","resources/claw/0/rotate_close/16.bmp","resources/claw/0/rotate_close/17.bmp","resources/claw/0/rotate_close/18.bmp","resources/claw/0/rotate_close/19.bmp","resources/claw/0/rotate_close/20.bmp","resources/claw/0/rotate_close/21.bmp","resources/claw/0/rotate_close/22.bmp","resources/claw/0/rotate_close/23.bmp","resources/claw/0/rotate_close/24.bmp","resources/claw/0/rotate_close/25.bmp","resources/claw/0/rotate_close/26.bmp","resources/claw/0/rotate_close/27.bmp","resources/claw/0/rotate_close/28.bmp","resources/claw/0/rotate_close/29.bmp","resources/claw/0/rotate_close/30.bmp","resources/claw/0/rotate_close/31.bmp","resources/claw/0/rotate_close/32.bmp","resources/claw/0/rotate_close/33.bmp","resources/claw/0/rotate_close/34.bmp","resources/claw/0/rotate_close/35.bmp","resources/claw/0/rotate_close/36.bmp","resources/claw/0/rotate_close/37.bmp","resources/claw/0/rotate_close/38.bmp","resources/claw/0/rotate_close/39.bmp","resources/claw/0/rotate_close/40.bmp","resources/claw/0/rotate_close/41.bmp","resources/claw/0/rotate_close/42.bmp","resources/claw/0/rotate_close/43.bmp","resources/claw/0/rotate_close/44.bmp","resources/claw/0/rotate_close/45.bmp","resources/claw/0/rotate_close/46.bmp","resources/claw/0/rotate_close/47.bmp","resources/claw/0/rotate_close/48.bmp","resources/claw/0/rotate_close/49.bmp","resources/claw/0/rotate_close/50.bmp","resources/claw/0/rotate_close/51.bmp","resources/claw/0/rotate_close/52.bmp","resources/claw/0/rotate_close/53.bmp","resources/claw/0/rotate_close/54.bmp","resources/claw/0/rotate_close/55.bmp","resources/claw/0/rotate_close/56.bmp","resources/claw/0/rotate_close/57.bmp","resources/claw/0/rotate_close/58.bmp","resources/claw/0/rotate_close/59.bmp","resources/claw/0/rotate_close/60.bmp","resources/claw/0/rotate_close/61.bmp","resources/claw/0/rotate_close/62.bmp","resources/claw/0/rotate_close/63.bmp","resources/claw/0/rotate_close/64.bmp","resources/claw/0/rotate_close/65.bmp","resources/claw/0/rotate_close/66.bmp","resources/claw/0/rotate_close/67.bmp","resources/claw/0/rotate_close/68.bmp","resources/claw/0/rotate_close/69.bmp","resources/claw/0/rotate_close/70.bmp","resources/claw/0/rotate_close/71.bmp","resources/claw/0/rotate_close/72.bmp","resources/claw/0/rotate_close/73.bmp","resources/claw/0/rotate_close/74.bmp","resources/claw/0/rotate_close/75.bmp" }, RGB(0, 0, 0));
+	//clawhead_close.SetTopLeft(507, 90);
 
 	for (int i = 0; i < 100; i++) {
 		line[i].LoadBitmapByString({ "resources/claw/line.bmp" });
@@ -2250,6 +2253,7 @@ void CGameStateRun::show_mine_2(int location[][2])
 		}
 		if (exist2[i] == 1 && !is_blew_up(2, i)) {
 			if (mine2[i].IsOverlap(hitbox, mine2[i])) {
+				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
 				exist2[i] = 0;
 				mine2[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2271,6 +2275,7 @@ void CGameStateRun::show_mine_3(int location[][2])
 		}
 		if (exist3[i] == 1 && !is_blew_up(3, i)) {
 			if (mine3[i].IsOverlap(hitbox, mine3[i])) {
+				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
 				exist3[i] = 0;
 				mine3[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2292,6 +2297,7 @@ void CGameStateRun::show_mine_4(int location[][2])
 		}
 		if (exist4[i] == 1 && !is_blew_up(4, i)) {
 			if (mine4[i].IsOverlap(hitbox, mine4[i])) {
+				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
 				exist4[i] = 0;
 				mine4[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2313,6 +2319,7 @@ void CGameStateRun::show_mine_5(int location[][2])
 		}
 		if (exist5[i] == 1 && !is_blew_up(5, i)) {
 			if (mine5[i].IsOverlap(hitbox, mine5[i])) {
+				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
 				exist5[i] = 0;
 				mine5[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2335,6 +2342,7 @@ void CGameStateRun::show_mine_6(int location[][2])
 		}
 		if (exist6[i] == 1 && !is_blew_up(6, i)) {
 			if (mine6[i].IsOverlap(hitbox, mine6[i])) {
+				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
 				exist6[i] = 0;
 				mine6[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2356,6 +2364,7 @@ void CGameStateRun::show_mine_7(int location[][2])
 		}
 		if (exist7[i] == 1 && !is_blew_up(7, i)) {
 			if (mine7[i].IsOverlap(hitbox, mine7[i])) {
+				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
 				exist7[i] = 0;
 				mine7[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2377,6 +2386,7 @@ void CGameStateRun::show_mine_8(int location[][2])
 		}
 		if (exist8[i] == 1 && !is_blew_up(8, i)) {
 			if (mine8[i].IsOverlap(hitbox, mine8[i])) {
+				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
 				exist8[i] = 0;
 				mine8[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2398,6 +2408,7 @@ void CGameStateRun::show_mine_9(int location[][2])
 		}
 		if (exist9[i] == 1 && !is_blew_up(9, i)) {
 			if (mine9[i].IsOverlap(hitbox, mine9[i])) {
+				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
 				exist9[i] = 0;
 				mine9[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2443,6 +2454,7 @@ void CGameStateRun::show_mine_10(int location[][2])
 		}
 		if (exist10[i] == 1 && !is_blew_up(10, i)) {
 			if (mine10[i].IsOverlap(hitbox, mine10[i])) {
+				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
 				exist10[i] = 0;
 				mine10[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2464,6 +2476,7 @@ void CGameStateRun::show_mine_11(int location[][2])
 		}
 		if (exist11[i] == 1 && !is_blew_up(11, i)) {
 			if (mine11[i].IsOverlap(hitbox, mine11[i])) {
+				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
 				exist11[i] = 0;
 				mine11[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2485,6 +2498,7 @@ void CGameStateRun::show_mine_12(int location[][2])
 		}
 		if (exist12[i] == 1 && !is_blew_up(12, i)) {
 			if (mine12[i].IsOverlap(hitbox, mine12[i])) {
+				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
 				exist12[i] = 0;
 				mine12[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2506,6 +2520,7 @@ void CGameStateRun::show_mine_13(int location[][2])
 		}
 		if (exist13[i] == 1 && !is_blew_up(13, i)) {
 			if (mine13[i].IsOverlap(hitbox, mine13[i])) {
+				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
 				exist13[i] = 0;
 				mine13[i].SetTopLeft(-1000, -1000);
 				hit = true;
@@ -2527,6 +2542,7 @@ void CGameStateRun::show_mine_14(int location[][2])
 		}
 		if (exist14[i] == 1 && !is_blew_up(14, i)) {
 			if (mine14[i].IsOverlap(hitbox, mine14[i])) {
+				clawhead.SetFrameIndexOfBitmap(clawhead.GetFrameIndexOfBitmap() + 72);
 				exist14[i] = 0;
 				mine14[i].SetTopLeft(-1000, -1000);
 				hit = true;

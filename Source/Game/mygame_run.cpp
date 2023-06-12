@@ -211,7 +211,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	}
 	if (nChar == VK_UP) {
 		
-		if (bomb_num >= 1 && hit){
+		if (bomb_num >= 1 && hit && !bomb_is_throw){
 			bomb_is_throw = true;
 			action_state = 2;
 			bomb_num = bomb_num - 1;
@@ -668,7 +668,7 @@ void CGameStateRun::pull_claw()
 {
 	int miss_speedup = miss ? 1 : 0;
 	int s = item_2_effect ? 5 : 1;
-	if(!miss) action_state = 4;
+	if(!miss && !bomb_is_throw) action_state = 4;
 	if (clock() - last_time_claw >= (1*weight/s) && claw_length > 0 )
 	{
 		claw_length = claw_length - 1 - miss_speedup;

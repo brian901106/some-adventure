@@ -123,7 +123,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 
 	load_mines();
 
-	hitbox.LoadBitmapByString({ "resources/claw/hitbox.bmp" }, RGB(0, 0, 0));
+	hitbox.LoadBitmapByString({ "resources/claw/hitbox0.bmp" }, RGB(0, 0, 0));
 	hitbox.SetTopLeft(538, 90);
 
 	bomb.LoadBitmapByString({ "resources/claw/bomb.bmp" }, RGB(0, 0, 0));

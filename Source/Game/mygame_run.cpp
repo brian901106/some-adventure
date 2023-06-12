@@ -802,6 +802,7 @@ void CGameStateRun::throw_bomb()
 		bomb_explosion.SetTopLeft(claw_xway[claw_length]+ (int)sin(angles[key_down_index] * rad) -22, claw_yway[claw_length]+ (int)cos(angles[key_down_index] * rad));
 		reset_bomb();
 		reset_claw();
+		CAudio::Instance()->Play(8);
 	}
 	set_bombs_image();
 }
@@ -930,6 +931,7 @@ void CGameStateRun::goto_next_stage()
 	item_mouse_on = -1;
 	next_level_button_clicked = false;
 	set_goal_money();
+	set_bombs_image();
 
 	new_money = money;
 	timer_of_money_gain_text = 50;
@@ -1233,8 +1235,8 @@ void CGameStateRun::show_mines()
 			int location8[10][2] = { {530,650},{700,450} };	//石頭(大)
 			int location12[10][2] = { {100,250},{800,330} }; //道具袋
 			int location14[10][2] = { {200,230},{880,250} };	//石頭(中)
-			int location6[10][2] = { {500, 300}, {600, 400}, {700, 500} }; //豬
-			int location10[10][2] = { {500, 500}, {600, 600}, {700, 700} }; //鑽石豬
+			//int location6[10][2] = { {500, 300}, {600, 400}, {700, 500} }; //豬
+			//int location10[10][2] = { {500, 500}, {600, 600}, {700, 700} }; //鑽石豬
 
 
 			show_mine_2(location2);
@@ -1245,9 +1247,9 @@ void CGameStateRun::show_mines()
 
 			show_mine_8(location8);
 			/*豬*/
-			show_mine_6(location6);
+			//show_mine_6(location6);
 			/*鑽石豬*/
-			show_mine_10(location10);
+			//show_mine_10(location10);
 			
 			show_mine_12(location12);
 			
@@ -2648,10 +2650,12 @@ void CGameStateRun::set_last_time_audio()
 			last_time_audio_1 = clock();
 			last_time_audio_2 = clock();
 		}
-		if (clock() - last_time_audio_2 > 250 && clock() - last_time_audio_1 < 350)
+		if (clock() - last_time_audio_2 > 250 && clock() - last_time_audio_1 < 300)
 		{
 			CAudio::Instance()->Play(9);
+			last_time_audio_2 = clock();
 		}
+		
 	}
 
 }

@@ -2573,7 +2573,7 @@ void CGameStateRun::show_mine_11(int location[][2])
 				hit = true;
 				CAudio::Instance()->Play(5);
 
-				money_gain = money_of_mine[9] + 300 * item_5_effect;
+				money_gain = money_of_mine[9];
 				weight = weight_of_mine[9];
 			}
 			mine11[i].ShowBitmap();

@@ -43,7 +43,14 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		}
 		if (timer == 0 && money >= goal_money )
 		{
-			sub_phase = 3;
+			if (phase == 10) {
+				win = true;
+				gameover = true;
+			}
+			else {
+				sub_phase = 3;
+			}
+			
 		}
 	}
 
@@ -219,7 +226,13 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		
 	}
 	if (nChar == VK_RIGHT) {
-		sub_phase = 3;
+		if (phase == 10) {
+			win = true;
+			gameover = true;
+		}
+		else {
+			sub_phase = 3;
+		}
 	}
 	if (nChar == VK_LEFT) {
 		bomb_num = bomb_num + 1;
@@ -228,6 +241,9 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	if (nChar == VK_SPACE) {
 		item_2_effect = true;
 		action_state = 3;
+	}
+	if (nChar == 0x5A) {
+		timer = 0;
 	}
 }
 
@@ -242,7 +258,13 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的
 		gameover = true;
 	}
 	if (exit.GetFrameIndexOfBitmap() == 1 && sub_phase == 2 && money >= goal_money) {
-		sub_phase = 3;
+		if (phase == 10) {
+			win = true;
+			gameover = true;
+		}
+		else {
+			sub_phase = 3;
+		}
 	}
 	if (next_level_button.GetFrameIndexOfBitmap() == 1 && sub_phase == 3) {
 		next_level_button_clicked = true;
@@ -874,28 +896,33 @@ void CGameStateRun::set_goal_money()
 
 void CGameStateRun::gameover_and_restart()
 {
+	if (!win) {
+		fail.ShowBitmap();
 
-	fail.ShowBitmap();
-
-	if (fail.GetFrameIndexOfBitmap() == 0 && fail.IsAnimation() == false) {
-		fail.ToggleAnimation();
+		if (fail.GetFrameIndexOfBitmap() == 0 && fail.IsAnimation() == false) {
+			fail.ToggleAnimation();
+		}
+		CAudio::Instance()->Pause();
 	}
-	CAudio::Instance()->Pause();
+
 	
-	if (fail.IsAnimation() == false && fail.GetFrameIndexOfBitmap() != 0) {
+	if (fail.IsAnimation() == false && fail.GetFrameIndexOfBitmap() != 0 || win) {
 		exit_background.ShowBitmap();
 		playagain_button.ShowBitmap();
 
 		CDC *pDC = CDDraw::GetBackCDC();
 		CTextDraw::ChangeFontLog(pDC, 25, "calibri", RGB(0, 0, 0), 45000);
 		CTextDraw::Print(pDC, 180, 673, "play again");
+		if (win) {
+			CTextDraw::ChangeFontLog(pDC, 25, "calibri", RGB(0, 0, 0), 45000);
+			CTextDraw::Print(pDC, 180, 648, "You win!!");
+		}
 		CDDraw::ReleaseBackCDC();
 
 		if (return_game == true) 
 		{
 			//reset_mines();
 			reset_claw();
-			GotoGameState(GAME_STATE_INIT);
 			fail.SetFrameIndexOfBitmap(0);
 			goal.SetFrameIndexOfBitmap(0);
 			background.SetFrameIndexOfBitmap(0);
@@ -910,6 +937,8 @@ void CGameStateRun::gameover_and_restart()
 			goal_money = 650;
 			bomb_num = 0;
 			return_game = false;
+			win = false;
+			GotoGameState(GAME_STATE_INIT);
 		}
 
 	}

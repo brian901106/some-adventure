@@ -59,6 +59,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 {
+	phase = 1;
 	CAudio::Instance()->Load(0, "resources/sound/goal.mp3");
 	CAudio::Instance()->Load(1, "resources/sound/next_level.mp3");
 	CAudio::Instance()->Load(2, "resources/sound/shoot_claw.mp3");

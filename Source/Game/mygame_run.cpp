@@ -902,10 +902,9 @@ void CGameStateRun::gameover_and_restart()
 		if (fail.GetFrameIndexOfBitmap() == 0 && fail.IsAnimation() == false) {
 			fail.ToggleAnimation();
 		}
-		CAudio::Instance()->Pause();
 	}
 
-	
+	CAudio::Instance()->Pause();
 	if (fail.IsAnimation() == false && fail.GetFrameIndexOfBitmap() != 0 || win) {
 		exit_background.ShowBitmap();
 		playagain_button.ShowBitmap();

@@ -89,18 +89,19 @@ void CGameStateInit::OnShow()
 		instructions_text.ShowBitmap();
 		close.ShowBitmap();
 	}
-	/*
+	
 	CDC *pDC = CDDraw::GetBackCDC();
 
 	CTextDraw::ChangeFontLog(pDC, 15, "新細明體", RGB(255, 0, 0), 15000);
-	CTextDraw::Print(pDC, 10, 10, "Arrow key down : Extend claws");
+	CTextDraw::Print(pDC, 10, 10, "Arrow key down : Shoot claw");
 	CTextDraw::Print(pDC, 10, 35, "Arrow key up : Throw bomb (if there's bomb)");
 	CTextDraw::Print(pDC, 10, 60, "Cheat button :");
-	CTextDraw::Print(pDC, 10, 60, "  Arrow key right to skip level");
-	CTextDraw::Print(pDC, 10, 60, "  Arrow key left to get a bomb");
-	CTextDraw::Print(pDC, 10, 60, "  Spacebar to get strength");
+	CTextDraw::Print(pDC, 10, 85, "   Arrow key right to skip level");
+	CTextDraw::Print(pDC, 10, 110, "   Arrow key left to gain a bomb");
+	CTextDraw::Print(pDC, 10, 135, "   Spacebar to get strength");
+	CTextDraw::Print(pDC, 10, 160, "   Z to set timer to 0");
 	CDDraw::ReleaseBackCDC();
-	*/
+	
 
 }
 

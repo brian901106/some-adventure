@@ -102,7 +102,7 @@ namespace game_framework {
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
-		int phase = 10;					//phase = 1 為第一關， = 2 為第二關，以此類推
+		int phase = 1;					//phase = 1 為第一關， = 2 為第二關，以此類推
 		int sub_phase = 1;				//sub_phase = 1 為goal_page， = 2 為掏金關卡， = 3 為shop_page
 		int action_state = 1;			//action_state = 1 為正常動作 = 2 為丟炸藥 = 3 為抓到強壯藥水 = 4 為拉礦物回來時
 		int key_down_index = -100;      //紀錄按下(down key)時的Index，預設為-100
